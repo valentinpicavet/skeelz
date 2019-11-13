@@ -7,21 +7,26 @@ import javax.persistence.Persistence;
 
 import Singleton.Singleton;
 import repository.IChapitreRepository;
+import repository.ICompetenceRepository;
 import repository.ICompetenceSkeelzRepository;
 import repository.IModuleRepository;
 import repository.IPersonneRepository;
 import repository.IQCMPersonneRepository;
 import repository.IQuestionRepository;
 import repository.IReponseRepository;
+import repository.ISkeelzRepository;
 import repository.IUtilisateurRepository;
 import skeelz.modele.Chapitre;
+import skeelz.modele.Competence;
+import skeelz.modele.CompetenceSkeelz;
 import skeelz.modele.Module;
 import skeelz.modele.Personne;
+import skeelz.modele.Ponderation;
 import skeelz.modele.QCMPersonne;
 import skeelz.modele.Question;
 import skeelz.modele.Reponse;
+import skeelz.modele.Skeelz;
 import skeelz.modele.Utilisateur;
-
 
 public class TestJpaRepoDam {
 
@@ -33,12 +38,50 @@ public class TestJpaRepoDam {
 		IQCMPersonneRepository qcmpersonne =  Singleton.getInstance().getQcmPersonneRepo();
 		IPersonneRepository personneRepo = Singleton.getInstance().getPersonneRepo();
 		IUtilisateurRepository utilisateurrepo = Singleton.getInstance().getUtilisateurRepo();
+<<<<<<< Updated upstream
 		ICompetenceSkeelzRepository comptenceskeelzrepo = Singleton.getInstance().getCompetenceSkeelzRepo();
 		
 		
-		
-	
+=======
 
+		ICompetenceSkeelzRepository comptenceskeelzrepo = Singleton.getInstance().getCompetenceSkeelzRepo();
+		ICompetenceRepository competencerepo = Singleton.getInstance().getCompetenceRepo();
+		ISkeelzRepository skeelzrepo = Singleton.getInstance().getSkeelzRepo();
+
+		Competence jpa = new Competence();
+		jpa.setIntitule("JPA");
+		jpa.setTagCompetence("java");
+		jpa.setPonderation(Ponderation.DIX);
+		jpa = competencerepo.save(jpa);
+
+		Skeelz java = new Skeelz();
+		java.setIntitule("java");
+		skeelzrepo.save(java);
+
+		Skeelz basedonnee = new Skeelz();
+		basedonnee.setIntitule("Base de Données");
+		skeelzrepo.save(basedonnee);
+
+		CompetenceSkeelz javaJpa = new CompetenceSkeelz();
+
+		javaJpa.setSkeelz(java);
+
+		Personne maPersonne = new Personne();
+		maPersonne.setNom("JEAN");
+		maPersonne.setPrenom("Jean");
+		maPersonne.setTelephone("026134515");
+		personneRepo.save(maPersonne);
+		
+		Utilisateur jean = new Utilisateur();
+		jean.setPassword("password");
+		jean.setIdentifiant("lebeaugosse33");
+		jean.setMail("michel.delpech@gmail.com");
+		jean.setPersonne(maPersonne);
+		utilisateurrepo.save(jean);
+>>>>>>> Stashed changes
+		
+
+<<<<<<< Updated upstream
 		Personne maPersonne = new Personne();
 		maPersonne.setNom("JEAN");
 		maPersonne.setPrenom("Jean");
@@ -57,17 +100,29 @@ public class TestJpaRepoDam {
 		Module java = new Module();
 		java.setIntitule("Java");
 		java = modulerepo.save(java);
+=======
+		Module javas = new Module();
+		
+		javas.setIntitule("Java");
+		javas = modulerepo.save(javas);
+>>>>>>> Stashed changes
 		
 		
 		QCMPersonne qcm = new QCMPersonne();
 		qcm.setStatutQCM(true);
+<<<<<<< Updated upstream
 		qcm.setModule(java);
 		qcm.setPersonne(maPersonne);
 		qcm = qcmpersonne.save(qcm);
+=======
+		qcm.setModule(javas);
+		qcm.setPersonne(maPersonne);
+		qcmpersonne.save(qcm);
+>>>>>>> Stashed changes
 		
 		Question javaAlgoquest = new Question();
 		javaAlgoquest.setQuestion("qui a la plus grosse bite ?");
-		javaAlgoquest.setModule(java);
+		javaAlgoquest.setModule(javas);
 		javaAlgoquest = questionrepo.save(javaAlgoquest);
 		
 		
@@ -86,7 +141,7 @@ public class TestJpaRepoDam {
 		
 		Chapitre javaAlgo = new Chapitre();
 		javaAlgo.setTitre("Java Algo");
-		javaAlgo.setModule(java);
+		javaAlgo.setModule(javas);
 		javaAlgo = chapitrerepo.save(javaAlgo);
 		
 		
@@ -103,11 +158,11 @@ public class TestJpaRepoDam {
 		
 		
 		
-//		reponserepo.delete(javaAlgorepvin);
-//		questionrepo.delete(javaAlgoquest);
-//		
-//		chapitrerepo.delete(javaAlgo);
-//		modulerepo.delete(java);
+		reponserepo.delete(javaAlgorepvin);
+		questionrepo.delete(javaAlgoquest);
+		
+		chapitrerepo.delete(javaAlgo);
+		modulerepo.delete(javas);
 		
 		System.out.println(javaAlgof);
 		System.out.println(javaf);
