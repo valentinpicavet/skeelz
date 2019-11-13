@@ -8,6 +8,24 @@
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
 		<class>skeelz.modele.Chapitre</class>
+		<class>skeelz.modele.BilanCompetence</class>
+		<class>skeelz.modele.Competence</class>
+		<class>skeelz.modele.CompetenceSkeelz</class>
+		<class>skeelz.modele.Cours</class>
+		<class>skeelz.modele.CoursCompetence</class>
+		<class>skeelz.modele.CoursPersonne</class>
+		<class>skeelz.modele.ElementDeCours</class>
+		<class>skeelz.modele.Entreprise</class>
+		<class>skeelz.modele.ExtraitCode</class>
+		<class>skeelz.modele.ImageCours</class>
+		<class>skeelz.modele.Module</class>
+		<class>skeelz.modele.Paragraphe</class>
+		<class>skeelz.modele.Personne</class>
+		<class>skeelz.modele.QCMPersonne</class>
+		<class>skeelz.modele.Question</class>
+		<class>skeelz.modele.Reponse</class>
+		<class>skeelz.modele.Skeelz</class>
+		<class>skeelz.modele.Utilisateur</class>
 
 		
 		
