@@ -28,7 +28,7 @@ public class Utilisateur {
 	@Column(nullable = false)
 	private boolean rh = false ;
 	@Column(nullable = false)
-	private boolean superUser;
+	private boolean superUser = false;
 	
 	@ManyToOne
 	@JoinColumn(name = "entreprise_id")
