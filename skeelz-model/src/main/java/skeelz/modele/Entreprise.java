@@ -30,6 +30,13 @@ public class Entreprise {
 	@OneToMany(mappedBy = "entreprise")
 	private List<Utilisateur> administrateur = new ArrayList<Utilisateur>();
 	
+	
+	
+	public Entreprise() {
+		super();
+	}
+	
+	
 	public Long getId() {
 		return id;
 	}
