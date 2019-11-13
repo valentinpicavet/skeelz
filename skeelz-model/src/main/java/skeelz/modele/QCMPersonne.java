@@ -1,7 +1,7 @@
 package skeelz.modele;
 
 
-public class QCMUtilisateur {
+public class QCMPersonne {
 	private Personne personne;
 	private QCM qcm;
 	private int nbTentative;
