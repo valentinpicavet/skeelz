@@ -3,10 +3,14 @@ skeelz-model/.project
 
 skeelz-data-jpa/.settings/
 
+skeelz-data-jpa/target/
+
 skeelz-data-jpa/.classpath
 
 skeelz-data-jpa/.project
 
 skeelz-model/.settings/
+
+skeelz-model/target/
 
 skeelz-model/.classpath
