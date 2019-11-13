@@ -1,5 +1,10 @@
 package skeelz.modele;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity
+@DiscriminatorValue("ExtraitCode")
 public class ExtraitCode extends ElementDeCours {
 	private String contenu;
 	private String commentaire;

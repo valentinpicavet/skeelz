@@ -1,8 +1,20 @@
 package skeelz.modele;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Version;
+
+@Entity
 public class Utilisateur {
 
+	@Id
+	@GeneratedValue
 	private Long id;
+	@Version
 	private int version;
 	private String mail;
 	private String password;
@@ -10,8 +22,14 @@ public class Utilisateur {
 	private boolean administrateur;
 	private boolean rh;
 	private boolean superUser;
+	
+	@ManyToOne
+	@JoinColumn(name = "entreprise_id")
 	private Entreprise entreprise;
+	@OneToOne
+	@JoinColumn(name = "personne_id")
 	private Personne personne;
+	
 	public Long getId() {
 		return id;
 	}

@@ -1,6 +1,12 @@
 package skeelz.modele;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity
+@DiscriminatorValue("ImageCours")
 public class ImageCours {
+	
 	private String chemin;
 	private String commentaire;
 	

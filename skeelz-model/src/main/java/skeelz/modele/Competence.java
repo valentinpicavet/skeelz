@@ -3,15 +3,30 @@ package skeelz.modele;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Version;
+
+@Entity
 public class Competence {
+	@Id
+	@GeneratedValue
 	private Long id;
+	@Version
 	private int version;
 	private String intitule;
+	@Enumerated
 	private Ponderation ponderation;
 	private String description;
 	private String tagCompetence;
+	@OneToMany (mappedBy="competence")
 	private List<CompetenceSkeelz> competenceSkeelz = new ArrayList<CompetenceSkeelz>();
+	@OneToMany (mappedBy="competence")
 	private List<CoursCompetence> coursCompetence = new ArrayList<CoursCompetence>();
+	@OneToMany (mappedBy="competence")
 	private List<BilanCompetence> bilanCompetence = new ArrayList<BilanCompetence>();
 	
 	public Long getId() {
