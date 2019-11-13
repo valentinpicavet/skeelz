@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -18,7 +19,7 @@ public class Competence {
 	@Version
 	private int version;
 	private String intitule;
-	@Enumerated
+	@Enumerated(EnumType.STRING)
 	private Ponderation ponderation;
 	private String description;
 	private String tagCompetence;
