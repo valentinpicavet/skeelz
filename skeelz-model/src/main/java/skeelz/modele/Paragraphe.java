@@ -1,5 +1,10 @@
 package skeelz.modele;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity
+@DiscriminatorValue("Paragraphe")
 public class Paragraphe extends ElementDeCours {
 	
 	private String texte;

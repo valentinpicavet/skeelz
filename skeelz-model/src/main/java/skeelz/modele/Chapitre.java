@@ -6,6 +6,9 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -17,7 +20,12 @@ public class Chapitre {
 	private int version;
 	private  String titre;
 	private int agencement;
+	@OneToMany
+	@JoinColumn (name = "elementDeCours_id")
 	private List<ElementDeCours> elementsDeCours = new ArrayList<ElementDeCours>();
+	@ManyToOne
+	@JoinColumn(name="module_id")
+	private Module module;
 	
 	
 	
@@ -55,6 +63,16 @@ public class Chapitre {
 	}
 	public void setElementsDeCours(List<ElementDeCours> elementsDeCours) {
 		this.elementsDeCours = elementsDeCours;
+	}
+
+
+	public Module getModule() {
+		return module;
+	}
+
+
+	public void setModule(Module module) {
+		this.module = module;
 	}
 
 	
