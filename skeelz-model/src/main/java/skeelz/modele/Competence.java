@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -20,7 +21,7 @@ public class Competence {
 	private int version;
 	@Column(nullable = false, unique = true)
 	private String intitule;
-	@Enumerated
+	@Enumerated(EnumType.STRING)
 	private Ponderation ponderation;
 	private String description;
 	private String tagCompetence;
