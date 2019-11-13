@@ -1,10 +1,29 @@
 package skeelz.modele;
 
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Version;
+
+@Entity
 public class CoursCompetence {
+	
+	@Id
+	@GeneratedValue
 	private Long id; 
+	@Version
 	private int version;
+	@Enumerated(EnumType.STRING)
 	private RelationCours relationCours;
+	@ManyToOne
+	@JoinColumn(name = "cours_id")
 	private Cours cours;
+	@ManyToOne
+	@JoinColumn(name = "competence_id")
 	private Competence competence;
 	
 	
