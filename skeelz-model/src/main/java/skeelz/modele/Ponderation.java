@@ -1,7 +1,7 @@
 package skeelz.modele;
 
 public enum Ponderation {
-  CINQ(5);
+  CINQ(5), DIX(10), QUINZE(15), VINGT(20); 
 	
 	private Ponderation(int label) {
 		this.label = label;
