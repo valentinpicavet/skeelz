@@ -7,6 +7,7 @@ import javax.persistence.Persistence;
 
 import Singleton.Singleton;
 import repository.IChapitreRepository;
+import repository.ICompetenceSkeelzRepository;
 import repository.IModuleRepository;
 import repository.IPersonneRepository;
 import repository.IQCMPersonneRepository;
@@ -32,6 +33,7 @@ public class TestJpaRepoDam {
 		IQCMPersonneRepository qcmpersonne =  Singleton.getInstance().getQcmPersonneRepo();
 		IPersonneRepository personneRepo = Singleton.getInstance().getPersonneRepo();
 		IUtilisateurRepository utilisateurrepo = Singleton.getInstance().getUtilisateurRepo();
+		ICompetenceSkeelzRepository comptenceskeelzrepo = Singleton.getInstance().getc
 		
 		
 		

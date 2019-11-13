@@ -6,6 +6,7 @@ import javax.persistence.Persistence;
 import repository.IBilanCompetenceRepository;
 import repository.IChapitreRepository;
 import repository.ICompetenceRepository;
+import repository.ICompetenceSkeelzRepository;
 import repository.ICoursCompetenceRepository;
 import repository.ICoursPersonneRepository;
 import repository.ICoursRepository;
@@ -21,6 +22,7 @@ import repository.IUtilisateurRepository;
 import repository.jpa.BilanCompetenceRepositoryJpa;
 import repository.jpa.ChapitreRepositoryJpa;
 import repository.jpa.CompetenceRepositoryJpa;
+import repository.jpa.CompetenceSkeelzRepositoryJpa;
 import repository.jpa.CoursCompetenceRepositoryJpa;
 import repository.jpa.CoursPersonneRepositoryJpa;
 import repository.jpa.CoursRepositoryJpa;
@@ -46,7 +48,7 @@ public class Singleton {
 	private final ICoursCompetenceRepository coursCompetenceRepo = new CoursCompetenceRepositoryJpa();
 	private final ICoursPersonneRepository coursPersonneRepo = new CoursPersonneRepositoryJpa();
 	private final ICoursRepository coursRepo = new CoursRepositoryJpa();
-	private final IElementDeCoursRepository elementDeCoursPersonneRepo = new ElementDeCoursRepositoryJpa();
+	private final IElementDeCoursRepository elementDeCoursRepo = new ElementDeCoursRepositoryJpa();
 	private final IEntrepriseRepository entrepriseRepo = new EntrepriseRepositoryJpa();
 	private final IModuleRepository moduleRepo = new ModuleRepositoryJpa();
 	private final IPersonneRepository personneRepo = new PersonneRepositoryJpa();
@@ -55,7 +57,7 @@ public class Singleton {
 	private final IReponseRepository reponseRepo = new ReponseRepositoryJpa();
 	private final ISkeelzRepository skeelzRepo = new SkeelzRepositoryJpa();
 	private final IUtilisateurRepository utilisateurRepo = new UtilisateurRepositoryJpa();
-	
+	private final ICompetenceSkeelzRepository competenceSkeelzRepo = new CompetenceSkeelzRepositoryJpa();
 
 	
 	private Singleton() {
@@ -97,9 +99,7 @@ public class Singleton {
 		return coursRepo;
 	}
 
-	public IElementDeCoursRepository getElementDeCoursPersonneRepo() {
-		return elementDeCoursPersonneRepo;
-	}
+	
 
 	public IEntrepriseRepository getEntrepriseRepo() {
 		return entrepriseRepo;
@@ -131,6 +131,18 @@ public class Singleton {
 
 	public IUtilisateurRepository getUtilisateurRepo() {
 		return utilisateurRepo;
+	}
+
+	
+	public ICompetenceSkeelzRepository getCompetenceSkeelzRepo() {
+		return competenceSkeelzRepo;
+	}
+
+	/**
+	 * @return the elementDeCoursRepo
+	 */
+	public IElementDeCoursRepository getElementDeCoursRepo() {
+		return elementDeCoursRepo;
 	}
 	
 	
