@@ -4,7 +4,10 @@ import java.util.List;
 
 import Singleton.Singleton;
 import repository.IBilanCompetenceRepository;
+import repository.ICoursCompetenceRepository;
 import skeelz.modele.BilanCompetence;
+import skeelz.modele.CoursCompetence;
+import skeelz.modele.RelationCours;
 
 
 public class TestJpaCoursCompetence {
@@ -12,26 +15,27 @@ public class TestJpaCoursCompetence {
 	public static void main(String[] args) {
 		ICoursCompetenceRepository coursCompetenceRepo = Singleton.getInstance().getCoursCompetenceRepo();
 
-		int startNumber = bilanCompetenceRepo.findAll().size();
+		int startNumber = coursCompetenceRepo.findAll().size();
 
-		BilanCompetence monBilan = new BilanCompetence();
+		CoursCompetence monCoursComp = new CoursCompetence();
+		monCoursComp.setRelationCours(RelationCours.VALIDE);;
 		
-		monBilan = bilanCompetenceRepo.save(monBilan);
+		monCoursComp = coursCompetenceRepo.save(monCoursComp);
 
 
-		BilanCompetence monBilanFind = bilanCompetenceRepo.find(monBilan.getId());
-		System.out.println(monBilanFind);
-		List<BilanCompetence> monBilanFindList = bilanCompetenceRepo.findAll();
-		System.out.println(monBilanFindList.get(0));
+		CoursCompetence monCoursCompFind = coursCompetenceRepo.find(monCoursComp.getId());
+		System.out.println(monCoursCompFind);
+		List<CoursCompetence> monCoursCompFindList = coursCompetenceRepo.findAll();
+		System.out.println(monCoursCompFindList.get(0));
 
 
 
 		
-		int middleNumber = bilanCompetenceRepo.findAll().size();
+		int middleNumber = coursCompetenceRepo.findAll().size();
 	
 		System.out.println(middleNumber - startNumber);
 		
-		bilanCompetenceRepo.delete(monBilan);
+		coursCompetenceRepo.delete(monCoursComp);
 
 
 	}
