@@ -2,7 +2,6 @@ package skeelz.modele;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.jar.Attributes.Name;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,11 +11,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
 
 
 @Entity
-@Table
+@Table(uniqueConstraints= {@UniqueConstraint(columnNames = { "cours_id", "intitule"}), @UniqueConstraint(columnNames = { "cours_id", "agencement"})})
 public class Module {
 	
 	@Id
@@ -24,8 +24,9 @@ public class Module {
 	private Long id;
 	@Version
 	private int version;
-	
+	@Column(nullable = false)
 	private String intitule;
+	@Column(nullable = false)
 	private int agencement;
 	private  int nbQuestion;
 	private int periodicite;

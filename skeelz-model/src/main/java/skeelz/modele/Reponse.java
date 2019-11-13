@@ -1,5 +1,6 @@
 package skeelz.modele;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -17,7 +18,9 @@ public class Reponse {
 	private Long id;
 	@Version
 	private int version;
+	@Column(nullable = false, unique = true)
 	private String enonce;
+	@Column(nullable = false)
 	private boolean juste;
 	@ManyToOne
 	@JoinColumn(name="question_id")

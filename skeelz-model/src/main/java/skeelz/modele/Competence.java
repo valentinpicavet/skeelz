@@ -3,6 +3,7 @@ package skeelz.modele;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
@@ -17,6 +18,7 @@ public class Competence {
 	private Long id;
 	@Version
 	private int version;
+	@Column(nullable = false, unique = true)
 	private String intitule;
 	@Enumerated
 	private Ponderation ponderation;

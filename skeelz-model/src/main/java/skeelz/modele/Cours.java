@@ -3,6 +3,7 @@ package skeelz.modele;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -19,6 +20,7 @@ public class Cours {
 	private Long id;
 	@Version
 	private int version;
+	@Column(nullable = false, unique = true)
 	private String intitule;
 	private int duree;
 	@Enumerated(EnumType.STRING)
