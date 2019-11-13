@@ -27,6 +27,9 @@ public class QCMPersonne {
 	@ManyToOne
 	@JoinColumn(name = "module_id")
 	private Module module;
+	
+	
+	
 	public Long getId() {
 		return id;
 	}
