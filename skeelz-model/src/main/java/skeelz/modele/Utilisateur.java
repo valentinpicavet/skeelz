@@ -24,9 +24,9 @@ public class Utilisateur {
 	@Column(nullable = false, unique = true)
 	private String identifiant;
 	@Column(nullable = false)
-	private boolean administrateur;
+	private boolean administrateur = false;
 	@Column(nullable = false)
-	private boolean rh;
+	private boolean rh = false ;
 	@Column(nullable = false)
 	private boolean superUser;
 	
