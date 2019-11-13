@@ -7,6 +7,7 @@ import javax.persistence.Persistence;
 
 import Singleton.Singleton;
 import repository.IChapitreRepository;
+import repository.ICompetenceSkeelzRepository;
 import repository.IModuleRepository;
 import repository.IPersonneRepository;
 import repository.IQCMPersonneRepository;
@@ -32,24 +33,25 @@ public class TestJpaRepoDam {
 		IQCMPersonneRepository qcmpersonne =  Singleton.getInstance().getQcmPersonneRepo();
 		IPersonneRepository personneRepo = Singleton.getInstance().getPersonneRepo();
 		IUtilisateurRepository utilisateurrepo = Singleton.getInstance().getUtilisateurRepo();
+		ICompetenceSkeelzRepository comptenceskeelzrepo = Singleton.getInstance().getCompetenceSkeelzRepo();
 		
 		
 		
 	
 
-//		Personne maPersonne = new Personne();
-//		maPersonne.setNom("JEAN");
-//		maPersonne.setPrenom("Jean");
-//		maPersonne.setTelephone("026134515");
-//		personneRepo.save(maPersonne);
-//		
-//		Utilisateur jean = new Utilisateur();
-//		jean.setPassword("password");
-//		jean.setIdentifiant("lebeaugosse33");
-//		jean.setMail("michel.delpech@gmail.com");
-//		jean.setPersonne(maPersonne);
-//		utilisateurrepo.save(jean);
-//		
+		Personne maPersonne = new Personne();
+		maPersonne.setNom("JEAN");
+		maPersonne.setPrenom("Jean");
+		maPersonne.setTelephone("026134515");
+		maPersonne = personneRepo.save(maPersonne);
+		
+		Utilisateur jean = new Utilisateur();
+		jean.setPassword("password");
+		jean.setIdentifiant("lebeaugosse33");
+		jean.setMail("michel.delpech@gmail.com");
+		jean.setPersonne(maPersonne);
+		jean = utilisateurrepo.save(jean);
+
 	
 		
 		Module java = new Module();
@@ -60,8 +62,8 @@ public class TestJpaRepoDam {
 		QCMPersonne qcm = new QCMPersonne();
 		qcm.setStatutQCM(true);
 		qcm.setModule(java);
-//		qcm.setPersonne(maPersonne);
-		qcmpersonne.save(qcm);
+		qcm.setPersonne(maPersonne);
+		qcm = qcmpersonne.save(qcm);
 		
 		Question javaAlgoquest = new Question();
 		javaAlgoquest.setQuestion("qui a la plus grosse bite ?");
@@ -73,13 +75,13 @@ public class TestJpaRepoDam {
 		javaAlgorepd.setEnonce("Damien");
 		javaAlgorepd.setQuestion(javaAlgoquest);
 		javaAlgorepd.setJuste(true);
-		reponserepo.save(javaAlgorepd);
+		javaAlgorepd = reponserepo.save(javaAlgorepd);
 		
 		Reponse javaAlgorepvin = new Reponse();
 		javaAlgorepvin.setEnonce("Vincent");
 		javaAlgorepvin.setQuestion(javaAlgoquest);
 		javaAlgorepvin.setJuste(false);
-		reponserepo.save(javaAlgorepvin);
+		javaAlgorepvin = reponserepo.save(javaAlgorepvin);
 		
 		
 		Chapitre javaAlgo = new Chapitre();

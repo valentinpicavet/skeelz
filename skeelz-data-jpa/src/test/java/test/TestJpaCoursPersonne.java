@@ -3,14 +3,9 @@ package test;
 import java.util.List;
 
 import Singleton.Singleton;
-import repository.IBilanCompetenceRepository;
-import repository.ICoursCompetenceRepository;
 import repository.ICoursPersonneRepository;
-import skeelz.modele.BilanCompetence;
-import skeelz.modele.CoursCompetence;
 import skeelz.modele.CoursPersonne;
 import skeelz.modele.EtatCours;
-import skeelz.modele.RelationCours;
 
 
 public class TestJpaCoursPersonne {

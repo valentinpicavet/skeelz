@@ -5,7 +5,6 @@ import repository.ICoursRepository;
 import skeelz.modele.Cours;
 import skeelz.modele.Difficulte;
 import skeelz.modele.Etat;
-import skeelz.modele.Skeelz;
 
 public class TestJpaCours {
 

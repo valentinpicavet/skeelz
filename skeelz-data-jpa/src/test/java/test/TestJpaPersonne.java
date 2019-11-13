@@ -3,9 +3,7 @@ package test;
 import java.util.List;
 
 import Singleton.Singleton;
-import repository.IBilanCompetenceRepository;
 import repository.IPersonneRepository;
-import skeelz.modele.BilanCompetence;
 import skeelz.modele.Personne;
 
 
