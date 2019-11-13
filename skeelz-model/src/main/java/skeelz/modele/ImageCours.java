@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 
 @Entity
 @DiscriminatorValue("ImageCours")
-public class ImageCours {
+public class ImageCours extends ElementDeCours{
 	
 	private String chemin;
 	private String commentaire;

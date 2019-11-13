@@ -6,6 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Version;
@@ -22,7 +24,8 @@ public class ElementDeCours{
 	@Version
 	private int version;
 	private int agencement;
-	@OneToMany(mappedBy = "elementDeCours")
+	@ManyToOne
+	@JoinColumn(name = "chapitre_id")
 	private Chapitre chapitre;
 	
 	

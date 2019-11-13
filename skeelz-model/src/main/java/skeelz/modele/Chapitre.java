@@ -22,8 +22,7 @@ public class Chapitre {
 	private int version;
 	private  String titre;
 	private int agencement;
-	@OneToMany
-	@JoinColumn (name = "elementDeCours_id")
+	@OneToMany(mappedBy = "chapitre")
 	private List<ElementDeCours> elementsDeCours = new ArrayList<ElementDeCours>();
 	@ManyToOne
 	@JoinColumn(name="module_id")
