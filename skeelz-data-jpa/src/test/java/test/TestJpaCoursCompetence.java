@@ -4,6 +4,7 @@ import java.util.List;
 
 import Singleton.Singleton;
 import repository.IBilanCompetenceRepository;
+import repository.ICoursCompetenceRepository;
 import skeelz.modele.BilanCompetence;
 
 
