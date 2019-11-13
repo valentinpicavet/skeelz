@@ -1,9 +1,7 @@
 package test;
 
 import Singleton.Singleton;
-import repository.ISkeelzRepository;
 import repository.IUtilisateurRepository;
-import skeelz.modele.Skeelz;
 import skeelz.modele.Utilisateur;
 
 public class TestJpaUtilisateur {

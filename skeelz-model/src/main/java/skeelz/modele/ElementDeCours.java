@@ -18,7 +18,7 @@ import javax.persistence.Version;
 @Table(uniqueConstraints= {@UniqueConstraint(columnNames = { "chapitre_id", "agencement"})})
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "type")
-public class ElementDeCours{
+public abstract class ElementDeCours{
 	@Id
 	@GeneratedValue
 	private Long id;
