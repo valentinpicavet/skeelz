@@ -1,10 +1,24 @@
 package skeelz.modele;
 
-public class CompetenceSkeelz {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Version;
 
+@Entity
+public class CompetenceSkeelz {
+	@Id
+	@GeneratedValue
 	private Long id;
+	@Version
 	private int version;
+	@ManyToOne
+	@JoinColumn(name="skeelz_id")
 	private Skeelz skeelz;
+	@ManyToOne
+	@JoinColumn(name="competence_id")
 	private Competence competence;
 	
 	
