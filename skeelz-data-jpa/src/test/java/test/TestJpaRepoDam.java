@@ -38,11 +38,6 @@ public class TestJpaRepoDam {
 		IQCMPersonneRepository qcmpersonne =  Singleton.getInstance().getQcmPersonneRepo();
 		IPersonneRepository personneRepo = Singleton.getInstance().getPersonneRepo();
 		IUtilisateurRepository utilisateurrepo = Singleton.getInstance().getUtilisateurRepo();
-<<<<<<< Updated upstream
-		ICompetenceSkeelzRepository comptenceskeelzrepo = Singleton.getInstance().getCompetenceSkeelzRepo();
-		
-		
-=======
 
 		ICompetenceSkeelzRepository comptenceskeelzrepo = Singleton.getInstance().getCompetenceSkeelzRepo();
 		ICompetenceRepository competencerepo = Singleton.getInstance().getCompetenceRepo();
@@ -50,7 +45,7 @@ public class TestJpaRepoDam {
 
 		Competence jpa = new Competence();
 		jpa.setIntitule("JPA");
-		jpa.setTagCompetence("java");
+		
 		jpa.setPonderation(Ponderation.DIX);
 		jpa = competencerepo.save(jpa);
 
@@ -66,22 +61,8 @@ public class TestJpaRepoDam {
 
 		javaJpa.setSkeelz(java);
 
-		Personne maPersonne = new Personne();
-		maPersonne.setNom("JEAN");
-		maPersonne.setPrenom("Jean");
-		maPersonne.setTelephone("026134515");
-		personneRepo.save(maPersonne);
-		
-		Utilisateur jean = new Utilisateur();
-		jean.setPassword("password");
-		jean.setIdentifiant("lebeaugosse33");
-		jean.setMail("michel.delpech@gmail.com");
-		jean.setPersonne(maPersonne);
-		utilisateurrepo.save(jean);
->>>>>>> Stashed changes
-		
 
-<<<<<<< Updated upstream
+
 		Personne maPersonne = new Personne();
 		maPersonne.setNom("JEAN");
 		maPersonne.setPrenom("Jean");
@@ -97,28 +78,24 @@ public class TestJpaRepoDam {
 
 	
 		
-		Module java = new Module();
-		java.setIntitule("Java");
-		java = modulerepo.save(java);
-=======
 		Module javas = new Module();
-		
-		javas.setIntitule("Java");
+		java.setIntitule("Java");
 		javas = modulerepo.save(javas);
->>>>>>> Stashed changes
+		
+
 		
 		
 		QCMPersonne qcm = new QCMPersonne();
 		qcm.setStatutQCM(true);
-<<<<<<< Updated upstream
-		qcm.setModule(java);
+
+		qcm.setModule(javas);
 		qcm.setPersonne(maPersonne);
 		qcm = qcmpersonne.save(qcm);
-=======
+
 		qcm.setModule(javas);
 		qcm.setPersonne(maPersonne);
 		qcmpersonne.save(qcm);
->>>>>>> Stashed changes
+
 		
 		Question javaAlgoquest = new Question();
 		javaAlgoquest.setQuestion("qui a la plus grosse bite ?");
