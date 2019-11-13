@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Version;
 
 @Entity
 @Table(name="Chapitre")
@@ -17,6 +18,7 @@ public class Chapitre {
 	@Id
 	@GeneratedValue
 	private Long id;
+	@Version
 	private int version;
 	private  String titre;
 	private int agencement;
