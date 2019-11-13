@@ -7,7 +7,6 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
 import Singleton.Singleton;
-import agence.voyage.singleton.Application;
 import repository.IChapitreRepository;
 import skeelz.modele.Chapitre;
 

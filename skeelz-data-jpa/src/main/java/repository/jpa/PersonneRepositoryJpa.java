@@ -7,14 +7,17 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
 import Singleton.Singleton;
-import repository.IReponseRepository;
-import skeelz.modele.Reponse;
+import repository.IPersonneRepository;
+import skeelz.modele.Personne;
 
-public class ReponseRepositoryJpa implements IReponseRepository {
-	
+
+
+public class PersonneRepositoryJpa implements IPersonneRepository{
+
 	@Override
-	public List<Reponse> findAll() {
-		List<Reponse> list = null;
+	public List<Personne> findAll() {
+		List<Personne> list = null;
+
 		EntityManager em = null;
 		EntityTransaction tx = null;
 
@@ -22,7 +25,10 @@ public class ReponseRepositoryJpa implements IReponseRepository {
 			em = Singleton.getInstance().getEmf().createEntityManager();
 			tx = em.getTransaction();
 
-			TypedQuery<Reponse> query = em.createQuery("from Reponse", Reponse.class);
+			tx.begin();
+
+			TypedQuery<Personne> query = em.createQuery("from Personne", Personne.class);
+
 			list = query.getResultList();
 
 			tx.commit();
@@ -42,21 +48,22 @@ public class ReponseRepositoryJpa implements IReponseRepository {
 	}
 
 	@Override
-	public Reponse find(Long id) {
-		Reponse obj = null;
+	public Personne find(Long id) {
+		Personne obj = null;
+
 		EntityManager em = null;
 		EntityTransaction tx = null;
-		
+
 		try {
 			em = Singleton.getInstance().getEmf().createEntityManager();
 			tx = em.getTransaction();
-			
+
 			tx.begin();
-			
-			obj = em.find(Reponse.class, id);
-			
+
+			obj = em.find(Personne.class, id);
+
 			tx.commit();
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			if (tx != null && tx.isActive()) {
@@ -72,35 +79,34 @@ public class ReponseRepositoryJpa implements IReponseRepository {
 	}
 
 	@Override
-	public Reponse save(Reponse obj) {
-		
+	public Personne save(Personne obj) {
 		EntityManager em = null;
 		EntityTransaction tx = null;
-		
+
 		try {
 			em = Singleton.getInstance().getEmf().createEntityManager();
 			tx = em.getTransaction();
-			
+
 			tx.begin();
-			
+
 			obj = em.merge(obj);
+
 			tx.commit();
-			
-	}catch (Exception e) {
-		e.printStackTrace();
-		if (tx != null && tx.isActive()) {
-			tx.rollback();
+		} catch (Exception e) {
+			e.printStackTrace();
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+		} finally {
+			if (em != null) {
+				em.close();
+			}
 		}
-	} finally {
-		if (em != null) {
-			em.close();
-		}
+		return obj;
 	}
-	return obj;
-}
 
 	@Override
-	public void delete(Reponse obj) {
+	public void delete(Personne obj) {
 		EntityManager em = null;
 		EntityTransaction tx = null;
 
@@ -125,8 +131,4 @@ public class ReponseRepositoryJpa implements IReponseRepository {
 		}
 	}
 
-	
 }
-
-
-
