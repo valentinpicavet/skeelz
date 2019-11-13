@@ -21,7 +21,6 @@ public class TestJpaCompetence {
 		maCompetence.setDescription("trop bien");
 		maCompetence.setIntitule("java pour les null");
 		maCompetence.setPonderation(Ponderation.DIX);
-		maCompetence.setTagCompetence("java");
 		
 		maCompetence = competenceRepo.save(maCompetence);
 
