@@ -1,5 +1,6 @@
 package skeelz.modele;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -16,11 +17,17 @@ public class Utilisateur {
 	private Long id;
 	@Version
 	private int version;
+	@Column(nullable = false, unique = true)
 	private String mail;
+	@Column(nullable = false)
 	private String password;
+	@Column(nullable = false, unique = true)
 	private String identifiant;
+	@Column(nullable = false)
 	private boolean administrateur;
+	@Column(nullable = false)
 	private boolean rh;
+	@Column(nullable = false)
 	private boolean superUser;
 	
 	@ManyToOne

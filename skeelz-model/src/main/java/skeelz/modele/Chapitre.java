@@ -3,6 +3,7 @@ package skeelz.modele;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -10,17 +11,20 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
 
 @Entity
-@Table(name="Chapitre")
+@Table(uniqueConstraints= {@UniqueConstraint(columnNames = { "module_id", "titre"}), @UniqueConstraint(columnNames = { "module_id", "agencement"})})
 public class Chapitre {
 	@Id
 	@GeneratedValue
 	private Long id;
 	@Version
 	private int version;
+	@Column(nullable = false)
 	private  String titre;
+	@Column(nullable = false)
 	private int agencement;
 	@OneToMany(mappedBy = "chapitre")
 	private List<ElementDeCours> elementsDeCours = new ArrayList<ElementDeCours>();

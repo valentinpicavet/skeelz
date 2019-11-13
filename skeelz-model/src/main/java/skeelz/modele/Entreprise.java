@@ -8,9 +8,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
 
 @Entity
+@Table(uniqueConstraints= {@UniqueConstraint(columnNames = { "numeroSiret" })})
 public class Entreprise {
 
 	@Id
@@ -20,7 +23,9 @@ public class Entreprise {
 	private int version;
 	@Column(nullable = false)
 	private String nom;
+	@Column(nullable = false)
 	private String numeroSiret;
+	@Column(nullable = false)
 	private String typeContrat;
 	@OneToMany(mappedBy = "entreprise")
 	private List<Utilisateur> administrateur = new ArrayList<Utilisateur>();
