@@ -17,7 +17,6 @@ public class Skeelz {
 	@Version
 	private int version;
 	private String intitule;
-	private int note;
 	private String intituleSucces;
 	@OneToMany(mappedBy="skeelz")
 	private List<BilanCompetence> bilanCompetence = new ArrayList<BilanCompetence>();
@@ -42,12 +41,6 @@ public class Skeelz {
 	}
 	public void setIntitule(String intitule) {
 		this.intitule = intitule;
-	}
-	public int getNote() {
-		return note;
-	}
-	public void setNote(int note) {
-		this.note = note;
 	}
 	public String getIntituleSucces() {
 		return intituleSucces;
