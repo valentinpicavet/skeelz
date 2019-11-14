@@ -114,8 +114,14 @@ public class JeuDeDonnee {
 		cours1.setDifficulte(Difficulte.FACILE);
 		cours1.setDuree(5);
 		cours1.setEtat(Etat.OUVERT);
-		cours1.setDescription("Apprenez les bases du langage de programmation le plus utilisé dans le monde");
 		cours1 = coursRepo.save(cours1);
+		
+		Cours detecteurFume = new Cours ();
+		detecteurFume.setIntitule("Concevez un détecteur de fumée connecté");
+		detecteurFume.setDifficulte(Difficulte.FACILE);
+		detecteurFume.setDuree(6);
+		detecteurFume.setEtat(Etat.OUVERT);
+		detecteurFume = coursRepo.save(detecteurFume);
 		
 		CoursCompetence monCoursComp = new CoursCompetence();
 		monCoursComp.setRelationCours(RelationCours.VALIDE);
@@ -128,6 +134,15 @@ public class JeuDeDonnee {
 		monCoursPers.setCours(cours1);
 		monCoursPers.setPersonne(maPersonne);
 		monCoursPers = coursPersonneRepo.save(monCoursPers);
+		
+		Module definition = new Module();
+		definition.setIntitule("Définissez votre projet de détecteur de fumée connecté");
+		definition.setAgencement(1);
+		definition.setNbQuestion(11);
+		definition.setPeriodicite(1);
+		definition.setNbTentativeAutorise(3);
+		definition.setCours(detecteurFume);
+		definition = moduleRepo.save(definition);
 		
 		Module javas = new Module();
 		javas.setIntitule("Java");
@@ -144,6 +159,61 @@ public class JeuDeDonnee {
 		qcm.setModule(javas);
 		qcm.setPersonne(maPersonne);
 		qcm = qcmPersonneRepo.save(qcm);
+		
+		Question def1 = new Question();
+		def1.setQuestion("Quel est le problème soulevé par la mise en situation ?");
+		def1.setModule(definition);
+		def1 = questionRepo.save(def1);
+		
+		Question def2 = new Question();
+		def2.setQuestion("Quelles propriétés permettent de qualifier un détecteur de fumée de \"système embarqué\" ?");
+		def2.setModule(definition);
+		def2 = questionRepo.save(def2);
+		
+		Question def3 = new Question();
+		def3.setQuestion("Quelles considérations faut-il intégrer dans une démarche de développement de système ?");
+		def3.setModule(definition);
+		def3 = questionRepo.save(def3);
+		
+		Question def4 = new Question();
+		def4.setQuestion("Penser système, c’est :");
+		def4.setModule(definition);
+		def4 = questionRepo.save(def4);
+		
+		Question def5 = new Question();
+		def5.setQuestion("Une partie prenante est : ");
+		def5.setModule(definition);
+		def5 = questionRepo.save(def5);
+		
+		Question def6 = new Question();
+		def6.setQuestion("Les parties prenantes dans un projet de développement d’un détecteur de fumée qui sera commercialisé sont :");
+		def6.setModule(definition);
+		def6 = questionRepo.save(def6);
+		
+		Question def7 = new Question();
+		def7.setQuestion("Nous avons abordé le système embarqué comme une « boîte noire ». De quoi s’agit-il ?");
+		def7.setModule(definition);
+		def7 = questionRepo.save(def7);
+		
+		Question def8 = new Question();
+		def8.setQuestion("Peut-il y avoir plusieurs systèmes d’intérêt autour d’un système embarqué ou d'un objet connecté ?");
+		def8.setModule(definition);
+		def8 = questionRepo.save(def8);
+		
+		Question def9 = new Question();
+		def9.setQuestion("Quelles sont les quatre phases du développement d'un objet connecté ou d'un système embarqué ?");
+		def9.setModule(definition);
+		def9 = questionRepo.save(def9);
+		
+		Question def10 = new Question();
+		def10.setQuestion("Quel est l'intérêt de faire une analyse fonctionnelle lors du développement d'un objet connecté ou d'un système embarqué ? ");
+		def10.setModule(definition);
+		def10 = questionRepo.save(def10);
+		
+		Question def11 = new Question();
+		def11.setQuestion("Sur quels facteurs l'analyse organique influe-t-elle ? (Trois réponses possibles).");
+		def11.setModule(definition);
+		def11 = questionRepo.save(def11);
 		
 		Question javaAlgoquest1 = new Question();
 		javaAlgoquest1.setQuestion("Comment se nomme la variable des chaines de caratères ?");
@@ -197,6 +267,12 @@ public class JeuDeDonnee {
 		javaAlgo.setAgencement(0);
 		javaAlgo.setModule(javas);
 		javaAlgo = chapitreRepo.save(javaAlgo);
+		
+		Chapitre detect11 = new Chapitre();
+		detect11.setTitre("Découvrez le domaine des systèmes embarqués et objets connectés");
+		detect11.setAgencement(0);
+		detect11.setModule(javas);
+		detect11 = chapitreRepo.save(detect11);
 
 		Paragraphe monElement = new Paragraphe();
 		monElement.setAgencement(0);
