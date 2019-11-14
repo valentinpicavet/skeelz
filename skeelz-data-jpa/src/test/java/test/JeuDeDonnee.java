@@ -114,6 +114,7 @@ public class JeuDeDonnee {
 		cours1.setDifficulte(Difficulte.FACILE);
 		cours1.setDuree(5);
 		cours1.setEtat(Etat.OUVERT);
+		cours1.setDescription("Apprenez les bases du langage de programmation le plus utilisé dans le monde");
 		cours1 = coursRepo.save(cours1);
 		
 		CoursCompetence monCoursComp = new CoursCompetence();

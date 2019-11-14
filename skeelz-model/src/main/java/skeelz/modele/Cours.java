@@ -22,10 +22,16 @@ public class Cours {
 	private int version;
 	@Column(nullable = false, unique = true)
 	private String intitule;
+	@Column(nullable = false)
+	private String description;
+	private String cheminImageCours;
+	@Column(nullable = false)
 	private int duree;
 	@Enumerated(EnumType.STRING)
+	@Column(nullable = false)
 	private Difficulte difficulte;
 	@Enumerated(EnumType.STRING)
+	@Column(nullable = false)
 	private Etat etat;
 	@OneToMany(mappedBy = "cours")
 	private List<CoursCompetence> coursCompetences = new ArrayList<CoursCompetence>();
@@ -96,6 +102,30 @@ public class Cours {
 	}
 	public void setCoursPersonnes(List<CoursPersonne> coursPersonnes) {
 		this.coursPersonnes = coursPersonnes;
+	}
+
+
+
+	public String getDescription() {
+		return description;
+	}
+
+
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+
+
+	public String getCheminImageCours() {
+		return cheminImageCours;
+	}
+
+
+
+	public void setCheminImageCours(String cheminImageCours) {
+		this.cheminImageCours = cheminImageCours;
 	}
 	
 	

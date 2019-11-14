@@ -28,6 +28,7 @@ public class Module {
 	private String intitule;
 	@Column(nullable = false)
 	private int agencement;
+	private String enonceQCM;
 	private  int nbQuestion;
 	private int periodicite;
 	private int nbTentativeAutorise;
@@ -113,6 +114,16 @@ public class Module {
 	}
 	public void setCours(Cours cours) {
 		this.cours = cours;
+	}
+
+
+	public String getEnonceQCM() {
+		return enonceQCM;
+	}
+
+
+	public void setEnonceQCM(String enonceQCM) {
+		this.enonceQCM = enonceQCM;
 	}
 	
 	
