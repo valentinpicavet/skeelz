@@ -28,6 +28,7 @@ public abstract class ElementDeCours{
 	private int agencement;
 	@ManyToOne
 	@JoinColumn(name = "chapitre_id")
+	@Column(nullable = false)
 	private Chapitre chapitre;
 	
 	

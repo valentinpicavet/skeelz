@@ -2,12 +2,15 @@ package skeelz.modele;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
 
@@ -22,13 +25,16 @@ public class QCMPersonne {
 	private int version;
 	private int nbTentative;
 	private boolean statutQCM;
+	@Temporal(TemporalType.DATE)
 	private Date dateDerniereTentative;
 	
 	@ManyToOne
 	@JoinColumn(name = "personne_id")
+	@Column(nullable = false)
 	private Personne personne;
 	@ManyToOne
 	@JoinColumn(name = "module_id")
+	@Column(nullable = false)
 	private Module module;
 	
 	

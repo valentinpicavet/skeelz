@@ -1,5 +1,6 @@
 package skeelz.modele;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -21,12 +22,15 @@ public class CoursCompetence {
 	@Version
 	private int version;
 	@Enumerated(EnumType.STRING)
+	@Column(nullable = false)
 	private RelationCours relationCours;
 	@ManyToOne
 	@JoinColumn(name = "cours_id")
+	@Column(nullable = false)
 	private Cours cours;
 	@ManyToOne
 	@JoinColumn(name = "competence_id")
+	@Column(nullable = false)
 	private Competence competence;
 	
 	

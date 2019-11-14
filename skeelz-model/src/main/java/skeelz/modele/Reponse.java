@@ -18,12 +18,13 @@ public class Reponse {
 	private Long id;
 	@Version
 	private int version;
-	@Column(nullable = false, unique = true)
+	@Column(nullable = false)
 	private String enonce;
 	@Column(nullable = false)
 	private boolean juste;
 	@ManyToOne
 	@JoinColumn(name="question_id")
+	@Column(nullable = false)
 	private Question question;
 	
 	

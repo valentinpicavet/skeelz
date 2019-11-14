@@ -1,5 +1,6 @@
 package skeelz.modele;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -19,9 +20,11 @@ public class CompetenceSkeelz {
 	private int version;
 	@ManyToOne
 	@JoinColumn(name="skeelz_id")
+	@Column(nullable = false)
 	private Skeelz skeelz;
 	@ManyToOne
 	@JoinColumn(name="competence_id")
+	@Column(nullable = false)
 	private Competence competence;
 	
 	

@@ -27,6 +27,7 @@ public class Question {
 	private String question;
 	@ManyToOne
 	@JoinColumn(name="module_id")
+	@Column(nullable = false)
 	private Module module;
 	@OneToMany(mappedBy = "question")
 	private List<Reponse> reponses = new ArrayList<Reponse>();

@@ -39,6 +39,7 @@ public class Module {
 	private List<QCMPersonne> qcmPersonnes = new ArrayList<QCMPersonne>();
 	@ManyToOne
 	@JoinColumn(name ="cours_id")
+	@Column(nullable = false)
 	private Cours cours;
 	
 
