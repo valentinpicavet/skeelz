@@ -23,8 +23,7 @@ public class Reponse {
 	@Column(nullable = false)
 	private boolean juste;
 	@ManyToOne
-	@JoinColumn(name="question_id")
-	@Column(nullable = false)
+	@JoinColumn(name="question_id", nullable = false)
 	private Question question;
 	
 	

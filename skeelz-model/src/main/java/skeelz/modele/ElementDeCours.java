@@ -27,8 +27,7 @@ public abstract class ElementDeCours{
 	@Column(nullable = false)
 	private int agencement;
 	@ManyToOne
-	@JoinColumn(name = "chapitre_id")
-	@Column(nullable = false)
+	@JoinColumn(name = "chapitre_id", nullable = false)
 	private Chapitre chapitre;
 	
 	

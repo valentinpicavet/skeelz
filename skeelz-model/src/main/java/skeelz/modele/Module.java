@@ -38,8 +38,7 @@ public class Module {
 	@OneToMany(mappedBy = "module")
 	private List<QCMPersonne> qcmPersonnes = new ArrayList<QCMPersonne>();
 	@ManyToOne
-	@JoinColumn(name ="cours_id")
-	@Column(nullable = false)
+	@JoinColumn(name ="cours_id", nullable = false)
 	private Cours cours;
 	
 

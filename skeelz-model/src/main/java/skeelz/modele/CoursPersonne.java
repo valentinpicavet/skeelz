@@ -25,12 +25,10 @@ public class CoursPersonne {
 	@Column(nullable = false)
 	private EtatCours etatCours;
 	@ManyToOne
-	@JoinColumn(name = "personne_id")
-	@Column(nullable = false)
+	@JoinColumn(name = "personne_id", nullable = false)
 	private Personne personne;
 	@ManyToOne
-	@JoinColumn(name = "cours_id")
-	@Column(nullable = false)
+	@JoinColumn(name = "cours_id", nullable = false)
 	private Cours cours;
 	
 	
