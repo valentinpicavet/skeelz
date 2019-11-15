@@ -114,6 +114,8 @@ public class JeuDeDonnee {
 		cours1.setDifficulte(Difficulte.FACILE);
 		cours1.setDuree(5);
 		cours1.setEtat(Etat.OUVERT);
+		cours1.setDescription("tres bon cours");
+		cours1.setCheminImageCours("le chemin");
 		cours1 = coursRepo.save(cours1);
 		
 		Cours detecteurFume = new Cours ();
@@ -121,6 +123,8 @@ public class JeuDeDonnee {
 		detecteurFume.setDifficulte(Difficulte.FACILE);
 		detecteurFume.setDuree(6);
 		detecteurFume.setEtat(Etat.OUVERT);
+		detecteurFume.setDescription("Dans ce cours, vous allez découvrir comment concevoir un objet connecté simple dans son contexte opérationnel : un détecteur de fumée connecté, depuis la définition des besoins jusqu’au prototypage.");
+		detecteurFume.setCheminImageCours("Le chemin");
 		detecteurFume = coursRepo.save(detecteurFume);
 		
 		CoursCompetence monCoursComp = new CoursCompetence();
@@ -141,6 +145,7 @@ public class JeuDeDonnee {
 		definition.setNbQuestion(11);
 		definition.setPeriodicite(1);
 		definition.setNbTentativeAutorise(3);
+		definition.setEnonceQCM("Définissez votre projet de détecteur de fumée connecté");
 		definition.setCours(detecteurFume);
 		definition = moduleRepo.save(definition);
 		
@@ -151,6 +156,7 @@ public class JeuDeDonnee {
 		javas.setPeriodicite(1);
 		javas.setNbTentativeAutorise(3);
 		javas.setCours(cours1);
+		javas.setEnonceQCM("enonce QCM");
 		javas = moduleRepo.save(javas);
 		
 		QCMPersonne qcm = new QCMPersonne();
@@ -225,12 +231,17 @@ public class JeuDeDonnee {
 		javaAlgoquest2.setModule(javas);
 		javaAlgoquest2 = questionRepo.save(javaAlgoquest2);
 		
-		
 		Reponse javaAlgorep1 = new Reponse();
 		javaAlgorep1.setEnonce("String");
 		javaAlgorep1.setQuestion(javaAlgoquest1);
 		javaAlgorep1.setJuste(true);
 		javaAlgorep1 = reponseRepo.save(javaAlgorep1);
+		
+		Reponse defquest1resp1 = new Reponse();
+		defquest1resp1.setEnonce("Le détecteur de fumée n’a pas fonctionné.");
+		defquest1resp1.setQuestion(javaAlgoquest1);
+		defquest1resp1.setJuste(true);
+		defquest1resp1 = reponseRepo.save(defquest1resp1);
 		
 		Reponse javaAlgorep2 = new Reponse();
 		javaAlgorep2.setEnonce("string");
@@ -271,7 +282,7 @@ public class JeuDeDonnee {
 		Chapitre detect11 = new Chapitre();
 		detect11.setTitre("Découvrez le domaine des systèmes embarqués et objets connectés");
 		detect11.setAgencement(0);
-		detect11.setModule(javas);
+		detect11.setModule(definition);
 		detect11 = chapitreRepo.save(detect11);
 
 		Paragraphe monElement = new Paragraphe();
