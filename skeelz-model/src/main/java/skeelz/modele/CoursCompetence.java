@@ -25,10 +25,10 @@ public class CoursCompetence {
 	@Column(nullable = false)
 	private RelationCours relationCours;
 	@ManyToOne
-	@JoinColumn(name = "cours_id", nullable = false)
+	@JoinColumn(name = "cours_id")//, nullable = false)
 	private Cours cours;
 	@ManyToOne
-	@JoinColumn(name = "competence_id", nullable = false)
+	@JoinColumn(name = "competence_id")//, nullable = false)
 	private Competence competence;
 	
 	

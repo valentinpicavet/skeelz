@@ -19,10 +19,10 @@ public class CompetenceSkeelz {
 	@Version
 	private int version;
 	@ManyToOne
-	@JoinColumn(name="skeelz_id", nullable = false)
+	@JoinColumn(name="skeelz_id")//, nullable = false)
 	private Skeelz skeelz;
 	@ManyToOne
-	@JoinColumn(name="competence_id", nullable = false)
+	@JoinColumn(name="competence_id")//, nullable = false)
 	private Competence competence;
 	
 	

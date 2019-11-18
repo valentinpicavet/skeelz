@@ -1,16 +1,28 @@
 package test;
 
-import Singleton.Singleton;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+
 import repository.ICoursRepository;
+import repository.IUtilisateurRepository;
 import skeelz.modele.Cours;
 import skeelz.modele.Difficulte;
 import skeelz.modele.Etat;
 
-public class TestJpaCours {
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = "/application-context.xml")
 
-	public static void main(String[] args) {
-		
-		ICoursRepository coursRepo = Singleton.getInstance().getCoursRepo();
+public class CoursRepositoryTest {
+	
+	@Autowired
+	private ICoursRepository coursRepo;
+	
+	@Test
+	public void testUtilisateur() {
 		
 		int startNumber = coursRepo.findAll().size();
 		
@@ -19,13 +31,13 @@ public class TestJpaCours {
 		cours1.setDifficulte(Difficulte.FACILE);
 		cours1.setDuree(5);
 		cours1.setEtat(Etat.OUVERT);
+		cours1.setCheminImageCours("chemin");
+		cours1.setDescription("description");
 		
 		
 		
 		cours1 = coursRepo.save(cours1);
-		
-		
-		
+				
 		cours1 = coursRepo.find(cours1.getId());
 		
 		System.out.println(cours1.getIntitule());

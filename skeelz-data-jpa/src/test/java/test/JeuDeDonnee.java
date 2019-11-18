@@ -66,32 +66,17 @@ public class JeuDeDonnee {
 		ISkeelzRepository skeelzRepo = context.getBean(ISkeelzRepository.class);	
 		IUtilisateurRepository utilisateurRepo = context.getBean(IUtilisateurRepository.class);
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		
-//		Skeelz skeelz1 = new Skeelz ();
-//		skeelz1.setIntitule("Skeelz 1 test");
-//		skeelz1 = skeelzRepo.save(skeelz1);		
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");	
 		
 		Skeelz objetConnecte = new Skeelz ();
 		objetConnecte.setIntitule("Objet Connecté");
 		objetConnecte = skeelzRepo.save(objetConnecte);	
-		
-//		Competence maCompetence = new Competence();
-//		maCompetence.setDescription("trop bien");
-//		maCompetence.setIntitule("java pour les null");
-//		maCompetence.setPonderation(Ponderation.DIX);	
-//		maCompetence = competenceRepo.save(maCompetence);
 		
 		Competence developpementDetecteurFume = new Competence();
 		developpementDetecteurFume.setDescription("Vous êtes capable de concevoir un détécteur de fumées connecté");
 		developpementDetecteurFume.setIntitule("Développement d'un détecteur de fumée connecté");
 		developpementDetecteurFume.setPonderation(Ponderation.DIX);	
 		developpementDetecteurFume = competenceRepo.save(developpementDetecteurFume);
-		
-//		CompetenceSkeelz comps = new CompetenceSkeelz();
-//		comps.setCompetence(maCompetence);
-//		comps.setSkeelz(skeelz1);
-//		comps = competenceSkeelzRepo.save(comps);
 		
 		CompetenceSkeelz objetCoDetecteur = new CompetenceSkeelz();
 		objetCoDetecteur.setCompetence(developpementDetecteurFume);
@@ -104,54 +89,6 @@ public class JeuDeDonnee {
 		sopra.setTypeContrat("Contrat de ouf");	
 		sopra = entrepriseRepo.save(sopra);
 		
-//		Personne maPersonne = new Personne();
-//		maPersonne.setNom("JEAN");
-//		maPersonne.setPrenom("Jean");
-//		maPersonne.setTelephone("026134515");	
-//		maPersonne = personneRepo.save(maPersonne);
-		
-		Personne personneValentin = new Personne();
-		personneValentin.setNom("Picavet");
-		personneValentin.setPrenom("Valentin");
-		personneValentin.setTelephone("0624153698");	
-		personneValentin = personneRepo.save(personneValentin);
-		
-		Personne personneVincent = new Personne();
-		personneVincent.setNom("Maridet");
-		personneVincent.setPrenom("Vincent");
-		personneVincent.setTelephone("0624656698");	
-		personneVincent = personneRepo.save(personneVincent);
-		
-		Personne personneDamien = new Personne();
-		personneDamien.setNom("Lignac");
-		personneDamien.setPrenom("Damien");
-		personneDamien.setTelephone("0624556798");	
-		personneDamien = personneRepo.save(personneDamien);
-		
-		Personne personneArthur = new Personne();
-		personneArthur.setNom("Robert");
-		personneArthur.setPrenom("Arthur");
-		personneArthur.setTelephone("0629526798");	
-		personneArthur = personneRepo.save(personneArthur);
-		
-		Personne personneTheau = new Personne();
-		personneTheau.setNom("Poix");
-		personneTheau.setPrenom("Théau");
-		personneTheau.setTelephone("0624156698");	
-		personneTheau = personneRepo.save(personneTheau);
-		
-//		BilanCompetence monBilan = new BilanCompetence();
-//		monBilan.setCompetence(maCompetence);
-//		monBilan.setSkeelz(skeelz1);
-//		monBilan.setPersonne(maPersonne);
-//		monBilan = bilanCompetenceRepo.save(monBilan);
-		
-		BilanCompetence BilanValDete = new BilanCompetence();
-		BilanValDete.setCompetence(developpementDetecteurFume);
-		BilanValDete.setSkeelz(objetConnecte);
-		BilanValDete.setPersonne(personneValentin);
-		BilanValDete = bilanCompetenceRepo.save(BilanValDete);
-		
 		Utilisateur userValentin = new Utilisateur();
 		userValentin.setIdentifiant("Valentin");
 		userValentin.setMail("valentin@yahoo.fr");
@@ -159,7 +96,6 @@ public class JeuDeDonnee {
 		userValentin.setPassword("vp");
 		userValentin.setRh(false);
 		userValentin.setSuperUser(false);
-		userValentin.setPersonne(personneValentin);
 		userValentin.setEntreprise(sopra);
 		userValentin = utilisateurRepo.save(userValentin);
 		
@@ -170,7 +106,6 @@ public class JeuDeDonnee {
 		userDamien.setPassword("dl");
 		userDamien.setRh(false);
 		userDamien.setSuperUser(false);
-		userDamien.setPersonne(personneDamien);
 		userDamien.setEntreprise(sopra);
 		userDamien = utilisateurRepo.save(userDamien);
 		
@@ -181,7 +116,6 @@ public class JeuDeDonnee {
 		userArthur.setPassword("dl");
 		userArthur.setRh(true);
 		userArthur.setSuperUser(false);
-		userArthur.setPersonne(personneArthur);
 		userArthur.setEntreprise(sopra);
 		userArthur = utilisateurRepo.save(userArthur);
 		
@@ -192,7 +126,6 @@ public class JeuDeDonnee {
 		userVincent.setPassword("dl");
 		userVincent.setRh(false);
 		userVincent.setSuperUser(true);
-		userVincent.setPersonne(personneVincent);
 		userVincent.setEntreprise(sopra);
 		userVincent = utilisateurRepo.save(userVincent);
 		
@@ -203,29 +136,49 @@ public class JeuDeDonnee {
 		userTheau.setPassword("tp");
 		userTheau.setRh(false);
 		userTheau.setSuperUser(false);
-		userTheau.setPersonne(personneTheau);
 		userTheau.setEntreprise(sopra);
 		userTheau = utilisateurRepo.save(userTheau);
 		
-//		Utilisateur user = new Utilisateur();
-//		user.setIdentifiant("Damien");
-//		user.setMail("damien@yahoo.fr");
-//		user.setAdministrateur(false);
-//		user.setPassword("dede");
-//		user.setRh(false);
-//		user.setSuperUser(false);
-//		user.setPersonne(maPersonne);
-//		user.setEntreprise(sopra);
-//		user = utilisateurRepo.save(user);
-			
-//		Cours cours1 = new Cours ();
-//		cours1.setIntitule("java debutant");
-//		cours1.setDifficulte(Difficulte.FACILE);
-//		cours1.setDuree(5);
-//		cours1.setEtat(Etat.OUVERT);
-//		cours1.setDescription("tres bon cours");
-//		cours1.setCheminImageCours("le chemin");
-//		cours1 = coursRepo.save(cours1);
+		Personne personneValentin = new Personne();
+		personneValentin.setNom("Picavet");
+		personneValentin.setPrenom("Valentin");
+		personneValentin.setTelephone("0624153698");	
+		personneValentin.setUtilisateur(userValentin);
+		personneValentin = personneRepo.save(personneValentin);
+		
+		Personne personneVincent = new Personne();
+		personneVincent.setNom("Maridet");
+		personneVincent.setPrenom("Vincent");
+		personneVincent.setTelephone("0624656698");	
+		personneVincent.setUtilisateur(userVincent);
+		personneVincent = personneRepo.save(personneVincent);
+		
+		Personne personneDamien = new Personne();
+		personneDamien.setNom("Lignac");
+		personneDamien.setPrenom("Damien");
+		personneDamien.setTelephone("0624556798");
+		personneDamien.setUtilisateur(userDamien);
+		personneDamien = personneRepo.save(personneDamien);
+		
+		Personne personneArthur = new Personne();
+		personneArthur.setNom("Robert");
+		personneArthur.setPrenom("Arthur");
+		personneArthur.setTelephone("0629526798");	
+		personneArthur.setUtilisateur(userArthur);
+		personneArthur = personneRepo.save(personneArthur);
+		
+		Personne personneTheau = new Personne();
+		personneTheau.setNom("Poix");
+		personneTheau.setPrenom("Théau");
+		personneTheau.setTelephone("0624156698");	
+		personneTheau.setUtilisateur(userTheau);
+		personneTheau = personneRepo.save(personneTheau);
+		
+		BilanCompetence BilanValDete = new BilanCompetence();
+		BilanValDete.setCompetence(developpementDetecteurFume);
+		BilanValDete.setSkeelz(objetConnecte);
+		BilanValDete.setPersonne(personneValentin);
+		BilanValDete = bilanCompetenceRepo.save(BilanValDete);
 		
 		Cours detecteurFume = new Cours ();
 		detecteurFume.setIntitule("Concevez un détecteur de fumée connecté");
@@ -236,23 +189,11 @@ public class JeuDeDonnee {
 		detecteurFume.setCheminImageCours("Le chemin");
 		detecteurFume = coursRepo.save(detecteurFume);
 		
-//		CoursCompetence monCoursComp = new CoursCompetence();
-//		monCoursComp.setRelationCours(RelationCours.VALIDE);
-//		monCoursComp.setCours(cours1);
-//		monCoursComp.setCompetence(maCompetence);
-//		monCoursComp = coursCompetenceRepo.save(monCoursComp);
-		
 		CoursCompetence detecteurFumeComp = new CoursCompetence();
 		detecteurFumeComp.setRelationCours(RelationCours.VALIDE);
 		detecteurFumeComp.setCours(detecteurFume);
 		detecteurFumeComp.setCompetence(developpementDetecteurFume);
 		detecteurFumeComp = coursCompetenceRepo.save(detecteurFumeComp);
-		
-//		CoursPersonne monCoursPers = new CoursPersonne();
-//		monCoursPers.setEtatCours(EtatCours.VALIDE);
-//		monCoursPers.setCours(cours1);
-//		monCoursPers.setPersonne(maPersonne);
-//		monCoursPers = coursPersonneRepo.save(monCoursPers);
 		
 		CoursPersonne valentinDetecteur = new CoursPersonne();
 		valentinDetecteur.setEtatCours(EtatCours.ADMINISTRE);
@@ -275,23 +216,6 @@ public class JeuDeDonnee {
 		definition.setEnonceQCM("Définissez votre projet de détecteur de fumée connecté");
 		definition.setCours(detecteurFume);
 		definition = moduleRepo.save(definition);
-		
-//		Module javas = new Module();
-//		javas.setIntitule("Java");
-//		javas.setAgencement(0);
-//		javas.setNbQuestion(2);
-//		javas.setPeriodicite(1);
-//		javas.setNbTentativeAutorise(3);
-//		javas.setCours(cours1);
-//		javas.setEnonceQCM("enonce QCM");
-//		javas = moduleRepo.save(javas);
-		
-//		QCMPersonne qcm = new QCMPersonne();
-//		qcm.setStatutQCM(true);
-//		qcm.setDateDerniereTentative(sdf.parse("02/02/02"));
-//		qcm.setModule(javas);
-//		qcm.setPersonne(maPersonne);
-//		qcm = qcmPersonneRepo.save(qcm);
 		
 		QCMPersonne definitionValentin = new QCMPersonne();
 		definitionValentin.setStatutQCM(true);
@@ -361,22 +285,6 @@ public class JeuDeDonnee {
 		def11.setQuestion("Sur quels facteurs l'analyse organique influe-t-elle ? (Trois réponses possibles).");
 		def11.setModule(definition);
 		def11 = questionRepo.save(def11);
-		
-//		Question javaAlgoquest1 = new Question();
-//		javaAlgoquest1.setQuestion("Comment se nomme la variable des chaines de caratères ?");
-//		javaAlgoquest1.setModule(javas);
-//		javaAlgoquest1 = questionRepo.save(javaAlgoquest1);
-//		
-//		Question javaAlgoquest2 = new Question();
-//		javaAlgoquest2.setQuestion("Comment se nomme la variable des entiers ?");
-//		javaAlgoquest2.setModule(javas);
-//		javaAlgoquest2 = questionRepo.save(javaAlgoquest2);
-		
-//		Reponse javaAlgorep1 = new Reponse();
-//		javaAlgorep1.setEnonce("String");
-//		javaAlgorep1.setQuestion(javaAlgoquest1);
-//		javaAlgorep1.setJuste(true);
-//		javaAlgorep1 = reponseRepo.save(javaAlgorep1);
 		
 		Reponse defquest1resp1 = new Reponse();
 		defquest1resp1.setEnonce("Le détecteur de fumée n’a pas fonctionné.");
@@ -672,42 +580,6 @@ public class JeuDeDonnee {
 		defquest11resp5.setJuste(true);
 		defquest11resp5 = reponseRepo.save(defquest11resp5);
 		
-//		Reponse javaAlgorep2 = new Reponse();
-//		javaAlgorep2.setEnonce("string");
-//		javaAlgorep2.setQuestion(javaAlgoquest1);
-//		javaAlgorep2.setJuste(false);
-//		javaAlgorep2 = reponseRepo.save(javaAlgorep2);
-//		
-//		Reponse javaAlgorep3 = new Reponse();
-//		javaAlgorep3.setEnonce("int");
-//		javaAlgorep3.setQuestion(javaAlgoquest1);
-//		javaAlgorep3.setJuste(false);
-//		javaAlgorep3 = reponseRepo.save(javaAlgorep3);
-//		
-//		Reponse javaAlgorep4 = new Reponse();
-//		javaAlgorep4.setEnonce("String");
-//		javaAlgorep4.setQuestion(javaAlgoquest2);
-//		javaAlgorep4.setJuste(false);
-//		javaAlgorep4 = reponseRepo.save(javaAlgorep4);
-//		
-//		Reponse javaAlgorep5 = new Reponse();
-//		javaAlgorep5.setEnonce("string");
-//		javaAlgorep5.setQuestion(javaAlgoquest2);
-//		javaAlgorep5.setJuste(false);
-//		javaAlgorep5 = reponseRepo.save(javaAlgorep5);
-//		
-//		Reponse javaAlgorep6 = new Reponse();
-//		javaAlgorep6.setEnonce("int");
-//		javaAlgorep6.setQuestion(javaAlgoquest2);
-//		javaAlgorep6.setJuste(true);
-//		javaAlgorep6 = reponseRepo.save(javaAlgorep6);
-		
-//		Chapitre javaAlgo = new Chapitre();
-//		javaAlgo.setTitre("Java Algo");
-//		javaAlgo.setAgencement(0);
-//		javaAlgo.setModule(javas);
-//		javaAlgo = chapitreRepo.save(javaAlgo);
-		
 		Chapitre detect11 = new Chapitre();
 		detect11.setTitre("Découvrez le domaine des systèmes embarqués et objets connectés");
 		detect11.setAgencement(0);
@@ -744,21 +616,6 @@ public class JeuDeDonnee {
 		chap1par5.setTexte("Un système embarqué (SE) est un système autonome, généralement fortement connecté. Il est spécialisé dans une tâche bien précise, fonctionne très souvent en temps réel, et mêle des éléments matériels et logiciels. On le qualifie d’ « embarqué » (on parle aussi de système « enfoui») car il est intégré au dispositif physique dont il assure le contrôle ou la commande, et dont il partage les contraintes d'environnement.");	
 		chap1par5.setChapitre(detect11);
 		chap1par5 = (Paragraphe) elementDeCoursRepo.save(chap1par5);
-		
-//		Paragraphe monElement = new Paragraphe();
-//		monElement.setAgencement(0);
-//		monElement.setTexte("ceci est un paragraphe");
-//		monElement.setTitre("paragraphe");	
-//		monElement.setChapitre(javaAlgo);
-//		monElement = (Paragraphe) elementDeCoursRepo.save(monElement);
-//		
-//		Paragraphe monElement2 = new Paragraphe();
-//		monElement2.setAgencement(1);
-//		monElement2.setTexte("ceci est un paragraphe ausse");
-//		monElement2.setTitre("paragraphe2");	
-//		monElement2.setChapitre(javaAlgo);
-//		monElement2 = (Paragraphe) elementDeCoursRepo.save(monElement2);
-		
 		
 		context.close();
 	}
