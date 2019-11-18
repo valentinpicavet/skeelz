@@ -4,8 +4,6 @@ import java.util.List;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-
-
 import repository.IChapitreRepository;
 import repository.ICompetenceRepository;
 import repository.ICompetenceSkeelzRepository;
@@ -30,7 +28,7 @@ import skeelz.modele.Utilisateur;
 
 public class TestJpaRepoDam {
 
-	public static void main(String[] args) {
+//	public static void main(String[] args) {
 //		IChapitreRepository chapitrerepo = Singleton.getInstance().getChapitreRepo();
 //		IModuleRepository modulerepo = Singleton.getInstance().getModuleRepo();
 //		IReponseRepository reponserepo = Singleton.getInstance().getReponseRepo();
@@ -149,7 +147,7 @@ public class TestJpaRepoDam {
 //		System.out.println(javaAlgoquestf);
 //		System.out.println(javaAlgorepdall);
 //		System.out.println(javaAlgoquestall);
-
-	}
+//
+//	}
 
 }
