@@ -1,4 +1,6 @@
 package test;
+
+
 import java.util.Optional;
 
 import org.junit.Assert;
@@ -13,7 +15,7 @@ import skeelz.modele.Skeelz;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "/application-context.xml")
+@ContextConfiguration(locations= "/application-context.xml")
 public class TestJpaSkeelz {
 
 	@Autowired
