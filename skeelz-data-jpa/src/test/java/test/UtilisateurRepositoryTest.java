@@ -1,12 +1,16 @@
 package test;
 
-import Singleton.Singleton;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import repository.IUtilisateurRepository;
 import skeelz.modele.Utilisateur;
 
-public class TestJpaUtilisateur {
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = "/application-context.xml")
 
-	public static void main(String[] args) {
+public class UtilisateurRepositoryTest {
+
 		
 		IUtilisateurRepository userRepo = Singleton.getInstance().getUtilisateurRepo();
 		
@@ -36,6 +40,5 @@ public class TestJpaUtilisateur {
 		
 		userRepo.delete(user);
 		
-	}
 
 }
