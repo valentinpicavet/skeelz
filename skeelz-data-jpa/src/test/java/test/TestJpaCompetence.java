@@ -1,19 +1,25 @@
 package test;
 
-import java.util.List;
-
-import Singleton.Singleton;
-
+import java.util.Optional;
+import org.junit.Assert;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import repository.ICompetenceRepository;
 import skeelz.modele.Competence;
 import skeelz.modele.Ponderation;
 
-
-
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = "/application-context.xml")
 public class TestJpaCompetence {
 
-	public static void main(String[] args) {
-		ICompetenceRepository competenceRepo = Singleton.getInstance().getCompetenceRepo();
+	@Autowired
+	private ICompetenceRepository competenceRepo;
+
+	@Test
+	public void testCompetence() {
 
 		int startNumber = competenceRepo.findAll().size();
 
@@ -21,24 +27,24 @@ public class TestJpaCompetence {
 		maCompetence.setDescription("trop bien");
 		maCompetence.setIntitule("java pour les null");
 		maCompetence.setPonderation(Ponderation.DIX);
-		
+
 		maCompetence = competenceRepo.save(maCompetence);
 
+		Optional<Competence> maCompetenceFind = competenceRepo.findById(maCompetence.getId());
 
-		Competence maCompetenceFind = competenceRepo.find(maCompetence.getId());
-		System.out.println(maCompetenceFind.getPonderation().getLabel());
-		List<Competence> maCompetenceFindList = competenceRepo.findAll();
-		System.out.println(maCompetenceFindList.get(0));
+		Assert.assertEquals("java pour les null", maCompetenceFind.get().getIntitule());
+		Assert.assertEquals("trop bien", maCompetenceFind.get().getDescription());
+		Assert.assertEquals(Ponderation.DIX, maCompetenceFind.get().getPonderation());
 
-
-
-		
 		int middleNumber = competenceRepo.findAll().size();
-	
-		System.out.println(middleNumber - startNumber);
-		
+
+		Assert.assertEquals(1, middleNumber - startNumber);
+
 		competenceRepo.delete(maCompetence);
 
+		int finalNumber = competenceRepo.findAll().size();
+
+		Assert.assertEquals(0, finalNumber - startNumber);
 
 	}
 
