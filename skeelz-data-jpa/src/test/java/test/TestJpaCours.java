@@ -23,7 +23,7 @@ public class TestJpaCours {
 	private ICoursRepository coursRepo;
 
 	@Test
-	public void testUtilisateur() {
+	public void testCours() {
 
 		int startNumber = coursRepo.findAll().size();
 
@@ -37,21 +37,13 @@ public class TestJpaCours {
 		cours1.setDescription("description");
 
 		cours1 = coursRepo.save(cours1);
-<<<<<<< HEAD:skeelz-data-jpa/src/test/java/test/CoursRepositoryTest.java
-				
-		cours1 = coursRepo.findById(cours1.getId());
-		
-		System.out.println(cours1.getIntitule());
-		System.out.println(cours1.getDifficulte());
-		
-=======
 
 		Optional<Cours> cours1Find = coursRepo.findById(cours1.getId());
 
 		Assert.assertEquals("java debutant", cours1Find.get().getIntitule());
 		Assert.assertEquals(Difficulte.FACILE, cours1Find.get().getDifficulte());
 
->>>>>>> master:skeelz-data-jpa/src/test/java/test/TestJpaCours.java
+
 		int middleNumber = coursRepo.findAll().size();
 		Assert.assertEquals(1, (middleNumber - startNumber));
 
