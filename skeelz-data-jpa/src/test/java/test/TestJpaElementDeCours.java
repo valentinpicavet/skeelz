@@ -21,40 +21,28 @@ import skeelz.modele.Paragraphe;
 public class TestJpaElementDeCours {
 
 	@Autowired
-	private IElementDeCoursRepository ElementDeCoursRepo;
+	private IElementDeCoursRepository elementDeCoursRepo;
 	
 	@Test
 	public void testElementDeCours() {
 		
-		int startNumber = ElementDeCoursRepo.findAll().size();
+		int startNumber = elementDeCoursRepo.findAll().size();
 		
-		Paragraphe paragraphe1 = new Paragraphe();
-	
-	
-
-		paragraphe1.setTitre("paragraphe 1 test");
-		paragraphe1.setAgencement(2);
-		paragraphe1.
+		ElementDeCours chap1par1 = new Paragraphe();
+		chap1par1.setAgencement(0);
+		((Paragraphe) chap1par1).setTexte("paragraphe 1 test");	
+		chap1par1 = elementDeCoursRepo.save(chap1par1);
 		
+		Optional<ElementDeCours> chap1par1Find = elementDeCoursRepo.findById(chap1par1.getId());
 		
-
+		Assert.assertEquals("paragraphe 1 test", ((Paragraphe) chap1par1Find.get()).getTexte());
 		
-		
-		paragraphe1 = paragrapheRepo.save(paragraphe1);
-		
-		
-		
-		Optional<paragraphe> paragraphe1Find = paragrapheRepo.findById(paragraphe1.getId());
-		
-		Assert.assertEquals("paragraphe 1 test", paragraphe1Find.get().getEnonce());
-		Assert.assertEquals(true, paragraphe1Find.get().isJuste());
-		
-		int middleNumber = paragrapheRepo.findAll().size();
+		int middleNumber = elementDeCoursRepo.findAll().size();
 		Assert.assertEquals(1, (middleNumber - startNumber));
 		
-		paragrapheRepo.delete(paragraphe1);
+		elementDeCoursRepo.delete(chap1par1);
 		
-		int finalNumber = paragrapheRepo.findAll().size();
+		int finalNumber = elementDeCoursRepo.findAll().size();
 		
 		Assert.assertEquals(0, finalNumber - startNumber);
 		
