@@ -3,6 +3,8 @@ package test;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import Singleton.Singleton;
 import repository.IBilanCompetenceRepository;
 import repository.IChapitreRepository;
@@ -41,12 +43,15 @@ import skeelz.modele.RelationCours;
 import skeelz.modele.Reponse;
 import skeelz.modele.Skeelz;
 import skeelz.modele.Utilisateur;
+import sopra.formation.repository.IEvaluationRepository;
 
 public class JeuDeDonnee {
 
 	public static void main(String[] args) throws ParseException {
 		
-		IBilanCompetenceRepository bilanCompetenceRepo = Singleton.getInstance().getBilanCompetenceRepo();
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("application-context.xml");
+		
+		BilanCompetence bilanCompetenceRepo = context.getBean(IBilanCompetence.class);
 		IChapitreRepository chapitreRepo = Singleton.getInstance().getChapitreRepo();
 		ICompetenceRepository competenceRepo = Singleton.getInstance().getCompetenceRepo();
 		ICompetenceSkeelzRepository competenceSkeelzRepo = Singleton.getInstance().getCompetenceSkeelzRepo();
