@@ -131,6 +131,12 @@ public class JeuDeDonnee {
 		personneArthur.setTelephone("0629526798");	
 		personneArthur = personneRepo.save(personneArthur);
 		
+		Personne personneTheau = new Personne();
+		personneValentin.setNom("Poix");
+		personneValentin.setPrenom("Théau");
+		personneValentin.setTelephone("0624156698");	
+		personneValentin = personneRepo.save(personneTheau);
+		
 //		BilanCompetence monBilan = new BilanCompetence();
 //		monBilan.setCompetence(maCompetence);
 //		monBilan.setSkeelz(skeelz1);
