@@ -5,7 +5,6 @@ import java.text.SimpleDateFormat;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import Singleton.Singleton;
 import repository.IBilanCompetenceRepository;
 import repository.IChapitreRepository;
 import repository.ICompetenceRepository;
@@ -43,7 +42,6 @@ import skeelz.modele.RelationCours;
 import skeelz.modele.Reponse;
 import skeelz.modele.Skeelz;
 import skeelz.modele.Utilisateur;
-import sopra.formation.repository.IEvaluationRepository;
 
 public class JeuDeDonnee {
 
@@ -51,22 +49,22 @@ public class JeuDeDonnee {
 		
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("application-context.xml");
 		
-		BilanCompetence bilanCompetenceRepo = context.getBean(IBilanCompetence.class);
-		IChapitreRepository chapitreRepo = Singleton.getInstance().getChapitreRepo();
-		ICompetenceRepository competenceRepo = Singleton.getInstance().getCompetenceRepo();
-		ICompetenceSkeelzRepository competenceSkeelzRepo = Singleton.getInstance().getCompetenceSkeelzRepo();
-		ICoursCompetenceRepository coursCompetenceRepo = Singleton.getInstance().getCoursCompetenceRepo();
-		ICoursPersonneRepository coursPersonneRepo = Singleton.getInstance().getCoursPersonneRepo();
-		ICoursRepository coursRepo = Singleton.getInstance().getCoursRepo();
-		IElementDeCoursRepository elementDeCoursRepo = Singleton.getInstance().getElementDeCoursRepo();
-		IEntrepriseRepository entrepriseRepo = Singleton.getInstance().getEntrepriseRepo();
-		IModuleRepository moduleRepo = Singleton.getInstance().getModuleRepo();
-		IPersonneRepository personneRepo = Singleton.getInstance().getPersonneRepo();
-		IQCMPersonneRepository qcmPersonneRepo =  Singleton.getInstance().getQcmPersonneRepo();
-		IQuestionRepository questionRepo = Singleton.getInstance().getQuestionRepo();
-		IReponseRepository reponseRepo = Singleton.getInstance().getReponseRepo();
-		ISkeelzRepository skeelzRepo = Singleton.getInstance().getSkeelzRepo();	
-		IUtilisateurRepository utilisateurRepo = Singleton.getInstance().getUtilisateurRepo();
+		IBilanCompetenceRepository bilanCompetenceRepo = context.getBean(IBilanCompetenceRepository.class);
+		IChapitreRepository chapitreRepo = context.getBean(IChapitreRepository.class);
+		ICompetenceRepository competenceRepo = context.getBean(ICompetenceRepository.class);
+		ICompetenceSkeelzRepository competenceSkeelzRepo = context.getBean(ICompetenceSkeelzRepository.class);
+		ICoursCompetenceRepository coursCompetenceRepo = context.getBean(ICoursCompetenceRepository.class);
+		ICoursPersonneRepository coursPersonneRepo = context.getBean(ICoursPersonneRepository.class);
+		ICoursRepository coursRepo = context.getBean(ICoursRepository.class);
+		IElementDeCoursRepository elementDeCoursRepo = context.getBean(IElementDeCoursRepository.class);
+		IEntrepriseRepository entrepriseRepo = context.getBean(IEntrepriseRepository.class);
+		IModuleRepository moduleRepo = context.getBean(IModuleRepository.class);
+		IPersonneRepository personneRepo = context.getBean(IPersonneRepository.class);
+		IQCMPersonneRepository qcmPersonneRepo =  context.getBean(IQCMPersonneRepository.class);
+		IQuestionRepository questionRepo = context.getBean(IQuestionRepository.class);
+		IReponseRepository reponseRepo = context.getBean(IReponseRepository.class);
+		ISkeelzRepository skeelzRepo = context.getBean(ISkeelzRepository.class);	
+		IUtilisateurRepository utilisateurRepo = context.getBean(IUtilisateurRepository.class);
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		
@@ -137,10 +135,10 @@ public class JeuDeDonnee {
 		personneArthur = personneRepo.save(personneArthur);
 		
 		Personne personneTheau = new Personne();
-		personneValentin.setNom("Poix");
-		personneValentin.setPrenom("Théau");
-		personneValentin.setTelephone("0624156698");	
-		personneValentin = personneRepo.save(personneTheau);
+		personneTheau.setNom("Poix");
+		personneTheau.setPrenom("Théau");
+		personneTheau.setTelephone("0624156698");	
+		personneTheau = personneRepo.save(personneTheau);
 		
 //		BilanCompetence monBilan = new BilanCompetence();
 //		monBilan.setCompetence(maCompetence);
@@ -199,15 +197,15 @@ public class JeuDeDonnee {
 		userVincent = utilisateurRepo.save(userVincent);
 		
 		Utilisateur userTheau = new Utilisateur();
-		userValentin.setIdentifiant("theau");
-		userValentin.setMail("theau@yahoo.fr");
-		userValentin.setAdministrateur(false);
-		userValentin.setPassword("tp");
-		userValentin.setRh(false);
-		userValentin.setSuperUser(false);
-		userValentin.setPersonne(personneTheau);
-		userValentin.setEntreprise(sopra);
-		userValentin = utilisateurRepo.save(userTheau);
+		userTheau.setIdentifiant("theau");
+		userTheau.setMail("theau@yahoo.fr");
+		userTheau.setAdministrateur(false);
+		userTheau.setPassword("tp");
+		userTheau.setRh(false);
+		userTheau.setSuperUser(false);
+		userTheau.setPersonne(personneTheau);
+		userTheau.setEntreprise(sopra);
+		userTheau = utilisateurRepo.save(userTheau);
 		
 //		Utilisateur user = new Utilisateur();
 //		user.setIdentifiant("Damien");
@@ -760,6 +758,9 @@ public class JeuDeDonnee {
 //		monElement2.setTitre("paragraphe2");	
 //		monElement2.setChapitre(javaAlgo);
 //		monElement2 = (Paragraphe) elementDeCoursRepo.save(monElement2);
+		
+		
+		context.close();
 	}
 
 }
