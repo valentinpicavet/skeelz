@@ -29,10 +29,10 @@ public class QCMPersonne {
 	private Date dateDerniereTentative;
 	
 	@ManyToOne
-	@JoinColumn(name = "personne_id", nullable = false)
+	@JoinColumn(name = "personne_id")//, nullable = false)
 	private Personne personne;
 	@ManyToOne
-	@JoinColumn(name = "module_id", nullable = false)
+	@JoinColumn(name = "module_id")//, nullable = false)
 	private Module module;
 	
 	
