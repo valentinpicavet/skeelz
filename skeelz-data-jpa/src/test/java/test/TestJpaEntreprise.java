@@ -10,7 +10,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import repository.IEntrepriseRepository;
-import repository.IPersonneRepository;
 import skeelz.modele.Entreprise;
 
 @RunWith(SpringJUnit4ClassRunner.class)
