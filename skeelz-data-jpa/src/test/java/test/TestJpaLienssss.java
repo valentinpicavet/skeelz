@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.junit.Assert;
@@ -687,6 +688,10 @@ public class TestJpaLienssss {
 //		chap1par5.setTexte("Un système embarqué (SE) est un système autonome, généralement fortement connecté. Il est spécialisé dans une tâche bien précise, fonctionne très souvent en temps réel, et mêle des éléments matériels et logiciels. On le qualifie d’ « embarqué » (on parle aussi de système « enfoui») car il est intégré au dispositif physique dont il assure le contrôle ou la commande, et dont il partage les contraintes d'environnement.");	
 //		chap1par5.setChapitre(detect11);
 //		chap1par5 = (Paragraphe) elementDeCoursRepo.save(chap1par5);
+		
+		List<Cours> ccc = coursRepo.findAllCoursByCompetence();
+		
+		System.out.println(ccc);
 //		
 		
 	}
