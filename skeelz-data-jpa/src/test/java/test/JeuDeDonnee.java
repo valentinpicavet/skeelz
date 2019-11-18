@@ -193,6 +193,17 @@ public class JeuDeDonnee {
 		userVincent.setEntreprise(sopra);
 		userVincent = utilisateurRepo.save(userVincent);
 		
+		Utilisateur userTheau = new Utilisateur();
+		userValentin.setIdentifiant("theau");
+		userValentin.setMail("theau@yahoo.fr");
+		userValentin.setAdministrateur(false);
+		userValentin.setPassword("tp");
+		userValentin.setRh(false);
+		userValentin.setSuperUser(false);
+		userValentin.setPersonne(personneTheau);
+		userValentin.setEntreprise(sopra);
+		userValentin = utilisateurRepo.save(userTheau);
+		
 //		Utilisateur user = new Utilisateur();
 //		user.setIdentifiant("Damien");
 //		user.setMail("damien@yahoo.fr");
