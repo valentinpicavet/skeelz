@@ -20,13 +20,13 @@ public class BilanCompetence {
 	@Version
 	private int version;
 	@ManyToOne
-	@JoinColumn(name = "skeelz_id", nullable = false)
+	@JoinColumn(name = "skeelz_id")//, nullable = false)
 	private Skeelz skeelz;
 	@ManyToOne
-	@JoinColumn(name = "competence_id", nullable = false)
+	@JoinColumn(name = "competence_id")//, nullable = false)
 	private Competence competence;
 	@ManyToOne
-	@JoinColumn(name = "personne_id", nullable = false)
+	@JoinColumn(name = "personne_id")//, nullable = false)
 	private Personne personne;
 	
 	

@@ -26,7 +26,7 @@ public class Question {
 	@Column(nullable = false)
 	private String question;
 	@ManyToOne
-	@JoinColumn(name="module_id", nullable = false)
+	@JoinColumn(name="module_id")//, nullable = false)
 	private Module module;
 	@OneToMany(mappedBy = "question")
 	private List<Reponse> reponses = new ArrayList<Reponse>();

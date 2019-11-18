@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Version;
@@ -25,7 +26,8 @@ public class Personne {
 	private String prenom;
 	private String telephone;
 	private int noteGlobal;
-	@OneToOne(mappedBy = "personne")
+	@OneToOne
+	@JoinColumn(name = "utilisateur_id")//, nullable = false)
 	private Utilisateur utilisateur;
 	@OneToMany(mappedBy = "personne")
 	private List<CoursPersonne> coursPersonne = new ArrayList<CoursPersonne>();

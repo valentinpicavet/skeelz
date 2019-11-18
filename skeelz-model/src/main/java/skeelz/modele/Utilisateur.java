@@ -31,10 +31,9 @@ public class Utilisateur {
 	private boolean superUser = false;
 	
 	@ManyToOne
-	@JoinColumn(name = "entreprise_id")
+	@JoinColumn(name = "entreprise_id")//, nullable = false)
 	private Entreprise entreprise;
-	@OneToOne
-	@JoinColumn(name = "personne_id")
+	@OneToOne(mappedBy = "utilisateur")
 	private Personne personne;
 	
 	public Long getId() {
