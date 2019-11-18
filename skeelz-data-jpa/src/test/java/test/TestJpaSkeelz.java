@@ -1,36 +1,52 @@
 package test;
+import java.util.Optional;
 
-import Singleton.Singleton;
+import org.junit.Assert;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
 import repository.ISkeelzRepository;
 import skeelz.modele.Skeelz;
 
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = "/application-context.xml")
 public class TestJpaSkeelz {
 
-	public static void main(String[] args) {
-		
-		ISkeelzRepository skeelzRepo = Singleton.getInstance().getSkeelzRepo();
+	@Autowired
+	private ISkeelzRepository skeelzRepo;
+	
+	@Test
+	public void testSkeelz() {
 		
 		int startNumber = skeelzRepo.findAll().size();
 		
 		Skeelz skeelz1 = new Skeelz ();
+		
 		skeelz1.setIntitule("Skeelz 1 test");
 
-		
 		
 		
 		skeelz1 = skeelzRepo.save(skeelz1);
 		
 		
 		
-		skeelz1 = skeelzRepo.find(skeelz1.getId());
+		Optional<Skeelz> skeelz1Find = skeelzRepo.findById(skeelz1.getId());
 		
-		System.out.println(skeelz1.getIntitule());
+		Assert.assertEquals("Skeelz 1 test", skeelz1Find.get().getIntitule());
 
 		
 		int middleNumber = skeelzRepo.findAll().size();
-		System.out.println(middleNumber - startNumber);
+		Assert.assertEquals(1, (middleNumber - startNumber));
 		
 		skeelzRepo.delete(skeelz1);
+		
+		int finalNumber = skeelzRepo.findAll().size();
+		
+		Assert.assertEquals(0, finalNumber - startNumber);
 		
 	}
 
