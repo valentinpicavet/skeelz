@@ -30,7 +30,7 @@ int startNumber = questionrepo.findAll().size();
 		Question question1 = new Question ();
 		
 		question1.setQuestion("question 1 test");
-		question1.se
+		
 	
 
 		

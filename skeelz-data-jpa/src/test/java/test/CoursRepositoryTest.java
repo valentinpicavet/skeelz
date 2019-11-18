@@ -38,7 +38,7 @@ public class CoursRepositoryTest {
 		
 		cours1 = coursRepo.save(cours1);
 				
-		cours1 = coursRepo.find(cours1.getId());
+		cours1 = coursRepo.findById(cours1.getId());
 		
 		System.out.println(cours1.getIntitule());
 		System.out.println(cours1.getDifficulte());
