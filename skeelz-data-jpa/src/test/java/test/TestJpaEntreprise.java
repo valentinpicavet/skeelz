@@ -1,13 +1,27 @@
 package test;
 
-import Singleton.Singleton;
+import java.util.Optional;
+
+import org.junit.Assert;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
 import repository.IEntrepriseRepository;
+import repository.IPersonneRepository;
 import skeelz.modele.Entreprise;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = "/application-context.xml")
 public class TestJpaEntreprise {
 
-	public static void main(String[] args) {
-	IEntrepriseRepository entrepriseRepo = Singleton.getInstance().getEntrepriseRepo();
+	@Autowired
+	private IEntrepriseRepository entrepriseRepo;
+	
+	@Test
+	public void testEntreprise() {
 	
 	int startNumber = entrepriseRepo.findAll().size();
 	
@@ -18,17 +32,21 @@ public class TestJpaEntreprise {
 	
 	sopra = entrepriseRepo.save(sopra);
 	
-	sopra = entrepriseRepo.find(sopra.getId());
+	Optional<Entreprise>sopraFind = entrepriseRepo.findById(sopra.getId());
 	
-	System.out.println(sopra.getNom());
-	System.out.println(sopra.getNumeroSiret());
-	System.out.println(sopra.getTypeContrat());
+	Assert.assertEquals("Sopra Steria", sopraFind.get().getNom());
+	Assert.assertEquals("ST0045", sopraFind.get().getNumeroSiret());
+	Assert.assertEquals("ST0045", sopraFind.get().getNumeroSiret());
 	
 	int middleNumber = entrepriseRepo.findAll().size();
 	
-	System.out.println(middleNumber - startNumber);
+	Assert.assertEquals(1, (middleNumber - startNumber));
 	
 	entrepriseRepo.delete(sopra);
+	
+	int finalNumber = entrepriseRepo.findAll().size();
+	
+	Assert.assertEquals(0, (finalNumber - startNumber));
 
 	
 	}
