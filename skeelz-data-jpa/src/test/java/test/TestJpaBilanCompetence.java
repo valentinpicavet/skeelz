@@ -1,8 +1,10 @@
 package test;
 
 import java.util.List;
+import java.util.Optional;
 
-import Singleton.Singleton;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import repository.IBilanCompetenceRepository;
 import skeelz.modele.BilanCompetence;
 
@@ -10,7 +12,9 @@ import skeelz.modele.BilanCompetence;
 public class TestJpaBilanCompetence {
 
 	public static void main(String[] args) {
-		IBilanCompetenceRepository bilanCompetenceRepo = Singleton.getInstance().getBilanCompetenceRepo();
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("application-context.xml");
+		
+		IBilanCompetenceRepository bilanCompetenceRepo = context.getBean(IBilanCompetenceRepository.class);
 
 		int startNumber = bilanCompetenceRepo.findAll().size();
 
@@ -19,7 +23,7 @@ public class TestJpaBilanCompetence {
 		monBilan = bilanCompetenceRepo.save(monBilan);
 
 
-		BilanCompetence monBilanFind = bilanCompetenceRepo.find(monBilan.getId());
+		Optional<BilanCompetence> monBilanFind = bilanCompetenceRepo.findById(monBilan.getId());
 		System.out.println(monBilanFind);
 		List<BilanCompetence> monBilanFindList = bilanCompetenceRepo.findAll();
 		System.out.println(monBilanFindList.get(0));
@@ -33,6 +37,7 @@ public class TestJpaBilanCompetence {
 		
 		bilanCompetenceRepo.delete(monBilan);
 
+		context.close();
 
 	}
 
