@@ -13,4 +13,11 @@ public interface IModuleRepository extends JpaRepository<Module, Long> {
 	
 	@Query("select m from Module m where m.cours = :cours")
 	List<Module> findAllByCours(@Param("cours") Cours cours);
+	
+	
+	// Au click sur le cours affiche module 0 du cours pas test
+	@Query("from Module m where m.agencement = 0 and m.cours = :cours")
+	Module findByAgencement(@Param("cours") Cours cours);
+
+
 }

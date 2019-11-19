@@ -29,7 +29,9 @@ public interface ICoursRepository extends JpaRepository<Cours, Long> {
 	
 	@Query ("from Cours c order by c.duree")
 	List<Cours> findAllCoursByDuree ();
-
+	
+	
+	
 	
 	
 	
