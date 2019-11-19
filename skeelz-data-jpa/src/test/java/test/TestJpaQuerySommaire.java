@@ -67,7 +67,15 @@ public class TestJpaQuerySommaire {
 		
 		int nbModule = moduleRepo.findAllByCours(detecteurFume).size();
 		
+		int nbChapitre = chapitreRepo.findAllByCours(detecteurFume).size();
+		
+		int nbChapitreDansModule = chapitreRepo.findAllByModule(definition).size();
+		
 		Assert.assertEquals(1, nbModule);
+		
+		Assert.assertEquals(2, nbChapitre);
+		
+		Assert.assertEquals(2, nbChapitreDansModule);
 		
 		
 

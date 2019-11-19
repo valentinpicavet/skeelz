@@ -617,6 +617,12 @@ public class JeuDeDonnee {
 		chap1par5.setChapitre(detect11);
 		chap1par5 = (Paragraphe) elementDeCoursRepo.save(chap1par5);
 		
+		Chapitre detect12 = new Chapitre();
+		detect12.setTitre("Découvrez notre cas d'étude : le détecteur de fumée connecté");
+		detect12.setAgencement(1);
+		detect12.setModule(definition);
+		detect12 = chapitreRepo.save(detect12);
+		
 		context.close();
 	}
 
