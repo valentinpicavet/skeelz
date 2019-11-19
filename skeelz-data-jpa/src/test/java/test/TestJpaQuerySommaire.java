@@ -87,6 +87,59 @@ public class TestJpaQuerySommaire {
 		detect22.setModule(approfondissement);
 		detect22 = chapitreRepo.save(detect22);
 		
+		Cours javaDebutant = new Cours ();
+		javaDebutant.setIntitule("Apprenez les bases de java");
+		javaDebutant.setDifficulte(Difficulte.FACILE);
+		javaDebutant.setDuree(5);
+		javaDebutant.setEtat(Etat.OUVERT);
+		javaDebutant.setDescription("Dans ce cours, vous allez apprendre les bases du langage de programmation le plus utilisé au monde");
+		javaDebutant.setCheminImageCours("Le chemin");
+		javaDebutant = coursRepo.save(javaDebutant);
+		
+		Module introduction = new Module();
+		introduction.setIntitule("Introduction à la syntaxe Java");
+		introduction.setAgencement(1);
+		introduction.setNbQuestion(5);
+		introduction.setPeriodicite(1);
+		introduction.setNbTentativeAutorise(3);
+		introduction.setEnonceQCM("Syntaxe de base");
+		introduction.setCours(javaDebutant);
+		introduction = moduleRepo.save(introduction);
+		
+		Chapitre java11 = new Chapitre();
+		java11.setTitre("Les types de variable");
+		java11.setAgencement(0);
+		java11.setModule(introduction);
+		java11 = chapitreRepo.save(java11);
+		
+		Chapitre java12 = new Chapitre();
+		java12.setTitre("La déclaration des variables");
+		java12.setAgencement(1);
+		java12.setModule(introduction);
+		java12 = chapitreRepo.save(java12);
+		
+		Module lesBoucles = new Module();
+		lesBoucles.setIntitule("Découvrez les boucles de base");
+		lesBoucles.setAgencement(2);
+		lesBoucles.setNbQuestion(3);
+		lesBoucles.setPeriodicite(1);
+		lesBoucles.setNbTentativeAutorise(3);
+		lesBoucles.setEnonceQCM("Les boucles de base");
+		lesBoucles.setCours(javaDebutant);
+		lesBoucles = moduleRepo.save(lesBoucles);
+		
+		Chapitre java21 = new Chapitre();
+		java21.setTitre("Les boucles while");
+		java21.setAgencement(0);
+		java21.setModule(lesBoucles);
+		java21 = chapitreRepo.save(java21);
+		
+		Chapitre java22 = new Chapitre();
+		java22.setTitre("Les boucles for");
+		java22.setAgencement(1);
+		java22.setModule(lesBoucles);
+		java22 = chapitreRepo.save(java22);
+		
 		int nbModule = moduleRepo.findAllByCours(detecteurFume).size();
 		
 		int nbChapitre = chapitreRepo.findAllByCours(detecteurFume).size();
