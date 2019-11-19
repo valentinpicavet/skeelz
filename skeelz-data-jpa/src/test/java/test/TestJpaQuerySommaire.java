@@ -154,7 +154,7 @@ public class TestJpaQuerySommaire {
 		
 		Assert.assertEquals(2, nbChapitreDansModule);
 		
-		Assert.assertEquals(2, nbModulesAvecChapitres);
+		Assert.assertEquals(4, nbModulesAvecChapitres);
 		
 		
 

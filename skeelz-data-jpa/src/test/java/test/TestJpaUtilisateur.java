@@ -15,7 +15,7 @@ import skeelz.modele.Utilisateur;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "/application-context.xml")
 
-public class UtilisateurRepositoryTest {
+public class TestJpaUtilisateur {
 	
 	@Autowired
 	private IUtilisateurRepository utilisateurRepo;
