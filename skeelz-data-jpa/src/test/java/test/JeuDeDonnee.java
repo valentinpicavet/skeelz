@@ -623,6 +623,28 @@ public class JeuDeDonnee {
 		detect12.setModule(definition);
 		detect12 = chapitreRepo.save(detect12);
 		
+		Module approfondissement = new Module();
+		approfondissement.setIntitule("Approfondissez le développement de votre projet par des analyse métiers");
+		approfondissement.setAgencement(2);
+		approfondissement.setNbQuestion(3);
+		approfondissement.setPeriodicite(1);
+		approfondissement.setNbTentativeAutorise(3);
+		approfondissement.setEnonceQCM("Approfondissez le développement de votre projet par des analyse métiers");
+		approfondissement.setCours(detecteurFume);
+		approfondissement = moduleRepo.save(approfondissement);
+		
+		Chapitre detect21 = new Chapitre();
+		detect21.setTitre("Alimentez votre système d'énergie");
+		detect21.setAgencement(0);
+		detect21.setModule(approfondissement);
+		detect21 = chapitreRepo.save(detect21);
+		
+		Chapitre detect22 = new Chapitre();
+		detect22.setTitre("Optimisez l'ergonomie du système");
+		detect22.setAgencement(1);
+		detect22.setModule(approfondissement);
+		detect22 = chapitreRepo.save(detect22);
+		
 		context.close();
 	}
 
