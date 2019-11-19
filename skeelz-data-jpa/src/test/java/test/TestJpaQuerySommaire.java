@@ -139,18 +139,22 @@ public class TestJpaQuerySommaire {
 		java22.setAgencement(1);
 		java22.setModule(lesBoucles);
 		java22 = chapitreRepo.save(java22);
-		
+				
 		int nbModule = moduleRepo.findAllByCours(detecteurFume).size();
 		
 		int nbChapitre = chapitreRepo.findAllByCours(detecteurFume).size();
 		
 		int nbChapitreDansModule = chapitreRepo.findAllByModule(definition).size();
 		
+		int nbModulesAvecChapitres = moduleRepo.findAllByCoursWithChapitres(detecteurFume).size();
+		
 		Assert.assertEquals(2, nbModule);
 		
 		Assert.assertEquals(4, nbChapitre);
 		
 		Assert.assertEquals(2, nbChapitreDansModule);
+		
+		Assert.assertEquals(2, nbModulesAvecChapitres);
 		
 		
 

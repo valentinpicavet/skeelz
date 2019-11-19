@@ -689,9 +689,9 @@ public class TestJpaLienssss {
 //		chap1par5.setChapitre(detect11);
 //		chap1par5 = (Paragraphe) elementDeCoursRepo.save(chap1par5);
 		
-		List<Cours> ccc = coursRepo.findAllCoursByDifficulte(Difficulte.FACILE);
+//		List<Cours> ccc = coursRepo.findAllCoursByDifficulte(Difficulte.FACILE);
 		
-		System.out.println(ccc);
+//		System.out.println(ccc);
 //		
 		
 	}
