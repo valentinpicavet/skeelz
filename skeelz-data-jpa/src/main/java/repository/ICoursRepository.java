@@ -8,7 +8,10 @@ import org.springframework.data.repository.query.Param;
 
 import skeelz.modele.Competence;
 import skeelz.modele.Cours;
+import skeelz.modele.CoursPersonne;
 import skeelz.modele.Difficulte;
+import skeelz.modele.EtatCours;
+import skeelz.modele.Personne;
 
 
 public interface ICoursRepository extends JpaRepository<Cours, Long> {
@@ -28,6 +31,7 @@ public interface ICoursRepository extends JpaRepository<Cours, Long> {
 //	
 //	@Query ("from cours")
 //	List<Cours> findAllCoursByDifficulte(@Param("difficulte")Difficulte difficulte);
+	
 	
 	
 }
