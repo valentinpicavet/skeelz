@@ -14,7 +14,7 @@ public interface IModuleRepository extends JpaRepository<Module, Long> {
 	@Query("select m from Module m where m.cours = :cours")
 	List<Module> findAllByCours(@Param("cours") Cours cours);
 	
-	@Query("select m from Module m left join fetch m.chapitres ch where m.cours = :cours")
+	@Query("select distinct m from Module m left join fetch m.chapitres ch where m.cours = :cours")
 	List<Module> findAllByCoursWithChapitres(@Param("cours") Cours cours);
 	
 	
