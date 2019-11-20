@@ -48,12 +48,12 @@ public class TestRequeteCoursPersonne {
 	personneValentin = personneRepo.save(personneValentin);
 	
 	CoursPersonne valentinDetecteur = new CoursPersonne();
-	valentinDetecteur.setEtatCours(EtatCours.ADMINISTRE);
+	valentinDetecteur.setEtatCours(EtatCours.SUIVI);
 	valentinDetecteur.setCours(detecteurFume);
 	valentinDetecteur.setPersonne(personneValentin);
 	valentinDetecteur = coursPersonneRepo.save(valentinDetecteur);
 	
-	List<CoursPersonne> coursVal = coursPersonneRepo.findByPersonneAndEtatCours(personneValentin, EtatCours.ADMINISTRE);
+	List<CoursPersonne> coursVal = coursPersonneRepo.findByPersonneAndEtatCours(personneValentin, EtatCours.SUIVI);
 	Assert.assertEquals("Concevez un détecteur de fumée connecté", coursVal.get(0).getCours().getIntitule());
 	}
 }
