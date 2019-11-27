@@ -26,7 +26,7 @@ public class UtilisateurController {
 	private IUtilisateurRepository utilisateurRepo;
 
 	@GetMapping("")
-	@JsonView(Views.ViewCommon.class)
+	@JsonView(Views.ViewUtilisateur.class)
 	public List<Utilisateur> list() {
 		List<Utilisateur> utilisateurs = utilisateurRepo.findAll();
 
@@ -34,7 +34,7 @@ public class UtilisateurController {
 	}
 
 	@GetMapping("/{id}")
-	@JsonView(Views.ViewCommon.class)
+	@JsonView(Views.ViewUtilisateur.class)
 	public Utilisateur find(@PathVariable Long id) {
 		Utilisateur utilisateur = utilisateurRepo.findById(id).get();
 

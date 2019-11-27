@@ -26,7 +26,7 @@ public class ChapitreController {
 	private IChapitreRepository chapitreRepo;
 
 	@GetMapping("")
-	@JsonView(Views.ViewCommon.class)
+	@JsonView(Views.ViewChapitre.class)
 	public List<Chapitre> list() {
 		List<Chapitre> chapitres = chapitreRepo.findAll();
 
@@ -34,7 +34,7 @@ public class ChapitreController {
 	}
 
 	@GetMapping("/{id}")
-	@JsonView(Views.ViewCommon.class)
+	@JsonView(Views.ViewChapitre.class)
 	public Chapitre find(@PathVariable Long id) {
 		Chapitre chapitre = chapitreRepo.findById(id).get();
 

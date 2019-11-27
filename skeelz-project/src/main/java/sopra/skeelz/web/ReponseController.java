@@ -26,7 +26,7 @@ public class ReponseController {
 	private IReponseRepository reponseRepo;
 
 	@GetMapping("")
-	@JsonView(Views.ViewCommon.class)
+	@JsonView(Views.ViewReponse.class)
 	public List<Reponse> list() {
 		List<Reponse> reponses = reponseRepo.findAll();
 
@@ -34,7 +34,7 @@ public class ReponseController {
 	}
 
 	@GetMapping("/{id}")
-	@JsonView(Views.ViewCommon.class)
+	@JsonView(Views.ViewReponse.class)
 	public Reponse find(@PathVariable Long id) {
 		Reponse reponse = reponseRepo.findById(id).get();
 
