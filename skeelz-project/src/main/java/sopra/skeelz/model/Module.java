@@ -14,6 +14,10 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+
+
 
 @Entity
 @Table(uniqueConstraints= {@UniqueConstraint(columnNames = { "cours_id", "intitule"}), @UniqueConstraint(columnNames = { "cours_id", "agencement"})})
@@ -21,17 +25,28 @@ public class Module {
 	
 	@Id
 	@GeneratedValue
+	@JsonView(Views.ViewCommon.class)
 	private Long id;
 	@Version
+	@JsonView(Views.ViewCommon.class)
 	private int version;
+	@JsonView(Views.ViewCommon.class)
 	@Column(nullable = false)
 	private String intitule;
+	@JsonView(Views.ViewCommon.class)
 	@Column(nullable = false)
 	private int agencement;
+	@JsonView(Views.ViewCommon.class)
 	private String enonceQCM;
+	@JsonView(Views.ViewCommon.class)
 	private  int nbQuestion;
+	@JsonView(Views.ViewCommon.class)
 	private int periodicite;
+	@JsonView(Views.ViewCommon.class)
 	private int nbTentativeAutorise;
+	
+	
+	
 	@OneToMany(mappedBy = "module")
 	private List<Question> questions = new ArrayList<Question>();
 	@OneToMany(mappedBy = "module")
