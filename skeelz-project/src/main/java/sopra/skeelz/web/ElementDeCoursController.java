@@ -26,7 +26,7 @@ public class ElementDeCoursController {
 	private IElementDeCoursRepository elementDeCoursRepo;
 
 	@GetMapping("")
-	@JsonView(Views.ViewCommon.class)
+	@JsonView(Views.ViewElementdeCours.class)
 	public List<ElementDeCours> list() {
 		List<ElementDeCours> elementDeCourss = elementDeCoursRepo.findAll();
 
@@ -34,7 +34,7 @@ public class ElementDeCoursController {
 	}
 
 	@GetMapping("/{id}")
-	@JsonView(Views.ViewCommon.class)
+	@JsonView(Views.ViewElementdeCours.class)
 	public ElementDeCours find(@PathVariable Long id) {
 		ElementDeCours elementDeCours = elementDeCoursRepo.findById(id).get();
 
