@@ -33,13 +33,13 @@ public class BilanCompetenceController {
 		return bilanCompetences;
 	}
 
-//	@GetMapping("/{id}")
-//	@JsonView(Views.ViewEvaluationDetail.class)
-//	public Evaluation find(@PathVariable Long id) {
-//		Evaluation evaluation = evaluationRepo.findWithStagiaire(id);
-//
-//		return evaluation;
-//	}
+	@GetMapping("/{id}")
+	@JsonView(Views.ViewBilanCompetence.class)
+	public BilanCompetence find(@PathVariable Long id) {
+		BilanCompetence bilanCompetence = bilanCompetenceRepo.findById(id).get();
+
+		return bilanCompetence;
+	}
 
 	@PostMapping("")
 	public BilanCompetence create(@RequestBody BilanCompetence bilanCompetence) {
