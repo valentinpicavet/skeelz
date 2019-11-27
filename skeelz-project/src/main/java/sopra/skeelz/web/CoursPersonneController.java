@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import sopra.skeelz.model.Cours;
 import sopra.skeelz.model.CoursPersonne;
 import sopra.skeelz.model.Views;
 import sopra.skeelz.repository.ICoursPersonneRepository;
@@ -32,7 +33,14 @@ public class CoursPersonneController {
 
 		return coursPersonnes;
 	}
+	
+	@GetMapping("/{id}")
+	@JsonView(Views.ViewCoursPersonne.class)
+	public CoursPersonne find(@PathVariable Long id) {
+		CoursPersonne coursPersonne = coursPersonneRepo.findById(id).get();
 
+		return coursPersonne;
+	}
 
 	@PostMapping("")
 	public CoursPersonne create(@RequestBody CoursPersonne coursPersonne) {

@@ -12,23 +12,30 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Table(uniqueConstraints= {@UniqueConstraint(columnNames = { "personne_id", "cours_id"})})
 public class CoursPersonne {
 
 	@Id
 	@GeneratedValue
+	@JsonView(Views.ViewCommon.class)
 	private Long id;
 	@Version
+	@JsonView(Views.ViewCommon.class)
 	private int version;
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = false)
+	@JsonView(Views.ViewCommon.class)
 	private EtatCours etatCours;
 	@ManyToOne
 	@JoinColumn(name = "personne_id")//, nullable = false)
+	@JsonView(Views.ViewCommon.class)
 	private Personne personne;
 	@ManyToOne
 	@JoinColumn(name = "cours_id")//, nullable = false)
+	@JsonView(Views.ViewCommon.class)
 	private Cours cours;
 	
 	
