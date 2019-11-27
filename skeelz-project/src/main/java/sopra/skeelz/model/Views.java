@@ -27,7 +27,7 @@ public class Views {
 	public static class ViewCoursPersonne extends ViewCommon {
 	}
 
-	}
+	
 
 	public static class ViewModule extends ViewCommon {}
 	public static class ViewChapitre extends ViewCommon {}
