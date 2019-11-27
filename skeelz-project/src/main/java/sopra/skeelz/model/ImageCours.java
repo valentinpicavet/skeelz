@@ -1,0 +1,41 @@
+package sopra.skeelz.model;
+
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity
+@DiscriminatorValue("ImageCours")
+public class ImageCours extends ElementDeCours{
+	
+	private String chemin;
+	private String commentaire;
+	
+	
+	public ImageCours() {
+		super();
+	}
+
+
+	public String getChemin() {
+		return chemin;
+	}
+
+
+	public void setChemin(String chemin) {
+		this.chemin = chemin;
+	}
+
+
+	public String getCommentaire() {
+		return commentaire;
+	}
+
+
+	public void setCommentaire(String commentaire) {
+		this.commentaire = commentaire;
+	}
+
+
+
+
+}
