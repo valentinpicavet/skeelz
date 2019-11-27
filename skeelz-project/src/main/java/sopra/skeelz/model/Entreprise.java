@@ -12,21 +12,30 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Table(uniqueConstraints= {@UniqueConstraint(columnNames = { "numeroSiret" })})
 public class Entreprise {
 
 	@Id
 	@GeneratedValue
+	@JsonView(Views.ViewCommon.class)
 	private Long id;
+	@JsonView(Views.ViewCommon.class)
 	@Version
 	private int version;
+	@JsonView(Views.ViewCommon.class)
 	@Column(nullable = false)
 	private String nom;
+	@JsonView(Views.ViewCommon.class)
 	@Column(nullable = false)
 	private String numeroSiret;
+	@JsonView(Views.ViewCommon.class)
 	@Column(nullable = false)
 	private String typeContrat;
+	
+	
 	@OneToMany(mappedBy = "entreprise")
 	private List<Utilisateur> administrateur = new ArrayList<Utilisateur>();
 	

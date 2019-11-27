@@ -14,17 +14,24 @@ import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Table(uniqueConstraints= {@UniqueConstraint(columnNames = { "personne_id", "module_id"})})
 public class QCMPersonne {
 	
 	@Id
 	@GeneratedValue
+	@JsonView(Views.ViewCommon.class)
 	private Long id;
+	@JsonView(Views.ViewCommon.class)
 	@Version
 	private int version;
+	@JsonView(Views.ViewCommon.class)
 	private int nbTentative;
+	@JsonView(Views.ViewCommon.class)
 	private boolean statutQCM;
+	@JsonView(Views.ViewCommon.class)
 	@Temporal(TemporalType.DATE)
 	private Date dateDerniereTentative;
 	
