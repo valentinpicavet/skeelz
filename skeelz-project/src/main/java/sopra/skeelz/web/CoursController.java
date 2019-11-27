@@ -33,13 +33,13 @@ public class CoursController {
 		return courss;
 	}
 
-//	@GetMapping("/{id}:{id}")
-//	@JsonView(Views.ViewCoursDetail.class)
-//	public Cours find(@PathVariable Long id) {
-//		List<Cours> courss = coursRepo.findAllCoursByCompetence();
-//
-//		return (Cours) courss;
-//	}
+	@GetMapping("/{id}")
+	@JsonView(Views.ViewCoursDetail.class)
+	public Cours find(@PathVariable Long id) {
+		List<Cours> courss = coursRepo.findAllCoursByCompetence();
+
+		return (Cours) courss;
+	}
 
 	@PostMapping("")
 	public Cours create(@RequestBody Cours cours) {
