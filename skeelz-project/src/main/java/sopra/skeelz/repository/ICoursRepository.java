@@ -6,7 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import sopra.skeelz.model.Cours;
-import sopra.skeelz.model.Difficulte;
 
 
 public interface ICoursRepository extends JpaRepository<Cours, Long> {

@@ -16,17 +16,17 @@ public class Views {
 
 	}
 	
-	public static class ViewCompetenceSkeelz extends ViewCommon {
+	public static class ViewCompetenceSkeelz extends ViewCommon {}
 
 	public static class ViewCours extends ViewCommon {
 	}
 
-	public static class ViewCoursDetail extends ViewCours {
+	public static class ViewCoursDetail extends ViewCommon {
 	}
 
-	public static class ViewCoursPersonne extends ViewCours {
+	public static class ViewCoursPersonne extends ViewCommon {
 	}
 
 	}
 
-}
+

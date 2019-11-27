@@ -14,13 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import sopra.skeelz.model.BilanCompetence;
 import sopra.skeelz.model.Competence;
-import sopra.skeelz.model.Skeelz;
 import sopra.skeelz.model.Views;
-import sopra.skeelz.model.Views.ViewSkeelz;
 import sopra.skeelz.repository.ICompetenceRepository;
-import sopra.skeelz.repository.ISkeelzRepository;
 
 @RestController
 @RequestMapping("/competence")
