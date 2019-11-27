@@ -1,26 +1,21 @@
 package sopra.skeelz;
 
-import java.util.List;
-import java.util.Optional;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.boot.test.context.SpringBootTest;
 
-import repository.IChapitreRepository;
-import repository.ICoursRepository;
-import repository.IModuleRepository;
-import skeelz.modele.Chapitre;
-import skeelz.modele.Cours;
-import skeelz.modele.Difficulte;
-import skeelz.modele.Etat;
-import skeelz.modele.Module;
+import sopra.skeelz.model.Chapitre;
+import sopra.skeelz.model.Cours;
+import sopra.skeelz.model.Difficulte;
+import sopra.skeelz.model.Etat;
+import sopra.skeelz.model.Module;
+import sopra.skeelz.repository.IChapitreRepository;
+import sopra.skeelz.repository.ICoursRepository;
+import sopra.skeelz.repository.IModuleRepository;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "/application-context.xml")
+@SpringBootTest
 public class TestJpaQuerySommaire {
 
 	@Autowired
@@ -148,13 +143,13 @@ public class TestJpaQuerySommaire {
 		
 		int nbModulesAvecChapitres = moduleRepo.findAllByCoursWithChapitres(detecteurFume).size();
 		
-		Assert.assertEquals(2, nbModule);
+		assertEquals(2, nbModule);
 		
-		Assert.assertEquals(4, nbChapitre);
+		assertEquals(4, nbChapitre);
 		
-		Assert.assertEquals(2, nbChapitreDansModule);
+		assertEquals(2, nbChapitreDansModule);
 		
-		Assert.assertEquals(2, nbModulesAvecChapitres);
+		assertEquals(2, nbModulesAvecChapitres);
 		
 //		for (int i = 0; i < 4; i++ ) {
 //			System.out.println("Intitulé module " + i + " : " + moduleRepo.findAllByCoursWithChapitres(detecteurFume).get(i).getIntitule());

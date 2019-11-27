@@ -1,29 +1,26 @@
 package sopra.skeelz;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.util.List;
 
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.boot.test.context.SpringBootTest;
 
-import repository.IBilanCompetenceRepository;
-import repository.ICompetenceRepository;
-
-import repository.IPersonneRepository;
-import repository.ISkeelzRepository;
-import skeelz.modele.BilanCompetence;
-import skeelz.modele.Competence;
-import skeelz.modele.Personne;
-import skeelz.modele.Ponderation;
-import skeelz.modele.Skeelz;
+import sopra.skeelz.model.BilanCompetence;
+import sopra.skeelz.model.Competence;
+import sopra.skeelz.model.Personne;
+import sopra.skeelz.model.Ponderation;
+import sopra.skeelz.model.Skeelz;
+import sopra.skeelz.repository.IBilanCompetenceRepository;
+import sopra.skeelz.repository.ICompetenceRepository;
+import sopra.skeelz.repository.IPersonneRepository;
+import sopra.skeelz.repository.ISkeelzRepository;
 
 public class TestRequeteBilanCompetence {
 
-	@RunWith(SpringJUnit4ClassRunner.class)
-	@ContextConfiguration(locations = "/application-context.xml")
+	@SpringBootTest
 	public class TestRequeteCoursPersonne {
 		
 		@Autowired
@@ -61,7 +58,7 @@ public class TestRequeteBilanCompetence {
 			BilanValDete = bilanCompetenceRepo.save(BilanValDete);
 		
 		List<BilanCompetence> bilanVal = bilanCompetenceRepo.findByPersonne(personneValentin);
-		Assert.assertEquals("Objet Connecté", bilanVal.get(0).getSkeelz().getIntitule());
+		assertEquals("Objet Connecté", bilanVal.get(0).getSkeelz().getIntitule());
 		}
 	}
 }

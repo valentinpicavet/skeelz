@@ -1,22 +1,20 @@
 package sopra.skeelz;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.util.Optional;
 
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.boot.test.context.SpringBootTest;
 
-import repository.ICompetenceRepository;
-import repository.ICompetenceSkeelzRepository;
-import skeelz.modele.Competence;
-import skeelz.modele.CompetenceSkeelz;
-import skeelz.modele.Ponderation;
+import sopra.skeelz.model.Competence;
+import sopra.skeelz.model.CompetenceSkeelz;
+import sopra.skeelz.model.Ponderation;
+import sopra.skeelz.repository.ICompetenceRepository;
+import sopra.skeelz.repository.ICompetenceSkeelzRepository;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "/application-context.xml")
+@SpringBootTest
 public class TestJpaCompetenceSkeelz {
 
 	@Autowired
@@ -43,16 +41,16 @@ public class TestJpaCompetenceSkeelz {
 		
 		
 		Optional<CompetenceSkeelz> compSkFind = competenceSkeelzRepo.findById(compSk.getId());
-		Assert.assertEquals("java", compSkFind.get().getCompetence().getIntitule());
+		assertEquals("java", compSkFind.get().getCompetence().getIntitule());
 		
 		int middleNumber = competenceSkeelzRepo.findAll().size();
-		Assert.assertEquals(1, (middleNumber - startNumber));
+		assertEquals(1, (middleNumber - startNumber));
 		
 		competenceSkeelzRepo.delete(compSk);
 		
 		int finalNumber = competenceSkeelzRepo.findAll().size();
 		
-		Assert.assertEquals(0, finalNumber - startNumber);
+		assertEquals(0, finalNumber - startNumber);
 
 	}
 

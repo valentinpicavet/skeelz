@@ -1,59 +1,46 @@
 package sopra.skeelz;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.util.Optional;
 
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.boot.test.context.SpringBootTest;
 
-import repository.IQuestionRepository;
-import skeelz.modele.Question;
+import sopra.skeelz.model.Question;
+import sopra.skeelz.repository.IQuestionRepository;
 
-
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations= "/application-context.xml")
+@SpringBootTest
 public class TestJpaQuestion {
-	
-	
+
 	@Autowired
 	private IQuestionRepository questionrepo;
-	
-	
+
 	@Test
 	public void testQuestion() {
-		
-int startNumber = questionrepo.findAll().size();
-		
-		Question question1 = new Question ();
-		
+
+		int startNumber = questionrepo.findAll().size();
+
+		Question question1 = new Question();
+
 		question1.setQuestion("question 1 test");
 
-	
-
-		
-		
 		question1 = questionrepo.save(question1);
-		
-		
-		
-		Optional<Question> question1Find = questionrepo.findById(question1.getId());
-		
-		Assert.assertEquals("question 1 test", question1Find.get().getQuestion());
 
-		
+		Optional<Question> question1Find = questionrepo.findById(question1.getId());
+
+		assertEquals("question 1 test", question1Find.get().getQuestion());
+
 		int middleNumber = questionrepo.findAll().size();
-		Assert.assertEquals(1, (middleNumber - startNumber));
-		
+		assertEquals(1, (middleNumber - startNumber));
+
 		questionrepo.delete(question1);
-		
+
 		int finalNumber = questionrepo.findAll().size();
-		
-		Assert.assertEquals(0, finalNumber - startNumber);
-		
-	
+
+		assertEquals(0, finalNumber - startNumber);
+
 	}
 
 }
