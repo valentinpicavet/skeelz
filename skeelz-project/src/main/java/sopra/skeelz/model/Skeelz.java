@@ -10,14 +10,19 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 public class Skeelz {
 	@Id
 	@GeneratedValue
+	@JsonView(Views.ViewCommon.class)
 	private Long id;
 	@Version
+	@JsonView(Views.ViewCommon.class)
 	private int version;
 	@Column(nullable = false, unique = true)
+	@JsonView(Views.ViewCommon.class)
 	private String intitule;
 	@OneToMany(mappedBy = "skeelz")
 	private List<BilanCompetence> bilanCompetence = new ArrayList<BilanCompetence>();

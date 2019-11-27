@@ -3,11 +3,14 @@ package sopra.skeelz.model;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @DiscriminatorValue("ImageCours")
 public class ImageCours extends ElementDeCours{
-	
+	@JsonView(Views.ViewCommon.class)
 	private String chemin;
+	@JsonView(Views.ViewCommon.class)
 	private String commentaire;
 	
 	

@@ -4,11 +4,15 @@ import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @DiscriminatorValue("Paragraphe")
 public class Paragraphe extends ElementDeCours {
 	@Column(length = 6000)
+	@JsonView(Views.ViewCommon.class)
 	private String texte;
+	@JsonView(Views.ViewCommon.class)
 	private String titre;
 	
 	

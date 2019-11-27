@@ -14,16 +14,22 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Table(uniqueConstraints= {@UniqueConstraint(columnNames = { "module_id", "titre"}), @UniqueConstraint(columnNames = { "module_id", "agencement"})})
 public class Chapitre {
 	@Id
 	@GeneratedValue
+	@JsonView(Views.ViewCommon.class)
 	private Long id;
+	@JsonView(Views.ViewCommon.class)
 	@Version
 	private int version;
+	@JsonView(Views.ViewCommon.class)
 	@Column(nullable = false)
 	private  String titre;
+	@JsonView(Views.ViewCommon.class)
 	@Column(nullable = false)
 	private int agencement;
 	@OneToMany(mappedBy = "chapitre")
