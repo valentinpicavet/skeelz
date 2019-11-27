@@ -12,20 +12,30 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 public class Personne {
 
 	@Id
 	@GeneratedValue
+	@JsonView(Views.ViewCommon.class)
 	private Long id;
 	@Version
+	@JsonView(Views.ViewCommon.class)
 	private int version;
+	@JsonView(Views.ViewCommon.class)
 	@Column(nullable = false)
 	private String nom;
+	@JsonView(Views.ViewCommon.class)
 	@Column(nullable = false)
 	private String prenom;
+	@JsonView(Views.ViewCommon.class)
 	private String telephone;
+	@JsonView(Views.ViewCommon.class)
 	private int noteGlobal;
+	
+	
 	@OneToOne
 	@JoinColumn(name = "utilisateur_id")//, nullable = false)
 	private Utilisateur utilisateur;
