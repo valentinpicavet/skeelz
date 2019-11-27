@@ -1,19 +1,17 @@
 package sopra.skeelz;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.util.Optional;
 
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.boot.test.context.SpringBootTest;
 
-import repository.IPersonneRepository;
-import skeelz.modele.Personne;
+import sopra.skeelz.model.Personne;
+import sopra.skeelz.repository.IPersonneRepository;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "/application-context.xml")
+@SpringBootTest
 public class TestJpaPersonne {
 
 	@Autowired
@@ -36,20 +34,20 @@ public class TestJpaPersonne {
 
 		Optional<Personne> maPersonneFind = personneRepo.findById(maPersonne.getId());
 		
-		Assert.assertEquals("JEAN", maPersonneFind.get().getNom());
-		Assert.assertEquals("Paul", maPersonneFind.get().getPrenom());
-		Assert.assertEquals("026134515", maPersonneFind.get().getTelephone());
-		Assert.assertEquals(23, maPersonneFind.get().getNoteGlobal());
+		assertEquals("JEAN", maPersonneFind.get().getNom());
+		assertEquals("Paul", maPersonneFind.get().getPrenom());
+		assertEquals("026134515", maPersonneFind.get().getTelephone());
+		assertEquals(23, maPersonneFind.get().getNoteGlobal());
 		
 		int middleNumber = personneRepo.findAll().size();
 	
-		Assert.assertEquals(1, (middleNumber - startNumber));
+		assertEquals(1, (middleNumber - startNumber));
 		
 		personneRepo.delete(maPersonne);
 		
 		int finalNumber = personneRepo.findAll().size();
 		
-		Assert.assertEquals(0, (finalNumber - startNumber));
+		assertEquals(0, (finalNumber - startNumber));
 
 
 	}

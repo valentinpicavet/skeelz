@@ -1,23 +1,20 @@
 package sopra.skeelz;
 
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.util.Optional;
 
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.boot.test.context.SpringBootTest;
 
-import repository.IElementDeCoursRepository;
-
-import skeelz.modele.ElementDeCours;
-import skeelz.modele.Paragraphe;
+import sopra.skeelz.model.ElementDeCours;
+import sopra.skeelz.model.Paragraphe;
+import sopra.skeelz.repository.IElementDeCoursRepository;
 
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations= "/application-context.xml")
+@SpringBootTest
 public class TestJpaElementDeCours {
 
 	@Autowired
@@ -35,16 +32,16 @@ public class TestJpaElementDeCours {
 		
 		Optional<ElementDeCours> chap1par1Find = elementDeCoursRepo.findById(chap1par1.getId());
 		
-		Assert.assertEquals("paragraphe 1 test", ((Paragraphe) chap1par1Find.get()).getTexte());
+		assertEquals("paragraphe 1 test", ((Paragraphe) chap1par1Find.get()).getTexte());
 		
 		int middleNumber = elementDeCoursRepo.findAll().size();
-		Assert.assertEquals(1, (middleNumber - startNumber));
+		assertEquals(1, (middleNumber - startNumber));
 		
 		elementDeCoursRepo.delete(chap1par1);
 		
 		int finalNumber = elementDeCoursRepo.findAll().size();
 		
-		Assert.assertEquals(0, finalNumber - startNumber);
+		assertEquals(0, finalNumber - startNumber);
 		
 	}
 

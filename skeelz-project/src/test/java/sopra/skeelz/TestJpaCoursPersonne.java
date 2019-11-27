@@ -1,23 +1,20 @@
 package sopra.skeelz;
 
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.util.Optional;
 
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.boot.test.context.SpringBootTest;
 
-import repository.ICoursPersonneRepository;
-
-import skeelz.modele.CoursPersonne;
-import skeelz.modele.EtatCours;
+import sopra.skeelz.model.CoursPersonne;
+import sopra.skeelz.model.EtatCours;
+import sopra.skeelz.repository.ICoursPersonneRepository;
 
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations= "/application-context.xml")
+@SpringBootTest
 public class TestJpaCoursPersonne {
 
 	@Autowired
@@ -32,27 +29,21 @@ public class TestJpaCoursPersonne {
 	
 
 		coursPersonne1.setEtatCours(EtatCours.VALIDE);
-		
-		
-
-		
-		
+			
 		coursPersonne1 = CoursPersonneRepo.save(coursPersonne1);
-		
-		
-		
+				
 		Optional<CoursPersonne> coursPersonne1Find = CoursPersonneRepo.findById(coursPersonne1.getId());
 		
-		Assert.assertEquals(EtatCours.VALIDE , coursPersonne1Find.get().getEtatCours());
+		assertEquals(EtatCours.VALIDE , coursPersonne1Find.get().getEtatCours());
 		
 		int middleNumber = CoursPersonneRepo.findAll().size();
-		Assert.assertEquals(1, (middleNumber - startNumber));
+		assertEquals(1, (middleNumber - startNumber));
 		
 		CoursPersonneRepo.delete(coursPersonne1);
 		
 		int finalNumber = CoursPersonneRepo.findAll().size();
 		
-		Assert.assertEquals(0, finalNumber - startNumber);
+		assertEquals(0, finalNumber - startNumber);
 		
 	}
 

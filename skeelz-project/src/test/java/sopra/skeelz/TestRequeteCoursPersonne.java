@@ -1,26 +1,24 @@
 package sopra.skeelz;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.util.List;
 
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.boot.test.context.SpringBootTest;
 
-import repository.ICoursPersonneRepository;
-import repository.ICoursRepository;
-import repository.IPersonneRepository;
-import skeelz.modele.Cours;
-import skeelz.modele.CoursPersonne;
-import skeelz.modele.Difficulte;
-import skeelz.modele.Etat;
-import skeelz.modele.EtatCours;
-import skeelz.modele.Personne;
+import sopra.skeelz.model.Cours;
+import sopra.skeelz.model.CoursPersonne;
+import sopra.skeelz.model.Difficulte;
+import sopra.skeelz.model.Etat;
+import sopra.skeelz.model.EtatCours;
+import sopra.skeelz.model.Personne;
+import sopra.skeelz.repository.ICoursPersonneRepository;
+import sopra.skeelz.repository.ICoursRepository;
+import sopra.skeelz.repository.IPersonneRepository;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "/application-context.xml")
+@SpringBootTest
 public class TestRequeteCoursPersonne {
 	
 	@Autowired
@@ -54,6 +52,6 @@ public class TestRequeteCoursPersonne {
 	valentinDetecteur = coursPersonneRepo.save(valentinDetecteur);
 	
 	List<CoursPersonne> coursVal = coursPersonneRepo.findByPersonneAndEtatCours(personneValentin, EtatCours.SUIVI);
-	Assert.assertEquals("Concevez un détecteur de fumée connecté", coursVal.get(0).getCours().getIntitule());
+	assertEquals("Concevez un détecteur de fumée connecté", coursVal.get(0).getCours().getIntitule());
 	}
 }

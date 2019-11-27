@@ -1,64 +1,54 @@
 package sopra.skeelz;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import java.util.List;
-import java.util.Optional;
-
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.boot.test.context.SpringBootTest;
 
-import repository.IBilanCompetenceRepository;
-import repository.IChapitreRepository;
-import repository.ICompetenceRepository;
-import repository.ICompetenceSkeelzRepository;
-import repository.ICoursCompetenceRepository;
-import repository.ICoursPersonneRepository;
-import repository.ICoursRepository;
-import repository.IElementDeCoursRepository;
-import repository.IEntrepriseRepository;
-import repository.IModuleRepository;
-import repository.IPersonneRepository;
-import repository.IQCMPersonneRepository;
-import repository.IQuestionRepository;
-import repository.IReponseRepository;
-import repository.ISkeelzRepository;
-import repository.IUtilisateurRepository;
-import skeelz.modele.BilanCompetence;
-import skeelz.modele.Chapitre;
-import skeelz.modele.Competence;
-import skeelz.modele.CompetenceSkeelz;
-import skeelz.modele.Cours;
-import skeelz.modele.CoursCompetence;
-import skeelz.modele.CoursPersonne;
-import skeelz.modele.Difficulte;
-import skeelz.modele.Entreprise;
-import skeelz.modele.Etat;
-import skeelz.modele.EtatCours;
-import skeelz.modele.Module;
-import skeelz.modele.Paragraphe;
-import skeelz.modele.Personne;
-import skeelz.modele.Ponderation;
-import skeelz.modele.QCMPersonne;
-import skeelz.modele.Question;
-import skeelz.modele.RelationCours;
-import skeelz.modele.Reponse;
-import skeelz.modele.Skeelz;
-import skeelz.modele.Utilisateur;
+import sopra.skeelz.model.BilanCompetence;
+import sopra.skeelz.model.Chapitre;
+import sopra.skeelz.model.Competence;
+import sopra.skeelz.model.CompetenceSkeelz;
+import sopra.skeelz.model.Cours;
+import sopra.skeelz.model.CoursCompetence;
+import sopra.skeelz.model.CoursPersonne;
+import sopra.skeelz.model.Difficulte;
+import sopra.skeelz.model.Entreprise;
+import sopra.skeelz.model.Etat;
+import sopra.skeelz.model.EtatCours;
+import sopra.skeelz.model.Module;
+import sopra.skeelz.model.Paragraphe;
+import sopra.skeelz.model.Personne;
+import sopra.skeelz.model.Ponderation;
+import sopra.skeelz.model.QCMPersonne;
+import sopra.skeelz.model.Question;
+import sopra.skeelz.model.RelationCours;
+import sopra.skeelz.model.Reponse;
+import sopra.skeelz.model.Skeelz;
+import sopra.skeelz.model.Utilisateur;
+import sopra.skeelz.repository.IBilanCompetenceRepository;
+import sopra.skeelz.repository.IChapitreRepository;
+import sopra.skeelz.repository.ICompetenceRepository;
+import sopra.skeelz.repository.ICompetenceSkeelzRepository;
+import sopra.skeelz.repository.ICoursCompetenceRepository;
+import sopra.skeelz.repository.ICoursPersonneRepository;
+import sopra.skeelz.repository.ICoursRepository;
+import sopra.skeelz.repository.IElementDeCoursRepository;
+import sopra.skeelz.repository.IEntrepriseRepository;
+import sopra.skeelz.repository.IModuleRepository;
+import sopra.skeelz.repository.IPersonneRepository;
+import sopra.skeelz.repository.IQCMPersonneRepository;
+import sopra.skeelz.repository.IQuestionRepository;
+import sopra.skeelz.repository.IReponseRepository;
+import sopra.skeelz.repository.ISkeelzRepository;
+import sopra.skeelz.repository.IUtilisateurRepository;
 
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "/application-context.xml")
+@SpringBootTest
 public class TestJpaLienssss {
 	
 	@Autowired
@@ -114,8 +104,8 @@ public class TestJpaLienssss {
 		objetCoDetecteur.setSkeelz(objetConnecte);
 		objetCoDetecteur = competenceSkeelzRepo.save(objetCoDetecteur);
 		
-		Assert.assertEquals(objetConnecte, objetCoDetecteur.getSkeelz());
-		Assert.assertEquals(developpementDetecteurFume, objetCoDetecteur.getCompetence());
+		assertEquals(objetConnecte, objetCoDetecteur.getSkeelz());
+		assertEquals(developpementDetecteurFume, objetCoDetecteur.getCompetence());
 		
 		Entreprise sopra = new Entreprise();
 		sopra.setNom("Sopra Steria");
@@ -133,7 +123,7 @@ public class TestJpaLienssss {
 		userValentin.setEntreprise(sopra);
 		userValentin = utilisateurRepo.save(userValentin);
 		
-		Assert.assertEquals(sopra, userValentin.getEntreprise());
+		assertEquals(sopra, userValentin.getEntreprise());
 		
 //		
 //		Utilisateur userDamien = new Utilisateur();

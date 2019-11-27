@@ -1,22 +1,19 @@
 package sopra.skeelz;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.util.Optional;
 
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.boot.test.context.SpringBootTest;
 
-import repository.ICoursRepository;
+import sopra.skeelz.model.Cours;
+import sopra.skeelz.model.Difficulte;
+import sopra.skeelz.model.Etat;
+import sopra.skeelz.repository.ICoursRepository;
 
-import skeelz.modele.Cours;
-import skeelz.modele.Difficulte;
-import skeelz.modele.Etat;
-
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "/application-context.xml")
+@SpringBootTest
 public class TestJpaCours {
 
 	@Autowired
@@ -40,18 +37,18 @@ public class TestJpaCours {
 
 		Optional<Cours> cours1Find = coursRepo.findById(cours1.getId());
 
-		Assert.assertEquals("java debutant", cours1Find.get().getIntitule());
-		Assert.assertEquals(Difficulte.FACILE, cours1Find.get().getDifficulte());
+		assertEquals("java debutant", cours1Find.get().getIntitule());
+		assertEquals(Difficulte.FACILE, cours1Find.get().getDifficulte());
 
 
 		int middleNumber = coursRepo.findAll().size();
-		Assert.assertEquals(1, (middleNumber - startNumber));
+		assertEquals(1, (middleNumber - startNumber));
 
 		coursRepo.delete(cours1);
 
 		int finalNumber = coursRepo.findAll().size();
 
-		Assert.assertEquals(0, finalNumber - startNumber);
+		assertEquals(0, finalNumber - startNumber);
 
 	}
 

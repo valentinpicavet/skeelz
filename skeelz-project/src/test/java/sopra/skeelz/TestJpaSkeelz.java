@@ -1,55 +1,46 @@
 package sopra.skeelz;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Optional;
 
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.boot.test.context.SpringBootTest;
 
-import repository.ISkeelzRepository;
-import skeelz.modele.Skeelz;
+import sopra.skeelz.model.Skeelz;
+import sopra.skeelz.repository.ISkeelzRepository;
 
-
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations= "/application-context.xml")
+@SpringBootTest
 public class TestJpaSkeelz {
 
 	@Autowired
 	private ISkeelzRepository skeelzRepo;
-	
+
 	@Test
 	public void testSkeelz() {
-		
+
 		int startNumber = skeelzRepo.findAll().size();
-		
-		Skeelz skeelz1 = new Skeelz ();
-		
+
+		Skeelz skeelz1 = new Skeelz();
+
 		skeelz1.setIntitule("Skeelz 1 test");
 
-		
-		
 		skeelz1 = skeelzRepo.save(skeelz1);
-		
-		
-		
-		Optional<Skeelz> skeelz1Find = skeelzRepo.findById(skeelz1.getId());
-		
-		Assert.assertEquals("Skeelz 1 test", skeelz1Find.get().getIntitule());
 
-		
+		Optional<Skeelz> skeelz1Find = skeelzRepo.findById(skeelz1.getId());
+
+		assertEquals("Skeelz 1 test", skeelz1Find.get().getIntitule());
+
 		int middleNumber = skeelzRepo.findAll().size();
-		Assert.assertEquals(1, (middleNumber - startNumber));
-		
+		assertEquals(1, (middleNumber - startNumber));
+
 		skeelzRepo.delete(skeelz1);
-		
+
 		int finalNumber = skeelzRepo.findAll().size();
-		
-		Assert.assertEquals(0, finalNumber - startNumber);
-		
+
+		assertEquals(0, finalNumber - startNumber);
+
 	}
 
 }
