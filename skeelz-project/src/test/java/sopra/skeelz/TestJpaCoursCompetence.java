@@ -1,18 +1,18 @@
 package sopra.skeelz;
 
-import java.util.Optional;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import repository.ICoursCompetenceRepository;
-import skeelz.modele.CoursCompetence;
-import skeelz.modele.RelationCours;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "/application-context.xml")
+import java.util.Optional;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import sopra.skeelz.model.CoursCompetence;
+import sopra.skeelz.model.RelationCours;
+import sopra.skeelz.repository.ICoursCompetenceRepository;
+
+@SpringBootTest
 public class TestJpaCoursCompetence {
 
 	@Autowired
@@ -32,17 +32,17 @@ public class TestJpaCoursCompetence {
 
 		Optional<CoursCompetence> monCoursCompFind = coursCompetenceRepo.findById(monCoursComp.getId());
 
-		Assert.assertEquals(RelationCours.VALIDE, monCoursCompFind.get().getRelationCours());
+		assertEquals(RelationCours.VALIDE, monCoursCompFind.get().getRelationCours());
 
 		int middleNumber = coursCompetenceRepo.findAll().size();
 
-		Assert.assertEquals(1, (middleNumber - startNumber));
+		assertEquals(1, (middleNumber - startNumber));
 
 		coursCompetenceRepo.delete(monCoursComp);
 
 		int finalNumber = coursCompetenceRepo.findAll().size();
 
-		Assert.assertEquals(0, finalNumber - startNumber);
+		assertEquals(0, finalNumber - startNumber);
 	}
 
 }
