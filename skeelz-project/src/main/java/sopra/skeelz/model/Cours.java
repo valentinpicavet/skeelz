@@ -12,26 +12,36 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 public class Cours {
 	
 	@Id
 	@GeneratedValue
+	@JsonView(Views.ViewCours.class)
 	private Long id;
 	@Version
+	@JsonView(Views.ViewCours.class)
 	private int version;
 	@Column(nullable = false, unique = true)
+	@JsonView(Views.ViewCours.class)
 	private String intitule;
 	@Column(nullable = false)
+	@JsonView(Views.ViewCours.class)
 	private String description;
+	@JsonView(Views.ViewCours.class)
 	private String cheminImageCours;
 	@Column(nullable = false)
+	@JsonView(Views.ViewCours.class)
 	private int duree;
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = false)
+	@JsonView(Views.ViewCours.class)
 	private Difficulte difficulte;
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = false)
+	@JsonView(Views.ViewCours.class)
 	private Etat etat;
 	@OneToMany(mappedBy = "cours")
 	private List<CoursCompetence> coursCompetences = new ArrayList<CoursCompetence>();
