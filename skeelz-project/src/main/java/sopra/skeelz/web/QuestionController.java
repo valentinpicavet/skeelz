@@ -26,7 +26,7 @@ public class QuestionController {
 	private IQuestionRepository questionRepo;
 
 	@GetMapping("")
-	@JsonView(Views.ViewCommon.class)
+	@JsonView(Views.ViewQuestion.class)
 	public List<Question> list() {
 		List<Question> questions = questionRepo.findAll();
 
@@ -34,7 +34,7 @@ public class QuestionController {
 	}
 
 	@GetMapping("/{id}")
-	@JsonView(Views.ViewCommon.class)
+	@JsonView(Views.ViewQuestion.class)
 	public Question find(@PathVariable Long id) {
 		Question question = questionRepo.findById(id).get();
 

@@ -26,7 +26,7 @@ public class QCMPersonneController {
 	private IQCMPersonneRepository qcmPersonneRepo;
 
 	@GetMapping("")
-	@JsonView(Views.ViewCommon.class)
+	@JsonView(Views.ViewQCMPersonne.class)
 	public List<QCMPersonne> list() {
 		List<QCMPersonne> qcmPersonnes = qcmPersonneRepo.findAll();
 
@@ -34,7 +34,7 @@ public class QCMPersonneController {
 	}
 
 	@GetMapping("/{id}")
-	@JsonView(Views.ViewCommon.class)
+	@JsonView(Views.ViewQCMPersonne.class)
 	public QCMPersonne find(@PathVariable Long id) {
 		QCMPersonne qcmPersonne = qcmPersonneRepo.findById(id).get();
 		return qcmPersonne;

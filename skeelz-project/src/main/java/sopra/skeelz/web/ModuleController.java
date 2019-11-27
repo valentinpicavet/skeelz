@@ -26,7 +26,7 @@ public class ModuleController {
 	private IModuleRepository moduleRepo;
 
 	@GetMapping("")
-	@JsonView(Views.ViewCommon.class)
+	@JsonView(Views.ViewModule.class)
 	public List<Module> list() {
 		List<Module> modules = moduleRepo.findAll();
 
@@ -34,7 +34,7 @@ public class ModuleController {
 	}
 
 	@GetMapping("/{id}")
-	@JsonView(Views.ViewCommon.class)
+	@JsonView(Views.ViewModule.class)
 	public Module find(@PathVariable Long id) {
 		Module module = moduleRepo.findById(id).get();
 

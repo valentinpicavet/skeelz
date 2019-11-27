@@ -26,7 +26,7 @@ public class EntrepriseController {
 	private IEntrepriseRepository entrepriseRepo;
 
 	@GetMapping("")
-	@JsonView(Views.ViewCommon.class)
+	@JsonView(Views. ViewEntreprise.class)
 	public List<Entreprise> list() {
 		List<Entreprise> entreprises = entrepriseRepo.findAll();
 
@@ -34,7 +34,7 @@ public class EntrepriseController {
 	}
 
 	@GetMapping("/{id}")
-	@JsonView(Views.ViewCommon.class)
+	@JsonView(Views. ViewEntreprise.class)
 	public Entreprise find(@PathVariable Long id) {
 		Entreprise entreprise = entrepriseRepo.findById(id).get();
 
