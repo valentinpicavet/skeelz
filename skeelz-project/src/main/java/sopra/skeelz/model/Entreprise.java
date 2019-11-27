@@ -34,11 +34,15 @@ public class Entreprise {
 	@JsonView(Views.ViewCommon.class)
 	@Column(nullable = false)
 	private String typeContrat;
-	
-	
+
 	@OneToMany(mappedBy = "entreprise")
 	private List<Utilisateur> administrateur = new ArrayList<Utilisateur>();
-	
+	@OneToMany(mappedBy = "entreprise")
+	private List<Skeelz> skeelzs = new ArrayList<Skeelz>();
+	@OneToMany(mappedBy = "entreprise")
+	private List<Cours> courss = new ArrayList<Cours>();
+	@OneToMany(mappedBy = "entreprise")
+	private List<Competence> competences = new ArrayList<Competence>();
 	
 	
 	public Entreprise() {

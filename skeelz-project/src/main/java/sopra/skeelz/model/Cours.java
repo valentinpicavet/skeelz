@@ -9,6 +9,8 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Version;
 
@@ -53,7 +55,9 @@ public class Cours {
 	@JsonView(Views.ViewCoursDetail.class)
 	private List<CoursPersonne> coursPersonnes = new ArrayList<CoursPersonne>();
 	
-	
+	@ManyToOne
+	@JoinColumn(name = "entreprise_id")
+	private Entreprise entreprise;
 	
 	
 	public Cours() {

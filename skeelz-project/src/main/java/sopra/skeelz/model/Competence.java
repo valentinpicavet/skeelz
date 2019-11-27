@@ -9,6 +9,8 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Version;
 
@@ -37,6 +39,10 @@ public class Competence {
 	private List<CoursCompetence> coursCompetence = new ArrayList<CoursCompetence>();
 	@OneToMany(mappedBy = "competence")
 	private List<BilanCompetence> bilanCompetence = new ArrayList<BilanCompetence>();
+	
+	@ManyToOne
+	@JoinColumn(name = "entreprise_id")
+	private Entreprise entreprise;
 
 	public Long getId() {
 		return id;
