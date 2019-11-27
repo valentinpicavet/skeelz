@@ -34,11 +34,11 @@ public class CoursController {
 	}
 
 	@GetMapping("/{id}")
-	@JsonView(Views.ViewCoursDetail.class)
+	@JsonView(Views.ViewCours.class)
 	public Cours find(@PathVariable Long id) {
-		List<Cours> courss = coursRepo.findAllCoursByCompetence();
+		Cours cours = coursRepo.findById(id).get();
 
-		return (Cours) courss;
+		return cours;
 	}
 
 	@PostMapping("")
