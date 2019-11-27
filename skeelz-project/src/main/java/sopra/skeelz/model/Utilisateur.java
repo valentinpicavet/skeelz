@@ -9,24 +9,33 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 public class Utilisateur {
 
 	@Id
 	@GeneratedValue
+	@JsonView(Views.ViewCommon.class)
 	private Long id;
 	@Version
 	private int version;
+	@JsonView(Views.ViewCommon.class)
 	@Column(nullable = false, unique = true)
 	private String mail;
+	@JsonView(Views.ViewCommon.class)
 	@Column(nullable = false)
 	private String password;
+	@JsonView(Views.ViewCommon.class)
 	@Column(nullable = false, unique = true)
 	private String identifiant;
+	@JsonView(Views.ViewCommon.class)
 	@Column(nullable = false)
 	private boolean administrateur = false;
+	@JsonView(Views.ViewCommon.class)
 	@Column(nullable = false)
 	private boolean rh = false ;
+	@JsonView(Views.ViewCommon.class)
 	@Column(nullable = false)
 	private boolean superUser = false;
 	

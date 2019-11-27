@@ -3,10 +3,14 @@ package sopra.skeelz.model;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @DiscriminatorValue("ExtraitCode")
 public class ExtraitCode extends ElementDeCours {
+	@JsonView(Views.ViewCommon.class)
 	private String contenu;
+	@JsonView(Views.ViewCommon.class)
 	private String commentaire;
 	
 	
