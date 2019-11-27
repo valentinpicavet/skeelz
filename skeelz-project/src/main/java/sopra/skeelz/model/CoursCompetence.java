@@ -12,17 +12,22 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Table(uniqueConstraints= {@UniqueConstraint(columnNames = { "cours_id", "competence_id"})})
 public class CoursCompetence {
 	
 	@Id
 	@GeneratedValue
+	@JsonView(Views.ViewCommon.class)
 	private Long id; 
 	@Version
+	@JsonView(Views.ViewCommon.class)
 	private int version;
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = false)
+	@JsonView(Views.ViewCommon.class)
 	private RelationCours relationCours;
 	@ManyToOne
 	@JoinColumn(name = "cours_id")//, nullable = false)
