@@ -39,10 +39,18 @@ public class Competence {
 	private List<CoursCompetence> coursCompetence = new ArrayList<CoursCompetence>();
 	@OneToMany(mappedBy = "competence")
 	private List<BilanCompetence> bilanCompetence = new ArrayList<BilanCompetence>();
-	
+
 	@ManyToOne
 	@JoinColumn(name = "entreprise_id")
 	private Entreprise entreprise;
+
+	public Entreprise getEntreprise() {
+		return entreprise;
+	}
+
+	public void setEntreprise(Entreprise entreprise) {
+		this.entreprise = entreprise;
+	}
 
 	public Long getId() {
 		return id;

@@ -30,10 +30,18 @@ public class Skeelz {
 	private List<BilanCompetence> bilanCompetence = new ArrayList<BilanCompetence>();
 	@OneToMany(mappedBy = "skeelz")
 	private List<CompetenceSkeelz> competenceSkeelz = new ArrayList<CompetenceSkeelz>();
-	
+
 	@ManyToOne
 	@JoinColumn(name = "entreprise_id")
 	private Entreprise entreprise;
+
+	public Entreprise getEntreprise() {
+		return entreprise;
+	}
+
+	public void setEntreprise(Entreprise entreprise) {
+		this.entreprise = entreprise;
+	}
 
 	public Long getId() {
 		return id;

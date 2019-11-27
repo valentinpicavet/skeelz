@@ -85,26 +85,28 @@ public class JeuDeDonnee {
 
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
+		Entreprise sopra = new Entreprise();
+		sopra.setNom("Sopra Steria");
+		sopra.setNumeroSiret("ST0045");
+		sopra.setTypeContrat("Contrat de ouf");
+		sopra = entrepriseRepo.save(sopra);
+
 		Skeelz objetConnecte = new Skeelz();
 		objetConnecte.setIntitule("Objet Connecté");
+		objetConnecte.setEntreprise(sopra);
 		objetConnecte = skeelzRepo.save(objetConnecte);
 
 		Competence developpementDetecteurFume = new Competence();
 		developpementDetecteurFume.setDescription("Vous êtes capable de concevoir un détécteur de fumées connecté");
 		developpementDetecteurFume.setIntitule("Développement d'un détecteur de fumée connecté");
 		developpementDetecteurFume.setPonderation(Ponderation.DIX);
+		developpementDetecteurFume.setEntreprise(sopra);
 		developpementDetecteurFume = competenceRepo.save(developpementDetecteurFume);
 
 		CompetenceSkeelz objetCoDetecteur = new CompetenceSkeelz();
 		objetCoDetecteur.setCompetence(developpementDetecteurFume);
 		objetCoDetecteur.setSkeelz(objetConnecte);
 		objetCoDetecteur = competenceSkeelzRepo.save(objetCoDetecteur);
-
-		Entreprise sopra = new Entreprise();
-		sopra.setNom("Sopra Steria");
-		sopra.setNumeroSiret("ST0045");
-		sopra.setTypeContrat("Contrat de ouf");
-		sopra = entrepriseRepo.save(sopra);
 
 		Utilisateur userValentin = new Utilisateur();
 		userValentin.setIdentifiant("Valentin");
@@ -205,6 +207,7 @@ public class JeuDeDonnee {
 		detecteurFume.setDescription(
 				"Dans ce cours, vous allez découvrir comment concevoir un objet connecté simple dans son contexte opérationnel : un détecteur de fumée connecté, depuis la définition des besoins jusqu’au prototypage.");
 		detecteurFume.setCheminImageCours("Le chemin");
+		detecteurFume.setEntreprise(sopra);
 		detecteurFume = coursRepo.save(detecteurFume);
 
 		CoursCompetence detecteurFumeComp = new CoursCompetence();

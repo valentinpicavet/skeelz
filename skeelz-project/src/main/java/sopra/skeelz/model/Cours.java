@@ -18,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
 public class Cours {
-	
+
 	@Id
 	@GeneratedValue
 	@JsonView(Views.ViewCours.class)
@@ -54,98 +54,109 @@ public class Cours {
 	@OneToMany(mappedBy = "cours")
 	@JsonView(Views.ViewCoursDetail.class)
 	private List<CoursPersonne> coursPersonnes = new ArrayList<CoursPersonne>();
-	
+
 	@ManyToOne
 	@JoinColumn(name = "entreprise_id")
 	private Entreprise entreprise;
-	
-	
+
 	public Cours() {
 		super();
 	}
-	
-	
-	
+
+	public Entreprise getEntreprise() {
+		return entreprise;
+	}
+
+	public void setEntreprise(Entreprise entreprise) {
+		this.entreprise = entreprise;
+	}
+
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 	public int getVersion() {
 		return version;
 	}
+
 	public void setVersion(int version) {
 		this.version = version;
 	}
+
 	public String getIntitule() {
 		return intitule;
 	}
+
 	public void setIntitule(String intitule) {
 		this.intitule = intitule;
 	}
+
 	public int getDuree() {
 		return duree;
 	}
+
 	public void setDuree(int duree) {
 		this.duree = duree;
 	}
+
 	public Difficulte getDifficulte() {
 		return difficulte;
 	}
+
 	public void setDifficulte(Difficulte difficulte) {
 		this.difficulte = difficulte;
 	}
+
 	public Etat getEtat() {
 		return etat;
 	}
+
 	public void setEtat(Etat etat) {
 		this.etat = etat;
 	}
+
 	public List<CoursCompetence> getCoursCompetences() {
 		return coursCompetences;
 	}
+
 	public void setCoursCompetences(List<CoursCompetence> coursCompetences) {
 		this.coursCompetences = coursCompetences;
 	}
+
 	public List<Module> getModules() {
 		return modules;
 	}
+
 	public void setModules(List<Module> modules) {
 		this.modules = modules;
 	}
+
 	public List<CoursPersonne> getCoursPersonnes() {
 		return coursPersonnes;
 	}
+
 	public void setCoursPersonnes(List<CoursPersonne> coursPersonnes) {
 		this.coursPersonnes = coursPersonnes;
 	}
-
-
 
 	public String getDescription() {
 		return description;
 	}
 
-
-
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
-
 
 	public String getCheminImageCours() {
 		return cheminImageCours;
 	}
 
-
-
 	public void setCheminImageCours(String cheminImageCours) {
 		this.cheminImageCours = cheminImageCours;
 	}
-	
-	
-
 
 }
