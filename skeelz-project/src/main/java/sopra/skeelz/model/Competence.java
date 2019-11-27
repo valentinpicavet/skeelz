@@ -12,17 +12,23 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 public class Competence {
 	@Id
 	@GeneratedValue
+	@JsonView(Views.ViewCommon.class)
 	private Long id;
 	@Version
+	@JsonView(Views.ViewCommon.class)
 	private int version;
 	@Column(nullable = false, unique = true)
+	@JsonView(Views.ViewCommon.class)
 	private String intitule;
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = false)
+	@JsonView(Views.ViewCommon.class)
 	private Ponderation ponderation;
 	private String description;
 	@OneToMany(mappedBy = "competence")

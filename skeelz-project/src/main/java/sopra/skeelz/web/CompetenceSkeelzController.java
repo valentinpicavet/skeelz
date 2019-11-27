@@ -15,49 +15,47 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import sopra.skeelz.model.BilanCompetence;
-import sopra.skeelz.model.Competence;
 import sopra.skeelz.model.Skeelz;
 import sopra.skeelz.model.Views;
 import sopra.skeelz.model.Views.ViewSkeelz;
-import sopra.skeelz.repository.ICompetenceRepository;
 import sopra.skeelz.repository.ISkeelzRepository;
 
 @RestController
-@RequestMapping("/competence")
-public class CompetenceController {
+@RequestMapping("/skeelz")
+public class CompetenceSkeelzController {
 	
 	@Autowired
-	private ICompetenceRepository competenceRepo;
+	private ISkeelzRepository skeelzRepo;
 	
 	@GetMapping("")
-	@JsonView(Views.ViewCompetence.class)
-	public List<Competence> list() {
-		List<Competence> competences = competenceRepo.findAll();
+	@JsonView(Views.ViewSkeelz.class)
+	public List<Skeelz> list() {
+		List<Skeelz> skeelzs = skeelzRepo.findAll();
 
-		return competences;
+		return skeelzs;
 	}
 
 	@GetMapping("/{id}")
-	@JsonView(Views.ViewCompetence.class)
-	public Competence find(@PathVariable Long id) {
-		Competence competence = competenceRepo.findById(id).get();
+	@JsonView(Views.ViewSkeelz.class)
+	public Skeelz find(@PathVariable Long id) {
+		Skeelz skeelz = skeelzRepo.findById(id).get();
 
-		return competence;
+		return skeelz;
 	}
 
 	@PostMapping("")
-	public Competence create(@RequestBody Competence competence) {
-		return competenceRepo.save(competence);
+	public Skeelz create(@RequestBody Skeelz skeelz) {
+		return skeelzRepo.save(skeelz);
 	}
 
 	@PutMapping("/{id}")
-	public Competence update(@RequestBody Competence competence, @PathVariable Long id) {
-		return competenceRepo.save(competence);
+	public Skeelz update(@RequestBody Skeelz skeelz, @PathVariable Long id) {
+		return skeelzRepo.save(skeelz);
 	}
 
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable Long id) {
-		competenceRepo.deleteById(id);
+		skeelzRepo.deleteById(id);
 	}
 
 }
