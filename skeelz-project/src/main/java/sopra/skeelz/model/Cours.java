@@ -44,10 +44,13 @@ public class Cours {
 	@JsonView(Views.ViewCours.class)
 	private Etat etat;
 	@OneToMany(mappedBy = "cours")
+	@JsonView(Views.ViewCoursDetail.class)
 	private List<CoursCompetence> coursCompetences = new ArrayList<CoursCompetence>();
 	@OneToMany(mappedBy = "cours")
+	@JsonView(Views.ViewCoursDetail.class)
 	private List<Module> modules = new ArrayList<Module>();
 	@OneToMany(mappedBy = "cours")
+	@JsonView(Views.ViewCoursDetail.class)
 	private List<CoursPersonne> coursPersonnes = new ArrayList<CoursPersonne>();
 	
 	

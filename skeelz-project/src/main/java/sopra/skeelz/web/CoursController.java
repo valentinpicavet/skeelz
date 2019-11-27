@@ -2,6 +2,7 @@ package sopra.skeelz.web;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,39 +14,47 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import sopra.skeelz.model.Cours;
+import sopra.skeelz.model.CoursCompetence;
+import sopra.skeelz.model.Views;
+import sopra.skeelz.repository.ICoursRepository;
+
 @RestController
-@RequestMapping("/BilanCompetence")
-public class BilanCompetenceController {
+@RequestMapping("/cours")
+public class CoursController {
+	
+	@Autowired
+	private ICoursRepository coursRepo;
 	
 	@GetMapping("")
-	@JsonView(Views.ViewEvaluation.class)
-	public List<Evaluation> list() {
-		List<Evaluation> evaluations = evaluationRepo.findAll();
+	@JsonView(Views.ViewCours.class)
+	public List<Cours> list() {
+		List<Cours> courss = coursRepo.findAll();
 
-		return evaluations;
+		return courss;
 	}
 
-	@GetMapping("/{id}")
-	@JsonView(Views.ViewEvaluationDetail.class)
-	public Evaluation find(@PathVariable Long id) {
-		Evaluation evaluation = evaluationRepo.findWithStagiaire(id);
-
-		return evaluation;
-	}
+//	@GetMapping("/{id}:{id}")
+//	@JsonView(Views.ViewCoursDetail.class)
+//	public Cours find(@PathVariable Long id) {
+//		List<Cours> courss = coursRepo.findAllCoursByCompetence();
+//
+//		return (Cours) courss;
+//	}
 
 	@PostMapping("")
-	public Evaluation create(@RequestBody Evaluation evaluation) {
-		return evaluationRepo.save(evaluation);
+	public Cours create(@RequestBody Cours cours) {
+		return coursRepo.save(cours);
 	}
 
 	@PutMapping("/{id}")
-	public Evaluation update(@RequestBody Evaluation evaluation, @PathVariable Long id) {
-		return evaluationRepo.save(evaluation);
+	public Cours update(@RequestBody Cours cours, @PathVariable Long id) {
+		return coursRepo.save(cours);
 	}
 
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable Long id) {
-		evaluationRepo.deleteById(id);
+		coursRepo.deleteById(id);
 	}
 
 }

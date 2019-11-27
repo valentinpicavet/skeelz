@@ -9,4 +9,6 @@ public class Views {
 	}
 
 	public static class ViewCours extends ViewCommon{}
+	
+	public static class ViewCoursDetail extends ViewCours{}
 }
