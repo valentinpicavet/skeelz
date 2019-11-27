@@ -7,5 +7,9 @@ public class Views {
 	
 	public static class ViewBilanCompetence extends ViewCommon {
 	}
+	
+	public static class ViewSkeelz extends ViewCommon{
+		
+	}
 
 }
