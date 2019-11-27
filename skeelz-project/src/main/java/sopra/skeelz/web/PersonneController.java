@@ -14,46 +14,46 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import sopra.skeelz.model.Module;
+import sopra.skeelz.model.Personne;
 import sopra.skeelz.model.Views;
-import sopra.skeelz.repository.IModuleRepository;
+import sopra.skeelz.repository.IPersonneRepository;
 
 
 @RestController
-@RequestMapping("/module")
-public class ModuleController {
+@RequestMapping("/personne")
+public class PersonneController {
 	@Autowired
-	private IModuleRepository moduleRepo;
+	private IPersonneRepository personneRepo;
 
 	@GetMapping("")
-	@JsonView(Views.ViewModule.class)
-	public List<Module> list() {
-		List<Module> modules = moduleRepo.findAll();
+	@JsonView(Views.ViewCommon.class)
+	public List<Personne> list() {
+		List<Personne> personnes = personneRepo.findAll();
 
-		return modules;
+		return personnes;
 	}
 
 	@GetMapping("/{id}")
-	@JsonView(Views.ViewModule.class)
-	public Module find(@PathVariable Long id) {
-		Module module = moduleRepo.findById(id).get();
+	@JsonView(Views.ViewCommon.class)
+	public Personne find(@PathVariable Long id) {
+		Personne personne = personneRepo.findById(id).get();
 
-		return module;
+		return personne;
 	}
 
 	@PostMapping("")
-	public Module create(@RequestBody Module module) {
-		return moduleRepo.save(module);
+	public Personne create(@RequestBody Personne personne) {
+		return personneRepo.save(personne);
 	}
 
 	@PutMapping("/{id}")
-	public Module update(@RequestBody Module module, @PathVariable Long id) {
-		return moduleRepo.save(module);
+	public Personne update(@RequestBody Personne personne, @PathVariable Long id) {
+		return personneRepo.save(personne);
 	}
 
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable Long id) {
-		moduleRepo.deleteById(id);
+		personneRepo.deleteById(id);
 	}
 }
 

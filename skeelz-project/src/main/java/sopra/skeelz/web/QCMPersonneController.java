@@ -14,46 +14,45 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import sopra.skeelz.model.Module;
+import sopra.skeelz.model.QCMPersonne;
 import sopra.skeelz.model.Views;
-import sopra.skeelz.repository.IModuleRepository;
+import sopra.skeelz.repository.IQCMPersonneRepository;
 
 
 @RestController
-@RequestMapping("/module")
-public class ModuleController {
+@RequestMapping("/qcmPersonne")
+public class QCMPersonneController {
 	@Autowired
-	private IModuleRepository moduleRepo;
+	private IQCMPersonneRepository qcmPersonneRepo;
 
 	@GetMapping("")
-	@JsonView(Views.ViewModule.class)
-	public List<Module> list() {
-		List<Module> modules = moduleRepo.findAll();
+	@JsonView(Views.ViewQCMPersonne.class)
+	public List<QCMPersonne> list() {
+		List<QCMPersonne> qcmPersonnes = qcmPersonneRepo.findAll();
 
-		return modules;
+		return qcmPersonnes;
 	}
 
 	@GetMapping("/{id}")
-	@JsonView(Views.ViewModule.class)
-	public Module find(@PathVariable Long id) {
-		Module module = moduleRepo.findById(id).get();
-
-		return module;
+	@JsonView(Views.ViewQCMPersonne.class)
+	public QCMPersonne find(@PathVariable Long id) {
+		QCMPersonne qcmPersonne = qcmPersonneRepo.findById(id).get();
+		return qcmPersonne;
 	}
 
 	@PostMapping("")
-	public Module create(@RequestBody Module module) {
-		return moduleRepo.save(module);
+	public QCMPersonne create(@RequestBody QCMPersonne qcmPersonne) {
+		return qcmPersonneRepo.save(qcmPersonne);
 	}
 
 	@PutMapping("/{id}")
-	public Module update(@RequestBody Module module, @PathVariable Long id) {
-		return moduleRepo.save(module);
+	public QCMPersonne update(@RequestBody QCMPersonne qcmPersonne, @PathVariable Long id) {
+		return qcmPersonneRepo.save(qcmPersonne);
 	}
 
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable Long id) {
-		moduleRepo.deleteById(id);
+		qcmPersonneRepo.deleteById(id);
 	}
 }
 

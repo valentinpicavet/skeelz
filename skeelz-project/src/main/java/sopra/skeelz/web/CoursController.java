@@ -14,47 +14,47 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import sopra.skeelz.model.Module;
+import sopra.skeelz.model.Cours;
+import sopra.skeelz.model.CoursCompetence;
 import sopra.skeelz.model.Views;
-import sopra.skeelz.repository.IModuleRepository;
-
+import sopra.skeelz.repository.ICoursRepository;
 
 @RestController
-@RequestMapping("/module")
-public class ModuleController {
+@RequestMapping("/cours")
+public class CoursController {
+	
 	@Autowired
-	private IModuleRepository moduleRepo;
-
+	private ICoursRepository coursRepo;
+	
 	@GetMapping("")
-	@JsonView(Views.ViewModule.class)
-	public List<Module> list() {
-		List<Module> modules = moduleRepo.findAll();
+	@JsonView(Views.ViewCours.class)
+	public List<Cours> list() {
+		List<Cours> courss = coursRepo.findAll();
 
-		return modules;
+		return courss;
 	}
 
-	@GetMapping("/{id}")
-	@JsonView(Views.ViewModule.class)
-	public Module find(@PathVariable Long id) {
-		Module module = moduleRepo.findById(id).get();
-
-		return module;
-	}
+//	@GetMapping("/{id}:{id}")
+//	@JsonView(Views.ViewCoursDetail.class)
+//	public Cours find(@PathVariable Long id) {
+//		List<Cours> courss = coursRepo.findAllCoursByCompetence();
+//
+//		return (Cours) courss;
+//	}
 
 	@PostMapping("")
-	public Module create(@RequestBody Module module) {
-		return moduleRepo.save(module);
+	public Cours create(@RequestBody Cours cours) {
+		return coursRepo.save(cours);
 	}
 
 	@PutMapping("/{id}")
-	public Module update(@RequestBody Module module, @PathVariable Long id) {
-		return moduleRepo.save(module);
+	public Cours update(@RequestBody Cours cours, @PathVariable Long id) {
+		return coursRepo.save(cours);
 	}
 
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable Long id) {
-		moduleRepo.deleteById(id);
+		coursRepo.deleteById(id);
 	}
+
 }
-
-

@@ -14,46 +14,46 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import sopra.skeelz.model.Module;
+import sopra.skeelz.model.Entreprise;
 import sopra.skeelz.model.Views;
-import sopra.skeelz.repository.IModuleRepository;
+import sopra.skeelz.repository.IEntrepriseRepository;
 
 
 @RestController
-@RequestMapping("/module")
-public class ModuleController {
+@RequestMapping("/entreprise")
+public class EntrepriseController {
 	@Autowired
-	private IModuleRepository moduleRepo;
+	private IEntrepriseRepository entrepriseRepo;
 
 	@GetMapping("")
-	@JsonView(Views.ViewModule.class)
-	public List<Module> list() {
-		List<Module> modules = moduleRepo.findAll();
+	@JsonView(Views. ViewEntreprise.class)
+	public List<Entreprise> list() {
+		List<Entreprise> entreprises = entrepriseRepo.findAll();
 
-		return modules;
+		return entreprises;
 	}
 
 	@GetMapping("/{id}")
-	@JsonView(Views.ViewModule.class)
-	public Module find(@PathVariable Long id) {
-		Module module = moduleRepo.findById(id).get();
+	@JsonView(Views. ViewEntreprise.class)
+	public Entreprise find(@PathVariable Long id) {
+		Entreprise entreprise = entrepriseRepo.findById(id).get();
 
-		return module;
+		return entreprise;
 	}
 
 	@PostMapping("")
-	public Module create(@RequestBody Module module) {
-		return moduleRepo.save(module);
+	public Entreprise create(@RequestBody Entreprise entreprise) {
+		return entrepriseRepo.save(entreprise);
 	}
 
 	@PutMapping("/{id}")
-	public Module update(@RequestBody Module module, @PathVariable Long id) {
-		return moduleRepo.save(module);
+	public Entreprise update(@RequestBody Entreprise entreprise, @PathVariable Long id) {
+		return entrepriseRepo.save(entreprise);
 	}
 
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable Long id) {
-		moduleRepo.deleteById(id);
+		entrepriseRepo.deleteById(id);
 	}
 }
 

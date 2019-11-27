@@ -15,49 +15,49 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import sopra.skeelz.model.BilanCompetence;
-import sopra.skeelz.model.Competence;
+import sopra.skeelz.model.CompetenceSkeelz;
 import sopra.skeelz.model.Skeelz;
 import sopra.skeelz.model.Views;
 import sopra.skeelz.model.Views.ViewSkeelz;
-import sopra.skeelz.repository.ICompetenceRepository;
+import sopra.skeelz.repository.ICompetenceSkeelzRepository;
 import sopra.skeelz.repository.ISkeelzRepository;
 
 @RestController
-@RequestMapping("/competence")
-public class CompetenceController {
+@RequestMapping("/competenceSkeelz")
+public class CompetenceSkeelzController {
 	
 	@Autowired
-	private ICompetenceRepository competenceRepo;
+	private ICompetenceSkeelzRepository competenceSkeelzRepo;
 	
 	@GetMapping("")
-	@JsonView(Views.ViewCompetence.class)
-	public List<Competence> list() {
-		List<Competence> competences = competenceRepo.findAll();
+	@JsonView(Views.ViewCompetenceSkeelz.class)
+	public List<CompetenceSkeelz> list() {
+		List<CompetenceSkeelz> competenceSkeelzs = competenceSkeelzRepo.findAll();
 
-		return competences;
+		return competenceSkeelzs;
 	}
 
 	@GetMapping("/{id}")
-	@JsonView(Views.ViewCompetence.class)
-	public Competence find(@PathVariable Long id) {
-		Competence competence = competenceRepo.findById(id).get();
+	@JsonView(Views.ViewCompetenceSkeelz.class)
+	public CompetenceSkeelz find(@PathVariable Long id) {
+		CompetenceSkeelz competenceSkeelz = competenceSkeelzRepo.findById(id).get();
 
-		return competence;
+		return competenceSkeelz;
 	}
 
 	@PostMapping("")
-	public Competence create(@RequestBody Competence competence) {
-		return competenceRepo.save(competence);
+	public CompetenceSkeelz create(@RequestBody CompetenceSkeelz competenceSkeelz) {
+		return competenceSkeelzRepo.save(competenceSkeelz);
 	}
 
 	@PutMapping("/{id}")
-	public Competence update(@RequestBody Competence competence, @PathVariable Long id) {
-		return competenceRepo.save(competence);
+	public CompetenceSkeelz update(@RequestBody CompetenceSkeelz competenceSkeelz, @PathVariable Long id) {
+		return competenceSkeelzRepo.save(competenceSkeelz);
 	}
 
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable Long id) {
-		competenceRepo.deleteById(id);
+		competenceSkeelzRepo.deleteById(id);
 	}
 
 }
