@@ -30,8 +30,8 @@ public class Views {
 
 	public static class ViewModule extends ViewCommon {}
 	
-	public static class ViewCoursPersonneDetail extends ViewCoursPersonne {}
-	
+	public static class ViewCoursPersonneDetail extends ViewCoursPersonne {
+	}
 	public static class ViewChapitre extends ViewCommon {}
 	
 	public static class ViewElementdeCours extends ViewCommon {}
