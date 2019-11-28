@@ -17,8 +17,10 @@ import com.fasterxml.jackson.annotation.JsonView;
 import sopra.skeelz.model.Cours;
 import sopra.skeelz.model.Difficulte;
 import sopra.skeelz.model.Etat;
+import sopra.skeelz.model.Module;
 import sopra.skeelz.model.Views;
 import sopra.skeelz.repository.ICoursRepository;
+import sopra.skeelz.repository.IModuleRepository;
 
 @RestController
 @RequestMapping("/cours")
@@ -26,6 +28,9 @@ public class CoursController {
 	
 	@Autowired
 	private ICoursRepository coursRepo;
+	
+	@Autowired
+	private IModuleRepository moduleRepo;
 	
 	@GetMapping("")
 	@JsonView(Views.ViewCours.class)
@@ -46,6 +51,7 @@ public class CoursController {
 	@JsonView(Views.ViewCours.class)
 	public List<Cours> find(@PathVariable Etat etat) {
 		List<Cours> courss = coursRepo.findAllCoursByEtat(etat);
+	
 
 		return courss;
 	}

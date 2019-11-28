@@ -18,6 +18,8 @@ public class Views {
 
 	public static class ViewCours extends ViewCommon {}
 	
+	public static class ViewCoursModuleByAgencement extends ViewCours {}
+	
 	public static class ViewPersonne extends ViewCommon {}
 	
 	public static class ViewPersonneCourss extends ViewPersonne {}
