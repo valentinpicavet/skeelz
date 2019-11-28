@@ -40,6 +40,10 @@ public interface ICoursRepository extends JpaRepository<Cours, Long> {
 	
 	@Query ("from Cours c where c.difficulte = :difficulte")
 	List<Cours> findAllCoursByDifficulte (@Param("difficulte") Difficulte difficulte);
+	
+	@Query ("from Cours c where c.intitule = :intitule")
+	List<Cours> findAllCoursByIntitule (@Param("intitule") String intitule);
+	
 
 	
 	

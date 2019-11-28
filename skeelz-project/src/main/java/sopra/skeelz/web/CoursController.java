@@ -56,6 +56,13 @@ public class CoursController {
 
 		return courss;
 	}
+	@GetMapping("/by-intitule/{intitule}")
+	@JsonView(Views.ViewCours.class)
+	public List<Cours> find(@PathVariable String intitule) {
+		List<Cours> courss = coursRepo.findAllCoursByIntitule(intitule);
+
+		return courss;
+	}
 	
 
 	@PostMapping("")
