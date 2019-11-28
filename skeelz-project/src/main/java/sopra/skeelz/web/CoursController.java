@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import sopra.skeelz.model.Cours;
+import sopra.skeelz.model.Difficulte;
+import sopra.skeelz.model.Etat;
 import sopra.skeelz.model.Module;
 import sopra.skeelz.model.Views;
 import sopra.skeelz.repository.ICoursRepository;
@@ -44,6 +46,21 @@ public class CoursController {
 		Cours cours = coursRepo.findById(id).get();
 
 		return cours;
+	}
+	@GetMapping("/by-etat/{etat}")
+	@JsonView(Views.ViewCours.class)
+	public List<Cours> find(@PathVariable Etat etat) {
+		List<Cours> courss = coursRepo.findAllCoursByEtat(etat);
+	
+
+		return courss;
+	}
+	@GetMapping("/by-difficulte/{difficulte}")
+	@JsonView(Views.ViewCours.class)
+	public List<Cours> find(@PathVariable Difficulte difficulte) {
+		List<Cours> courss = coursRepo.findAllCoursByDifficulte(difficulte);
+
+		return courss;
 	}
 	
 
