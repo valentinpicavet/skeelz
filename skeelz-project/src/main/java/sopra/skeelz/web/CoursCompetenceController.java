@@ -14,10 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import sopra.skeelz.model.BilanCompetence;
 import sopra.skeelz.model.CoursCompetence;
 import sopra.skeelz.model.Views;
-import sopra.skeelz.repository.IBilanCompetenceRepository;
 import sopra.skeelz.repository.ICoursCompetenceRepository;
 
 @RestController

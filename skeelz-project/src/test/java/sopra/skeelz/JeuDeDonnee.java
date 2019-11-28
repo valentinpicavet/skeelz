@@ -688,6 +688,7 @@ public class JeuDeDonnee {
 		javaDebutant.setDescription(
 				"Dans ce cours, vous allez apprendre les bases du langage de programmation le plus utilisé au monde");
 		javaDebutant.setCheminImageCours("Le chemin");
+		javaDebutant.setEntreprise(sopra);
 		javaDebutant = coursRepo.save(javaDebutant);
 
 		Module introduction = new Module();

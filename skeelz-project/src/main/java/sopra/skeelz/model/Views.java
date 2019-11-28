@@ -41,6 +41,10 @@ public class Views {
 	public static class ViewReponse extends ViewCommon {}
 	public static class ViewUtilisateur extends ViewCommon {}
 	public static class ViewEntreprise extends ViewCommon {}
+	public static class ViewEntrepriseUtilisateurs extends ViewEntreprise{}
+	public static class ViewEntrepriseCourss extends ViewEntreprise{}
+	public static class ViewEntrepriseCompetences extends ViewEntreprise{}
+	public static class ViewEntrepriseSkeelzs extends ViewEntreprise{}
 	
 }
 

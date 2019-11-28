@@ -32,6 +32,7 @@ public class UtilisateurController {
 
 		return utilisateurs;
 	}
+	
 
 	@GetMapping("/{id}")
 	@JsonView(Views.ViewUtilisateur.class)

@@ -43,6 +43,7 @@ public class Utilisateur {
 	@JoinColumn(name = "entreprise_id")//, nullable = false)
 	private Entreprise entreprise;
 	@OneToOne(mappedBy = "utilisateur")
+	@JsonView(Views.ViewEntrepriseUtilisateurs.class)
 	private Personne personne;
 	
 	public Long getId() {

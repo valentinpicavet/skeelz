@@ -21,29 +21,29 @@ public class Cours {
 
 	@Id
 	@GeneratedValue
-	@JsonView(Views.ViewCours.class)
+	@JsonView(Views.ViewCommon.class)
 	private Long id;
 	@Version
-	@JsonView(Views.ViewCours.class)
+	@JsonView(Views.ViewCommon.class)
 	private int version;
 	@Column(nullable = false, unique = true)
-	@JsonView(Views.ViewCours.class)
+	@JsonView(Views.ViewCommon.class)
 	private String intitule;
 	@Column(nullable = false)
-	@JsonView(Views.ViewCours.class)
+	@JsonView(Views.ViewCommon.class)
 	private String description;
-	@JsonView(Views.ViewCours.class)
+	@JsonView(Views.ViewCommon.class)
 	private String cheminImageCours;
 	@Column(nullable = false)
-	@JsonView(Views.ViewCours.class)
+	@JsonView(Views.ViewCommon.class)
 	private int duree;
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = false)
-	@JsonView(Views.ViewCours.class)
+	@JsonView(Views.ViewCommon.class)
 	private Difficulte difficulte;
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = false)
-	@JsonView(Views.ViewCours.class)
+	@JsonView(Views.ViewCommon.class)
 	private Etat etat;
 	@OneToMany(mappedBy = "cours")
 	@JsonView(Views.ViewCoursDetail.class)

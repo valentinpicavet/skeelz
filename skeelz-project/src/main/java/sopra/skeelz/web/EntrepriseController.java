@@ -14,9 +14,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import sopra.skeelz.model.Competence;
+import sopra.skeelz.model.Cours;
 import sopra.skeelz.model.Entreprise;
+import sopra.skeelz.model.Skeelz;
+import sopra.skeelz.model.Utilisateur;
 import sopra.skeelz.model.Views;
+import sopra.skeelz.repository.ICompetenceRepository;
+import sopra.skeelz.repository.ICoursRepository;
 import sopra.skeelz.repository.IEntrepriseRepository;
+import sopra.skeelz.repository.ISkeelzRepository;
+import sopra.skeelz.repository.IUtilisateurRepository;
 
 
 @RestController
@@ -24,6 +32,18 @@ import sopra.skeelz.repository.IEntrepriseRepository;
 public class EntrepriseController {
 	@Autowired
 	private IEntrepriseRepository entrepriseRepo;
+	
+	@Autowired
+	private IUtilisateurRepository utilisateurRepo;
+	
+	@Autowired
+	private ICoursRepository coursRepo;
+	
+	@Autowired
+	private ICompetenceRepository competenceRepo;
+	
+	@Autowired
+	private ISkeelzRepository skeelzRepo;
 
 	@GetMapping("")
 	@JsonView(Views. ViewEntreprise.class)
@@ -40,6 +60,39 @@ public class EntrepriseController {
 
 		return entreprise;
 	}
+	
+	@GetMapping("/{id}/utilisateurs")
+	@JsonView(Views. ViewEntrepriseUtilisateurs.class)
+	public List<Utilisateur> findUtilisateur(@PathVariable Long id) {
+		List<Utilisateur> utilisateurs = utilisateurRepo.findUtilisateurByIdEntreprise(id);
+
+		return utilisateurs;
+	}
+	
+	@GetMapping("/{id}/courss")
+	@JsonView(Views. ViewEntrepriseCourss.class)
+	public List<Cours> findCours(@PathVariable Long id) {
+		List<Cours> courss = coursRepo.findCoursByIdEntreprise(id);
+
+		return courss;
+	}
+	
+	@GetMapping("/{id}/competences")
+	@JsonView(Views. ViewEntrepriseCompetences.class)
+	public List<Competence> findCompetence(@PathVariable Long id) {
+		List<Competence> competences = competenceRepo.findCompetenceByIdEntreprise(id);
+
+		return competences;
+	}
+	
+	@GetMapping("/{id}/skeelzs")
+	@JsonView(Views. ViewEntrepriseSkeelzs.class)
+	public List<Skeelz> findSkeelz(@PathVariable Long id) {
+		List<Skeelz> skeelzs = skeelzRepo.findSkeelzByIdEntreprise(id);
+
+		return skeelzs;
+	}
+
 
 	@PostMapping("")
 	public Entreprise create(@RequestBody Entreprise entreprise) {
