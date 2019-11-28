@@ -21,6 +21,8 @@ public class Views {
 	public static class ViewPersonne extends ViewCommon {}
 	
 	public static class ViewPersonneCourss extends ViewPersonne {}
+	
+	public static class ViewPersonneCompetences extends ViewPersonne {}
 
 	public static class ViewCoursDetail extends ViewCours {}
 
@@ -28,11 +30,15 @@ public class Views {
 
 	public static class ViewModule extends ViewCommon {}
 	
+	public static class ViewCoursPersonneDetail extends ViewCoursPersonne {
+	}
 	public static class ViewChapitre extends ViewCommon {}
 	
 	public static class ViewElementdeCours extends ViewCommon {}
 	
 	public static class ViewQCMPersonne extends ViewCommon {}
+	
+	public static class ViewQCMPersonnePersonneModule extends ViewQCMPersonne {}
 	
 	public static class ViewQuestion extends ViewCommon {}
 	
