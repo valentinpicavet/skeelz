@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import sopra.skeelz.model.Cours;
+import sopra.skeelz.model.Etat;
 
 
 public interface ICoursRepository extends JpaRepository<Cours, Long> {
@@ -30,6 +31,11 @@ public interface ICoursRepository extends JpaRepository<Cours, Long> {
 	
 	@Query("select cp.cours from CoursPersonne cp where cp.personne.id = :id")
 	List<Cours> findCoursByIdPersonne (@Param("id") Long id);
+	
+	//***********************VM
+	
+	@Query ("from Cours c where c.etat = :etat")
+	List<Cours> findAllCoursByEtat (@Param("etat") Etat etat);
 
 	
 	
