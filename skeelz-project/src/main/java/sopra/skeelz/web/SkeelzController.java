@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import sopra.skeelz.model.Personne;
 import sopra.skeelz.model.Skeelz;
 import sopra.skeelz.model.Views;
+import sopra.skeelz.repository.IPersonneRepository;
 import sopra.skeelz.repository.ISkeelzRepository;
 
 @RestController
@@ -24,6 +26,8 @@ public class SkeelzController {
 	
 	@Autowired
 	private ISkeelzRepository skeelzRepo;
+	@Autowired
+	private IPersonneRepository personneRepo;
 	
 	@GetMapping("")
 	@JsonView(Views.ViewSkeelz.class)
@@ -39,6 +43,14 @@ public class SkeelzController {
 		Skeelz skeelz = skeelzRepo.findById(id).get();
 
 		return skeelz;
+	}
+	
+	@GetMapping("/{id}/personnes")
+	@JsonView(Views. ViewSkeelzPersonnes.class)
+	public List<Personne>findPersonneBySkeelzId(@PathVariable Long id) {
+		List<Personne> personnes = personneRepo.findCoursByIdPersonne(id);
+
+		return personnes;
 	}
 
 	@PostMapping("")

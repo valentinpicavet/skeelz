@@ -27,6 +27,9 @@ public interface ICoursRepository extends JpaRepository<Cours, Long> {
 	
 	@Query("from Cours c where c.entreprise.id = :id")
 	List<Cours> findCoursByIdEntreprise (@Param("id") Long id);
+	
+	@Query("select cp.cours from CoursPersonne cp where cp.personne.id = :id")
+	List<Cours> findCoursByIdPersonne (@Param("id") Long id);
 
 	
 	

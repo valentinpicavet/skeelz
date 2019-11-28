@@ -198,6 +198,12 @@ public class JeuDeDonnee {
 		BilanValDete.setSkeelz(objetConnecte);
 		BilanValDete.setPersonne(personneValentin);
 		BilanValDete = bilanCompetenceRepo.save(BilanValDete);
+		
+		BilanCompetence BilanVincDete = new BilanCompetence();
+		BilanVincDete.setCompetence(developpementDetecteurFume);
+		BilanVincDete.setSkeelz(objetConnecte);
+		BilanVincDete.setPersonne(personneVincent);
+		BilanVincDete = bilanCompetenceRepo.save(BilanVincDete);
 
 		Cours detecteurFume = new Cours();
 		detecteurFume.setIntitule("Concevez un détecteur de fumée connecté");
