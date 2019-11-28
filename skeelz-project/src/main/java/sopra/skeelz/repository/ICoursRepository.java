@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import sopra.skeelz.model.Cours;
+import sopra.skeelz.model.Difficulte;
 import sopra.skeelz.model.Etat;
 
 
@@ -36,6 +37,9 @@ public interface ICoursRepository extends JpaRepository<Cours, Long> {
 	
 	@Query ("from Cours c where c.etat = :etat")
 	List<Cours> findAllCoursByEtat (@Param("etat") Etat etat);
+	
+	@Query ("from Cours c where c.difficulte = :difficulte")
+	List<Cours> findAllCoursByDifficulte (@Param("difficulte") Difficulte difficulte);
 
 	
 	
