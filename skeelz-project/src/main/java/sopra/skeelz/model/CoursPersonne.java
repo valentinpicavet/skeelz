@@ -31,7 +31,7 @@ public class CoursPersonne {
 	private EtatCours etatCours;
 	@ManyToOne
 	@JoinColumn(name = "personne_id")//, nullable = false)
-	@JsonView(Views.ViewCommon.class)
+	@JsonView(Views.ViewCoursPersonneDetail.class)
 	private Personne personne;
 	@ManyToOne
 	@JoinColumn(name = "cours_id")//, nullable = false)

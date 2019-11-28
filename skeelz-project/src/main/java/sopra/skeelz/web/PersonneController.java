@@ -40,7 +40,7 @@ public class PersonneController {
 
 		return personne;
 	}
-
+	
 	@PostMapping("")
 	public Personne create(@RequestBody Personne personne) {
 		return personneRepo.save(personne);
