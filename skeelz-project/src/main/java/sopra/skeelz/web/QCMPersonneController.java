@@ -40,7 +40,7 @@ public class QCMPersonneController {
 		return qcmPersonne;
 	}
 	
-	@GetMapping("/{personne}:{module}/simple")
+	@GetMapping("/by-personne-and-module/{personne}:{module}")
 	@JsonView(Views.ViewQCMPersonnePersonneModule.class)
 	public QCMPersonne findByPersonneAndModule(@PathVariable Long personne, @PathVariable Long module) {
 		QCMPersonne qcmPersonne = qcmPersonneRepo.findByPersonneAndModule(personne, module);
