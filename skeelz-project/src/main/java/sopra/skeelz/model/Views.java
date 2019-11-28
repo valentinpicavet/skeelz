@@ -50,5 +50,7 @@ public class Views {
 	
 	public static class ViewEntrepriseSkeelzs extends ViewEntreprise{}
 	
+	public static class ViewCompetencePersonne extends ViewCommon{}
+	
 }
 

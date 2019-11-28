@@ -30,6 +30,7 @@ public class BilanCompetence {
 	private Competence competence;
 	@ManyToOne
 	@JoinColumn(name = "personne_id")//, nullable = false)
+	@JsonView(Views.ViewCompetencePersonne.class)
 	private Personne personne;
 	
 	
