@@ -12,5 +12,8 @@ public interface ICompetenceRepository extends JpaRepository<Competence, Long> {
 	
 	@Query("from Competence c where c.entreprise.id = :id")
 	List<Competence> findCompetenceByIdEntreprise (@Param("id") Long id);
+	
+	@Query("select distinct bc.competence from BilanCompetence bc where bc.personne.id = :id")
+	List<Competence> findCompetenceByIdPersonne (@Param("id") Long id);
 
 }

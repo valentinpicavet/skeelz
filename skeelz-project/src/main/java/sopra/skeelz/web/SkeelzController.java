@@ -49,7 +49,7 @@ public class SkeelzController {
 	@GetMapping("/{id}/personnes")
 	@JsonView(Views. ViewSkeelzPersonnes.class)
 	public List<Personne>findPersonneBySkeelzId(@PathVariable Long id) {
-		List<Personne> personnes = personneRepo.findCoursByIdPersonne(id);
+		List<Personne> personnes = personneRepo.findPersonneBySkeelz(id);
 
 		return personnes;
 	}
