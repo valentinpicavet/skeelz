@@ -45,6 +45,7 @@ public class SkeelzController {
 		return skeelz;
 	}
 	
+	
 	@GetMapping("/{id}/personnes")
 	@JsonView(Views. ViewSkeelzPersonnes.class)
 	public List<Personne>findPersonneBySkeelzId(@PathVariable Long id) {

@@ -34,6 +34,8 @@ public class Views {
 	
 	public static class ViewQCMPersonne extends ViewCommon {}
 	
+	public static class ViewQCMPersonnePersonneModule extends ViewQCMPersonne {}
+	
 	public static class ViewQuestion extends ViewCommon {}
 	
 	public static class ViewReponse extends ViewCommon {}

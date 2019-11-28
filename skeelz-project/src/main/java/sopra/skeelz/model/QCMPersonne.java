@@ -36,9 +36,11 @@ public class QCMPersonne {
 	
 	@ManyToOne
 	@JoinColumn(name = "personne_id")//, nullable = false)
+	@JsonView(Views.ViewQCMPersonne.class)
 	private Personne personne;
 	@ManyToOne
 	@JoinColumn(name = "module_id")//, nullable = false)
+	@JsonView(Views.ViewQCMPersonne.class)
 	private Module module;
 	
 	
