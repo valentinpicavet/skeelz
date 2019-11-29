@@ -10,9 +10,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import sopra.skeelz.model.BilanCompetence;
 import sopra.skeelz.model.Competence;
+import sopra.skeelz.model.CompetenceSkeelz;
 import sopra.skeelz.model.Ponderation;
 import sopra.skeelz.repository.IBilanCompetenceRepository;
 import sopra.skeelz.repository.ICompetenceRepository;
+import sopra.skeelz.repository.ICompetenceSkeelzRepository;
 
 @SpringBootTest
 public class TestJpaBilanCompetence {
@@ -21,6 +23,8 @@ public class TestJpaBilanCompetence {
 	private IBilanCompetenceRepository bilanCompetenceRepo;
 	@Autowired
 	private ICompetenceRepository competenceRepo;
+	@Autowired
+	private ICompetenceSkeelzRepository competenceSkeelzRepo;
 
 	@Test
 	public void testBilanCompetence() {
@@ -34,13 +38,16 @@ public class TestJpaBilanCompetence {
 		
 		maCompetence = competenceRepo.save(maCompetence);
 		
-		monBilan.setCompetence(maCompetence);
+		CompetenceSkeelz maCompetenceSkeelz = new CompetenceSkeelz();
+		maCompetenceSkeelz.setCompetence(maCompetence);	
+		maCompetenceSkeelz = competenceSkeelzRepo.save(maCompetenceSkeelz);
+		monBilan.setCompetenceSkeelz(maCompetenceSkeelz);
 
 		monBilan = bilanCompetenceRepo.save(monBilan);
 		
 
 		Optional<BilanCompetence> monBilanFind = bilanCompetenceRepo.findById(monBilan.getId());
-		assertEquals("java", monBilanFind.get().getCompetence().getIntitule());
+		assertEquals("java", monBilanFind.get().getCompetenceSkeelz().getCompetence().getIntitule());
 		
 
 		int middleNumber = bilanCompetenceRepo.findAll().size();

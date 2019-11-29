@@ -10,11 +10,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import sopra.skeelz.model.BilanCompetence;
 import sopra.skeelz.model.Competence;
+import sopra.skeelz.model.CompetenceSkeelz;
 import sopra.skeelz.model.Personne;
 import sopra.skeelz.model.Ponderation;
 import sopra.skeelz.model.Skeelz;
 import sopra.skeelz.repository.IBilanCompetenceRepository;
 import sopra.skeelz.repository.ICompetenceRepository;
+import sopra.skeelz.repository.ICompetenceSkeelzRepository;
 import sopra.skeelz.repository.IPersonneRepository;
 import sopra.skeelz.repository.ISkeelzRepository;
 
@@ -31,6 +33,8 @@ public class TestRequeteBilanCompetence {
 		private ICompetenceRepository competenceRepo;
 		@Autowired
 		private ISkeelzRepository skeelzRepo;
+		@Autowired
+		private ICompetenceSkeelzRepository competenceSkeelzRepo;
 		
 		@Test
 		public void testfindByPersonneAndEtatCours() {
@@ -51,14 +55,18 @@ public class TestRequeteBilanCompetence {
 			personneValentin.setTelephone("0624153698");	
 			personneValentin = personneRepo.save(personneValentin);
 			
+			CompetenceSkeelz maCompetenceSkeelz = new CompetenceSkeelz();
+			maCompetenceSkeelz.setCompetence(developpementDetecteurFume);
+			maCompetenceSkeelz.setSkeelz(objetConnecte);
+			maCompetenceSkeelz = competenceSkeelzRepo.save(maCompetenceSkeelz);
+			
 			BilanCompetence BilanValDete = new BilanCompetence();
-			BilanValDete.setCompetence(developpementDetecteurFume);
-			BilanValDete.setSkeelz(objetConnecte);
+			BilanValDete.setCompetenceSkeelz(maCompetenceSkeelz);
 			BilanValDete.setPersonne(personneValentin);
 			BilanValDete = bilanCompetenceRepo.save(BilanValDete);
 		
 		List<BilanCompetence> bilanVal = bilanCompetenceRepo.findByPersonne(personneValentin);
-		assertEquals("Objet Connecté", bilanVal.get(0).getSkeelz().getIntitule());
+		assertEquals("Objet Connecté", bilanVal.get(0).getCompetenceSkeelz().getSkeelz().getIntitule());
 		}
 	}
 }
