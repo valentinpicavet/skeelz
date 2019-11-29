@@ -27,8 +27,6 @@ public class Skeelz {
 	@JsonView(Views.ViewCommon.class)
 	private String intitule;
 	@OneToMany(mappedBy = "skeelz")
-	private List<BilanCompetence> bilanCompetence = new ArrayList<BilanCompetence>();
-	@OneToMany(mappedBy = "skeelz")
 	private List<CompetenceSkeelz> competenceSkeelz = new ArrayList<CompetenceSkeelz>();
 
 	@ManyToOne
@@ -65,14 +63,6 @@ public class Skeelz {
 
 	public void setIntitule(String intitule) {
 		this.intitule = intitule;
-	}
-
-	public List<BilanCompetence> getBilanCompetence() {
-		return bilanCompetence;
-	}
-
-	public void setBilanCompetence(List<BilanCompetence> bilanCompetence) {
-		this.bilanCompetence = bilanCompetence;
 	}
 
 	public List<CompetenceSkeelz> getCompetenceSkeelz() {

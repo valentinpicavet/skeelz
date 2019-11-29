@@ -28,8 +28,6 @@ public class Competence {
 	@OneToMany(mappedBy = "competence")
 	private List<CompetenceSkeelz> competenceSkeelz = new ArrayList<CompetenceSkeelz>();
 	@OneToMany(mappedBy = "competence")
-	private List<CoursCompetence> coursCompetence = new ArrayList<CoursCompetence>();
-	@OneToMany(mappedBy = "competence")
 	private List<BilanCompetence> bilanCompetence = new ArrayList<BilanCompetence>();
 
 	public Long getId() {
@@ -78,14 +76,6 @@ public class Competence {
 
 	public void setCompetenceSkeelz(List<CompetenceSkeelz> competenceSkeelz) {
 		this.competenceSkeelz = competenceSkeelz;
-	}
-
-	public List<CoursCompetence> getCoursCompetence() {
-		return coursCompetence;
-	}
-
-	public void setCoursCompetence(List<CoursCompetence> coursCompetence) {
-		this.coursCompetence = coursCompetence;
 	}
 
 	public List<BilanCompetence> getBilanCompetence() {

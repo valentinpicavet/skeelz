@@ -9,6 +9,8 @@ public class Views {
 	public static class ViewSkeelz extends ViewCommon {}
 	
 	public static class ViewSkeelzPersonnes extends ViewSkeelz {}
+	
+	public static class ViewSkeelzCours extends ViewSkeelz {}
 
 	public static class ViewCompetence extends ViewCommon {}
 	

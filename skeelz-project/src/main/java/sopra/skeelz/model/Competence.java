@@ -37,8 +37,7 @@ public class Competence {
 	private List<CompetenceSkeelz> competenceSkeelz = new ArrayList<CompetenceSkeelz>();
 	@OneToMany(mappedBy = "competence")
 	private List<CoursCompetence> coursCompetence = new ArrayList<CoursCompetence>();
-	@OneToMany(mappedBy = "competence")
-	private List<BilanCompetence> bilanCompetence = new ArrayList<BilanCompetence>();
+
 
 	@ManyToOne
 	@JoinColumn(name = "entreprise_id")
@@ -106,14 +105,6 @@ public class Competence {
 
 	public void setCoursCompetence(List<CoursCompetence> coursCompetence) {
 		this.coursCompetence = coursCompetence;
-	}
-
-	public List<BilanCompetence> getBilanCompetence() {
-		return bilanCompetence;
-	}
-
-	public void setBilanCompetence(List<BilanCompetence> bilanCompetence) {
-		this.bilanCompetence = bilanCompetence;
 	}
 
 }

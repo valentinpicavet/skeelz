@@ -5,11 +5,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
 
 import com.fasterxml.jackson.annotation.JsonView;
+
 
 @Entity
 @Table(uniqueConstraints= {@UniqueConstraint(columnNames = { "skeelz_id", "competence_id"})})
@@ -27,6 +29,8 @@ public class CompetenceSkeelz {
 	@ManyToOne
 	@JoinColumn(name="competence_id")//, nullable = false)
 	private Competence competence;
+	@OneToMany(mappedBy = "competenceSkeelz")
+	private BilanCompetence bilanCompetence;
 	
 	
 	
@@ -54,6 +58,13 @@ public class CompetenceSkeelz {
 	public void setCompetence(Competence competence) {
 		this.competence = competence;
 	}
+	public BilanCompetence getBilanCompetence() {
+		return bilanCompetence;
+	}
+	public void setBilanCompetence(BilanCompetence bilanCompetence) {
+		this.bilanCompetence = bilanCompetence;
+	}
+	
 	
 	
 	
