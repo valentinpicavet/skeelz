@@ -258,6 +258,16 @@ public class JeuDeDonnee {
 		BilanVincDete.setCompetenceSkeelz(objetCoDetecteur);
 		BilanVincDete.setPersonne(personneVincent);
 		BilanVincDete = bilanCompetenceRepo.save(BilanVincDete);
+		
+		BilanCompetence BilanArtBDDJpaBase = new BilanCompetence();
+		BilanArtBDDJpaBase.setCompetenceSkeelz(jpaBasesBDD);
+		BilanArtBDDJpaBase.setPersonne(personneArthur);
+		BilanArtBDDJpaBase = bilanCompetenceRepo.save(BilanArtBDDJpaBase);
+		
+		BilanCompetence BilanArtJavaJpaBase = new BilanCompetence();
+		BilanArtJavaJpaBase.setCompetenceSkeelz(jpaBasejava);
+		BilanArtJavaJpaBase.setPersonne(personneArthur);
+		BilanArtJavaJpaBase = bilanCompetenceRepo.save(BilanArtBDDJpaBase);
 
 		Cours detecteurFume = new Cours();
 		detecteurFume.setIntitule("Concevez un détecteur de fumée connecté");
