@@ -41,6 +41,14 @@ public class ModuleController {
 		return module;
 	}
 
+	@GetMapping("/FindByIdCoursAndAgencement/{idCours}:{agencement}")
+	@JsonView(Views.ViewCoursModuleByAgencement.class)
+	public Module findModuleByCoursAndAgencement(@PathVariable Long idCours, @PathVariable int agencement) {
+		Module module = moduleRepo.findModuleByCoursAndAgencement(idCours, agencement);
+
+		return module;
+	}
+	
 	@PostMapping("")
 	public Module create(@RequestBody Module module) {
 		return moduleRepo.save(module);

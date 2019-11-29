@@ -1,6 +1,5 @@
 package skeelz.modele;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -20,11 +19,8 @@ public class BilanCompetence {
 	@Version
 	private int version;
 	@ManyToOne
-	@JoinColumn(name = "skeelz_id")//, nullable = false)
-	private Skeelz skeelz;
-	@ManyToOne
-	@JoinColumn(name = "competence_id")//, nullable = false)
-	private Competence competence;
+	@JoinColumn(name = "competenceSkeelz_id")//, nullable = false)
+	private CompetenceSkeelz competenceSkeelz;
 	@ManyToOne
 	@JoinColumn(name = "personne_id")//, nullable = false)
 	private Personne personne;
@@ -42,17 +38,11 @@ public class BilanCompetence {
 	public void setVersion(int version) {
 		this.version = version;
 	}
-	public Skeelz getSkeelz() {
-		return skeelz;
+	public CompetenceSkeelz getCompetenceSkeelz() {
+		return competenceSkeelz;
 	}
-	public void setSkeelz(Skeelz skeelz) {
-		this.skeelz = skeelz;
-	}
-	public Competence getCompetence() {
-		return competence;
-	}
-	public void setCompetence(Competence competence) {
-		this.competence = competence;
+	public void setCompetenceSkeelz(CompetenceSkeelz competenceSkeelz) {
+		this.competenceSkeelz = competenceSkeelz;
 	}
 	public Personne getPersonne() {
 		return personne;

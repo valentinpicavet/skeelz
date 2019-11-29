@@ -20,8 +20,6 @@ public class Skeelz {
 	@Column(nullable = false, unique = true)
 	private String intitule;
 	@OneToMany(mappedBy = "skeelz")
-	private List<BilanCompetence> bilanCompetence = new ArrayList<BilanCompetence>();
-	@OneToMany(mappedBy = "skeelz")
 	private List<CompetenceSkeelz> competenceSkeelz = new ArrayList<CompetenceSkeelz>();
 
 	public Long getId() {
@@ -46,14 +44,6 @@ public class Skeelz {
 
 	public void setIntitule(String intitule) {
 		this.intitule = intitule;
-	}
-
-	public List<BilanCompetence> getBilanCompetence() {
-		return bilanCompetence;
-	}
-
-	public void setBilanCompetence(List<BilanCompetence> bilanCompetence) {
-		this.bilanCompetence = bilanCompetence;
 	}
 
 	public List<CompetenceSkeelz> getCompetenceSkeelz() {

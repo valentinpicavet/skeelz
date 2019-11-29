@@ -250,14 +250,12 @@ public class JeuDeDonnee {
 		personneTheau = personneRepo.save(personneTheau);
 
 		BilanCompetence BilanValDete = new BilanCompetence();
-		BilanValDete.setCompetence(developpementDetecteurFume);
-		BilanValDete.setSkeelz(objetConnecte);
+		BilanValDete.setCompetenceSkeelz(objetCoDetecteur);
 		BilanValDete.setPersonne(personneValentin);
 		BilanValDete = bilanCompetenceRepo.save(BilanValDete);
 		
 		BilanCompetence BilanVincDete = new BilanCompetence();
-		BilanVincDete.setCompetence(developpementDetecteurFume);
-		BilanVincDete.setSkeelz(objetConnecte);
+		BilanVincDete.setCompetenceSkeelz(objetCoDetecteur);
 		BilanVincDete.setPersonne(personneVincent);
 		BilanVincDete = bilanCompetenceRepo.save(BilanVincDete);
 
