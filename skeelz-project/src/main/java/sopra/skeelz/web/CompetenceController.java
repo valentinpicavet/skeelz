@@ -15,9 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import sopra.skeelz.model.Competence;
+import sopra.skeelz.model.Cours;
 import sopra.skeelz.model.Personne;
+import sopra.skeelz.model.RelationCours;
 import sopra.skeelz.model.Views;
 import sopra.skeelz.repository.ICompetenceRepository;
+import sopra.skeelz.repository.ICoursRepository;
 import sopra.skeelz.repository.IPersonneRepository;
 
 @RestController
@@ -28,6 +31,8 @@ public class CompetenceController {
 	private ICompetenceRepository competenceRepo;
 	@Autowired
 	private IPersonneRepository personneRepo;
+	@Autowired
+	private ICoursRepository coursRepo;
 	
 	@GetMapping("")
 	@JsonView(Views.ViewCompetence.class)
@@ -51,6 +56,14 @@ public class CompetenceController {
 		List<Personne> personnes = personneRepo.findPersonneByIdCompetence(id);
 		
 		return personnes;
+	}
+	
+	@GetMapping("/{id}:{relationCours}/cours/relations")
+	@JsonView(Views. ViewCompetenceCoursAndRelation.class)
+	public List<Cours> findByCompetenceAndRelationCours (@PathVariable Long id, @PathVariable RelationCours relationCours){
+		List<Cours> courss = coursRepo.findAllCoursByCompetenceAndRelationCours(id, relationCours);
+		
+		return courss;
 	}
 
 	@PostMapping("")

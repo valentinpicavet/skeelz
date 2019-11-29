@@ -31,9 +31,11 @@ public class CoursCompetence {
 	private RelationCours relationCours;
 	@ManyToOne
 	@JoinColumn(name = "cours_id")//, nullable = false)
+	@JsonView(Views.ViewCompetenceCoursAndRelation.class)
 	private Cours cours;
 	@ManyToOne
 	@JoinColumn(name = "competence_id")//, nullable = false)
+	@JsonView(Views.ViewCompetenceCoursAndRelation.class)
 	private Competence competence;
 	
 	
