@@ -205,13 +205,11 @@ public class TestJpaLienssss {
 //		personneTheau = personneRepo.save(personneTheau);
 		
 		BilanCompetence BilanValDete = new BilanCompetence();
-		BilanValDete.setCompetence(developpementDetecteurFume);
-		BilanValDete.setSkeelz(objetConnecte);
+		BilanValDete.setCompetenceSkeelz(objetCoDetecteur);
 		BilanValDete.setPersonne(personneValentin);
 		BilanValDete = bilanCompetenceRepo.save(BilanValDete);
 		
-		assertEquals(developpementDetecteurFume, BilanValDete.getCompetence());
-		assertEquals(objetConnecte, BilanValDete.getSkeelz());
+		assertEquals(objetCoDetecteur, BilanValDete.getCompetenceSkeelz());
 		assertEquals(personneValentin, BilanValDete.getPersonne());
 
 		

@@ -1,5 +1,8 @@
 package sopra.skeelz.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -30,7 +33,7 @@ public class CompetenceSkeelz {
 	@JoinColumn(name="competence_id")//, nullable = false)
 	private Competence competence;
 	@OneToMany(mappedBy = "competenceSkeelz")
-	private BilanCompetence bilanCompetence;
+	private List <BilanCompetence> bilanCompetence = new ArrayList<BilanCompetence>();
 	
 	
 	
@@ -58,12 +61,13 @@ public class CompetenceSkeelz {
 	public void setCompetence(Competence competence) {
 		this.competence = competence;
 	}
-	public BilanCompetence getBilanCompetence() {
+	public List<BilanCompetence> getBilanCompetence() {
 		return bilanCompetence;
 	}
-	public void setBilanCompetence(BilanCompetence bilanCompetence) {
+	public void setBilanCompetence(List<BilanCompetence> bilanCompetence) {
 		this.bilanCompetence = bilanCompetence;
 	}
+
 	
 	
 	
