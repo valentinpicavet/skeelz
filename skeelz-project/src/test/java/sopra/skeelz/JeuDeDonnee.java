@@ -95,6 +95,16 @@ public class JeuDeDonnee {
 		objetConnecte.setIntitule("Objet Connecté");
 		objetConnecte.setEntreprise(sopra);
 		objetConnecte = skeelzRepo.save(objetConnecte);
+		
+		Skeelz java = new Skeelz();
+		java.setIntitule("Java");
+		java.setEntreprise(sopra);
+		java = skeelzRepo.save(java);
+		
+		Skeelz baseDeDonnees = new Skeelz();
+		baseDeDonnees.setIntitule("Base de données");
+		baseDeDonnees.setEntreprise(sopra);
+		baseDeDonnees = skeelzRepo.save(baseDeDonnees);
 
 		Competence developpementDetecteurFume = new Competence();
 		developpementDetecteurFume.setDescription("Vous êtes capable de concevoir un détécteur de fumées connecté");
@@ -102,11 +112,57 @@ public class JeuDeDonnee {
 		developpementDetecteurFume.setPonderation(Ponderation.DIX);
 		developpementDetecteurFume.setEntreprise(sopra);
 		developpementDetecteurFume = competenceRepo.save(developpementDetecteurFume);
+		
+		Competence javaBases = new Competence();
+		javaBases.setDescription("Les bases en Java");
+		javaBases.setIntitule("Acquérez les bases en Java");
+		javaBases.setPonderation(Ponderation.CINQ);
+		javaBases.setEntreprise(sopra);
+		javaBases = competenceRepo.save(javaBases);
+		
+		Competence jpaBases = new Competence();
+		jpaBases.setDescription("Les bases en JPA");
+		jpaBases.setIntitule("Acquérez les bases en JPA");
+		jpaBases.setPonderation(Ponderation.CINQ);
+		jpaBases.setEntreprise(sopra);
+		jpaBases = competenceRepo.save(jpaBases);
+		
+		Competence jpaAvance = new Competence();
+		jpaAvance.setDescription("Améliorez vos compétences en JPA");
+		jpaAvance.setIntitule("JPA Avancé");
+		jpaAvance.setPonderation(Ponderation.DIX);
+		jpaAvance.setEntreprise(sopra);
+		jpaAvance = competenceRepo.save(jpaBases);
 
 		CompetenceSkeelz objetCoDetecteur = new CompetenceSkeelz();
 		objetCoDetecteur.setCompetence(developpementDetecteurFume);
 		objetCoDetecteur.setSkeelz(objetConnecte);
 		objetCoDetecteur = competenceSkeelzRepo.save(objetCoDetecteur);
+		
+		CompetenceSkeelz javaBasejava = new CompetenceSkeelz();
+		javaBasejava.setCompetence(javaBases);
+		javaBasejava.setSkeelz(java);
+		javaBasejava = competenceSkeelzRepo.save(javaBasejava);
+		
+		CompetenceSkeelz jpaBasejava = new CompetenceSkeelz();
+		jpaBasejava.setCompetence(jpaBases);
+		jpaBasejava.setSkeelz(java);
+		jpaBasejava = competenceSkeelzRepo.save(javaBasejava);
+		
+		CompetenceSkeelz jpaAvancejava = new CompetenceSkeelz();
+		jpaAvancejava.setCompetence(jpaAvance);
+		jpaAvancejava.setSkeelz(java);
+		jpaAvancejava = competenceSkeelzRepo.save(jpaAvancejava);
+		
+		CompetenceSkeelz jpaBasesBDD = new CompetenceSkeelz();
+		jpaBasesBDD.setCompetence(jpaBases);
+		jpaBasesBDD.setSkeelz(baseDeDonnees);
+		jpaBasesBDD = competenceSkeelzRepo.save(jpaBasesBDD);
+		
+		CompetenceSkeelz jpaAvanceBDD = new CompetenceSkeelz();
+		jpaAvanceBDD.setCompetence(jpaAvance);
+		jpaAvanceBDD.setSkeelz(baseDeDonnees);
+		jpaAvanceBDD = competenceSkeelzRepo.save(jpaAvanceBDD);
 
 		Utilisateur userValentin = new Utilisateur();
 		userValentin.setIdentifiant("Valentin");
