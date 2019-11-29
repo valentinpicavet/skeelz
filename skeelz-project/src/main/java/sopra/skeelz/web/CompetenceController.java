@@ -60,8 +60,9 @@ public class CompetenceController {
 	
 	@GetMapping("/{id}:{relationCours}/cours/relations")
 	@JsonView(Views. ViewCompetenceCoursAndRelation.class)
-	public List<Cours> findByCompetenceAndRelationCours (@PathVariable Long id, @PathVariable RelationCours relationCours){
-		List<Cours> courss = coursRepo.findAllCoursByCompetenceAndRelationCours(id, relationCours);
+	public List<Cours> findByCompetenceAndRelationCours (@PathVariable Long id, @PathVariable String relationCours){
+		RelationCours relationCour = RelationCours.valueOf(relationCours);
+		List<Cours> courss = coursRepo.findAllCoursByCompetenceAndRelationCours(id, relationCour);
 		
 		return courss;
 	}
