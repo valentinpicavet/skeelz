@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 
 @Entity
-@Table(uniqueConstraints= {@UniqueConstraint(columnNames = { "skeelz_id", "competence_id", "personne_id"})})
+@Table(uniqueConstraints= {@UniqueConstraint(columnNames = { "competenceSkeelz_id", "personne_id"})})
 public class BilanCompetence {
 
 	@Id

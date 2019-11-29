@@ -11,10 +11,10 @@ import sopra.skeelz.model.Personne;
 
 public interface IPersonneRepository extends JpaRepository<Personne, Long> {
 	
-	@Query("select distinct bc.personne from BilanCompetence bc where bc.skeelz.id = :id")
+	@Query("select distinct bc.personne from BilanCompetence bc where bc.competenceSkeelz.skeelz.id = :id")
 	List<Personne> findPersonneBySkeelz (@Param("id") Long id);
 	
-	@Query("select distinct bc.personne from BilanCompetence bc where bc.competence.id = :id")
+	@Query("select distinct bc.personne from BilanCompetence bc where bc.competenceSkeelz.competence.id = :id")
 	List<Personne> findPersonneByIdCompetence(@Param("id") Long id);
 
 	

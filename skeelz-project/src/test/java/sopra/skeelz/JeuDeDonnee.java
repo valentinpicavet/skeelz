@@ -132,7 +132,7 @@ public class JeuDeDonnee {
 		jpaAvance.setIntitule("JPA Avancé");
 		jpaAvance.setPonderation(Ponderation.DIX);
 		jpaAvance.setEntreprise(sopra);
-		jpaAvance = competenceRepo.save(jpaBases);
+		jpaAvance = competenceRepo.save(jpaAvance);
 
 		CompetenceSkeelz objetCoDetecteur = new CompetenceSkeelz();
 		objetCoDetecteur.setCompetence(developpementDetecteurFume);
@@ -147,7 +147,7 @@ public class JeuDeDonnee {
 		CompetenceSkeelz jpaBasejava = new CompetenceSkeelz();
 		jpaBasejava.setCompetence(jpaBases);
 		jpaBasejava.setSkeelz(java);
-		jpaBasejava = competenceSkeelzRepo.save(javaBasejava);
+		jpaBasejava = competenceSkeelzRepo.save(jpaBasejava);
 		
 		CompetenceSkeelz jpaAvancejava = new CompetenceSkeelz();
 		jpaAvancejava.setCompetence(jpaAvance);
