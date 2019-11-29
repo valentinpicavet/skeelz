@@ -50,6 +50,7 @@ public class Module {
 	@OneToMany(mappedBy = "module")
 	private List<Question> questions = new ArrayList<Question>();
 	@OneToMany(mappedBy = "module")
+	@JsonView(Views.ViewCoursModulesChapitres.class)
 	private List<Chapitre> chapitres = new ArrayList<Chapitre>();
 	@OneToMany(mappedBy = "module")
 	private List<QCMPersonne> qcmPersonnes = new ArrayList<QCMPersonne>();

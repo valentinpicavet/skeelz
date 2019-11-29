@@ -24,11 +24,19 @@ public class Views {
 	
 	public static class ViewCoursModuleByAgencement extends ViewCours {}
 	
+	public static class ViewCoursModules extends ViewCours {}
+	
+	public static class ViewCoursModulesChapitres extends ViewCours {}
+	
+	public static class ViewCoursChapitres extends ViewCours {}
+	
 	public static class ViewPersonne extends ViewCommon {}
 	
 	public static class ViewPersonneCourss extends ViewPersonne {}
 	
 	public static class ViewPersonneCompetences extends ViewPersonne {}
+	
+	public static class ViewPersonneSkeelzs extends ViewPersonne {}
 
 	public static class ViewCoursDetail extends ViewCours {}
 
@@ -36,9 +44,19 @@ public class Views {
 
 	public static class ViewModule extends ViewCommon {}
 	
-	public static class ViewCoursPersonneDetail extends ViewCoursPersonne {
-	}
+	public static class ViewModuleByAgencementIdModule extends ViewModule {}
+	
+	public static class ViewModuleChapitres extends ViewModule {}
+	
+	public static class ViewModuleQuestionReponse extends ViewModule {}
+	
+	public static class ViewCoursPersonneDetail extends ViewCoursPersonne {}
+	
 	public static class ViewChapitre extends ViewCommon {}
+	
+	public static class ViewChapitreByAgencementIdChapitre extends ViewChapitre {}
+	
+	public static class ViewChapitreElementDeCourss extends ViewChapitre {}
 	
 	public static class ViewElementdeCours extends ViewCommon {}
 	
@@ -51,6 +69,8 @@ public class Views {
 	public static class ViewReponse extends ViewCommon {}
 	
 	public static class ViewUtilisateur extends ViewCommon {}
+	
+	public static class ViewUtilisateurEntreprise extends ViewUtilisateur {}
 	
 	public static class ViewEntreprise extends ViewCommon {}
 	

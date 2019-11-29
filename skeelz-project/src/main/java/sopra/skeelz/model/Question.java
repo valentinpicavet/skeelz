@@ -34,6 +34,7 @@ public class Question {
 	@JoinColumn(name="module_id")//, nullable = false)
 	private Module module;
 	@OneToMany(mappedBy = "question")
+	@JsonView(Views.ViewModuleQuestionReponse.class)
 	private List<Reponse> reponses = new ArrayList<Reponse>();
 	
 	

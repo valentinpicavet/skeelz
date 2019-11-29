@@ -12,5 +12,9 @@ public interface ISkeelzRepository extends JpaRepository<Skeelz, Long>{
 	
 	@Query("from Skeelz s where s.entreprise.id = :id")
 	List<Skeelz> findSkeelzByIdEntreprise (@Param("id") Long id);
+	
+	@Query("select bc.competenceSkeelz.skeelz from BilanCompetence bc where bc.personne.id = :id")
+	List<Skeelz> findSkeelzByIdPersonne (@Param("id") Long id);
+
 
 }

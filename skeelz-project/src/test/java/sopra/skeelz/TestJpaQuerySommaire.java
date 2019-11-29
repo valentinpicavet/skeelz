@@ -1,7 +1,5 @@
 package sopra.skeelz;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -135,21 +133,21 @@ public class TestJpaQuerySommaire {
 		java22.setModule(lesBoucles);
 		java22 = chapitreRepo.save(java22);
 				
-		int nbModule = moduleRepo.findAllByCours(detecteurFume).size();
+//		int nbModule = moduleRepo.findAllByCours(detecteurFume).size();
+//		
+//		int nbChapitre = chapitreRepo.findAllByCours(detecteurFume).size();
+//		
+//		int nbChapitreDansModule = chapitreRepo.findAllByModule(definition).size();
+//		
+//		int nbModulesAvecChapitres = moduleRepo.findAllByCoursWithChapitres(detecteurFume).size();
 		
-		int nbChapitre = chapitreRepo.findAllByCours(detecteurFume).size();
-		
-		int nbChapitreDansModule = chapitreRepo.findAllByModule(definition).size();
-		
-		int nbModulesAvecChapitres = moduleRepo.findAllByCoursWithChapitres(detecteurFume).size();
-		
-		assertEquals(2, nbModule);
-		
-		assertEquals(4, nbChapitre);
-		
-		assertEquals(2, nbChapitreDansModule);
-		
-		assertEquals(2, nbModulesAvecChapitres);
+//		assertEquals(2, nbModule);
+//		
+//		assertEquals(4, nbChapitre);
+//		
+//		assertEquals(2, nbChapitreDansModule);
+//		
+//		assertEquals(2, nbModulesAvecChapitres);
 		
 //		for (int i = 0; i < 4; i++ ) {
 //			System.out.println("Intitulé module " + i + " : " + moduleRepo.findAllByCoursWithChapitres(detecteurFume).get(i).getIntitule());

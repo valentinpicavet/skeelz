@@ -40,6 +40,14 @@ public class ElementDeCoursController {
 
 		return elementDeCours;
 	}
+	
+	@GetMapping("/FindByIdChapitreAndAgencement/{idChapitre}:{agencement}")
+	@JsonView(Views.ViewChapitreByAgencementIdChapitre.class)
+	public ElementDeCours findElementDeCoursByChapitreAndAgencement(@PathVariable Long idChapitre, @PathVariable int agencement) {
+		ElementDeCours elementDeCours = elementDeCoursRepo.findElementDeCoursByChapitreAndAgencement(idChapitre, agencement);
+
+		return elementDeCours;
+	}
 
 	@PostMapping("")
 	public ElementDeCours create(@RequestBody ElementDeCours elementDeCours) {

@@ -17,10 +17,12 @@ import com.fasterxml.jackson.annotation.JsonView;
 import sopra.skeelz.model.Competence;
 import sopra.skeelz.model.Cours;
 import sopra.skeelz.model.Personne;
+import sopra.skeelz.model.Skeelz;
 import sopra.skeelz.model.Views;
 import sopra.skeelz.repository.ICompetenceRepository;
 import sopra.skeelz.repository.ICoursRepository;
 import sopra.skeelz.repository.IPersonneRepository;
+import sopra.skeelz.repository.ISkeelzRepository;
 
 
 @RestController
@@ -34,6 +36,9 @@ public class PersonneController {
 	
 	@Autowired
 	private ICompetenceRepository competenceRepo;
+	
+	@Autowired
+	private ISkeelzRepository skeelzRepo;
 
 	@GetMapping("")
 	@JsonView(Views.ViewPersonne.class)
@@ -65,6 +70,14 @@ public class PersonneController {
 		List<Competence> competences = competenceRepo.findCompetenceByIdPersonne(id);
 
 		return competences;
+	}
+	
+	@GetMapping("/{id}/skeelzs")
+	@JsonView(Views. ViewPersonneSkeelzs.class)
+	public List<Skeelz>findSkeelz(@PathVariable Long id) {
+		List<Skeelz> skeelzs = skeelzRepo.findSkeelzByIdPersonne(id);
+
+		return skeelzs;
 	}
 
 	@PostMapping("")

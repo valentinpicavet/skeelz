@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import sopra.skeelz.model.Entreprise;
 import sopra.skeelz.model.Utilisateur;
 import sopra.skeelz.model.Views;
+import sopra.skeelz.repository.IEntrepriseRepository;
 import sopra.skeelz.repository.IUtilisateurRepository;
 
 
@@ -24,6 +26,9 @@ import sopra.skeelz.repository.IUtilisateurRepository;
 public class UtilisateurController {
 	@Autowired
 	private IUtilisateurRepository utilisateurRepo;
+	
+	@Autowired
+	private IEntrepriseRepository entrepriseRepo;
 
 	@GetMapping("")
 	@JsonView(Views.ViewUtilisateur.class)
@@ -40,6 +45,14 @@ public class UtilisateurController {
 		Utilisateur utilisateur = utilisateurRepo.findById(id).get();
 
 		return utilisateur;
+	}
+	
+	@GetMapping("/{id}/entreprise")
+	@JsonView(Views. ViewUtilisateurEntreprise.class)
+	public Entreprise findEntrepriseByUtilisateurId(@PathVariable Long id) {
+		Entreprise entreprises = entrepriseRepo.findEntrepriseByUtilisateur(id);
+
+		return entreprises;
 	}
 
 	@PostMapping("")

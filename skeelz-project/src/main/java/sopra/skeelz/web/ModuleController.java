@@ -14,9 +14,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import sopra.skeelz.model.Chapitre;
 import sopra.skeelz.model.Module;
+import sopra.skeelz.model.Question;
 import sopra.skeelz.model.Views;
+import sopra.skeelz.repository.IChapitreRepository;
 import sopra.skeelz.repository.IModuleRepository;
+import sopra.skeelz.repository.IQuestionRepository;
 
 
 @RestController
@@ -24,6 +28,10 @@ import sopra.skeelz.repository.IModuleRepository;
 public class ModuleController {
 	@Autowired
 	private IModuleRepository moduleRepo;
+	@Autowired
+	private IQuestionRepository questionRepo;
+	@Autowired
+	private IChapitreRepository chapitreRepo;
 
 	@GetMapping("")
 	@JsonView(Views.ViewModule.class)
@@ -47,6 +55,22 @@ public class ModuleController {
 		Module module = moduleRepo.findModuleByCoursAndAgencement(idCours, agencement);
 
 		return module;
+	}
+	
+	@GetMapping("/{id}/questionsAndReponses")
+	@JsonView(Views.ViewModuleQuestionReponse.class)
+	public List<Question> findQuestionAndReponse(@PathVariable Long id) {
+		List<Question> questions = questionRepo.findQuestionAndReponse(id);
+
+		return questions;
+	}
+	
+	@GetMapping("/{id}/chapitres")
+	@JsonView(Views.ViewModuleChapitres.class)
+	public List<Chapitre> findChapitre(@PathVariable Long id) {
+		List<Chapitre> chapitres = chapitreRepo.findChapitreByModuleId(id);
+
+		return chapitres;
 	}
 	
 	@PostMapping("")
