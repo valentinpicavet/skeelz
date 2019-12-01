@@ -28,7 +28,7 @@ public class TestJpaQuerySommaire {
 
 
 		Cours detecteurFume = new Cours ();
-		detecteurFume.setIntitule("Concevez un détecteur de fumée connecté");
+		detecteurFume.setIntitule("Cours querys");
 		detecteurFume.setDifficulte(Difficulte.FACILE);
 		detecteurFume.setDuree(6);
 		detecteurFume.setEtat(Etat.OUVERT);
@@ -37,7 +37,7 @@ public class TestJpaQuerySommaire {
 		detecteurFume = coursRepo.save(detecteurFume);
 		
 		Module definition = new Module();
-		definition.setIntitule("Définissez votre projet de détecteur de fumée connecté");
+		definition.setIntitule("Module querys");
 		definition.setAgencement(1);
 		definition.setNbQuestion(11);
 		definition.setPeriodicite(1);
@@ -59,7 +59,7 @@ public class TestJpaQuerySommaire {
 		detect12 = chapitreRepo.save(detect12);
 		
 		Module approfondissement = new Module();
-		approfondissement.setIntitule("Approfondissez le développement de votre projet par des analyse métiers");
+		approfondissement.setIntitule("module query 2");
 		approfondissement.setAgencement(2);
 		approfondissement.setNbQuestion(3);
 		approfondissement.setPeriodicite(1);
@@ -81,7 +81,7 @@ public class TestJpaQuerySommaire {
 		detect22 = chapitreRepo.save(detect22);
 		
 		Cours javaDebutant = new Cours ();
-		javaDebutant.setIntitule("Apprenez les bases de java");
+		javaDebutant.setIntitule("cours query");
 		javaDebutant.setDifficulte(Difficulte.FACILE);
 		javaDebutant.setDuree(5);
 		javaDebutant.setEtat(Etat.OUVERT);
@@ -90,7 +90,7 @@ public class TestJpaQuerySommaire {
 		javaDebutant = coursRepo.save(javaDebutant);
 		
 		Module introduction = new Module();
-		introduction.setIntitule("Introduction à la syntaxe Java");
+		introduction.setIntitule("module query 3");
 		introduction.setAgencement(1);
 		introduction.setNbQuestion(5);
 		introduction.setPeriodicite(1);
@@ -112,7 +112,7 @@ public class TestJpaQuerySommaire {
 		java12 = chapitreRepo.save(java12);
 		
 		Module lesBoucles = new Module();
-		lesBoucles.setIntitule("Découvrez les boucles de base");
+		lesBoucles.setIntitule("module query 4");
 		lesBoucles.setAgencement(2);
 		lesBoucles.setNbQuestion(3);
 		lesBoucles.setPeriodicite(1);

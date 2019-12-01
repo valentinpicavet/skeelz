@@ -19,11 +19,11 @@ import sopra.skeelz.repository.ICompetenceRepository;
 import sopra.skeelz.repository.ICompetenceSkeelzRepository;
 import sopra.skeelz.repository.IPersonneRepository;
 import sopra.skeelz.repository.ISkeelzRepository;
-
+@SpringBootTest
 public class TestRequeteBilanCompetence {
 
-	@SpringBootTest
-	public class TestRequeteCoursPersonne {
+
+
 		
 		@Autowired
 		private IBilanCompetenceRepository bilanCompetenceRepo;
@@ -40,12 +40,12 @@ public class TestRequeteBilanCompetence {
 		public void testfindByPersonneAndEtatCours() {
 			
 			Skeelz objetConnecte = new Skeelz ();
-			objetConnecte.setIntitule("Objet Connecté");
+			objetConnecte.setIntitule("skeelz requete");
 			objetConnecte = skeelzRepo.save(objetConnecte);	
 			
 			Competence developpementDetecteurFume = new Competence();
-			developpementDetecteurFume.setDescription("Vous êtes capable de concevoir un détécteur de fumées connecté");
-			developpementDetecteurFume.setIntitule("Développement d'un détecteur de fumée connecté");
+			developpementDetecteurFume.setDescription("competence requete bilancompetence");
+			developpementDetecteurFume.setIntitule("competence requete bilancompetence");
 			developpementDetecteurFume.setPonderation(Ponderation.DIX);	
 			developpementDetecteurFume = competenceRepo.save(developpementDetecteurFume);
 			
@@ -66,7 +66,7 @@ public class TestRequeteBilanCompetence {
 			BilanValDete = bilanCompetenceRepo.save(BilanValDete);
 		
 		List<BilanCompetence> bilanVal = bilanCompetenceRepo.findByPersonne(personneValentin);
-		assertEquals("Objet Connecté", bilanVal.get(0).getCompetenceSkeelz().getSkeelz().getIntitule());
-		}
+		assertEquals("skeelz requete", bilanVal.get(0).getCompetenceSkeelz().getSkeelz().getIntitule());
+		
 	}
 }

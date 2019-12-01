@@ -90,12 +90,12 @@ public class TestJpaLienssss {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");	
 		
 		Skeelz objetConnecte = new Skeelz ();
-		objetConnecte.setIntitule("Objet Connecté");
+		objetConnecte.setIntitule("mo, skeelz");
 		objetConnecte = skeelzRepo.save(objetConnecte);	
 		
 		Competence developpementDetecteurFume = new Competence();
 		developpementDetecteurFume.setDescription("Vous êtes capable de concevoir un détécteur de fumées connecté");
-		developpementDetecteurFume.setIntitule("Développement d'un détecteur de fumée connecté");
+		developpementDetecteurFume.setIntitule("competence 212");
 		developpementDetecteurFume.setPonderation(Ponderation.DIX);	
 		developpementDetecteurFume = competenceRepo.save(developpementDetecteurFume);
 		
@@ -109,13 +109,13 @@ public class TestJpaLienssss {
 		
 		Entreprise sopra = new Entreprise();
 		sopra.setNom("Sopra Steria");
-		sopra.setNumeroSiret("ST0045");
+		sopra.setNumeroSiret("ST0049");
 		sopra.setTypeContrat("Contrat de ouf");	
 		sopra = entrepriseRepo.save(sopra);
 		
 		Utilisateur userValentin = new Utilisateur();
-		userValentin.setIdentifiant("Valentin");
-		userValentin.setMail("valentin@yahoo.fr");
+		userValentin.setIdentifiant("Valentin 11");
+		userValentin.setMail("valentin@yahoo.frfr");
 		userValentin.setAdministrateur(false);
 		userValentin.setPassword("vp");
 		userValentin.setRh(false);
@@ -167,7 +167,7 @@ public class TestJpaLienssss {
 //		userTheau = utilisateurRepo.save(userTheau);
 		
 		Personne personneValentin = new Personne();
-		personneValentin.setNom("Picavet");
+		personneValentin.setNom("Picave");
 		personneValentin.setPrenom("Valentin");
 		personneValentin.setTelephone("0624153698");	
 		personneValentin.setUtilisateur(userValentin);
@@ -215,7 +215,7 @@ public class TestJpaLienssss {
 		
 		
 		Cours detecteurFume = new Cours ();
-		detecteurFume.setIntitule("Concevez un détecteur de fumée connecté");
+		detecteurFume.setIntitule("cours jpa lien");
 		detecteurFume.setDifficulte(Difficulte.FACILE);
 		detecteurFume.setDuree(6);
 		detecteurFume.setEtat(Etat.OUVERT);
@@ -249,7 +249,7 @@ public class TestJpaLienssss {
 //		damienDetecteur = coursPersonneRepo.save(damienDetecteur);
 //		
 		Module definition = new Module();
-		definition.setIntitule("Définissez votre projet de détecteur de fumée connecté");
+		definition.setIntitule("module jpa lien");
 		definition.setAgencement(1);
 		definition.setNbQuestion(11);
 		definition.setPeriodicite(1);

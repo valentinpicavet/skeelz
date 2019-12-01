@@ -54,7 +54,6 @@ public class Cours {
 	@OneToMany(mappedBy = "cours")
 	@JsonView(Views.ViewCoursDetail.class)
 	private List<CoursPersonne> coursPersonnes = new ArrayList<CoursPersonne>();
-
 	@ManyToOne
 	@JoinColumn(name = "entreprise_id")
 	private Entreprise entreprise;

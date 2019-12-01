@@ -36,12 +36,11 @@ public abstract class ElementDeCours{
 	private Chapitre chapitre;
 	
 	
-	
 	public ElementDeCours() {
 		super();
 	}
-	
-	
+
+
 	public Long getId() {
 		return id;
 	}

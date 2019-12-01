@@ -2,8 +2,6 @@ package sopra.skeelz;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -31,7 +29,7 @@ public class TestRequeteCoursPersonne {
 	@Test
 	public void testfindByPersonneAndEtatCours() {
 	Cours detecteurFume = new Cours ();
-	detecteurFume.setIntitule("Concevez un détecteur de fumée connecté");
+	detecteurFume.setIntitule("coursccc");
 	detecteurFume.setDifficulte(Difficulte.FACILE);
 	detecteurFume.setDuree(6);
 	detecteurFume.setEtat(Etat.OUVERT);
@@ -51,7 +49,6 @@ public class TestRequeteCoursPersonne {
 	valentinDetecteur.setPersonne(personneValentin);
 	valentinDetecteur = coursPersonneRepo.save(valentinDetecteur);
 	
-	List<CoursPersonne> coursVal = coursPersonneRepo.findByPersonneAndEtatCours(personneValentin, EtatCours.SUIVI);
-	assertEquals("Concevez un détecteur de fumée connecté", coursVal.get(0).getCours().getIntitule());
+	assertEquals("coursccc", coursPersonneRepo.findCoursByIdPersonneEtatCours(personneValentin.getId(), EtatCours.SUIVI).get(0).getIntitule());
 	}
 }

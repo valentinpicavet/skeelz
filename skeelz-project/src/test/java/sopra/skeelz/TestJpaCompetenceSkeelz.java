@@ -13,6 +13,7 @@ import sopra.skeelz.model.CompetenceSkeelz;
 import sopra.skeelz.model.Ponderation;
 import sopra.skeelz.repository.ICompetenceRepository;
 import sopra.skeelz.repository.ICompetenceSkeelzRepository;
+import sopra.skeelz.web.CompetenceSkeelzController;
 
 @SpringBootTest
 public class TestJpaCompetenceSkeelz {
@@ -21,6 +22,8 @@ public class TestJpaCompetenceSkeelz {
 	private ICompetenceSkeelzRepository competenceSkeelzRepo;
 	@Autowired
 	private ICompetenceRepository competenceRepo;
+	@Autowired
+	private CompetenceSkeelzController competenceSkeelzCont;
 	
 	@Test
 	public void testCompetenceSkeelz() {
@@ -49,6 +52,39 @@ public class TestJpaCompetenceSkeelz {
 		competenceSkeelzRepo.delete(compSk);
 		
 		int finalNumber = competenceSkeelzRepo.findAll().size();
+		
+		assertEquals(0, finalNumber - startNumber);
+
+	}
+	
+	@Test
+	public void testCompetenceSkeelzController() {
+		
+		
+		int startNumber = competenceSkeelzCont.list().size();
+		
+		CompetenceSkeelz compSk = new CompetenceSkeelz();
+		Competence maCompetence = new Competence();
+		maCompetence.setIntitule("compSkeelzCont");
+		maCompetence.setPonderation(Ponderation.DIX);
+		
+		maCompetence = competenceRepo.save(maCompetence);
+		compSk.setCompetence(maCompetence);
+		
+		compSk = competenceSkeelzCont.create(compSk);
+		compSk = competenceSkeelzCont.update(compSk, compSk.getId());
+		
+		
+		
+		
+		assertEquals("compSkeelzCont", competenceSkeelzCont.find(compSk.getId()).getCompetence().getIntitule());
+		
+		int middleNumber = competenceSkeelzCont.list().size();
+		assertEquals(1, (middleNumber - startNumber));
+		
+		competenceSkeelzCont.delete(compSk.getId());
+		
+		int finalNumber = competenceSkeelzCont.list().size();
 		
 		assertEquals(0, finalNumber - startNumber);
 
