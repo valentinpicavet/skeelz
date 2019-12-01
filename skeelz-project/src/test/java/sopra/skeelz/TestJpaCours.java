@@ -127,7 +127,7 @@ public class TestJpaCours {
 		competenceSkeelz.setCompetence(competence);
 		competenceSkeelz.setSkeelz(skeelz);
 		competenceSkeelz = competenceSkeelzRepo.save(competenceSkeelz);
-
+		
 		Cours cours1 = new Cours();
 		cours1.setIntitule("intituleCoursQuery");
 		cours1.setDifficulte(Difficulte.FACILE);
@@ -136,8 +136,9 @@ public class TestJpaCours {
 		cours1.setCheminImageCours("chemin");
 		cours1.setDescription("descriptionCoursQuery");
 		cours1.setEntreprise(entreprise);
-		cours1 = coursRepo.save(cours1);
-		
+		cours1 = coursCont.create(cours1);
+		cours1 = coursCont.update(cours1, cours1.getId());
+
 		CoursCompetence coursCompetence = new CoursCompetence();
 		coursCompetence.setCompetence(competence);
 		coursCompetence.setCours(cours1);

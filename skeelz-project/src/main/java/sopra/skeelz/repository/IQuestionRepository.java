@@ -10,6 +10,6 @@ import sopra.skeelz.model.Question;
 
 public interface IQuestionRepository extends JpaRepository<Question, Long> {
 
-	@Query("select r.question from Reponse r where r.question.module.id = :id")
+	@Query("from Question q join fetch q.reponses r where q.module.id = :id")
 	List<Question> findQuestionAndReponse (@Param("id") Long id);
 }
