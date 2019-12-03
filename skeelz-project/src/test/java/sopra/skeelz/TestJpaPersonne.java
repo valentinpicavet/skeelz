@@ -47,7 +47,7 @@ public class TestJpaPersonne {
 	private IBilanCompetenceRepository bilanCompetenceRepo;
 	@Autowired
 	private PersonneController personneCont;
-	
+
 	@Test
 	public void testPersonne() {
 
@@ -58,43 +58,41 @@ public class TestJpaPersonne {
 		maPersonne.setPrenom("Paul");
 		maPersonne.setTelephone("026134515");
 		maPersonne.setNoteGlobal(23);
-		
-		
+
 		maPersonne = personneRepo.save(maPersonne);
 
-
 		Optional<Personne> maPersonneFind = personneRepo.findById(maPersonne.getId());
-		
+
 		assertEquals("JEAN", maPersonneFind.get().getNom());
 		assertEquals("Paul", maPersonneFind.get().getPrenom());
 		assertEquals("026134515", maPersonneFind.get().getTelephone());
 		assertEquals(23, maPersonneFind.get().getNoteGlobal());
-		
+
 		int middleNumber = personneRepo.findAll().size();
-	
+
 		assertEquals(1, (middleNumber - startNumber));
-		
+
 		personneRepo.delete(maPersonne);
-		
+
 		int finalNumber = personneRepo.findAll().size();
-		
+
 		assertEquals(0, (finalNumber - startNumber));
 
 	}
-	
+
 	@Test
 	public void testPersonneQuery() {
-		
+
 		Competence competence = new Competence();
 		competence.setIntitule("PersonneQuery");
 		competence.setPonderation(Ponderation.CINQ);
 		competence.setDescription("PersonneQuery");
 		competence = competenceRepo.save(competence);
-		
+
 		Skeelz skeelz = new Skeelz();
 		skeelz.setIntitule("PersonneQuery");
 		skeelz = skeelzRepo.save(skeelz);
-		
+
 		CompetenceSkeelz competenceSkeelz = new CompetenceSkeelz();
 		competenceSkeelz.setCompetence(competence);
 		competenceSkeelz.setSkeelz(skeelz);
@@ -106,34 +104,32 @@ public class TestJpaPersonne {
 		maPersonne.setTelephone("026134515");
 		maPersonne.setNoteGlobal(23);
 		maPersonne = personneRepo.save(maPersonne);
-		
+
 		BilanCompetence bilanCompetence = new BilanCompetence();
 		bilanCompetence.setCompetenceSkeelz(competenceSkeelz);
 		bilanCompetence.setPersonne(maPersonne);
 		bilanCompetence = bilanCompetenceRepo.save(bilanCompetence);
 
-		
 		assertEquals("PersonneQuery", personneRepo.findPersonneBySkeelz(skeelz.getId()).get(0).getNom());
 		assertEquals("PersonneQuery", personneRepo.findPersonneByIdCompetence(competence.getId()).get(0).getNom());
-		
 
 	}
-	
+
 	@Test
 	public void testPersonneCont() {
 
 		int startNumber = personneCont.list().size();
-		
+
 		Competence competence = new Competence();
 		competence.setIntitule("CompPersonneCOnt");
 		competence.setPonderation(Ponderation.CINQ);
 		competence.setDescription("PersonneCont");
 		competence = competenceRepo.save(competence);
-		
+
 		Skeelz skeelz = new Skeelz();
 		skeelz.setIntitule("SkeelzPersonneCont");
 		skeelz = skeelzRepo.save(skeelz);
-		
+
 		CompetenceSkeelz competenceSkeelz = new CompetenceSkeelz();
 		competenceSkeelz.setCompetence(competence);
 		competenceSkeelz.setSkeelz(skeelz);
@@ -145,13 +141,13 @@ public class TestJpaPersonne {
 		maPersonne.setTelephone("026134515");
 		maPersonne.setNoteGlobal(23);
 		maPersonne = personneCont.create(maPersonne);
-		maPersonne = personneCont.update(maPersonne,maPersonne.getId());
-		
+		maPersonne = personneCont.update(maPersonne, maPersonne.getId());
+
 		BilanCompetence bilanCompetence = new BilanCompetence();
 		bilanCompetence.setCompetenceSkeelz(competenceSkeelz);
 		bilanCompetence.setPersonne(maPersonne);
 		bilanCompetence = bilanCompetenceRepo.save(bilanCompetence);
-		
+
 		Cours cours1 = new Cours();
 		cours1.setIntitule("CourspersonneCont");
 		cours1.setDifficulte(Difficulte.FACILE);
@@ -160,26 +156,24 @@ public class TestJpaPersonne {
 		cours1.setCheminImageCours("chemin");
 		cours1.setDescription("personneCont");
 		cours1 = coursRepo.save(cours1);
-		
-		
+
 		CoursPersonne coursPersonne = new CoursPersonne();
 		coursPersonne.setCours(cours1);
 		coursPersonne.setPersonne(maPersonne);
 		coursPersonne.setEtatCours(EtatCours.VALIDE);
 		coursPersonne = coursPersonneRepo.save(coursPersonne);
-		
-		
+
 		assertEquals("personneCont", personneCont.find(maPersonne.getId()).getNom());
 		assertEquals("CourspersonneCont", personneCont.findCours(maPersonne.getId()).get(0).getIntitule());
 		assertEquals("SkeelzPersonneCont", personneCont.findSkeelz(maPersonne.getId()).get(0).getIntitule());
 		assertEquals("CompPersonneCOnt", personneCont.findCompetence(maPersonne.getId()).get(0).getIntitule());
-		
+
 		int middleNumber = personneCont.list().size();
-	
+
 		assertEquals(1, (middleNumber - startNumber));
-		
+
 	}
-	
+
 	@Test
 	public void testPersonneContBis() {
 		Personne maPersonne = new Personne();
@@ -190,6 +184,5 @@ public class TestJpaPersonne {
 		maPersonne = personneCont.create(maPersonne);
 		personneCont.delete(maPersonne.getId());
 	}
-
 
 }

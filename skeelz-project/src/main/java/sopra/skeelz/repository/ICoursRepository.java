@@ -11,41 +11,33 @@ import sopra.skeelz.model.Difficulte;
 import sopra.skeelz.model.Etat;
 import sopra.skeelz.model.RelationCours;
 
-
 public interface ICoursRepository extends JpaRepository<Cours, Long> {
-	
 
-	
-	@Query ("from Cours c where c.duree = :duree")
-	List<Cours> findAllCoursByDuree (@Param("duree") int duree);
-	
+	@Query("from Cours c where c.duree = :duree")
+	List<Cours> findAllCoursByDuree(@Param("duree") int duree);
+
 	@Query("from Cours c where c.entreprise.id = :id")
-	List<Cours> findCoursByIdEntreprise (@Param("id") Long id);
-	
-	@Query("select cp.cours from CoursPersonne cp where cp.personne.id = :id")
-	List<Cours> findCoursByIdPersonne (@Param("id") Long id);
-	
-	@Query("select distinct cc.cours from CoursCompetence cc join cc.competence c join  c.competenceSkeelz cs where cs.skeelz.id = :id")
-	List<Cours> findCoursBySkeelz (@Param("id") Long id);
-	
-	//***********************VM
-	
-	@Query ("from Cours c where c.etat = :etat")
-	List<Cours> findAllCoursByEtat (@Param("etat") Etat etat);
-	
-	@Query ("from Cours c where c.difficulte = :difficulte")
-	List<Cours> findAllCoursByDifficulte (@Param("difficulte") Difficulte difficulte);
-	
-	@Query ("from Cours c where c.intitule = :intitule")
-	List<Cours> findAllCoursByIntitule (@Param("intitule") String intitule);
-	
-	@Query ("select distinct cc.cours from CoursCompetence cc where cc.competence.id = :id and cc.relationCours = :relationCours")
-	List<Cours> findAllCoursByCompetenceAndRelationCours (@Param("id") Long id, @Param("relationCours") RelationCours relationCours);
-	
+	List<Cours> findCoursByIdEntreprise(@Param("id") Long id);
 
-	
-	
-	
-	
-	
+	@Query("select cp.cours from CoursPersonne cp where cp.personne.id = :id")
+	List<Cours> findCoursByIdPersonne(@Param("id") Long id);
+
+	@Query("select distinct cc.cours from CoursCompetence cc join cc.competence c join  c.competenceSkeelz cs where cs.skeelz.id = :id")
+	List<Cours> findCoursBySkeelz(@Param("id") Long id);
+
+	// ***********************VM
+
+	@Query("from Cours c where c.etat = :etat")
+	List<Cours> findAllCoursByEtat(@Param("etat") Etat etat);
+
+	@Query("from Cours c where c.difficulte = :difficulte")
+	List<Cours> findAllCoursByDifficulte(@Param("difficulte") Difficulte difficulte);
+
+	@Query("from Cours c where c.intitule = :intitule")
+	List<Cours> findAllCoursByIntitule(@Param("intitule") String intitule);
+
+	@Query("select distinct cc.cours from CoursCompetence cc where cc.competence.id = :id and cc.relationCours = :relationCours")
+	List<Cours> findAllCoursByCompetenceAndRelationCours(@Param("id") Long id,
+			@Param("relationCours") RelationCours relationCours);
+
 }

@@ -24,19 +24,18 @@ import sopra.skeelz.repository.ICoursRepository;
 import sopra.skeelz.repository.IPersonneRepository;
 import sopra.skeelz.repository.ISkeelzRepository;
 
-
 @RestController
 @RequestMapping("/personne")
 public class PersonneController {
 	@Autowired
 	private IPersonneRepository personneRepo;
-	
+
 	@Autowired
 	private ICoursRepository coursRepo;
-	
+
 	@Autowired
 	private ICompetenceRepository competenceRepo;
-	
+
 	@Autowired
 	private ISkeelzRepository skeelzRepo;
 
@@ -55,26 +54,26 @@ public class PersonneController {
 
 		return personne;
 	}
-	
+
 	@GetMapping("/{id}/courss")
-	@JsonView(Views. ViewPersonneCourss.class)
-	public List<Cours>findCours(@PathVariable Long id) {
+	@JsonView(Views.ViewPersonneCourss.class)
+	public List<Cours> findCours(@PathVariable Long id) {
 		List<Cours> courss = coursRepo.findCoursByIdPersonne(id);
 
 		return courss;
 	}
-	
+
 	@GetMapping("/{id}/competences")
-	@JsonView(Views. ViewPersonneCompetences.class)
-	public List<Competence>findCompetence(@PathVariable Long id) {
+	@JsonView(Views.ViewPersonneCompetences.class)
+	public List<Competence> findCompetence(@PathVariable Long id) {
 		List<Competence> competences = competenceRepo.findCompetenceByIdPersonne(id);
 
 		return competences;
 	}
-	
+
 	@GetMapping("/{id}/skeelzs")
-	@JsonView(Views. ViewPersonneSkeelzs.class)
-	public List<Skeelz>findSkeelz(@PathVariable Long id) {
+	@JsonView(Views.ViewPersonneSkeelzs.class)
+	public List<Skeelz> findSkeelz(@PathVariable Long id) {
 		List<Skeelz> skeelzs = skeelzRepo.findSkeelzByIdPersonne(id);
 
 		return skeelzs;
@@ -95,5 +94,3 @@ public class PersonneController {
 		personneRepo.deleteById(id);
 	}
 }
-
-

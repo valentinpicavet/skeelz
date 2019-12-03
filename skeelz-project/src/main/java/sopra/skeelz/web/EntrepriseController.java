@@ -26,27 +26,26 @@ import sopra.skeelz.repository.IEntrepriseRepository;
 import sopra.skeelz.repository.ISkeelzRepository;
 import sopra.skeelz.repository.IUtilisateurRepository;
 
-
 @RestController
 @RequestMapping("/entreprise")
 public class EntrepriseController {
 	@Autowired
 	private IEntrepriseRepository entrepriseRepo;
-	
+
 	@Autowired
 	private IUtilisateurRepository utilisateurRepo;
-	
+
 	@Autowired
 	private ICoursRepository coursRepo;
-	
+
 	@Autowired
 	private ICompetenceRepository competenceRepo;
-	
+
 	@Autowired
 	private ISkeelzRepository skeelzRepo;
 
 	@GetMapping("")
-	@JsonView(Views. ViewEntreprise.class)
+	@JsonView(Views.ViewEntreprise.class)
 	public List<Entreprise> list() {
 		List<Entreprise> entreprises = entrepriseRepo.findAll();
 
@@ -54,45 +53,44 @@ public class EntrepriseController {
 	}
 
 	@GetMapping("/{id}")
-	@JsonView(Views. ViewEntreprise.class)
+	@JsonView(Views.ViewEntreprise.class)
 	public Entreprise find(@PathVariable Long id) {
 		Entreprise entreprise = entrepriseRepo.findById(id).get();
 
 		return entreprise;
 	}
-	
+
 	@GetMapping("/{id}/utilisateurs")
-	@JsonView(Views. ViewEntrepriseUtilisateurs.class)
+	@JsonView(Views.ViewEntrepriseUtilisateurs.class)
 	public List<Utilisateur> findUtilisateur(@PathVariable Long id) {
 		List<Utilisateur> utilisateurs = utilisateurRepo.findUtilisateurByIdEntreprise(id);
 
 		return utilisateurs;
 	}
-	
+
 	@GetMapping("/{id}/courss")
-	@JsonView(Views. ViewEntrepriseCourss.class)
+	@JsonView(Views.ViewEntrepriseCourss.class)
 	public List<Cours> findCours(@PathVariable Long id) {
 		List<Cours> courss = coursRepo.findCoursByIdEntreprise(id);
 
 		return courss;
 	}
-	
+
 	@GetMapping("/{id}/competences")
-	@JsonView(Views. ViewEntrepriseCompetences.class)
+	@JsonView(Views.ViewEntrepriseCompetences.class)
 	public List<Competence> findCompetence(@PathVariable Long id) {
 		List<Competence> competences = competenceRepo.findCompetenceByIdEntreprise(id);
 
 		return competences;
 	}
-	
+
 	@GetMapping("/{id}/skeelzs")
-	@JsonView(Views. ViewEntrepriseSkeelzs.class)
+	@JsonView(Views.ViewEntrepriseSkeelzs.class)
 	public List<Skeelz> findSkeelz(@PathVariable Long id) {
 		List<Skeelz> skeelzs = skeelzRepo.findSkeelzByIdEntreprise(id);
 
 		return skeelzs;
 	}
-
 
 	@PostMapping("")
 	public Entreprise create(@RequestBody Entreprise entreprise) {
@@ -109,5 +107,3 @@ public class EntrepriseController {
 		entrepriseRepo.deleteById(id);
 	}
 }
-
-

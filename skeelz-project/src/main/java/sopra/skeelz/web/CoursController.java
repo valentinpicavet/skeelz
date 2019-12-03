@@ -27,17 +27,16 @@ import sopra.skeelz.repository.IModuleRepository;
 @RestController
 @RequestMapping("/cours")
 public class CoursController {
-	
+
 	@Autowired
 	private ICoursRepository coursRepo;
-	
+
 	@Autowired
 	private IModuleRepository moduleRepo;
-	
+
 	@Autowired
 	private IChapitreRepository chapitreRepo;
-	
-	
+
 	@GetMapping("")
 	@JsonView(Views.ViewCours.class)
 	public List<Cours> list() {
@@ -53,43 +52,40 @@ public class CoursController {
 
 		return cours;
 	}
+
 	@GetMapping("/by-etat/{etat}")
 	@JsonView(Views.ViewCours.class)
 	public List<Cours> findByEtat(@PathVariable String etat) {
 		Etat eetat = Etat.valueOf(etat.toUpperCase());
 		List<Cours> courss = coursRepo.findAllCoursByEtat(eetat);
-	
 
 		return courss;
 	}
-	
+
 	@GetMapping("/{id}/modules")
 	@JsonView(Views.ViewCoursModules.class)
 	public List<Module> findModule(@PathVariable Long id) {
 		List<Module> modules = moduleRepo.findModule(id);
-	
 
 		return modules;
 	}
-	
+
 	@GetMapping("/{id}/modules/chapitres")
 	@JsonView(Views.ViewCoursModulesChapitres.class)
 	public List<Module> findModulesWithChapitres(@PathVariable Long id) {
 		List<Module> modules = moduleRepo.findModulesWithChapitres(id);
-	
 
 		return modules;
 	}
-	
+
 	@GetMapping("/{id}/chapitres")
 	@JsonView(Views.ViewCoursChapitres.class)
 	public List<Chapitre> findChapitre(@PathVariable Long id) {
 		List<Chapitre> chapitres = chapitreRepo.findChapitre(id);
-	
 
 		return chapitres;
 	}
-	
+
 	@GetMapping("/by-difficulte/{difficulte}")
 	@JsonView(Views.ViewCours.class)
 	public List<Cours> find(@PathVariable Difficulte difficulte) {
@@ -97,6 +93,7 @@ public class CoursController {
 
 		return courss;
 	}
+
 	@GetMapping("/by-intitule/{intitule}")
 	@JsonView(Views.ViewCours.class)
 	public List<Cours> find(@PathVariable String intitule) {
@@ -104,7 +101,6 @@ public class CoursController {
 
 		return courss;
 	}
-	
 
 	@PostMapping("")
 	public Cours create(@RequestBody Cours cours) {

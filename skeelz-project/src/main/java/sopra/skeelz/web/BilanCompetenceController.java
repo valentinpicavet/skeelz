@@ -21,10 +21,10 @@ import sopra.skeelz.repository.IBilanCompetenceRepository;
 @RestController
 @RequestMapping("/bilanCompetence")
 public class BilanCompetenceController {
-	
+
 	@Autowired
 	private IBilanCompetenceRepository bilanCompetenceRepo;
-	
+
 	@GetMapping("")
 	@JsonView(Views.ViewBilanCompetence.class)
 	public List<BilanCompetence> list() {

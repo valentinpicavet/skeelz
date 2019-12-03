@@ -18,7 +18,6 @@ import sopra.skeelz.model.ElementDeCours;
 import sopra.skeelz.model.Views;
 import sopra.skeelz.repository.IElementDeCoursRepository;
 
-
 @RestController
 @RequestMapping("/elementDeCours")
 public class ElementDeCoursController {
@@ -40,11 +39,13 @@ public class ElementDeCoursController {
 
 		return elementDeCours;
 	}
-	
+
 	@GetMapping("/FindByIdChapitreAndAgencement/{idChapitre}:{agencement}")
 	@JsonView(Views.ViewChapitreByAgencementIdChapitre.class)
-	public ElementDeCours findElementDeCoursByChapitreAndAgencement(@PathVariable Long idChapitre, @PathVariable int agencement) {
-		ElementDeCours elementDeCours = elementDeCoursRepo.findElementDeCoursByChapitreAndAgencement(idChapitre, agencement);
+	public ElementDeCours findElementDeCoursByChapitreAndAgencement(@PathVariable Long idChapitre,
+			@PathVariable int agencement) {
+		ElementDeCours elementDeCours = elementDeCoursRepo.findElementDeCoursByChapitreAndAgencement(idChapitre,
+				agencement);
 
 		return elementDeCours;
 	}
@@ -64,5 +65,3 @@ public class ElementDeCoursController {
 		elementDeCoursRepo.deleteById(id);
 	}
 }
-
-

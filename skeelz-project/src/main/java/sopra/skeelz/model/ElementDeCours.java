@@ -15,12 +15,11 @@ import javax.persistence.Version;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-
 @Entity
-@Table(uniqueConstraints= {@UniqueConstraint(columnNames = { "chapitre_id", "agencement"})})
+@Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "chapitre_id", "agencement" }) })
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "type")
-public abstract class ElementDeCours{
+public abstract class ElementDeCours {
 	@Id
 	@GeneratedValue
 	@JsonView(Views.ViewCommon.class)
@@ -32,47 +31,43 @@ public abstract class ElementDeCours{
 	@JsonView(Views.ViewCommon.class)
 	private int agencement;
 	@ManyToOne
-	@JoinColumn(name = "chapitre_id")//, nullable = false)
+	@JoinColumn(name = "chapitre_id") // , nullable = false)
 	private Chapitre chapitre;
-	
-	
+
 	public ElementDeCours() {
 		super();
 	}
 
-
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 	public int getVersion() {
 		return version;
 	}
+
 	public void setVersion(int version) {
 		this.version = version;
 	}
+
 	public int getAgencement() {
 		return agencement;
 	}
+
 	public void setAgencement(int agencement) {
 		this.agencement = agencement;
 	}
-
 
 	public Chapitre getChapitre() {
 		return chapitre;
 	}
 
-
 	public void setChapitre(Chapitre chapitre) {
 		this.chapitre = chapitre;
 	}
-	
-	
-	
-	
-	
 
 }

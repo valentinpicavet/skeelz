@@ -110,7 +110,7 @@ public class TestJpaModule {
 	public void testModuleCont() {
 
 		int startNumber = moduleCont.list().size();
-		
+
 		Cours cours1 = new Cours();
 		cours1.setIntitule("intituleModuleCont");
 		cours1.setDifficulte(Difficulte.FACILE);
@@ -119,7 +119,6 @@ public class TestJpaModule {
 		cours1.setCheminImageCours("chemin");
 		cours1.setDescription("descriptionModuleCont");
 		cours1 = coursRepo.save(cours1);
-
 
 		Module module1 = new Module();
 		module1.setIntitule("testModuleCont");
@@ -130,18 +129,18 @@ public class TestJpaModule {
 		module1.setNbTentativeAutorise(4);
 		module1 = moduleCont.create(module1);
 		module1 = moduleCont.update(module1, module1.getId());
-		
+
 		Question question = new Question();
 		question.setModule(module1);
 		question.setQuestion("questionModuleCont");
 		question = questionRepo.save(question);
-		
+
 		Reponse reponse = new Reponse();
 		reponse.setEnonce("enonceModuleCOnt");
 		reponse.setJuste(true);
 		reponse.setQuestion(question);
 		reponse = reponseRepo.save(reponse);
-		
+
 		Chapitre chapitre = new Chapitre();
 		chapitre.setModule(module1);
 		chapitre.setAgencement(6);
@@ -149,19 +148,16 @@ public class TestJpaModule {
 		chapitre = chapitreRepo.save(chapitre);
 
 		assertEquals("testModuleCont", moduleCont.find(module1.getId()).getIntitule());
-		assertEquals("testModuleCont", moduleCont.findModuleByCoursAndAgencement(cours1.getId(),1).getIntitule());
+		assertEquals("testModuleCont", moduleCont.findModuleByCoursAndAgencement(cours1.getId(), 1).getIntitule());
 		assertEquals("ModuleQuery", moduleCont.findChapitre(module1.getId()).get(0).getTitre());
 		Question question2 = moduleCont.findQuestionAndReponse(module1.getId()).get(0);
 		assertEquals("questionModuleCont", question2.getQuestion());
-		
-		
-
 
 		int middleNumber = moduleCont.list().size();
 		assertEquals(1, (middleNumber - startNumber));
 
 	}
-	
+
 	@Test
 	public void testModuleContBis() {
 		Module module1 = new Module();
@@ -173,6 +169,5 @@ public class TestJpaModule {
 		module1 = moduleCont.create(module1);
 		moduleCont.delete(module1.getId());
 	}
-
 
 }

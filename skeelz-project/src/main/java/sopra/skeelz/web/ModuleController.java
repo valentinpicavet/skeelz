@@ -22,7 +22,6 @@ import sopra.skeelz.repository.IChapitreRepository;
 import sopra.skeelz.repository.IModuleRepository;
 import sopra.skeelz.repository.IQuestionRepository;
 
-
 @RestController
 @RequestMapping("/module")
 public class ModuleController {
@@ -56,7 +55,7 @@ public class ModuleController {
 
 		return module;
 	}
-	
+
 	@GetMapping("/{id}/questionsAndReponses")
 	@JsonView(Views.ViewModuleQuestionReponse.class)
 	public List<Question> findQuestionAndReponse(@PathVariable Long id) {
@@ -64,7 +63,7 @@ public class ModuleController {
 
 		return questions;
 	}
-	
+
 	@GetMapping("/{id}/chapitres")
 	@JsonView(Views.ViewModuleChapitres.class)
 	public List<Chapitre> findChapitre(@PathVariable Long id) {
@@ -72,7 +71,7 @@ public class ModuleController {
 
 		return chapitres;
 	}
-	
+
 	@PostMapping("")
 	public Module create(@RequestBody Module module) {
 		return moduleRepo.save(module);
@@ -88,5 +87,3 @@ public class ModuleController {
 		moduleRepo.deleteById(id);
 	}
 }
-
-

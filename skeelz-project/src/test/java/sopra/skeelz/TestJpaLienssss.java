@@ -47,72 +47,71 @@ import sopra.skeelz.repository.IReponseRepository;
 import sopra.skeelz.repository.ISkeelzRepository;
 import sopra.skeelz.repository.IUtilisateurRepository;
 
-
 @SpringBootTest
 public class TestJpaLienssss {
-	
+
 	@Autowired
 	private IBilanCompetenceRepository bilanCompetenceRepo;
 	@Autowired
-	private 	IChapitreRepository chapitreRepo ;
+	private IChapitreRepository chapitreRepo;
 	@Autowired
 	private ICompetenceRepository competenceRepo;
 	@Autowired
-	private ICompetenceSkeelzRepository competenceSkeelzRepo ;
+	private ICompetenceSkeelzRepository competenceSkeelzRepo;
 	@Autowired
-	private ICoursCompetenceRepository coursCompetenceRepo ;
+	private ICoursCompetenceRepository coursCompetenceRepo;
 	@Autowired
-	private ICoursPersonneRepository coursPersonneRepo ;
+	private ICoursPersonneRepository coursPersonneRepo;
 	@Autowired
-	private ICoursRepository coursRepo ;
+	private ICoursRepository coursRepo;
 	@Autowired
-	private IElementDeCoursRepository elementDeCoursRepo ;
+	private IElementDeCoursRepository elementDeCoursRepo;
 	@Autowired
-	private IEntrepriseRepository entrepriseRepo ;
+	private IEntrepriseRepository entrepriseRepo;
 	@Autowired
-	private IModuleRepository moduleRepo ;
+	private IModuleRepository moduleRepo;
 	@Autowired
-	private IPersonneRepository personneRepo ;
+	private IPersonneRepository personneRepo;
 	@Autowired
-	private IQCMPersonneRepository qcmPersonneRepo ;
+	private IQCMPersonneRepository qcmPersonneRepo;
 	@Autowired
-	private IQuestionRepository questionRepo ;
+	private IQuestionRepository questionRepo;
 	@Autowired
 	private IReponseRepository reponseRepo;
 	@Autowired
-	private ISkeelzRepository skeelzRepo ;	
+	private ISkeelzRepository skeelzRepo;
 	@Autowired
 	private IUtilisateurRepository utilisateurRepo;
 
 	@Test
-	public void TestJpaLiensss () throws ParseException {
-		
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");	
-		
-		Skeelz objetConnecte = new Skeelz ();
+	public void TestJpaLiensss() throws ParseException {
+
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+
+		Skeelz objetConnecte = new Skeelz();
 		objetConnecte.setIntitule("mo, skeelz");
-		objetConnecte = skeelzRepo.save(objetConnecte);	
-		
+		objetConnecte = skeelzRepo.save(objetConnecte);
+
 		Competence developpementDetecteurFume = new Competence();
 		developpementDetecteurFume.setDescription("Vous êtes capable de concevoir un détécteur de fumées connecté");
 		developpementDetecteurFume.setIntitule("competence 212");
-		developpementDetecteurFume.setPonderation(Ponderation.DIX);	
+		developpementDetecteurFume.setPonderation(Ponderation.DIX);
 		developpementDetecteurFume = competenceRepo.save(developpementDetecteurFume);
-		
+
 		CompetenceSkeelz objetCoDetecteur = new CompetenceSkeelz();
 		objetCoDetecteur.setCompetence(developpementDetecteurFume);
 		objetCoDetecteur.setSkeelz(objetConnecte);
 		objetCoDetecteur = competenceSkeelzRepo.save(objetCoDetecteur);
-		
+
 		assertEquals(objetConnecte, objetCoDetecteur.getSkeelz());
 		assertEquals(developpementDetecteurFume, objetCoDetecteur.getCompetence());
-		
+
 		Entreprise sopra = new Entreprise();
 		sopra.setNom("Sopra Steria");
 		sopra.setNumeroSiret("ST0049");
-		sopra.setTypeContrat("Contrat de ouf");	
+		sopra.setTypeContrat("Contrat de ouf");
 		sopra = entrepriseRepo.save(sopra);
-		
+
 		Utilisateur userValentin = new Utilisateur();
 		userValentin.setIdentifiant("Valentin 11");
 		userValentin.setMail("valentin@yahoo.frfr");
@@ -122,9 +121,9 @@ public class TestJpaLienssss {
 		userValentin.setSuperUser(false);
 		userValentin.setEntreprise(sopra);
 		userValentin = utilisateurRepo.save(userValentin);
-		
+
 		assertEquals(sopra, userValentin.getEntreprise());
-		
+
 //		
 //		Utilisateur userDamien = new Utilisateur();
 //		userDamien.setIdentifiant("Damien");
@@ -165,17 +164,16 @@ public class TestJpaLienssss {
 //		userTheau.setSuperUser(false);
 //		userTheau.setEntreprise(sopra);
 //		userTheau = utilisateurRepo.save(userTheau);
-		
+
 		Personne personneValentin = new Personne();
 		personneValentin.setNom("Picave");
 		personneValentin.setPrenom("Valentin");
-		personneValentin.setTelephone("0624153698");	
+		personneValentin.setTelephone("0624153698");
 		personneValentin.setUtilisateur(userValentin);
 		personneValentin = personneRepo.save(personneValentin);
-		
+
 		assertEquals(userValentin, personneValentin.getUtilisateur());
-		
-		
+
 //		Personne personneVincent = new Personne();
 //		personneVincent.setNom("Maridet");
 //		personneVincent.setPrenom("Vincent");
@@ -203,45 +201,43 @@ public class TestJpaLienssss {
 //		personneTheau.setTelephone("0624156698");	
 //		personneTheau.setUtilisateur(userTheau);
 //		personneTheau = personneRepo.save(personneTheau);
-		
+
 		BilanCompetence BilanValDete = new BilanCompetence();
 		BilanValDete.setCompetenceSkeelz(objetCoDetecteur);
 		BilanValDete.setPersonne(personneValentin);
 		BilanValDete = bilanCompetenceRepo.save(BilanValDete);
-		
+
 		assertEquals(objetCoDetecteur, BilanValDete.getCompetenceSkeelz());
 		assertEquals(personneValentin, BilanValDete.getPersonne());
 
-		
-		
-		Cours detecteurFume = new Cours ();
+		Cours detecteurFume = new Cours();
 		detecteurFume.setIntitule("cours jpa lien");
 		detecteurFume.setDifficulte(Difficulte.FACILE);
 		detecteurFume.setDuree(6);
 		detecteurFume.setEtat(Etat.OUVERT);
-		detecteurFume.setDescription("Dans ce cours, vous allez découvrir comment concevoir un objet connecté simple dans son contexte opérationnel : un détecteur de fumée connecté, depuis la définition des besoins jusqu’au prototypage.");
+		detecteurFume.setDescription(
+				"Dans ce cours, vous allez découvrir comment concevoir un objet connecté simple dans son contexte opérationnel : un détecteur de fumée connecté, depuis la définition des besoins jusqu’au prototypage.");
 		detecteurFume.setCheminImageCours("Le chemin");
 		detecteurFume = coursRepo.save(detecteurFume);
-		
+
 		CoursCompetence detecteurFumeComp = new CoursCompetence();
 		detecteurFumeComp.setRelationCours(RelationCours.VALIDE);
 		detecteurFumeComp.setCours(detecteurFume);
 		detecteurFumeComp.setCompetence(developpementDetecteurFume);
 		detecteurFumeComp = coursCompetenceRepo.save(detecteurFumeComp);
-		
+
 		assertEquals(detecteurFume, detecteurFumeComp.getCours());
 		assertEquals(developpementDetecteurFume, detecteurFumeComp.getCompetence());
-		
-		
+
 		CoursPersonne valentinDetecteur = new CoursPersonne();
 		valentinDetecteur.setEtatCours(EtatCours.ADMINISTRE);
 		valentinDetecteur.setCours(detecteurFume);
 		valentinDetecteur.setPersonne(personneValentin);
 		valentinDetecteur = coursPersonneRepo.save(valentinDetecteur);
-		
+
 		assertEquals(detecteurFume, valentinDetecteur.getCours());
 		assertEquals(personneValentin, valentinDetecteur.getPersonne());
-		
+
 //		CoursPersonne damienDetecteur = new CoursPersonne();
 //		damienDetecteur.setEtatCours(EtatCours.SUIVI);
 //		damienDetecteur.setCours(detecteurFume);
@@ -257,36 +253,33 @@ public class TestJpaLienssss {
 		definition.setEnonceQCM("Définissez votre projet de détecteur de fumée connecté");
 		definition.setCours(detecteurFume);
 		definition = moduleRepo.save(definition);
-		
+
 		assertEquals(detecteurFume, definition.getCours());
-		
-		
-		
+
 		QCMPersonne definitionValentin = new QCMPersonne();
 		definitionValentin.setStatutQCM(true);
 		definitionValentin.setDateDerniereTentative(sdf.parse("02/02/02"));
 		definitionValentin.setModule(definition);
 		definitionValentin.setPersonne(personneValentin);
 		definitionValentin = qcmPersonneRepo.save(definitionValentin);
-		
+
 		assertEquals(definition, definitionValentin.getModule());
 		assertEquals(personneValentin, definitionValentin.getPersonne());
-		
+
 //		QCMPersonne definitionDamien = new QCMPersonne();
 //		definitionDamien.setStatutQCM(false);
 //		definitionDamien.setDateDerniereTentative(sdf.parse("02/02/02"));
 //		definitionDamien.setModule(definition);
 //		definitionDamien.setPersonne(personneDamien);
 //		definitionDamien = qcmPersonneRepo.save(definitionDamien);
-		
+
 		Question def1 = new Question();
 		def1.setQuestion("Quel est le problème soulevé par la mise en situation ?");
 		def1.setModule(definition);
 		def1 = questionRepo.save(def1);
-		
-		
+
 		assertEquals(definition, def1.getModule());
-		
+
 //		Question def2 = new Question();
 //		def2.setQuestion("Quelles propriétés permettent de qualifier un détecteur de fumée de \"système embarqué\" ?");
 //		def2.setModule(definition);
@@ -336,15 +329,15 @@ public class TestJpaLienssss {
 //		def11.setQuestion("Sur quels facteurs l'analyse organique influe-t-elle ? (Trois réponses possibles).");
 //		def11.setModule(definition);
 //		def11 = questionRepo.save(def11);
-		
+
 		Reponse defquest1resp1 = new Reponse();
 		defquest1resp1.setEnonce("Le détecteur de fumée n’a pas fonctionné.");
 		defquest1resp1.setQuestion(def1);
 		defquest1resp1.setJuste(true);
 		defquest1resp1 = reponseRepo.save(defquest1resp1);
-		
+
 		assertEquals(def1, defquest1resp1.getQuestion());
-		
+
 //		Reponse defquest1resp2 = new Reponse();
 //		defquest1resp2.setEnonce("Le détecteur de fumée a déclenché une alarme sonore mais personne n’est intervenu.");
 //		defquest1resp2.setQuestion(def1);
@@ -632,24 +625,24 @@ public class TestJpaLienssss {
 //		defquest11resp5.setQuestion(def11);
 //		defquest11resp5.setJuste(true);
 //		defquest11resp5 = reponseRepo.save(defquest11resp5);
-		
+
 		Chapitre detect11 = new Chapitre();
 		detect11.setTitre("Découvrez le domaine des systèmes embarqués et objets connectés");
 		detect11.setAgencement(0);
 		detect11.setModule(definition);
 		detect11 = chapitreRepo.save(detect11);
-		
+
 		assertEquals(definition, detect11.getModule());
-		
-		
+
 //		
 
 		Paragraphe chap1par1 = new Paragraphe();
 		chap1par1.setAgencement(0);
-		chap1par1.setTexte("Les systèmes embarqués nous accompagnent au quotidien et nous offrent des services qui nous facilitent la vie : smartphones, drones, robots jouets, appareils ménagers, systèmes d’aide à la conduite automobile, dispositifs de surveillance à distance du domicile et bien d’autres encore.");	
+		chap1par1.setTexte(
+				"Les systèmes embarqués nous accompagnent au quotidien et nous offrent des services qui nous facilitent la vie : smartphones, drones, robots jouets, appareils ménagers, systèmes d’aide à la conduite automobile, dispositifs de surveillance à distance du domicile et bien d’autres encore.");
 		chap1par1.setChapitre(detect11);
 		chap1par1 = (Paragraphe) elementDeCoursRepo.save(chap1par1);
-		
+
 		assertEquals(detect11, chap1par1.getChapitre());
 //		
 //		Paragraphe chap1par2 = new Paragraphe();
@@ -676,12 +669,12 @@ public class TestJpaLienssss {
 //		chap1par5.setTexte("Un système embarqué (SE) est un système autonome, généralement fortement connecté. Il est spécialisé dans une tâche bien précise, fonctionne très souvent en temps réel, et mêle des éléments matériels et logiciels. On le qualifie d’ « embarqué » (on parle aussi de système « enfoui») car il est intégré au dispositif physique dont il assure le contrôle ou la commande, et dont il partage les contraintes d'environnement.");	
 //		chap1par5.setChapitre(detect11);
 //		chap1par5 = (Paragraphe) elementDeCoursRepo.save(chap1par5);
-		
+
 //		List<Cours> ccc = coursRepo.findAllCoursByDifficulte(Difficulte.FACILE);
-		
+
 //		System.out.println(ccc);
 //		
-		
+
 	}
 
 }

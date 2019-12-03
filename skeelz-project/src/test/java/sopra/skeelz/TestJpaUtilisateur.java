@@ -19,13 +19,12 @@ public class TestJpaUtilisateur {
 
 	@Autowired
 	private IUtilisateurRepository utilisateurRepo;
-	
+
 	@Autowired
 	private UtilisateurController utilisateurCont;
-	
+
 	@Autowired
 	private IEntrepriseRepository entrepriseRepo;
-	
 
 	@Test
 	public void testUtilisateur() {
@@ -60,17 +59,16 @@ public class TestJpaUtilisateur {
 
 		assertEquals(0, finalNumber - startNumber);
 	}
-	
+
 	@Test
 	public void testUtilisateurQuery() {
 
-		
 		Entreprise sopra = new Entreprise();
 		sopra.setNom("testUtilisateurQuery");
 		sopra.setNumeroSiret("testUtilisateurQuery");
 		sopra.setTypeContrat("testUtilisateurQuery");
 		sopra = entrepriseRepo.save(sopra);
-		
+
 		Utilisateur user = new Utilisateur();
 		user.setIdentifiant("testUtilisateurQuery");
 		user.setMail("testUtilisateurQuery@yahoo.fr");
@@ -81,22 +79,22 @@ public class TestJpaUtilisateur {
 		user.setSuperUser(false);
 		user = utilisateurRepo.save(user);
 
-
-		assertEquals("testUtilisateurQuery", utilisateurRepo.findUtilisateurByIdEntreprise(sopra.getId()).get(0).getIdentifiant());
+		assertEquals("testUtilisateurQuery",
+				utilisateurRepo.findUtilisateurByIdEntreprise(sopra.getId()).get(0).getIdentifiant());
 
 	}
-	
+
 	@Test
 	public void testUtilisateurCont() {
 
 		int startNumber = utilisateurCont.list().size();
-		
+
 		Entreprise sopra = new Entreprise();
 		sopra.setNom("testUtilisateurCont");
 		sopra.setNumeroSiret("testUtilisateurCont");
 		sopra.setTypeContrat("testUtilisateurCont");
 		sopra = entrepriseRepo.save(sopra);
-		
+
 		Utilisateur user = new Utilisateur();
 		user.setIdentifiant("testUtilisateurCont");
 		user.setMail("testUtilisateurCont@yahoo.fr");
@@ -110,15 +108,15 @@ public class TestJpaUtilisateur {
 
 		assertEquals("testUtilisateurCont", utilisateurCont.find(user.getId()).getIdentifiant());
 		assertEquals("testUtilisateurCont", utilisateurCont.findEntrepriseByUtilisateurId(user.getId()).getNom());
-		
+
 		int middleNumber = utilisateurCont.list().size();
 		assertEquals(1, (middleNumber - startNumber));
 
 	}
-	
+
 	@Test
 	public void testUtilisateurContBis() {
-		
+
 		Utilisateur user = new Utilisateur();
 		user.setIdentifiant("testUtilisateurCont");
 		user.setMail("testUtilisateurCont@yahoo.fr");

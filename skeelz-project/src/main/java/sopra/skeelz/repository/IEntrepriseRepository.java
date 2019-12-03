@@ -9,5 +9,5 @@ import sopra.skeelz.model.Entreprise;
 public interface IEntrepriseRepository extends JpaRepository<Entreprise, Long> {
 
 	@Query("select u.entreprise from Utilisateur u where u.id = :id")
-	Entreprise findEntrepriseByUtilisateur (@Param("id") Long id);
+	Entreprise findEntrepriseByUtilisateur(@Param("id") Long id);
 }

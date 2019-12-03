@@ -35,22 +35,22 @@ class ModeleTest {
 
 	@Test
 	void BilanCompetence() {
-		
+
 		BilanCompetence bilanCompetence = new BilanCompetence();
 		bilanCompetence.setId(0l);
 		bilanCompetence.setVersion(0);
 		bilanCompetence.setCompetenceSkeelz(null);
-		bilanCompetence.setPersonne(null);	
-		
+		bilanCompetence.setPersonne(null);
+
 		assertEquals(0l, bilanCompetence.getId());
 		assertEquals(0, bilanCompetence.getVersion());
 		assertEquals(null, bilanCompetence.getCompetenceSkeelz());
 		assertEquals(null, bilanCompetence.getPersonne());
 	}
-	
+
 	@Test
 	void Chapitre() {
-		
+
 		Chapitre chapitre = new Chapitre();
 		chapitre.setId(0l);
 		chapitre.setVersion(0);
@@ -58,7 +58,7 @@ class ModeleTest {
 		chapitre.setTitre("aaa");
 		chapitre.setModule(null);
 		chapitre.setElementsDeCours(null);
-		
+
 		assertEquals(0l, chapitre.getId());
 		assertEquals(0, chapitre.getVersion());
 		assertEquals(0, chapitre.getAgencement());
@@ -66,10 +66,10 @@ class ModeleTest {
 		assertEquals(null, chapitre.getModule());
 		assertEquals(null, chapitre.getElementsDeCours());
 	}
-	
+
 	@Test
 	void Competence() {
-		
+
 		Competence competence = new Competence();
 		competence.setId(0l);
 		competence.setVersion(0);
@@ -79,7 +79,7 @@ class ModeleTest {
 		competence.setCompetenceSkeelz(null);
 		competence.setCoursCompetence(null);
 		competence.setEntreprise(null);
-		
+
 		assertEquals(0l, competence.getId());
 		assertEquals(0, competence.getVersion());
 		assertEquals("aaa", competence.getIntitule());
@@ -89,27 +89,27 @@ class ModeleTest {
 		assertEquals(null, competence.getCoursCompetence());
 		assertEquals(null, competence.getEntreprise());
 	}
-	
+
 	@Test
 	void CompetenceSkeelz() {
-		
+
 		CompetenceSkeelz competenceSkeelz = new CompetenceSkeelz();
 		competenceSkeelz.setId(0l);
 		competenceSkeelz.setVersion(0);
 		competenceSkeelz.setSkeelz(null);
 		competenceSkeelz.setBilanCompetence(null);
 		competenceSkeelz.setCompetence(null);
-		
+
 		assertEquals(0l, competenceSkeelz.getId());
 		assertEquals(0, competenceSkeelz.getVersion());
 		assertEquals(null, competenceSkeelz.getSkeelz());
 		assertEquals(null, competenceSkeelz.getCompetence());
 		assertEquals(null, competenceSkeelz.getBilanCompetence());
 	}
-	
+
 	@Test
 	void Cours() {
-		
+
 		Cours cours = new Cours();
 		cours.setId(0l);
 		cours.setVersion(0);
@@ -137,10 +137,10 @@ class ModeleTest {
 		assertEquals("aaa", cours.getIntitule());
 		assertEquals(null, cours.getModules());
 	}
-	
+
 	@Test
 	void CoursCompetence() {
-		
+
 		CoursCompetence coursCompetence = new CoursCompetence();
 		coursCompetence.setId(0l);
 		coursCompetence.setVersion(0);
@@ -153,12 +153,12 @@ class ModeleTest {
 		assertEquals(null, coursCompetence.getCompetence());
 		assertEquals(null, coursCompetence.getCours());
 		assertEquals("Compétence requise", coursCompetence.getRelationCours().getLabel());
-		
+
 	}
-	
+
 	@Test
 	void CoursPersonne() {
-		
+
 		CoursPersonne coursPersonne = new CoursPersonne();
 		coursPersonne.setId(0l);
 		coursPersonne.setVersion(0);
@@ -166,36 +166,33 @@ class ModeleTest {
 		coursPersonne.setPersonne(null);
 		coursPersonne.setEtatCours(EtatCours.ADMINISTRE);
 
-
 		assertEquals(0l, coursPersonne.getId());
 		assertEquals(0, coursPersonne.getVersion());
 		assertEquals(null, coursPersonne.getCours());
 		assertEquals(null, coursPersonne.getPersonne());
 		assertEquals("administre", coursPersonne.getEtatCours().getLabel());
-		
+
 	}
-	
+
 	@Test
 	void ElementDeCours() {
-		
+
 		ElementDeCours elementDeCours = new Paragraphe();
 		elementDeCours.setId(0l);
 		elementDeCours.setVersion(0);
 		elementDeCours.setAgencement(0);
 		elementDeCours.setChapitre(null);
 
-
 		assertEquals(0l, elementDeCours.getId());
 		assertEquals(0, elementDeCours.getVersion());
 		assertEquals(0, elementDeCours.getAgencement());
 		assertEquals(null, elementDeCours.getChapitre());
-		
+
 	}
-	
-	
+
 	@Test
 	void Entreprise() {
-		
+
 		Entreprise entreprise = new Entreprise();
 		entreprise.setId(0l);
 		entreprise.setVersion(0);
@@ -207,7 +204,6 @@ class ModeleTest {
 		entreprise.setSkeelzs(null);
 		entreprise.setTypeContrat("aaa");
 
-
 		assertEquals(0l, entreprise.getId());
 		assertEquals(0, entreprise.getVersion());
 		assertEquals(null, entreprise.getAdministrateur());
@@ -217,12 +213,12 @@ class ModeleTest {
 		assertEquals("aaa", entreprise.getNumeroSiret());
 		assertEquals(null, entreprise.getSkeelzs());
 		assertEquals("aaa", entreprise.getTypeContrat());
-		
+
 	}
-	
+
 	@Test
 	void ExtraitCode() {
-		
+
 		ExtraitCode extraitCode = new ExtraitCode();
 		extraitCode.setId(0l);
 		extraitCode.setVersion(0);
@@ -230,7 +226,6 @@ class ModeleTest {
 		extraitCode.setChapitre(null);
 		extraitCode.setCommentaire("aaa");
 		extraitCode.setContenu("aaa");
-
 
 		assertEquals(0l, extraitCode.getId());
 		assertEquals(0, extraitCode.getVersion());
@@ -240,10 +235,10 @@ class ModeleTest {
 		assertEquals("aaa", extraitCode.getContenu());
 
 	}
-	
+
 	@Test
 	void ImageCours() {
-		
+
 		ImageCours imageCours = new ImageCours();
 		imageCours.setId(0l);
 		imageCours.setVersion(0);
@@ -251,7 +246,6 @@ class ModeleTest {
 		imageCours.setChapitre(null);
 		imageCours.setCommentaire("aaa");
 		imageCours.setChemin("aaa");
-
 
 		assertEquals(0l, imageCours.getId());
 		assertEquals(0, imageCours.getVersion());
@@ -261,10 +255,10 @@ class ModeleTest {
 		assertEquals("aaa", imageCours.getChemin());
 
 	}
-	
+
 	@Test
 	void Module() {
-		
+
 		Module module = new Module();
 		module.setId(0l);
 		module.setVersion(0);
@@ -278,7 +272,6 @@ class ModeleTest {
 		module.setPeriodicite(9);
 		module.setQcmPersonnes(null);
 		module.setQuestions(null);
-
 
 		assertEquals(0l, module.getId());
 		assertEquals(0, module.getVersion());
@@ -294,10 +287,10 @@ class ModeleTest {
 		assertEquals(null, module.getQuestions());
 
 	}
-	
+
 	@Test
 	void Paragraphe() {
-		
+
 		Paragraphe paragraphe = new Paragraphe();
 		paragraphe.setId(0l);
 		paragraphe.setVersion(0);
@@ -305,7 +298,6 @@ class ModeleTest {
 		paragraphe.setChapitre(null);
 		paragraphe.setTexte("aaa");
 		paragraphe.setTitre("aaa");
-
 
 		assertEquals(0l, paragraphe.getId());
 		assertEquals(0, paragraphe.getVersion());
@@ -315,10 +307,10 @@ class ModeleTest {
 		assertEquals("aaa", paragraphe.getTitre());
 
 	}
-	
+
 	@Test
 	void Personne() {
-		
+
 		Personne personne = new Personne();
 		personne.setId(0l);
 		personne.setVersion(0);
@@ -330,8 +322,6 @@ class ModeleTest {
 		personne.setQcmPersonne(null);
 		personne.setTelephone("aaa");
 		personne.setUtilisateur(null);
-
-
 
 		assertEquals(0l, personne.getId());
 		assertEquals(0, personne.getVersion());
@@ -345,10 +335,10 @@ class ModeleTest {
 		assertEquals(null, personne.getUtilisateur());
 
 	}
-	
+
 	@Test
 	void QCMPersonne() {
-		
+
 		QCMPersonne qcmPersonne = new QCMPersonne();
 		qcmPersonne.setId(0l);
 		qcmPersonne.setVersion(0);
@@ -357,7 +347,6 @@ class ModeleTest {
 		qcmPersonne.setNbTentative(6);
 		qcmPersonne.setPersonne(null);
 		qcmPersonne.setStatutQCM(true);
-
 
 		assertEquals(0l, qcmPersonne.getId());
 		assertEquals(0, qcmPersonne.getVersion());
@@ -368,17 +357,16 @@ class ModeleTest {
 		assertEquals(true, qcmPersonne.isStatutQCM());
 
 	}
-	
+
 	@Test
 	void Question() {
-		
+
 		Question question = new Question();
 		question.setId(0l);
 		question.setVersion(0);
 		question.setQuestion("aaa");
 		question.setModule(null);
 		question.setReponses(null);
-
 
 		assertEquals(0l, question.getId());
 		assertEquals(0, question.getVersion());
@@ -387,10 +375,10 @@ class ModeleTest {
 		assertEquals(null, question.getReponses());
 
 	}
-	
+
 	@Test
 	void Reponse() {
-		
+
 		Reponse reponse = new Reponse();
 		reponse.setId(0l);
 		reponse.setVersion(0);
@@ -405,10 +393,10 @@ class ModeleTest {
 		assertEquals("aaa", reponse.getEnonce());
 
 	}
-	
+
 	@Test
 	void Skeelz() {
-		
+
 		Skeelz skeelz = new Skeelz();
 		skeelz.setId(0l);
 		skeelz.setVersion(0);
@@ -423,10 +411,10 @@ class ModeleTest {
 		assertEquals("aaa", skeelz.getIntitule());
 
 	}
-	
+
 	@Test
 	void Utilisateur() {
-		
+
 		Utilisateur utilisateur = new Utilisateur();
 		utilisateur.setId(0l);
 		utilisateur.setVersion(0);
@@ -439,7 +427,6 @@ class ModeleTest {
 		utilisateur.setRh(true);
 		utilisateur.setSuperUser(true);
 
-
 		assertEquals(0l, utilisateur.getId());
 		assertEquals(0, utilisateur.getVersion());
 		assertEquals(true, utilisateur.isAdministrateur());
@@ -451,8 +438,6 @@ class ModeleTest {
 		assertEquals(true, utilisateur.isRh());
 		assertEquals(true, utilisateur.isSuperUser());
 
-
 	}
-
 
 }
