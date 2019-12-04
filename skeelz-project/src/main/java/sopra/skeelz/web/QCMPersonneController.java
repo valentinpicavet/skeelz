@@ -19,7 +19,6 @@ import sopra.skeelz.model.QCMPersonne;
 import sopra.skeelz.model.Views;
 import sopra.skeelz.repository.IQCMPersonneRepository;
 
-
 @RestController
 @RequestMapping("/qcmPersonne")
 @CrossOrigin("*")
@@ -41,7 +40,7 @@ public class QCMPersonneController {
 		QCMPersonne qcmPersonne = qcmPersonneRepo.findById(id).get();
 		return qcmPersonne;
 	}
-	
+
 	@GetMapping("/by-personne-and-module/{personne}:{module}")
 	@JsonView(Views.ViewQCMPersonnePersonneModule.class)
 	public QCMPersonne findByPersonneAndModule(@PathVariable Long personne, @PathVariable Long module) {
@@ -65,5 +64,3 @@ public class QCMPersonneController {
 		qcmPersonneRepo.deleteById(id);
 	}
 }
-
-

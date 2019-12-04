@@ -21,14 +21,13 @@ import sopra.skeelz.model.Views;
 import sopra.skeelz.repository.IEntrepriseRepository;
 import sopra.skeelz.repository.IUtilisateurRepository;
 
-
 @RestController
 @RequestMapping("/utilisateur")
 @CrossOrigin("*")
 public class UtilisateurController {
 	@Autowired
 	private IUtilisateurRepository utilisateurRepo;
-	
+
 	@Autowired
 	private IEntrepriseRepository entrepriseRepo;
 
@@ -39,7 +38,6 @@ public class UtilisateurController {
 
 		return utilisateurs;
 	}
-	
 
 	@GetMapping("/{id}")
 	@JsonView(Views.ViewUtilisateur.class)
@@ -48,9 +46,9 @@ public class UtilisateurController {
 
 		return utilisateur;
 	}
-	
+
 	@GetMapping("/{id}/entreprise")
-	@JsonView(Views. ViewUtilisateurEntreprise.class)
+	@JsonView(Views.ViewUtilisateurEntreprise.class)
 	public Entreprise findEntrepriseByUtilisateurId(@PathVariable Long id) {
 		Entreprise entreprises = entrepriseRepo.findEntrepriseByUtilisateur(id);
 
@@ -72,5 +70,3 @@ public class UtilisateurController {
 		utilisateurRepo.deleteById(id);
 	}
 }
-
-

@@ -25,10 +25,10 @@ import sopra.skeelz.repository.ICoursPersonneRepository;
 @RequestMapping("/CoursPersonne")
 @CrossOrigin("*")
 public class CoursPersonneController {
-	
+
 	@Autowired
 	private ICoursPersonneRepository coursPersonneRepo;
-	
+
 	@GetMapping("")
 	@JsonView(Views.ViewCoursPersonne.class)
 	public List<CoursPersonne> list() {
@@ -36,7 +36,7 @@ public class CoursPersonneController {
 
 		return coursPersonnes;
 	}
-	
+
 	@GetMapping("/{id}")
 	@JsonView(Views.ViewCoursPersonne.class)
 	public CoursPersonne find(@PathVariable Long id) {
@@ -44,15 +44,14 @@ public class CoursPersonneController {
 
 		return coursPersonne;
 	}
-	
+
 	@GetMapping("/{id}:{etatCours}/detail")
 	@JsonView(Views.ViewCoursPersonneDetail.class)
-	public List<Cours> find(@PathVariable Long id,@PathVariable EtatCours etatCours) {
+	public List<Cours> find(@PathVariable Long id, @PathVariable EtatCours etatCours) {
 		List<Cours> courss = coursPersonneRepo.findCoursByIdPersonneEtatCours(id, etatCours);
 
 		return courss;
 	}
-
 
 	@PostMapping("")
 	public CoursPersonne create(@RequestBody CoursPersonne coursPersonne) {

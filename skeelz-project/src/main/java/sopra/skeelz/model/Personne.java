@@ -34,10 +34,9 @@ public class Personne {
 	private String telephone;
 	@JsonView(Views.ViewCommon.class)
 	private int noteGlobal;
-	
-	
+
 	@OneToOne
-	@JoinColumn(name = "utilisateur_id")//, nullable = false)
+	@JoinColumn(name = "utilisateur_id") // , nullable = false)
 	private Utilisateur utilisateur;
 	@OneToMany(mappedBy = "personne")
 	private List<CoursPersonne> coursPersonne = new ArrayList<CoursPersonne>();

@@ -23,10 +23,10 @@ import sopra.skeelz.repository.IBilanCompetenceRepository;
 @RequestMapping("/bilanCompetence")
 @CrossOrigin("*")
 public class BilanCompetenceController {
-	
+
 	@Autowired
 	private IBilanCompetenceRepository bilanCompetenceRepo;
-	
+
 	@GetMapping("")
 	@JsonView(Views.ViewBilanCompetence.class)
 	public List<BilanCompetence> list() {

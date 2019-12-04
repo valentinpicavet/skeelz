@@ -42,20 +42,18 @@ public class TestJpaBilanCompetence {
 		Competence maCompetence = new Competence();
 		maCompetence.setIntitule("ma competence test jpa");
 		maCompetence.setPonderation(Ponderation.DIX);
-		
+
 		maCompetence = competenceRepo.save(maCompetence);
-		
+
 		CompetenceSkeelz maCompetenceSkeelz = new CompetenceSkeelz();
-		maCompetenceSkeelz.setCompetence(maCompetence);	
+		maCompetenceSkeelz.setCompetence(maCompetence);
 		maCompetenceSkeelz = competenceSkeelzRepo.save(maCompetenceSkeelz);
 		monBilan.setCompetenceSkeelz(maCompetenceSkeelz);
 
 		monBilan = bilanCompetenceRepo.save(monBilan);
-		
 
 		Optional<BilanCompetence> monBilanFind = bilanCompetenceRepo.findById(monBilan.getId());
 		assertEquals("ma competence test jpa", monBilanFind.get().getCompetenceSkeelz().getCompetence().getIntitule());
-		
 
 		int middleNumber = bilanCompetenceRepo.findAll().size();
 		assertEquals(1, (middleNumber - startNumber));
@@ -68,7 +66,7 @@ public class TestJpaBilanCompetence {
 
 	@Test
 	public void testBilanCompetenceQuery() {
-		
+
 		Personne maPersonne = new Personne();
 		maPersonne.setNom("JEAN");
 		maPersonne.setPrenom("Paul");
@@ -78,44 +76,44 @@ public class TestJpaBilanCompetence {
 
 		Competence maCompetence = new Competence();
 		maCompetence.setIntitule("ma competence test query");
-		maCompetence.setPonderation(Ponderation.DIX);	
+		maCompetence.setPonderation(Ponderation.DIX);
 		maCompetence = competenceRepo.save(maCompetence);
-		
+
 		CompetenceSkeelz maCompetenceSkeelz = new CompetenceSkeelz();
-		maCompetenceSkeelz.setCompetence(maCompetence);	
+		maCompetenceSkeelz.setCompetence(maCompetence);
 		maCompetenceSkeelz = competenceSkeelzRepo.save(maCompetenceSkeelz);
-		
+
 		BilanCompetence monBilan = new BilanCompetence();
 		monBilan.setCompetenceSkeelz(maCompetenceSkeelz);
 		monBilan.setPersonne(maPersonne);
 		monBilan = bilanCompetenceRepo.save(monBilan);
 
 		assertEquals("JEAN", bilanCompetenceRepo.findByPersonne(maPersonne).get(0).getPersonne().getNom());
-		
+
 	}
-	
+
 	@Test
 	public void testBilanCompetenceController() {
-		
+
 		int startNumber = bilanCompetencecontroller.list().size();
 
 		BilanCompetence monBilan = new BilanCompetence();
 		Competence maCompetence = new Competence();
 		maCompetence.setIntitule("ma competence test controller");
 		maCompetence.setPonderation(Ponderation.DIX);
-		
+
 		maCompetence = competenceRepo.save(maCompetence);
-		
+
 		CompetenceSkeelz maCompetenceSkeelz = new CompetenceSkeelz();
-		maCompetenceSkeelz.setCompetence(maCompetence);	
+		maCompetenceSkeelz.setCompetence(maCompetence);
 		maCompetenceSkeelz = competenceSkeelzRepo.save(maCompetenceSkeelz);
 		monBilan.setCompetenceSkeelz(maCompetenceSkeelz);
 
 		monBilan = bilanCompetencecontroller.create(monBilan);
 		monBilan = bilanCompetencecontroller.update(monBilan, monBilan.getId());
-		
-		assertEquals("ma competence test controller", bilanCompetencecontroller.find(monBilan.getId()).getCompetenceSkeelz().getCompetence().getIntitule());
-		
+
+		assertEquals("ma competence test controller",
+				bilanCompetencecontroller.find(monBilan.getId()).getCompetenceSkeelz().getCompetence().getIntitule());
 
 		int middleNumber = bilanCompetenceRepo.findAll().size();
 		assertEquals(1, (middleNumber - startNumber));
@@ -124,6 +122,6 @@ public class TestJpaBilanCompetence {
 		int finalNumber = bilanCompetencecontroller.list().size();
 
 		assertEquals(0, finalNumber - startNumber);
-		
+
 	}
 }

@@ -27,14 +27,14 @@ import sopra.skeelz.repository.ISkeelzRepository;
 @RequestMapping("/skeelz")
 @CrossOrigin("*")
 public class SkeelzController {
-	
+
 	@Autowired
 	private ISkeelzRepository skeelzRepo;
 	@Autowired
 	private IPersonneRepository personneRepo;
 	@Autowired
 	private ICoursRepository coursRepo;
-	
+
 	@GetMapping("")
 	@JsonView(Views.ViewSkeelz.class)
 	public List<Skeelz> list() {
@@ -50,19 +50,18 @@ public class SkeelzController {
 
 		return skeelz;
 	}
-	
-	
+
 	@GetMapping("/{id}/personnes")
-	@JsonView(Views. ViewSkeelzPersonnes.class)
-	public List<Personne>findPersonneBySkeelzId(@PathVariable Long id) {
+	@JsonView(Views.ViewSkeelzPersonnes.class)
+	public List<Personne> findPersonneBySkeelzId(@PathVariable Long id) {
 		List<Personne> personnes = personneRepo.findPersonneBySkeelz(id);
 
 		return personnes;
 	}
-	
+
 	@GetMapping("/{id}/courss")
-	@JsonView(Views. ViewSkeelzCours.class)
-	public List<Cours>findCoursBySkeelzId(@PathVariable Long id) {
+	@JsonView(Views.ViewSkeelzCours.class)
+	public List<Cours> findCoursBySkeelzId(@PathVariable Long id) {
 		List<Cours> courss = coursRepo.findCoursBySkeelz(id);
 
 		return courss;

@@ -21,14 +21,13 @@ import sopra.skeelz.model.Views;
 import sopra.skeelz.repository.IChapitreRepository;
 import sopra.skeelz.repository.IElementDeCoursRepository;
 
-
 @RestController
 @RequestMapping("/chapitre")
 @CrossOrigin("*")
 public class ChapitreController {
 	@Autowired
 	private IChapitreRepository chapitreRepo;
-	
+
 	@Autowired
 	private IElementDeCoursRepository elementDeCoursRepo;
 
@@ -47,6 +46,7 @@ public class ChapitreController {
 
 		return chapitre;
 	}
+
 	@GetMapping("/FindByIdModuleAndAgencement/{idModule}:{agencement}")
 	@JsonView(Views.ViewModuleByAgencementIdModule.class)
 	public Chapitre findChapitreByModuleAndAgencement(@PathVariable Long idModule, @PathVariable int agencement) {
@@ -54,7 +54,7 @@ public class ChapitreController {
 
 		return chapitre;
 	}
-	
+
 	@GetMapping("/{id}/elementDeCourss")
 	@JsonView(Views.ViewChapitreElementDeCourss.class)
 	public List<ElementDeCours> listElementCours(@PathVariable Long id) {
@@ -78,5 +78,3 @@ public class ChapitreController {
 		chapitreRepo.deleteById(id);
 	}
 }
-
-

@@ -75,11 +75,12 @@ public class TestJpaQuestion {
 		reponse.setJuste(true);
 		reponse.setQuestion(question);
 		reponse = reponseRepo.save(reponse);
-		
-		assertEquals("testQuestionQuery", questionrepo.findQuestionAndReponse(module1.getId()).get(0).getReponses().get(0).getEnonce());
+
+		assertEquals("testQuestionQuery",
+				questionrepo.findQuestionAndReponse(module1.getId()).get(0).getReponses().get(0).getEnonce());
 
 	}
-	
+
 	@Test
 	public void testQuestionCont() {
 
@@ -89,7 +90,7 @@ public class TestJpaQuestion {
 		question1.setQuestion("testQuestionCont");
 		question1 = questionCont.create(question1);
 		question1 = questionCont.update(question1, question1.getId());
-		
+
 		assertEquals("testQuestionCont", questionCont.find(question1.getId()).getQuestion());
 
 		int middleNumber = questionCont.list().size();

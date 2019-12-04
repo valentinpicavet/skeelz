@@ -26,16 +26,16 @@ public class TestJpaQuerySommaire {
 	@Test
 	public void testCours() {
 
-
-		Cours detecteurFume = new Cours ();
+		Cours detecteurFume = new Cours();
 		detecteurFume.setIntitule("Cours querys");
 		detecteurFume.setDifficulte(Difficulte.FACILE);
 		detecteurFume.setDuree(6);
 		detecteurFume.setEtat(Etat.OUVERT);
-		detecteurFume.setDescription("Dans ce cours, vous allez découvrir comment concevoir un objet connecté simple dans son contexte opérationnel : un détecteur de fumée connecté, depuis la définition des besoins jusqu’au prototypage.");
+		detecteurFume.setDescription(
+				"Dans ce cours, vous allez découvrir comment concevoir un objet connecté simple dans son contexte opérationnel : un détecteur de fumée connecté, depuis la définition des besoins jusqu’au prototypage.");
 		detecteurFume.setCheminImageCours("Le chemin");
 		detecteurFume = coursRepo.save(detecteurFume);
-		
+
 		Module definition = new Module();
 		definition.setIntitule("Module querys");
 		definition.setAgencement(1);
@@ -45,19 +45,19 @@ public class TestJpaQuerySommaire {
 		definition.setEnonceQCM("Définissez votre projet de détecteur de fumée connecté");
 		definition.setCours(detecteurFume);
 		definition = moduleRepo.save(definition);
-		
+
 		Chapitre detect11 = new Chapitre();
 		detect11.setTitre("Découvrez le domaine des systèmes embarqués et objets connectés");
 		detect11.setAgencement(0);
 		detect11.setModule(definition);
 		detect11 = chapitreRepo.save(detect11);
-		
+
 		Chapitre detect12 = new Chapitre();
 		detect12.setTitre("Découvrez notre cas d'étude : le détecteur de fumée connecté");
 		detect12.setAgencement(1);
 		detect12.setModule(definition);
 		detect12 = chapitreRepo.save(detect12);
-		
+
 		Module approfondissement = new Module();
 		approfondissement.setIntitule("module query 2");
 		approfondissement.setAgencement(2);
@@ -67,28 +67,29 @@ public class TestJpaQuerySommaire {
 		approfondissement.setEnonceQCM("Approfondissez le développement de votre projet par des analyse métiers");
 		approfondissement.setCours(detecteurFume);
 		approfondissement = moduleRepo.save(approfondissement);
-		
+
 		Chapitre detect21 = new Chapitre();
 		detect21.setTitre("Alimentez votre système d'énergie");
 		detect21.setAgencement(0);
 		detect21.setModule(approfondissement);
 		detect21 = chapitreRepo.save(detect21);
-		
+
 		Chapitre detect22 = new Chapitre();
 		detect22.setTitre("Optimisez l'ergonomie du système");
 		detect22.setAgencement(1);
 		detect22.setModule(approfondissement);
 		detect22 = chapitreRepo.save(detect22);
-		
-		Cours javaDebutant = new Cours ();
+
+		Cours javaDebutant = new Cours();
 		javaDebutant.setIntitule("cours query");
 		javaDebutant.setDifficulte(Difficulte.FACILE);
 		javaDebutant.setDuree(5);
 		javaDebutant.setEtat(Etat.OUVERT);
-		javaDebutant.setDescription("Dans ce cours, vous allez apprendre les bases du langage de programmation le plus utilisé au monde");
+		javaDebutant.setDescription(
+				"Dans ce cours, vous allez apprendre les bases du langage de programmation le plus utilisé au monde");
 		javaDebutant.setCheminImageCours("Le chemin");
 		javaDebutant = coursRepo.save(javaDebutant);
-		
+
 		Module introduction = new Module();
 		introduction.setIntitule("module query 3");
 		introduction.setAgencement(1);
@@ -98,19 +99,19 @@ public class TestJpaQuerySommaire {
 		introduction.setEnonceQCM("Syntaxe de base");
 		introduction.setCours(javaDebutant);
 		introduction = moduleRepo.save(introduction);
-		
+
 		Chapitre java11 = new Chapitre();
 		java11.setTitre("Les types de variable");
 		java11.setAgencement(0);
 		java11.setModule(introduction);
 		java11 = chapitreRepo.save(java11);
-		
+
 		Chapitre java12 = new Chapitre();
 		java12.setTitre("La déclaration des variables");
 		java12.setAgencement(1);
 		java12.setModule(introduction);
 		java12 = chapitreRepo.save(java12);
-		
+
 		Module lesBoucles = new Module();
 		lesBoucles.setIntitule("module query 4");
 		lesBoucles.setAgencement(2);
@@ -120,19 +121,19 @@ public class TestJpaQuerySommaire {
 		lesBoucles.setEnonceQCM("Les boucles de base");
 		lesBoucles.setCours(javaDebutant);
 		lesBoucles = moduleRepo.save(lesBoucles);
-		
+
 		Chapitre java21 = new Chapitre();
 		java21.setTitre("Les boucles while");
 		java21.setAgencement(0);
 		java21.setModule(lesBoucles);
 		java21 = chapitreRepo.save(java21);
-		
+
 		Chapitre java22 = new Chapitre();
 		java22.setTitre("Les boucles for");
 		java22.setAgencement(1);
 		java22.setModule(lesBoucles);
 		java22 = chapitreRepo.save(java22);
-				
+
 //		int nbModule = moduleRepo.findAllByCours(detecteurFume).size();
 //		
 //		int nbChapitre = chapitreRepo.findAllByCours(detecteurFume).size();
@@ -140,7 +141,7 @@ public class TestJpaQuerySommaire {
 //		int nbChapitreDansModule = chapitreRepo.findAllByModule(definition).size();
 //		
 //		int nbModulesAvecChapitres = moduleRepo.findAllByCoursWithChapitres(detecteurFume).size();
-		
+
 //		assertEquals(2, nbModule);
 //		
 //		assertEquals(4, nbChapitre);
@@ -148,14 +149,13 @@ public class TestJpaQuerySommaire {
 //		assertEquals(2, nbChapitreDansModule);
 //		
 //		assertEquals(2, nbModulesAvecChapitres);
-		
+
 //		for (int i = 0; i < 4; i++ ) {
 //			System.out.println("Intitulé module " + i + " : " + moduleRepo.findAllByCoursWithChapitres(detecteurFume).get(i).getIntitule());
 //			System.out.println("Nombre de chapitre dans module index " + i + " : " + moduleRepo.findAllByCoursWithChapitres(detecteurFume).get(i).getChapitres().size());
 //
 //		}
-		
-		
+
 	}
 
 }

@@ -61,7 +61,6 @@ public class TestJpaCours {
 	@Autowired
 	private CoursController coursCont;
 
-
 	@Test
 	public void testCours() {
 
@@ -83,7 +82,6 @@ public class TestJpaCours {
 		assertEquals("java debutant", cours1Find.get().getIntitule());
 		assertEquals(Difficulte.FACILE, cours1Find.get().getDifficulte());
 
-
 		int middleNumber = coursRepo.findAll().size();
 		assertEquals(1, (middleNumber - startNumber));
 
@@ -94,7 +92,7 @@ public class TestJpaCours {
 		assertEquals(0, finalNumber - startNumber);
 
 	}
-	
+
 	@Test
 	public void testCoursQuery() {
 
@@ -106,28 +104,28 @@ public class TestJpaCours {
 		personne.setNom("personneCOursQuery");
 		personne.setPrenom("personneCoursQuery");
 		personne = personneRepo.save(personne);
-		
+
 		Entreprise entreprise = new Entreprise();
 		entreprise.setNom("entrepriseCoursQuery");
 		entreprise.setNumeroSiret("SiretCoursQuery");
 		entreprise.setTypeContrat("contratCoursQuery");
 		entreprise = entrepriseRepo.save(entreprise);
-		
+
 		Competence competence = new Competence();
 		competence.setIntitule("competenceCoursQuery");
 		competence.setPonderation(Ponderation.CINQ);
 		competence.setDescription("competenceCoursQuery");
 		competence = competenceRepo.save(competence);
-		
+
 		Skeelz skeelz = new Skeelz();
 		skeelz.setIntitule("skeelzCoursQuery");
 		skeelz = skeelzRepo.save(skeelz);
-		
+
 		CompetenceSkeelz competenceSkeelz = new CompetenceSkeelz();
 		competenceSkeelz.setCompetence(competence);
 		competenceSkeelz.setSkeelz(skeelz);
 		competenceSkeelz = competenceSkeelzRepo.save(competenceSkeelz);
-		
+
 		Cours cours1 = new Cours();
 		cours1.setIntitule("intituleCoursQuery");
 		cours1.setDifficulte(Difficulte.FACILE);
@@ -144,7 +142,7 @@ public class TestJpaCours {
 		coursCompetence.setCours(cours1);
 		coursCompetence.setRelationCours(RelationCours.VALIDE);
 		coursCompetence = coursCompetenceRepo.save(coursCompetence);
-		
+
 		CoursPersonne coursPersonne = new CoursPersonne();
 		coursPersonne.setCours(cours1);
 		coursPersonne.setPersonne(personne);
@@ -155,7 +153,9 @@ public class TestJpaCours {
 		assertEquals("intituleCoursQuery", coursRepo.findCoursByIdPersonne(personne.getId()).get(0).getIntitule());
 		assertEquals("intituleCoursQuery", coursRepo.findCoursBySkeelz(skeelz.getId()).get(0).getIntitule());
 		assertEquals("intituleCoursQuery", coursRepo.findAllCoursByIntitule("intituleCoursQuery").get(0).getIntitule());
-		assertEquals("intituleCoursQuery", coursRepo.findAllCoursByCompetenceAndRelationCours(competence.getId(), coursCompetence.getRelationCours()).get(0).getIntitule());
+		assertEquals("intituleCoursQuery", coursRepo
+				.findAllCoursByCompetenceAndRelationCours(competence.getId(), coursCompetence.getRelationCours()).get(0)
+				.getIntitule());
 
 		int finalNumberEtat = coursRepo.findAllCoursByEtat(Etat.OUVERT).size();
 		int finalNumberDifficulte = coursRepo.findAllCoursByDifficulte(Difficulte.FACILE).size();
@@ -166,35 +166,35 @@ public class TestJpaCours {
 		assertEquals(1, finalNumberDuree - startNumberDuree);
 
 	}
-	
+
 	@Test
 	public void testCoursController() {
-		
+
 		int startNumber = coursCont.list().size();
 		int startNumberEtat = coursCont.findByEtat("OUVERT").size();
 		int startNumberDifficulte = coursCont.find(Difficulte.FACILE).size();
-		
+
 		Personne personne = new Personne();
 		personne.setNom("personneCOursCont");
 		personne.setPrenom("personneCoursCont");
 		personne = personneRepo.save(personne);
-		
+
 		Entreprise entreprise = new Entreprise();
 		entreprise.setNom("entrepriseCoursCont");
 		entreprise.setNumeroSiret("SiretCoursCont");
 		entreprise.setTypeContrat("contratCoursCont");
 		entreprise = entrepriseRepo.save(entreprise);
-		
+
 		Competence competence = new Competence();
 		competence.setIntitule("competenceCoursCont");
 		competence.setPonderation(Ponderation.CINQ);
 		competence.setDescription("competenceCoursCont");
 		competence = competenceRepo.save(competence);
-		
+
 		Skeelz skeelz = new Skeelz();
 		skeelz.setIntitule("skeelzCoursCont");
 		skeelz = skeelzRepo.save(skeelz);
-		
+
 		CompetenceSkeelz competenceSkeelz = new CompetenceSkeelz();
 		competenceSkeelz.setCompetence(competence);
 		competenceSkeelz.setSkeelz(skeelz);
@@ -210,37 +210,38 @@ public class TestJpaCours {
 		cours1.setEntreprise(entreprise);
 		cours1 = coursCont.create(cours1);
 		cours1 = coursCont.update(cours1, cours1.getId());
-		
+
 		CoursCompetence coursCompetence = new CoursCompetence();
 		coursCompetence.setCompetence(competence);
 		coursCompetence.setCours(cours1);
 		coursCompetence.setRelationCours(RelationCours.VALIDE);
 		coursCompetence = coursCompetenceRepo.save(coursCompetence);
-		
+
 		CoursPersonne coursPersonne = new CoursPersonne();
 		coursPersonne.setCours(cours1);
 		coursPersonne.setPersonne(personne);
 		coursPersonne.setEtatCours(EtatCours.VALIDE);
 		coursPersonne = coursPersonneRepo.save(coursPersonne);
-		
+
 		Module module = new Module();
 		module.setCours(cours1);
 		module.setIntitule("moduleCoursCont");
 		module.setAgencement(3);
 		module = moduleRepo.save(module);
-		
+
 		Chapitre chapitre = new Chapitre();
 		chapitre.setModule(module);
 		chapitre.setAgencement(6);
 		chapitre.setTitre("titreCoursCont");
-		chapitre =chapitreRepo.save(chapitre);
+		chapitre = chapitreRepo.save(chapitre);
 
 		assertEquals("moduleCoursCont", coursCont.findModule(cours1.getId()).get(0).getIntitule());
-		assertEquals(6, coursCont.findModulesWithChapitres(cours1.getId()).get(0).getChapitres().get(0).getAgencement());
+		assertEquals(6,
+				coursCont.findModulesWithChapitres(cours1.getId()).get(0).getChapitres().get(0).getAgencement());
 		assertEquals(6, coursCont.findChapitre(cours1.getId()).get(0).getAgencement());
 		assertEquals("intituleCoursCont", coursCont.find("intituleCoursCont").get(0).getIntitule());
 		assertEquals("intituleCoursCont", coursCont.find(cours1.getId()).getIntitule());
-		
+
 		int finalNumber = coursCont.list().size();
 		int finalNumberEtat = coursCont.findByEtat("OUVERT").size();
 		int finalNumberDifficulte = coursCont.find(Difficulte.FACILE).size();
@@ -250,7 +251,7 @@ public class TestJpaCours {
 		assertEquals(1, finalNumberDifficulte - startNumberDifficulte);
 
 	}
-	
+
 	@Test
 	public void testCoursControllerBis() {
 		Cours cours1 = new Cours();
@@ -262,7 +263,7 @@ public class TestJpaCours {
 		cours1.setDescription("descriptionCoursContBis");
 		cours1 = coursCont.create(cours1);
 		cours1 = coursCont.update(cours1, cours1.getId());
-		
+
 		coursCont.delete(cours1.getId());
 	}
 

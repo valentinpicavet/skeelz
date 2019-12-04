@@ -47,7 +47,7 @@ public class TestJpaReponse {
 		assertEquals(0, finalNumber - startNumber);
 
 	}
-	
+
 	@Test
 	public void testReponseCont() {
 
@@ -58,8 +58,6 @@ public class TestJpaReponse {
 		reponse1.setJuste(true);
 		reponse1 = reponseCont.create(reponse1);
 		reponse1 = reponseCont.update(reponse1, reponse1.getId());
-
-
 
 		assertEquals("testReponseCont", reponseCont.find(reponse1.getId()).getEnonce());
 

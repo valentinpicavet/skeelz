@@ -38,7 +38,6 @@ public class Competence {
 	@OneToMany(mappedBy = "competence")
 	private List<CoursCompetence> coursCompetence = new ArrayList<CoursCompetence>();
 
-
 	@ManyToOne
 	@JoinColumn(name = "entreprise_id")
 	private Entreprise entreprise;

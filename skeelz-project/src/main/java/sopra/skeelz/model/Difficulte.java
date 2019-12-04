@@ -2,7 +2,7 @@ package sopra.skeelz.model;
 
 public enum Difficulte {
 	FACILE("Facile"), MOYEN("Moyen"), DIFFICILE("Difficile");
-	
+
 	private Difficulte(String label) {
 		this.label = label;
 	}

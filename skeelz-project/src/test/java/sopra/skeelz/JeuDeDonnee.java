@@ -95,12 +95,12 @@ public class JeuDeDonnee {
 		objetConnecte.setIntitule("Objet Connecté");
 		objetConnecte.setEntreprise(sopra);
 		objetConnecte = skeelzRepo.save(objetConnecte);
-		
+
 		Skeelz java = new Skeelz();
 		java.setIntitule("Java");
 		java.setEntreprise(sopra);
 		java = skeelzRepo.save(java);
-		
+
 		Skeelz baseDeDonnees = new Skeelz();
 		baseDeDonnees.setIntitule("Base de données");
 		baseDeDonnees.setEntreprise(sopra);
@@ -112,21 +112,21 @@ public class JeuDeDonnee {
 		developpementDetecteurFume.setPonderation(Ponderation.DIX);
 		developpementDetecteurFume.setEntreprise(sopra);
 		developpementDetecteurFume = competenceRepo.save(developpementDetecteurFume);
-		
+
 		Competence javaBases = new Competence();
 		javaBases.setDescription("Les bases en Java");
 		javaBases.setIntitule("Acquérez les bases en Java");
 		javaBases.setPonderation(Ponderation.CINQ);
 		javaBases.setEntreprise(sopra);
 		javaBases = competenceRepo.save(javaBases);
-		
+
 		Competence jpaBases = new Competence();
 		jpaBases.setDescription("Les bases en JPA");
 		jpaBases.setIntitule("Acquérez les bases en JPA");
 		jpaBases.setPonderation(Ponderation.CINQ);
 		jpaBases.setEntreprise(sopra);
 		jpaBases = competenceRepo.save(jpaBases);
-		
+
 		Competence jpaAvance = new Competence();
 		jpaAvance.setDescription("Améliorez vos compétences en JPA");
 		jpaAvance.setIntitule("JPA Avancé");
@@ -138,27 +138,27 @@ public class JeuDeDonnee {
 		objetCoDetecteur.setCompetence(developpementDetecteurFume);
 		objetCoDetecteur.setSkeelz(objetConnecte);
 		objetCoDetecteur = competenceSkeelzRepo.save(objetCoDetecteur);
-		
+
 		CompetenceSkeelz javaBasejava = new CompetenceSkeelz();
 		javaBasejava.setCompetence(javaBases);
 		javaBasejava.setSkeelz(java);
 		javaBasejava = competenceSkeelzRepo.save(javaBasejava);
-		
+
 		CompetenceSkeelz jpaBasejava = new CompetenceSkeelz();
 		jpaBasejava.setCompetence(jpaBases);
 		jpaBasejava.setSkeelz(java);
 		jpaBasejava = competenceSkeelzRepo.save(jpaBasejava);
-		
+
 		CompetenceSkeelz jpaAvancejava = new CompetenceSkeelz();
 		jpaAvancejava.setCompetence(jpaAvance);
 		jpaAvancejava.setSkeelz(java);
 		jpaAvancejava = competenceSkeelzRepo.save(jpaAvancejava);
-		
+
 		CompetenceSkeelz jpaBasesBDD = new CompetenceSkeelz();
 		jpaBasesBDD.setCompetence(jpaBases);
 		jpaBasesBDD.setSkeelz(baseDeDonnees);
 		jpaBasesBDD = competenceSkeelzRepo.save(jpaBasesBDD);
-		
+
 		CompetenceSkeelz jpaAvanceBDD = new CompetenceSkeelz();
 		jpaAvanceBDD.setCompetence(jpaAvance);
 		jpaAvanceBDD.setSkeelz(baseDeDonnees);
@@ -253,17 +253,17 @@ public class JeuDeDonnee {
 		BilanValDete.setCompetenceSkeelz(objetCoDetecteur);
 		BilanValDete.setPersonne(personneValentin);
 		BilanValDete = bilanCompetenceRepo.save(BilanValDete);
-		
+
 		BilanCompetence BilanVincDete = new BilanCompetence();
 		BilanVincDete.setCompetenceSkeelz(objetCoDetecteur);
 		BilanVincDete.setPersonne(personneVincent);
 		BilanVincDete = bilanCompetenceRepo.save(BilanVincDete);
-		
+
 		BilanCompetence BilanArtBDDJpaBase = new BilanCompetence();
 		BilanArtBDDJpaBase.setCompetenceSkeelz(jpaBasesBDD);
 		BilanArtBDDJpaBase.setPersonne(personneArthur);
 		BilanArtBDDJpaBase = bilanCompetenceRepo.save(BilanArtBDDJpaBase);
-		
+
 		BilanCompetence BilanArtJavaJpaBase = new BilanCompetence();
 		BilanArtJavaJpaBase.setCompetenceSkeelz(jpaBasejava);
 		BilanArtJavaJpaBase.setPersonne(personneArthur);

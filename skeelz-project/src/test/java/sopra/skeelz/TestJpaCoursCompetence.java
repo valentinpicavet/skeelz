@@ -47,7 +47,7 @@ public class TestJpaCoursCompetence {
 
 		assertEquals(0, finalNumber - startNumber);
 	}
-	
+
 	@Test
 	public void testCoursCompetenceCont() {
 

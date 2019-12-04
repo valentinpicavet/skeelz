@@ -28,14 +28,14 @@ import sopra.skeelz.repository.IPersonneRepository;
 @RequestMapping("/competence")
 @CrossOrigin("*")
 public class CompetenceController {
-	
+
 	@Autowired
 	private ICompetenceRepository competenceRepo;
 	@Autowired
 	private IPersonneRepository personneRepo;
 	@Autowired
 	private ICoursRepository coursRepo;
-	
+
 	@GetMapping("")
 	@JsonView(Views.ViewCompetence.class)
 	public List<Competence> list() {
@@ -51,21 +51,21 @@ public class CompetenceController {
 
 		return competence;
 	}
-	
+
 	@GetMapping("/{id}/personnes")
-	@JsonView(Views. ViewCompetencePersonne.class)
-	public List<Personne> findByCompetence (@PathVariable Long id){
+	@JsonView(Views.ViewCompetencePersonne.class)
+	public List<Personne> findByCompetence(@PathVariable Long id) {
 		List<Personne> personnes = personneRepo.findPersonneByIdCompetence(id);
-		
+
 		return personnes;
 	}
-	
+
 	@GetMapping("/{id}:{relationCours}/cours/relations")
-	@JsonView(Views. ViewCompetenceCoursAndRelation.class)
-	public List<Cours> findByCompetenceAndRelationCours (@PathVariable Long id, @PathVariable String relationCours){
+	@JsonView(Views.ViewCompetenceCoursAndRelation.class)
+	public List<Cours> findByCompetenceAndRelationCours(@PathVariable Long id, @PathVariable String relationCours) {
 		RelationCours relationCour = RelationCours.valueOf(relationCours.toUpperCase());
 		List<Cours> courss = coursRepo.findAllCoursByCompetenceAndRelationCours(id, relationCour);
-		
+
 		return courss;
 	}
 

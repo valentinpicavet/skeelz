@@ -8,11 +8,9 @@ import org.springframework.data.repository.query.Param;
 
 import sopra.skeelz.model.Utilisateur;
 
-public interface IUtilisateurRepository extends JpaRepository<Utilisateur, Long>{
-	
+public interface IUtilisateurRepository extends JpaRepository<Utilisateur, Long> {
+
 	@Query("from Utilisateur u where u.entreprise.id = :id")
-	List<Utilisateur> findUtilisateurByIdEntreprise (@Param("id") Long id);
-	
-	
+	List<Utilisateur> findUtilisateurByIdEntreprise(@Param("id") Long id);
 
 }

@@ -19,7 +19,6 @@ import sopra.skeelz.model.Question;
 import sopra.skeelz.model.Views;
 import sopra.skeelz.repository.IQuestionRepository;
 
-
 @RestController
 @RequestMapping("/question")
 @CrossOrigin("*")
@@ -58,5 +57,3 @@ public class QuestionController {
 		questionRepo.deleteById(id);
 	}
 }
-
-
