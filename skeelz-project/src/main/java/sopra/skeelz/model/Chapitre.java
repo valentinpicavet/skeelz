@@ -33,6 +33,7 @@ public class Chapitre {
 	@JsonView(Views.ViewCommon.class)
 	@Column(nullable = false)
 	private int agencement;
+	@JsonView(Views.ViewModuleByAgencementIdModule.class)
 	@OneToMany(mappedBy = "chapitre")
 	private List<ElementDeCours> elementsDeCours = new ArrayList<ElementDeCours>();
 	@ManyToOne
