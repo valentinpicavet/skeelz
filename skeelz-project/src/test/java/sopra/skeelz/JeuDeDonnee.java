@@ -297,6 +297,37 @@ public class JeuDeDonnee {
 		damienDetecteur.setCours(detecteurFume);
 		damienDetecteur.setPersonne(personneDamien);
 		damienDetecteur = coursPersonneRepo.save(damienDetecteur);
+		
+		Module introductionDet = new Module();
+		introductionDet.setIntitule("Introduction au cours sur les déteurs de fumée connecté");
+		introductionDet.setAgencement(0);
+		introductionDet.setNbQuestion(0);
+		introductionDet.setPeriodicite(0);
+		introductionDet.setNbTentativeAutorise(0);
+		introductionDet.setEnonceQCM("");
+		introductionDet.setCours(detecteurFume);
+		introductionDet = moduleRepo.save(introductionDet);
+		
+		Chapitre chapitreIntro = new Chapitre();
+		chapitreIntro.setTitre("Introduction aux objects connectés");
+		chapitreIntro.setAgencement(0);
+		chapitreIntro.setModule(introductionDet);
+		chapitreIntro = chapitreRepo.save(chapitreIntro);
+		
+		Paragraphe introPar1 = new Paragraphe();
+		introPar1.setAgencement(0);
+		introPar1.setTitre("Titre du § 1 de l'introduction du cours sur les objets connectés");
+		introPar1.setTexte("Voilà le texte du §1 de l'introduction du cours sur les objets connectés");
+		introPar1.setChapitre(chapitreIntro);
+		introPar1 = (Paragraphe) elementDeCoursRepo.save(introPar1);
+		
+		Paragraphe introPar2 = new Paragraphe();
+		introPar2.setAgencement(1);
+		introPar2.setTitre("Titre du § 1 de l'introduction du cours sur les objets connectés");
+		introPar2.setTexte("Voilà le texte du §1 de l'introduction du cours sur les objets connectés");
+		introPar2.setChapitre(chapitreIntro);
+		introPar2 = (Paragraphe) elementDeCoursRepo.save(introPar2);
+		
 
 		Module definition = new Module();
 		definition.setIntitule("Définissez votre projet de détecteur de fumée connecté");
@@ -727,6 +758,20 @@ public class JeuDeDonnee {
 		detect12.setAgencement(1);
 		detect12.setModule(definition);
 		detect12 = chapitreRepo.save(detect12);
+		
+		Paragraphe chap2par1 = new Paragraphe();
+		chap2par1.setAgencement(0);
+		chap2par1.setTitre("Titre du § 1 du Chapitre 2");
+		chap2par1.setTexte("Voilà le texte du §1 du Chapitre 2 du cours sur les détecteurs de fumée");
+		chap2par1.setChapitre(detect12);
+		chap2par1 = (Paragraphe) elementDeCoursRepo.save(chap2par1);
+		
+		Paragraphe chap2par2 = new Paragraphe();
+		chap2par2.setAgencement(1);
+		chap2par2.setTitre("Titre du § 2 du Chapitre 2");
+		chap2par2.setTexte("Voilà le texte du §2 du Chapitre 2 du cours sur les détecteurs de fumée");
+		chap2par2.setChapitre(detect12);
+		chap2par2 = (Paragraphe) elementDeCoursRepo.save(chap2par2);
 
 		Module approfondissement = new Module();
 		approfondissement.setIntitule("Approfondissez le développement de votre projet par des analyse métiers");
@@ -743,6 +788,20 @@ public class JeuDeDonnee {
 		detect21.setAgencement(0);
 		detect21.setModule(approfondissement);
 		detect21 = chapitreRepo.save(detect21);
+		
+		Paragraphe chap21par1 = new Paragraphe();
+		chap21par1.setAgencement(0);
+		chap21par1.setTitre("Titre du § 1 du Chapitre 2 du module 2");
+		chap21par1.setTexte("Voilà le texte du §1 du Chapitre 2 du module 2 du cours sur les détecteurs de fumée");
+		chap21par1.setChapitre(detect21);
+		chap21par1 = (Paragraphe) elementDeCoursRepo.save(chap21par1);
+		
+		Paragraphe chap22par2 = new Paragraphe();
+		chap22par2.setAgencement(1);
+		chap22par2.setTitre("Titre du § 2 du Chapitre 2 du module 2");
+		chap22par2.setTexte("Voilà le texte du §2 du Chapitre 2 du module 2 du cours sur les détecteurs de fumée");
+		chap22par2.setChapitre(detect21);
+		chap22par2 = (Paragraphe) elementDeCoursRepo.save(chap22par2);
 
 		Chapitre detect22 = new Chapitre();
 		detect22.setTitre("Optimisez l'ergonomie du système");
