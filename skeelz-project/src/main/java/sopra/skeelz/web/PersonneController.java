@@ -48,6 +48,14 @@ public class PersonneController {
 
 		return personnes;
 	}
+	
+	@GetMapping("/withcompetence")
+	@JsonView(Views.ViewPersonneCompetences.class)
+	public List<Personne> listcomp(){
+		List<Personne> personnes = personneRepo.findAllPersonneWithCompetences();
+
+		return personnes;
+	}
 
 	@GetMapping("/{id}")
 	@JsonView(Views.ViewPersonne.class)

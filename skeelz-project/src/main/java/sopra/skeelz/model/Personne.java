@@ -43,6 +43,7 @@ public class Personne {
 	@OneToMany(mappedBy = "personne")
 	private List<QCMPersonne> qcmPersonne = new ArrayList<QCMPersonne>();
 	@OneToMany(mappedBy = "personne")
+	@JsonView(Views.ViewPersonneCompetences.class)
 	private List<BilanCompetence> bilanCompetence = new ArrayList<BilanCompetence>();
 
 	public Long getId() {

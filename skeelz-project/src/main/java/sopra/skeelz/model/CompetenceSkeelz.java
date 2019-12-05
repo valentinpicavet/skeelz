@@ -30,6 +30,7 @@ public class CompetenceSkeelz {
 	private Skeelz skeelz;
 	@ManyToOne
 	@JoinColumn(name = "competence_id") // , nullable = false)
+	@JsonView(Views.ViewPersonneCompetences.class)
 	private Competence competence;
 	@OneToMany(mappedBy = "competenceSkeelz")
 	private List<BilanCompetence> bilanCompetence = new ArrayList<BilanCompetence>();

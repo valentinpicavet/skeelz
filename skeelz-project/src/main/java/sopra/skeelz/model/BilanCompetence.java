@@ -24,6 +24,7 @@ public class BilanCompetence {
 	private int version;
 	@ManyToOne
 	@JoinColumn(name = "competenceSkeelz_id") // , nullable = false)
+	@JsonView(Views.ViewPersonneCompetences.class)
 	private CompetenceSkeelz competenceSkeelz;
 	@ManyToOne
 	@JoinColumn(name = "personne_id") // , nullable = false)
