@@ -47,6 +47,16 @@ public class CoursController {
 		return courss;
 	}
 
+	@GetMapping("/difficulte")
+	@JsonView(Views.ViewCommon.class)
+	public List<Difficulte> listdif() {
+		List<Difficulte> difficultes =coursRepo.findAllDiff();
+		return difficultes;
+	
+	}
+	
+	
+	
 	@GetMapping("/{id}")
 	@JsonView(Views.ViewCours.class)
 	public Cours find(@PathVariable Long id) {
@@ -88,7 +98,7 @@ public class CoursController {
 		return chapitres;
 	}
 
-	@GetMapping("/by-difficulte/{difficulte}")
+	@GetMapping("/{difficulte}")
 	@JsonView(Views.ViewCours.class)
 	public List<Cours> find(@PathVariable Difficulte difficulte) {
 		List<Cours> courss = coursRepo.findAllCoursByDifficulte(difficulte);
@@ -119,4 +129,6 @@ public class CoursController {
 		coursRepo.deleteById(id);
 	}
 
+	
+	
 }
