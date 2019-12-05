@@ -19,7 +19,7 @@ public interface IChapitreRepository extends JpaRepository<Chapitre, Long> {
 	@Query("from Chapitre ch where ch.module.id = :id")
 	List<Chapitre> findChapitreByModuleId(@Param("id") Long id);
 
-	@Query("from Chapitre c where c.agencement = :agencement and c.module.id = :idModule")
+	@Query("select distinct c from Chapitre c left join fetch c.elementsDeCours edc where c.agencement = :agencement and c.module.id = :idModule")
 	Chapitre findChapitreByModuleAndAgencement(@Param("idModule") Long idModule, @Param("agencement") int agencement);
 
 	@Query("from Chapitre c where c.module.cours.id = :id")

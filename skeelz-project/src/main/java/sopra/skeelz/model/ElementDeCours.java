@@ -13,12 +13,20 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
 @Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "chapitre_id", "agencement" }) })
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "type")
+@JsonTypeInfo(use=JsonTypeInfo.Id.NAME, property = "type")
+@JsonSubTypes({
+		@JsonSubTypes.Type(value=Paragraphe.class),
+		@JsonSubTypes.Type(value=ExtraitCode.class),
+		@JsonSubTypes.Type(value=ImageCours.class)
+})
 public abstract class ElementDeCours {
 	@Id
 	@GeneratedValue
