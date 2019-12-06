@@ -20,6 +20,7 @@ import sopra.skeelz.model.Cours;
 import sopra.skeelz.model.Difficulte;
 import sopra.skeelz.model.Etat;
 import sopra.skeelz.model.Module;
+import sopra.skeelz.model.Skeelz;
 import sopra.skeelz.model.Views;
 import sopra.skeelz.repository.IChapitreRepository;
 import sopra.skeelz.repository.ICoursRepository;
@@ -47,6 +48,16 @@ public class CoursController {
 		return courss;
 	}
 
+	@GetMapping("/difficulte")
+	@JsonView(Views.ViewCommon.class)
+	public List<Difficulte> listdif() {
+		List<Difficulte> difficultes =coursRepo.findAllDiff();
+		return difficultes;
+	}
+	
+	
+	
+	
 	@GetMapping("/{id}")
 	@JsonView(Views.ViewCours.class)
 	public Cours find(@PathVariable Long id) {
@@ -92,6 +103,8 @@ public class CoursController {
 	@JsonView(Views.ViewCours.class)
 	public List<Cours> find(@PathVariable Difficulte difficulte) {
 		List<Cours> courss = coursRepo.findAllCoursByDifficulte(difficulte);
+		
+	
 
 		return courss;
 	}
@@ -122,4 +135,6 @@ public class CoursController {
 		coursRepo.deleteById(id);
 	}
 
+	
+	
 }

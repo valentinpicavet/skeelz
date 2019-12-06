@@ -1,7 +1,17 @@
 package sopra.skeelz.model;
 
+import javax.persistence.Version;
+
+import com.fasterxml.jackson.annotation.JsonView;
+
 public enum Difficulte {
-	FACILE("Facile"), MOYEN("Moyen"), DIFFICILE("Difficile");
+	
+	@JsonView(Views.ViewCommon.class)
+	FACILE("Facile"),
+	@JsonView(Views.ViewCommon.class)
+	MOYEN("Moyen"),
+	@JsonView(Views.ViewCommon.class)
+	DIFFICILE("Difficile");
 
 	private Difficulte(String label) {
 		this.label = label;

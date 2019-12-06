@@ -1,50 +1,44 @@
-package sopra.skeelz.model;
+package sopra.skeelz.web.dto;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Version;
-
 import com.fasterxml.jackson.annotation.JsonView;
 
-@Entity
-public class Personne {
+import sopra.skeelz.model.BilanCompetence;
+import sopra.skeelz.model.Competence;
+import sopra.skeelz.model.CoursPersonne;
+import sopra.skeelz.model.QCMPersonne;
+import sopra.skeelz.model.Utilisateur;
+import sopra.skeelz.model.Views;
 
-	@Id
-	@GeneratedValue
+public class PersonneDTO {
 	@JsonView(Views.ViewCommon.class)
 	private Long id;
-	@Version
 	@JsonView(Views.ViewCommon.class)
 	private int version;
 	@JsonView(Views.ViewCommon.class)
-	@Column(nullable = false)
 	private String nom;
 	@JsonView(Views.ViewCommon.class)
-	@Column(nullable = false)
 	private String prenom;
 	@JsonView(Views.ViewCommon.class)
 	private String telephone;
 	@JsonView(Views.ViewCommon.class)
 	private int noteGlobal;
-
-	@OneToOne
-	@JoinColumn(name = "utilisateur_id") // , nullable = false)
+	@JsonView(Views.ViewCommon.class)
 	private Utilisateur utilisateur;
-	@OneToMany(mappedBy = "personne")
+	@JsonView(Views.ViewCommon.class)
 	private List<CoursPersonne> coursPersonne = new ArrayList<CoursPersonne>();
-	@OneToMany(mappedBy = "personne")
+	@JsonView(Views.ViewCommon.class)
 	private List<QCMPersonne> qcmPersonne = new ArrayList<QCMPersonne>();
-	@OneToMany(mappedBy = "personne")
-	@JsonView(Views.ViewPersonneCompetences.class)
+	@JsonView(Views.ViewCommon.class)
 	private List<BilanCompetence> bilanCompetence = new ArrayList<BilanCompetence>();
+	@JsonView(Views.ViewCommon.class)
+	private List<Competence> competences;
+
+	public PersonneDTO() {
+		super();
+	}
 
 	public Long getId() {
 		return id;
@@ -124,6 +118,14 @@ public class Personne {
 
 	public void setBilanCompetence(List<BilanCompetence> bilanCompetence) {
 		this.bilanCompetence = bilanCompetence;
+	}
+
+	public List<Competence> getCompetences() {
+		return competences;
+	}
+
+	public void setCompetences(List<Competence> competences) {
+		this.competences = competences;
 	}
 
 }

@@ -332,7 +332,7 @@ public class JeuDeDonnee {
 		Module definition = new Module();
 		definition.setIntitule("Définissez votre projet de détecteur de fumée connecté");
 		definition.setAgencement(1);
-		definition.setNbQuestion(11);
+		definition.setNbQuestion(5);
 		definition.setPeriodicite(1);
 		definition.setNbTentativeAutorise(3);
 		definition.setEnonceQCM("Définissez votre projet de détecteur de fumée connecté");
