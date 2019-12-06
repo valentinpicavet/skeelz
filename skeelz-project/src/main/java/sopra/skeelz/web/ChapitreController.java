@@ -64,16 +64,19 @@ public class ChapitreController {
 	}
 
 	@PostMapping("")
+	@JsonView(Views.ViewChapitre.class)
 	public Chapitre create(@RequestBody Chapitre chapitre) {
 		return chapitreRepo.save(chapitre);
 	}
 
 	@PutMapping("/{id}")
+	@JsonView(Views.ViewChapitre.class)
 	public Chapitre update(@RequestBody Chapitre chapitre, @PathVariable Long id) {
 		return chapitreRepo.save(chapitre);
 	}
 
 	@DeleteMapping("/{id}")
+	@JsonView(Views.ViewChapitre.class)
 	public void delete(@PathVariable Long id) {
 		chapitreRepo.deleteById(id);
 	}
