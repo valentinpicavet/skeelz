@@ -10,6 +10,7 @@ import sopra.skeelz.model.Cours;
 import sopra.skeelz.model.Difficulte;
 import sopra.skeelz.model.Etat;
 import sopra.skeelz.model.RelationCours;
+import sopra.skeelz.model.Skeelz;
 
 public interface ICoursRepository extends JpaRepository<Cours, Long> {
 
@@ -24,7 +25,13 @@ public interface ICoursRepository extends JpaRepository<Cours, Long> {
 
 	@Query("select distinct cc.cours from CoursCompetence cc join cc.competence c join  c.competenceSkeelz cs where cs.skeelz.id = :id")
 	List<Cours> findCoursBySkeelz(@Param("id") Long id);
+	
+	@Query("select distinct c.difficulte from Cours c where c.difficulte !=null")
+	List<Difficulte> findAllDiff();
 
+	
+	
+	
 	// ***********************VM
 
 	@Query("from Cours c where c.etat = :etat")
