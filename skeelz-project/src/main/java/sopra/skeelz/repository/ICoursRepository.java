@@ -23,6 +23,9 @@ public interface ICoursRepository extends JpaRepository<Cours, Long> {
 	@Query("select cp.cours from CoursPersonne cp where cp.personne.id = :id")
 	List<Cours> findCoursByIdPersonne(@Param("id") Long id);
 
+	@Query("select distinct cc.cours from CoursCompetence cc join cc.competence c join  c.competenceSkeelz cs where cs.skeelz.id = :id and cc.cours.etat= :etat")
+	List<Cours> findCoursBySkeelzEtat(@Param("id") Long id,@Param("etat") Etat etat);
+	
 	@Query("select distinct cc.cours from CoursCompetence cc join cc.competence c join  c.competenceSkeelz cs where cs.skeelz.id = :id")
 	List<Cours> findCoursBySkeelz(@Param("id") Long id);
 	
@@ -37,7 +40,10 @@ public interface ICoursRepository extends JpaRepository<Cours, Long> {
 	@Query("from Cours c where c.etat = :etat")
 	List<Cours> findAllCoursByEtat(@Param("etat") Etat etat);
 
-	@Query("from Cours c where c.difficulte = :difficulte")
+	@Query("from Cours c where c.difficulte = :difficulte and c.etat = :etat")
+	List<Cours> findAllCoursByDifficulteEtat(@Param("difficulte") Difficulte difficulte,@Param("etat") Etat etat);
+	
+	@Query("from Cours c where c.difficulte = :difficulte ")
 	List<Cours> findAllCoursByDifficulte(@Param("difficulte") Difficulte difficulte);
 
 	@Query("from Cours c where c.intitule = :intitule")
