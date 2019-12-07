@@ -130,16 +130,19 @@ public class CoursController {
 	}
 
 	@PostMapping("")
+	@JsonView(Views.ViewCours.class)
 	public Cours create(@RequestBody Cours cours) {
 		return coursRepo.save(cours);
 	}
 
 	@PutMapping("/{id}")
+	@JsonView(Views.ViewCours.class)
 	public Cours update(@RequestBody Cours cours, @PathVariable Long id) {
 		return coursRepo.save(cours);
 	}
 
 	@DeleteMapping("/{id}")
+	@JsonView(Views.ViewCours.class)
 	public void delete(@PathVariable Long id) {
 		coursRepo.deleteById(id);
 	}

@@ -53,16 +53,19 @@ public class ElementDeCoursController {
 	}
 
 	@PostMapping("")
+	@JsonView(Views.ViewElementdeCours.class)
 	public ElementDeCours create(@RequestBody ElementDeCours elementDeCours) {
 		return elementDeCoursRepo.save(elementDeCours);
 	}
 
 	@PutMapping("/{id}")
+	@JsonView(Views.ViewElementdeCours.class)
 	public ElementDeCours update(@RequestBody ElementDeCours elementDeCours, @PathVariable Long id) {
 		return elementDeCoursRepo.save(elementDeCours);
 	}
 
 	@DeleteMapping("/{id}")
+	@JsonView(Views.ViewElementdeCours.class)
 	public void delete(@PathVariable Long id) {
 		elementDeCoursRepo.deleteById(id);
 	}
