@@ -99,10 +99,22 @@ public class CoursController {
 		return chapitres;
 	}
 
-	@GetMapping("/by-difficulte/{difficulte}")
+	@GetMapping("/by-difficulte/{difficulte}}")
 	@JsonView(Views.ViewCours.class)
-	public List<Cours> find(@PathVariable Difficulte difficulte) {
+	public List<Cours> find(@PathVariable Difficulte difficulte  ) {
+		
 		List<Cours> courss = coursRepo.findAllCoursByDifficulte(difficulte);
+		
+	
+
+		return courss;
+	}
+	
+	@GetMapping("/by-difficulte/{difficulte}/{etat}")
+	@JsonView(Views.ViewCours.class)
+	public List<Cours> find(@PathVariable Difficulte difficulte,@PathVariable Etat etat) {
+		
+		List<Cours> courss = coursRepo.findAllCoursByDifficulteEtat(difficulte, etat);
 		
 	
 
@@ -118,16 +130,19 @@ public class CoursController {
 	}
 
 	@PostMapping("")
+	@JsonView(Views.ViewCours.class)
 	public Cours create(@RequestBody Cours cours) {
 		return coursRepo.save(cours);
 	}
 
 	@PutMapping("/{id}")
+	@JsonView(Views.ViewCours.class)
 	public Cours update(@RequestBody Cours cours, @PathVariable Long id) {
 		return coursRepo.save(cours);
 	}
 
 	@DeleteMapping("/{id}")
+	@JsonView(Views.ViewCours.class)
 	public void delete(@PathVariable Long id) {
 		coursRepo.deleteById(id);
 	}

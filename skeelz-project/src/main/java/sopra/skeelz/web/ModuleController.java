@@ -75,16 +75,19 @@ public class ModuleController {
 	}
 
 	@PostMapping("")
+	@JsonView(Views.ViewModule.class)
 	public Module create(@RequestBody Module module) {
 		return moduleRepo.save(module);
 	}
 
 	@PutMapping("/{id}")
+	@JsonView(Views.ViewModule.class)
 	public Module update(@RequestBody Module module, @PathVariable Long id) {
 		return moduleRepo.save(module);
 	}
 
 	@DeleteMapping("/{id}")
+	@JsonView(Views.ViewModule.class)
 	public void delete(@PathVariable Long id) {
 		moduleRepo.deleteById(id);
 	}
