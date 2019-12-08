@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.annotation.JsonView;
 import sopra.skeelz.model.Competence;
 import sopra.skeelz.model.Cours;
+import sopra.skeelz.model.EtatCours;
 import sopra.skeelz.model.Personne;
 import sopra.skeelz.model.Skeelz;
 import sopra.skeelz.model.Views;
@@ -85,36 +86,16 @@ public class PersonneController {
 		return personneDTO;
 	}
 	
-	@GetMapping("/utilisateur/{idUtilisateur}")
-	@JsonView(Views.ViewPersonne.class)
-	public PersonneDTO findByUtilisateur(@PathVariable Long idUtilisateur) {
-		Personne personne = personneRepo.findByUtilisateurId(idUtilisateur);
-	
-		PersonneDTO personneDTO = new PersonneDTO();
-		personneDTO.setId(personne.getId());
-		personneDTO.setVersion(personne.getVersion());
-		personneDTO.setNom(personne.getNom());
-		personneDTO.setPrenom(personne.getPrenom());
-		personneDTO.setTelephone(personne.getTelephone());
-		personneDTO.setNoteGlobal(personne.getNoteGlobal());
-		personneDTO.setUtilisateur(personne.getUtilisateur());
-		personneDTO.setCoursPersonne(personne.getCoursPersonne());
-		personneDTO.setQcmPersonne(personne.getQcmPersonne());
-		personneDTO.setBilanCompetence(personne.getBilanCompetence());
-		personneDTO.setCompetences(competenceRepo.findCompetenceByIdPersonne(personne.getId()));
-		
-		return personneDTO;
-	}
-	
 
-	@GetMapping("/{id}/courss")
+	@GetMapping("/{id}/courss/{etatCours}")
 	@JsonView(Views.ViewPersonneCourss.class)
-	public List<Cours> findCours(@PathVariable Long id) {
-		List<Cours> courss = coursRepo.findCoursByIdPersonne(id);
+	public List<Cours> findCours(@PathVariable Long id,@PathVariable EtatCours etatCours) {
+		List<Cours> courss = coursRepo.findCoursByIdPersonne(id,etatCours);
 
 		return courss;
 	}
-
+	
+	
 	@GetMapping("/{id}/competences")
 	@JsonView(Views.ViewPersonneCompetences.class)
 	public List<Competence> findCompetence(@PathVariable Long id) {
