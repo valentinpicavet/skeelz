@@ -12,5 +12,8 @@ public interface IUtilisateurRepository extends JpaRepository<Utilisateur, Long>
 
 	@Query("from Utilisateur u where u.entreprise.id = :id")
 	List<Utilisateur> findUtilisateurByIdEntreprise(@Param("id") Long id);
+	
+	@Query("from Utilisateur u where u.identifiant = :identifiant and u.password = :password")
+	Utilisateur findUtilisateurByIdentifiantAndPassword(@Param("identifiant") String identifiant, @Param("password") String password);
 
 }
