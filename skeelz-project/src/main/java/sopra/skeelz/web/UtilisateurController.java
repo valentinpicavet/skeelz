@@ -46,6 +46,14 @@ public class UtilisateurController {
 
 		return utilisateur;
 	}
+	
+	@GetMapping("/identification/{identifiant}:{password}")
+	@JsonView(Views.ViewUtilisateur.class)
+	public Utilisateur findByIdentifiantAndPassword(@PathVariable String identifiant, @PathVariable String password) {
+		Utilisateur utilisateur = utilisateurRepo.findUtilisateurByIdentifiantAndPassword(identifiant, password);
+		
+		return utilisateur;
+	}
 
 	@GetMapping("/{id}/entreprise")
 	@JsonView(Views.ViewUtilisateurEntreprise.class)

@@ -18,4 +18,7 @@ public interface IPersonneRepository extends JpaRepository<Personne, Long> {
 	
 	@Query("select distinct p from Personne p left join fetch p.bilanCompetence bc left join fetch bc.competenceSkeelz cs left join fetch cs.competence c")
 	List<Personne> findAllPersonneWithCompetences();
+	
+	@Query("from Personne p join p.utilisateur u where u.id = :idUtilisateur")
+	Personne findByUtilisateurId(@Param("idUtilisateur") Long idUtilisateur);
 }
