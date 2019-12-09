@@ -819,28 +819,126 @@ public class JeuDeDonnee {
 		javaDebutant.setCheminImageCours("Le chemin");
 		javaDebutant.setEntreprise(sopra);
 		javaDebutant = coursRepo.save(javaDebutant);
+		
+		CoursCompetence javaDebutantComp = new CoursCompetence();
+		javaDebutantComp.setRelationCours(RelationCours.VALIDE);
+		javaDebutantComp.setCours(javaDebutant);
+		javaDebutantComp.setCompetence(javaBases);
+		javaDebutantComp = coursCompetenceRepo.save(javaDebutantComp);
+		
+		Module presentationJavaDebutant = new Module();
+		presentationJavaDebutant.setIntitule("Présentation du cours Java Débutant");
+		presentationJavaDebutant.setAgencement(0);
+		presentationJavaDebutant.setNbQuestion(0);
+		presentationJavaDebutant.setPeriodicite(0);
+		presentationJavaDebutant.setNbTentativeAutorise(0);
+		presentationJavaDebutant.setEnonceQCM("");
+		presentationJavaDebutant.setCours(javaDebutant);
+		presentationJavaDebutant = moduleRepo.save(presentationJavaDebutant);
+		
+		Chapitre java00 = new Chapitre();
+		java00.setTitre("Présentation Java Débutant");
+		java00.setAgencement(0);
+		java00.setModule(presentationJavaDebutant);
+		java00 = chapitreRepo.save(java00);
+		
+		Paragraphe par0Chap0PresJava = new Paragraphe();
+		par0Chap0PresJava.setAgencement(0);
+		par0Chap0PresJava.setTitre("Titre du § 1 du Chapitre 0 du module 0 du cours Java Débutant");
+		par0Chap0PresJava.setTexte("Voilà le texte du §1 du Chapitre 0 du module 0 du cours Java Débutant");
+		par0Chap0PresJava.setChapitre(java00);
+		par0Chap0PresJava = (Paragraphe) elementDeCoursRepo.save(par0Chap0PresJava);
+		
+		Paragraphe par1Chap0PresJava = new Paragraphe();
+		par1Chap0PresJava.setAgencement(1);
+		par1Chap0PresJava.setTitre("Titre du § 2 du Chapitre 0 du module 0 du cours Java Débutant");
+		par1Chap0PresJava.setTexte("Voilà le texte du §2 du Chapitre 0 du module 0 du cours Java Débutant");
+		par1Chap0PresJava.setChapitre(java00);
+		par1Chap0PresJava = (Paragraphe) elementDeCoursRepo.save(par1Chap0PresJava);
 
 		Module introduction = new Module();
 		introduction.setIntitule("Introduction à la syntaxe Java");
 		introduction.setAgencement(1);
-		introduction.setNbQuestion(5);
+		introduction.setNbQuestion(1);
 		introduction.setPeriodicite(1);
 		introduction.setNbTentativeAutorise(3);
 		introduction.setEnonceQCM("Syntaxe de base");
 		introduction.setCours(javaDebutant);
 		introduction = moduleRepo.save(introduction);
+		
+		Question introJava1 = new Question();
+		introJava1.setQuestion("Question 1 de l'intro Java");
+		introJava1.setModule(introduction);
+		introJava1 = questionRepo.save(introJava1);
+
+		Reponse rep1IntroJava1 = new Reponse();
+		rep1IntroJava1.setEnonce("La bonne réponse");
+		rep1IntroJava1.setQuestion(introJava1);
+		rep1IntroJava1.setJuste(true);
+		rep1IntroJava1 = reponseRepo.save(rep1IntroJava1);
+
+		Reponse rep2IntroJava1 = new Reponse();
+		rep2IntroJava1.setEnonce("La mauvaise réponse");
+		rep2IntroJava1.setQuestion(introJava1);
+		rep2IntroJava1.setJuste(false);
+		rep2IntroJava1 = reponseRepo.save(rep2IntroJava1);
+		
+		Question introJava2 = new Question();
+		introJava2.setQuestion("Question 2 de l'intro Java");
+		introJava2.setModule(introduction);
+		introJava2 = questionRepo.save(introJava2);
+
+		Reponse rep1IntroJava2 = new Reponse();
+		rep1IntroJava2.setEnonce("La bonne réponse");
+		rep1IntroJava2.setQuestion(introJava2);
+		rep1IntroJava2.setJuste(true);
+		rep1IntroJava2 = reponseRepo.save(rep1IntroJava2);
+
+		Reponse rep2IntroJava2 = new Reponse();
+		rep2IntroJava2.setEnonce("La mauvaise réponse");
+		rep2IntroJava2.setQuestion(introJava2);
+		rep2IntroJava2.setJuste(false);
+		rep2IntroJava2 = reponseRepo.save(rep2IntroJava2);
 
 		Chapitre java11 = new Chapitre();
 		java11.setTitre("Les types de variable");
 		java11.setAgencement(0);
 		java11.setModule(introduction);
 		java11 = chapitreRepo.save(java11);
+		
+		Paragraphe par0Chap1PresJava = new Paragraphe();
+		par0Chap1PresJava.setAgencement(0);
+		par0Chap1PresJava.setTitre("Titre du § 1 du Chapitre 0 du module 1 du cours Java Débutant");
+		par0Chap1PresJava.setTexte("Voilà le texte du §1 du Chapitre 0 du module 1 du cours Java Débutant");
+		par0Chap1PresJava.setChapitre(java11);
+		par0Chap1PresJava = (Paragraphe) elementDeCoursRepo.save(par0Chap1PresJava);
+		
+		Paragraphe par1Chap1PresJava = new Paragraphe();
+		par1Chap1PresJava.setAgencement(1);
+		par1Chap1PresJava.setTitre("Titre du § 2 du Chapitre 0 du module 1 du cours Java Débutant");
+		par1Chap1PresJava.setTexte("Voilà le texte du §2 du Chapitre 0 du module 1 du cours Java Débutant");
+		par1Chap1PresJava.setChapitre(java11);
+		par1Chap1PresJava = (Paragraphe) elementDeCoursRepo.save(par1Chap1PresJava);
 
 		Chapitre java12 = new Chapitre();
 		java12.setTitre("La déclaration des variables");
 		java12.setAgencement(1);
 		java12.setModule(introduction);
 		java12 = chapitreRepo.save(java12);
+		
+		Paragraphe par0Chap2PresJava = new Paragraphe();
+		par0Chap2PresJava.setAgencement(0);
+		par0Chap2PresJava.setTitre("Titre du § 1 du Chapitre 1 du module 1 du cours Java Débutant");
+		par0Chap2PresJava.setTexte("Voilà le texte du §1 du Chapitre 1 du module 1 du cours Java Débutant");
+		par0Chap2PresJava.setChapitre(java12);
+		par0Chap2PresJava = (Paragraphe) elementDeCoursRepo.save(par0Chap2PresJava);
+		
+		Paragraphe par1Chap2PresJava = new Paragraphe();
+		par1Chap2PresJava.setAgencement(1);
+		par1Chap2PresJava.setTitre("Titre du § 2 du Chapitre 1 du module 1 du cours Java Débutant");
+		par1Chap2PresJava.setTexte("Voilà le texte du §2 du Chapitre 1 du module 1 du cours Java Débutant");
+		par1Chap2PresJava.setChapitre(java12);
+		par1Chap2PresJava = (Paragraphe) elementDeCoursRepo.save(par1Chap2PresJava);
 
 		Module lesBoucles = new Module();
 		lesBoucles.setIntitule("Découvrez les boucles de base");
@@ -851,18 +949,80 @@ public class JeuDeDonnee {
 		lesBoucles.setEnonceQCM("Les boucles de base");
 		lesBoucles.setCours(javaDebutant);
 		lesBoucles = moduleRepo.save(lesBoucles);
+		
+		Question lesBouclesQ1 = new Question();
+		lesBouclesQ1.setQuestion("Question 1 des Boucles");
+		lesBouclesQ1.setModule(lesBoucles);
+		lesBouclesQ1 = questionRepo.save(lesBouclesQ1);
+
+		Reponse rep1BouclesQ1 = new Reponse();
+		rep1BouclesQ1.setEnonce("La bonne réponse");
+		rep1BouclesQ1.setQuestion(lesBouclesQ1);
+		rep1BouclesQ1.setJuste(true);
+		rep1BouclesQ1 = reponseRepo.save(rep1BouclesQ1);
+
+		Reponse rep2BouclesQ1 = new Reponse();
+		rep2BouclesQ1.setEnonce("La mauvaise réponse");
+		rep2BouclesQ1.setQuestion(lesBouclesQ1);
+		rep2BouclesQ1.setJuste(false);
+		rep2BouclesQ1 = reponseRepo.save(rep2BouclesQ1);
+		
+		Question lesBouclesQ2 = new Question();
+		lesBouclesQ2.setQuestion("Question 2 de l'intro Java");
+		lesBouclesQ2.setModule(lesBoucles);
+		lesBouclesQ2 = questionRepo.save(lesBouclesQ2);
+
+		Reponse rep1BouclesQ2 = new Reponse();
+		rep1BouclesQ2.setEnonce("La bonne réponse");
+		rep1BouclesQ2.setQuestion(lesBouclesQ2);
+		rep1BouclesQ2.setJuste(true);
+		rep1BouclesQ2 = reponseRepo.save(rep1BouclesQ2);
+
+		Reponse rep2BouclesQ2 = new Reponse();
+		rep2BouclesQ2.setEnonce("La mauvaise réponse");
+		rep2BouclesQ2.setQuestion(lesBouclesQ2);
+		rep2BouclesQ2.setJuste(false);
+		rep2BouclesQ2 = reponseRepo.save(rep2BouclesQ2);
 
 		Chapitre java21 = new Chapitre();
 		java21.setTitre("Les boucles while");
 		java21.setAgencement(0);
 		java21.setModule(lesBoucles);
 		java21 = chapitreRepo.save(java21);
+		
+		Paragraphe par0ChapJava21 = new Paragraphe();
+		par0ChapJava21.setAgencement(0);
+		par0ChapJava21.setTitre("Titre du § 1 du Chapitre 0 du module Boucles Java Débutant");
+		par0ChapJava21.setTexte("Voilà le texte du §1 du Chapitre 0 du module Boucles Java Débutant");
+		par0ChapJava21.setChapitre(java21);
+		par0ChapJava21 = (Paragraphe) elementDeCoursRepo.save(par0ChapJava21);
+		
+		Paragraphe par1ChapJava21 = new Paragraphe();
+		par1ChapJava21.setAgencement(1);
+		par1ChapJava21.setTitre("Titre du § 2 du Chapitre 0 du module Boucles Java Débutant");
+		par1ChapJava21.setTexte("Voilà le texte du §2 du Chapitre 0 du module Boucles Java Débutant");
+		par1ChapJava21.setChapitre(java21);
+		par1ChapJava21 = (Paragraphe) elementDeCoursRepo.save(par1ChapJava21);
 
 		Chapitre java22 = new Chapitre();
 		java22.setTitre("Les boucles for");
 		java22.setAgencement(1);
 		java22.setModule(lesBoucles);
 		java22 = chapitreRepo.save(java22);
+		
+		Paragraphe par0ChapJava22 = new Paragraphe();
+		par0ChapJava22.setAgencement(0);
+		par0ChapJava22.setTitre("Titre du § 1 du Chapitre 1 du module Boucles Java Débutant");
+		par0ChapJava22.setTexte("Voilà le texte du §1 du Chapitre 1 du module Boucles Java Débutant");
+		par0ChapJava22.setChapitre(java22);
+		par0ChapJava22 = (Paragraphe) elementDeCoursRepo.save(par0ChapJava22);
+		
+		Paragraphe par1ChapJava22 = new Paragraphe();
+		par1ChapJava22.setAgencement(1);
+		par1ChapJava22.setTitre("Titre du § 2 du Chapitre 1 du module Boucles Java Débutant");
+		par1ChapJava22.setTexte("Voilà le texte du §2 du Chapitre 1 du module Boucles Java Débutant");
+		par1ChapJava22.setChapitre(java22);
+		par1ChapJava22 = (Paragraphe) elementDeCoursRepo.save(par1ChapJava22);
 
 	}
 
