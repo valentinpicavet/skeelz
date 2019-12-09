@@ -59,7 +59,7 @@ public class CoursController {
 	
 	
 	@GetMapping("/{id}")
-	@JsonView(Views.ViewCours.class)
+	@JsonView(Views.ViewCoursDetail.class)
 	public Cours find(@PathVariable Long id) {
 		Cours cours = coursRepo.findById(id).get();
 
@@ -67,7 +67,7 @@ public class CoursController {
 	}
 
 	@GetMapping("/by-etat/{etat}")
-	@JsonView(Views.ViewCours.class)
+	@JsonView(Views.ViewCoursDetail.class)
 	public List<Cours> findByEtat(@PathVariable String etat) {
 		Etat eetat = Etat.valueOf(etat.toUpperCase());
 		List<Cours> courss = coursRepo.findAllCoursByEtat(eetat);
