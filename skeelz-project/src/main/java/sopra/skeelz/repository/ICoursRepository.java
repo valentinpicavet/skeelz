@@ -1,4 +1,12 @@
 package sopra.skeelz.repository;
+import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
+ 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 
 import java.util.List;
 
@@ -53,5 +61,11 @@ public interface ICoursRepository extends JpaRepository<Cours, Long> {
 	@Query("select distinct cc.cours from CoursCompetence cc where cc.competence.id = :id and cc.relationCours = :relationCours")
 	List<Cours> findAllCoursByCompetenceAndRelationCours(@Param("id") Long id,
 			@Param("relationCours") RelationCours relationCours);
+	
+	public static void storeFile(MultipartFile file) throws IOException {
+		Path filePath = Paths.get(FILE_DIRECTORY + "/" + file.getOriginalFilename());
+ 
+		Files.copy(file.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
+	}
 
 }
