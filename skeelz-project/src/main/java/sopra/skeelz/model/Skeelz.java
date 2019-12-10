@@ -26,6 +26,7 @@ public class Skeelz {
 	@Column(nullable = false, unique = true)
 	@JsonView(Views.ViewCommon.class)
 	private String intitule;
+	
 	@OneToMany(mappedBy = "skeelz")
 	private List<CompetenceSkeelz> competenceSkeelz = new ArrayList<CompetenceSkeelz>();
 

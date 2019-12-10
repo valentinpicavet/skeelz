@@ -124,5 +124,8 @@ public class Views {
 
 	public static class ViewCompetencePersonne extends ViewCommon {
 	}
+	public static class ViewCompetencePersonneSkeelz extends ViewCommon {
+	}
+	
 
 }

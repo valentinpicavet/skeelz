@@ -32,12 +32,15 @@ public class Competence {
 	@Column(nullable = false)
 	@JsonView(Views.ViewCommon.class)
 	private Ponderation ponderation;
+	@JsonView(Views.ViewCommon.class)
 	private String description;
+	@JsonView(Views.ViewCommon.class)
 	@OneToMany(mappedBy = "competence")
 	private List<CompetenceSkeelz> competenceSkeelz = new ArrayList<CompetenceSkeelz>();
+	
 	@OneToMany(mappedBy = "competence")
 	private List<CoursCompetence> coursCompetence = new ArrayList<CoursCompetence>();
-
+	
 	@ManyToOne
 	@JoinColumn(name = "entreprise_id")
 	private Entreprise entreprise;
