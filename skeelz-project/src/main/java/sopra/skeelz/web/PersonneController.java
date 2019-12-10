@@ -154,12 +154,14 @@ public class PersonneController {
 	}
 
 	@PutMapping("/{id}")
+	@JsonView(Views.ViewPersonne.class)
 	public Personne update(@RequestBody Personne personne, @PathVariable Long id) {
 
 		return personneRepo.save(personne);
 	}
 
 	@DeleteMapping("/{id}")
+	@JsonView(Views.ViewPersonne.class)
 	public void delete(@PathVariable Long id) {
 		personneRepo.deleteById(id);
 	}

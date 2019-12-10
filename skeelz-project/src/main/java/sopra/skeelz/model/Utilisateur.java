@@ -18,6 +18,7 @@ public class Utilisateur {
 	@GeneratedValue
 	@JsonView(Views.ViewCommon.class)
 	private Long id;
+	@JsonView(Views.ViewCommon.class)
 	@Version
 	private int version;
 	@JsonView(Views.ViewCommon.class)
@@ -41,6 +42,7 @@ public class Utilisateur {
 
 	@ManyToOne
 	@JoinColumn(name = "entreprise_id") // , nullable = false)
+	@JsonView(Views.ViewPersonne.class)
 	private Entreprise entreprise;
 	@OneToOne(mappedBy = "utilisateur")
 	@JsonView(Views.ViewEntrepriseUtilisateurs.class)

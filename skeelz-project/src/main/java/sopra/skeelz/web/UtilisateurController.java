@@ -64,11 +64,13 @@ public class UtilisateurController {
 	}
 
 	@PostMapping("")
+	@JsonView(Views.ViewUtilisateur.class)
 	public Utilisateur create(@RequestBody Utilisateur utilisateur) {
 		return utilisateurRepo.save(utilisateur);
 	}
 
 	@PutMapping("/{id}")
+	@JsonView(Views.ViewUtilisateur.class)
 	public Utilisateur update(@RequestBody Utilisateur utilisateur, @PathVariable Long id) {
 		return utilisateurRepo.save(utilisateur);
 	}
