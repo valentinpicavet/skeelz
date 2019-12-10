@@ -43,11 +43,13 @@ public class QuestionController {
 	}
 
 	@PostMapping("")
+	@JsonView(Views.ViewQuestion.class)
 	public Question create(@RequestBody Question question) {
 		return questionRepo.save(question);
 	}
 
 	@PutMapping("/{id}")
+	@JsonView(Views.ViewQuestion.class)
 	public Question update(@RequestBody Question question, @PathVariable Long id) {
 		return questionRepo.save(question);
 	}
