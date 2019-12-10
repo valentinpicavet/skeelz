@@ -943,7 +943,7 @@ public class JeuDeDonnee {
 		Module lesBoucles = new Module();
 		lesBoucles.setIntitule("Découvrez les boucles de base");
 		lesBoucles.setAgencement(2);
-		lesBoucles.setNbQuestion(3);
+		lesBoucles.setNbQuestion(1);
 		lesBoucles.setPeriodicite(1);
 		lesBoucles.setNbTentativeAutorise(3);
 		lesBoucles.setEnonceQCM("Les boucles de base");

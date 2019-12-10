@@ -44,6 +44,14 @@ public class CoursPersonneController {
 
 		return coursPersonne;
 	}
+	
+	@GetMapping("/personneAndCours/{idPersonne}:{idCours}")
+	@JsonView(Views.ViewCoursPersonneDetail.class)
+	public CoursPersonne findByPersonneIdAndCours(@PathVariable Long idPersonne, @PathVariable Long idCours) {
+		CoursPersonne coursPersonne = coursPersonneRepo.findCoursByIdPersonneAndIdCours(idPersonne, idCours);
+
+		return coursPersonne;
+	}
 
 	@GetMapping("/{id}:{etatCours}/detail")
 	@JsonView(Views.ViewCoursPersonneDetail.class)
@@ -59,6 +67,7 @@ public class CoursPersonneController {
 	}
 
 	@PutMapping("/{id}")
+	@JsonView(Views.ViewCoursPersonne.class)
 	public CoursPersonne update(@RequestBody CoursPersonne coursPersonne, @PathVariable Long id) {
 		return coursPersonneRepo.save(coursPersonne);
 	}
