@@ -60,6 +60,13 @@ public class CoursPersonneController {
 
 		return courss;
 	}
+	
+	@GetMapping("/personne/{idPersonne}")
+	@JsonView(Views.ViewCoursPersonneDetail.class)
+	public List<CoursPersonne> findByIdPersonne(@PathVariable Long idPersonne) {
+		List<CoursPersonne> coursPersonne = coursPersonneRepo.findByIdPersonne(idPersonne);
+		return coursPersonne;
+	}
 
 	@PostMapping("")
 	public CoursPersonne create(@RequestBody CoursPersonne coursPersonne) {

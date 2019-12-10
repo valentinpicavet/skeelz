@@ -2,6 +2,13 @@ package sopra.skeelz.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -156,6 +163,11 @@ public class Cours {
 
 	public void setCheminImageCours(String cheminImageCours) {
 		this.cheminImageCours = cheminImageCours;
+	}
+	public void storeFile(MultipartFile file) throws IOException {
+		Path filePath = Paths.get(cheminImageCours + "/" + file.getOriginalFilename());
+ 
+		Files.copy(file.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
 	}
 
 }
