@@ -1,5 +1,6 @@
 package sopra.skeelz.web;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +21,11 @@ import sopra.skeelz.model.Etat;
 import sopra.skeelz.model.Personne;
 import sopra.skeelz.model.Skeelz;
 import sopra.skeelz.model.Views;
+import sopra.skeelz.repository.ICompetenceRepository;
 import sopra.skeelz.repository.ICoursRepository;
 import sopra.skeelz.repository.IPersonneRepository;
 import sopra.skeelz.repository.ISkeelzRepository;
+import sopra.skeelz.web.dto.PersonneDTO;
 
 @RestController
 @RequestMapping("/skeelz")
@@ -35,6 +38,8 @@ public class SkeelzController {
 	private IPersonneRepository personneRepo;
 	@Autowired
 	private ICoursRepository coursRepo;
+	@Autowired
+	private ICompetenceRepository competenceRepo;
 
 	@GetMapping("")
 	@JsonView(Views.ViewSkeelz.class)
@@ -53,11 +58,28 @@ public class SkeelzController {
 	}
 
 	@GetMapping("/{id}/personnes")
-	@JsonView(Views.ViewSkeelzPersonnes.class)
-	public List<Personne> findPersonneBySkeelzId(@PathVariable Long id) {
+	@JsonView(Views.ViewPersonne.class)
+	public List<PersonneDTO> findPersonneBySkeelzId(@PathVariable Long id) {
 		List<Personne> personnes = personneRepo.findPersonneBySkeelz(id);
+		List<PersonneDTO> personneDTOs = new ArrayList<PersonneDTO>();
 
-		return personnes;
+		for (Personne pers : personnes) {
+			PersonneDTO persDTO = new PersonneDTO();
+			persDTO.setId(pers.getId());
+			persDTO.setVersion(pers.getVersion());
+			persDTO.setNom(pers.getNom());
+			persDTO.setPrenom(pers.getPrenom());
+			persDTO.setTelephone(pers.getTelephone());
+			persDTO.setNoteGlobal(pers.getNoteGlobal());
+			persDTO.setUtilisateur(pers.getUtilisateur());
+			persDTO.setCoursPersonne(pers.getCoursPersonne());
+			persDTO.setQcmPersonne(pers.getQcmPersonne());
+			persDTO.setBilanCompetence(pers.getBilanCompetence());
+			persDTO.setCompetences(competenceRepo.findCompetenceByIdPersonne(pers.getId()));
+			persDTO.setSkeelzs(skeelzRepo.findSkeelzByIdPersonne(pers.getId()));
+			personneDTOs.add(persDTO);
+		}
+		return personneDTOs;
 	}
 
 	@GetMapping("/{id}/courss/{etat}")
