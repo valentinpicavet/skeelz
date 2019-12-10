@@ -12,6 +12,9 @@ import sopra.skeelz.model.EtatCours;
 
 public interface ICoursPersonneRepository extends JpaRepository<CoursPersonne, Long> {
 
+	@Query("from CoursPersonne cp where cp.personne.id = :idPersonne")
+	List<CoursPersonne> findByIdPersonne(@Param("idPersonne") Long id);
+	
 	@Query("select cp.cours from CoursPersonne cp where cp.personne.id = :id and cp.etatCours = :etatCours")
 	List<Cours> findCoursByIdPersonneEtatCours(@Param("id") Long id, @Param("etatCours") EtatCours etatCours);
 	
