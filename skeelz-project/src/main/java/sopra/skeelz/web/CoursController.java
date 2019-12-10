@@ -1,10 +1,6 @@
 package sopra.skeelz.web;
 
-import java.io.IOException;
 import java.util.List;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -16,13 +12,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
-
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
@@ -31,7 +20,6 @@ import sopra.skeelz.model.Cours;
 import sopra.skeelz.model.Difficulte;
 import sopra.skeelz.model.Etat;
 import sopra.skeelz.model.Module;
-import sopra.skeelz.model.Skeelz;
 import sopra.skeelz.model.Views;
 import sopra.skeelz.repository.IChapitreRepository;
 import sopra.skeelz.repository.ICoursRepository;
@@ -51,8 +39,8 @@ public class CoursController {
 	@Autowired
 	private IChapitreRepository chapitreRepo;
 	
-	@Autowired
-	private Cours cours;
+//	@Autowired
+//	private Cours cours;
 
 	@GetMapping("")
 	@JsonView(Views.ViewCours.class)
@@ -161,12 +149,12 @@ public class CoursController {
 		coursRepo.deleteById(id);
 	}
 	
-	@PostMapping("/imageCours/{id}")
-	@ResponseStatus(HttpStatus.OK)
-	public void handleFileUpload(@RequestParam("file") MultipartFile file, @PathVariable Long id) throws IOException {
-		Path filePath = Paths.get(FILE_DIRECTORY + "/" + file.getOriginalFilename());	 
-		Files.copy(file.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
-	}
+//	@PostMapping("/imageCours/{id}")
+//	@ResponseStatus(HttpStatus.OK)
+//	public void handleFileUpload(@RequestParam("file") MultipartFile file, @PathVariable Long id) throws IOException {
+//		Path filePath = Paths.get(FILE_DIRECTORY + "/" + file.getOriginalFilename());	 
+//		Files.copy(file.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
+//	}
 
 
 	

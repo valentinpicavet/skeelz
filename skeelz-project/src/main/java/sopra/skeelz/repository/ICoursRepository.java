@@ -1,13 +1,4 @@
 package sopra.skeelz.repository;
-import org.springframework.stereotype.Component;
-import org.springframework.web.multipart.MultipartFile;
- 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
-
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -19,7 +10,6 @@ import sopra.skeelz.model.Difficulte;
 import sopra.skeelz.model.Etat;
 import sopra.skeelz.model.EtatCours;
 import sopra.skeelz.model.RelationCours;
-import sopra.skeelz.model.Skeelz;
 
 public interface ICoursRepository extends JpaRepository<Cours, Long> {
 

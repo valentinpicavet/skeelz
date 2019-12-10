@@ -1,7 +1,5 @@
 package sopra.skeelz.model;
 
-import javax.persistence.Version;
-
 import com.fasterxml.jackson.annotation.JsonView;
 
 public enum Difficulte {
