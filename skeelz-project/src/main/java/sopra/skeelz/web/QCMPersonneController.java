@@ -40,6 +40,14 @@ public class QCMPersonneController {
 		QCMPersonne qcmPersonne = qcmPersonneRepo.findById(id).get();
 		return qcmPersonne;
 	}
+	
+	@GetMapping("/by-personne/{idPersonne}")
+	@JsonView(Views.ViewQCMPersonnePersonneModule.class)
+	public List<QCMPersonne> findByPersonne(@PathVariable Long idPersonne) {
+		List<QCMPersonne> qcmPersonne = qcmPersonneRepo.findByPersonneId(idPersonne);
+
+		return qcmPersonne;
+	}
 
 	@GetMapping("/by-personne-and-module/{personne}:{module}")
 	@JsonView(Views.ViewQCMPersonnePersonneModule.class)
@@ -55,6 +63,7 @@ public class QCMPersonneController {
 	}
 
 	@PutMapping("/{id}")
+	@JsonView(Views.ViewQCMPersonne.class)
 	public QCMPersonne update(@RequestBody QCMPersonne qcmPersonne, @PathVariable Long id) {
 		return qcmPersonneRepo.save(qcmPersonne);
 	}

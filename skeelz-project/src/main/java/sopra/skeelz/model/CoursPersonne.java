@@ -35,7 +35,7 @@ public class CoursPersonne {
 	private Personne personne;
 	@ManyToOne
 	@JoinColumn(name = "cours_id") // , nullable = false)
-	@JsonView(Views.ViewCommon.class)
+	@JsonView(Views.ViewCoursPersonneDetail.class)
 	private Cours cours;
 
 	public Long getId() {

@@ -9,6 +9,7 @@ import sopra.skeelz.model.BilanCompetence;
 import sopra.skeelz.model.Competence;
 import sopra.skeelz.model.CoursPersonne;
 import sopra.skeelz.model.QCMPersonne;
+import sopra.skeelz.model.Skeelz;
 import sopra.skeelz.model.Utilisateur;
 import sopra.skeelz.model.Views;
 
@@ -35,9 +36,19 @@ public class PersonneDTO {
 	private List<BilanCompetence> bilanCompetence = new ArrayList<BilanCompetence>();
 	@JsonView(Views.ViewCommon.class)
 	private List<Competence> competences;
+	@JsonView(Views.ViewCommon.class)
+	private List<Skeelz> skeelzs;
 
 	public PersonneDTO() {
 		super();
+	}
+
+	public List<Skeelz> getSkeelzs() {
+		return skeelzs;
+	}
+
+	public void setSkeelzs(List<Skeelz> skeelzs) {
+		this.skeelzs = skeelzs;
 	}
 
 	public Long getId() {

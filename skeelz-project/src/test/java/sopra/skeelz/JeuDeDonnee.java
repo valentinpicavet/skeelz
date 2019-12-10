@@ -279,6 +279,17 @@ public class JeuDeDonnee {
 		detecteurFume.setCheminImageCours("Le chemin");
 		detecteurFume.setEntreprise(sopra);
 		detecteurFume = coursRepo.save(detecteurFume);
+		
+		Cours coursavalider = new Cours();
+		coursavalider.setIntitule("Test cours en attente de validation");
+		coursavalider.setDifficulte(Difficulte.FACILE);
+		coursavalider.setDuree(4);
+		coursavalider.setEtat(Etat.ATTENTE);
+		coursavalider.setDescription(
+				"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec");
+		coursavalider.setCheminImageCours("Le chemin");
+		coursavalider.setEntreprise(sopra);
+		coursavalider= coursRepo.save(coursavalider);
 
 		CoursCompetence detecteurFumeComp = new CoursCompetence();
 		detecteurFumeComp.setRelationCours(RelationCours.VALIDE);
@@ -943,7 +954,7 @@ public class JeuDeDonnee {
 		Module lesBoucles = new Module();
 		lesBoucles.setIntitule("Découvrez les boucles de base");
 		lesBoucles.setAgencement(2);
-		lesBoucles.setNbQuestion(3);
+		lesBoucles.setNbQuestion(1);
 		lesBoucles.setPeriodicite(1);
 		lesBoucles.setNbTentativeAutorise(3);
 		lesBoucles.setEnonceQCM("Les boucles de base");

@@ -60,6 +60,7 @@ public class PersonneController {
 			persDTO.setQcmPersonne(pers.getQcmPersonne());
 			persDTO.setBilanCompetence(pers.getBilanCompetence());
 			persDTO.setCompetences(competenceRepo.findCompetenceByIdPersonne(pers.getId()));
+			persDTO.setSkeelzs(skeelzRepo.findSkeelzByIdPersonne(pers.getId()));
 			personneDTOs.add(persDTO);
 		}
 		return personneDTOs;
@@ -82,6 +83,7 @@ public class PersonneController {
 		personneDTO.setQcmPersonne(personne.getQcmPersonne());
 		personneDTO.setBilanCompetence(personne.getBilanCompetence());
 		personneDTO.setCompetences(competenceRepo.findCompetenceByIdPersonne(personne.getId()));
+		personneDTO.setSkeelzs(skeelzRepo.findSkeelzByIdPersonne(personne.getId()));
 		
 		return personneDTO;
 	}

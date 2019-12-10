@@ -43,11 +43,13 @@ public class ReponseController {
 	}
 
 	@PostMapping("")
+	@JsonView(Views.ViewReponse.class)
 	public Reponse create(@RequestBody Reponse reponse) {
 		return reponseRepo.save(reponse);
 	}
 
 	@PutMapping("/{id}")
+	@JsonView(Views.ViewReponse.class)
 	public Reponse update(@RequestBody Reponse reponse, @PathVariable Long id) {
 		return reponseRepo.save(reponse);
 	}
