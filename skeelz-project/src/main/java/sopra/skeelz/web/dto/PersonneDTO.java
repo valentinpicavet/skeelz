@@ -26,17 +26,17 @@ public class PersonneDTO {
 	private String telephone;
 	@JsonView(Views.ViewCommon.class)
 	private int noteGlobal;
-	@JsonView(Views.ViewCommon.class)
+	@JsonView(Views.ViewPersonne.class)
 	private Utilisateur utilisateur;
-	@JsonView(Views.ViewCommon.class)
+	@JsonView(Views.ViewPersonne.class)
 	private List<CoursPersonne> coursPersonne = new ArrayList<CoursPersonne>();
-	@JsonView(Views.ViewCommon.class)
+	@JsonView(Views.ViewPersonne.class)
 	private List<QCMPersonne> qcmPersonne = new ArrayList<QCMPersonne>();
-	@JsonView(Views.ViewCommon.class)
+	@JsonView(Views.ViewPersonne.class)
 	private List<BilanCompetence> bilanCompetence = new ArrayList<BilanCompetence>();
-	@JsonView(Views.ViewCommon.class)
+	@JsonView(Views.ViewPersonne.class)
 	private List<Competence> competences;
-	@JsonView(Views.ViewCommon.class)
+	@JsonView(Views.ViewPersonne.class)
 	private List<Skeelz> skeelzs;
 
 	public PersonneDTO() {
