@@ -56,6 +56,14 @@ public class QCMPersonneController {
 
 		return qcmPersonne;
 	}
+	
+	@GetMapping("/personne/cours/{idPersonne}:{idCours}")
+	@JsonView(Views.ViewQCMPersonnePersonneModule.class)
+	public List<QCMPersonne> findByIdPersonneAndIdCours(@PathVariable Long idPersonne, @PathVariable Long idCours) {
+		List<QCMPersonne> qcmPersonne = qcmPersonneRepo.findByPersonneIdAndIdCours(idPersonne, idCours);
+
+		return qcmPersonne;
+	}
 
 	@PostMapping("")
 	public QCMPersonne create(@RequestBody QCMPersonne qcmPersonne) {
