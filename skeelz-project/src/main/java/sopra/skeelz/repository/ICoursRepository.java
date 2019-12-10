@@ -62,10 +62,12 @@ public interface ICoursRepository extends JpaRepository<Cours, Long> {
 	List<Cours> findAllCoursByCompetenceAndRelationCours(@Param("id") Long id,
 			@Param("relationCours") RelationCours relationCours);
 	
-	public static void storeFile(MultipartFile file) throws IOException {
-		Path filePath = Paths.get(FILE_DIRECTORY + "/" + file.getOriginalFilename());
- 
-		Files.copy(file.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
-	}
+	/*
+	 * public static void storeFile(MultipartFile file) throws IOException { Path
+	 * filePath = Paths.get(FILE_DIRECTORY + "/" + file.getOriginalFilename());
+	 * 
+	 * Files.copy(file.getInputStream(), filePath,
+	 * StandardCopyOption.REPLACE_EXISTING); }
+	 */
 
 }
