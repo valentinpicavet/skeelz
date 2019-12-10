@@ -42,6 +42,14 @@ public class CompetenceSkeelzController {
 
 		return competenceSkeelz;
 	}
+	
+	@GetMapping("/personne/{idPersonne}")
+	@JsonView(Views.ViewCompetenceSkeelz.class)
+	public List<CompetenceSkeelz> findByIdPersonne(@PathVariable Long idPersonne) {
+		List<CompetenceSkeelz> competenceSkeelzs = competenceSkeelzRepo.findByIdPersonne(idPersonne);
+
+		return competenceSkeelzs;
+	}
 
 	@PostMapping("")
 	public CompetenceSkeelz create(@RequestBody CompetenceSkeelz competenceSkeelz) {

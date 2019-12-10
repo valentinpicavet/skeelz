@@ -105,7 +105,6 @@ public class PersonneController {
 		personneDTO.setQcmPersonne(personne.getQcmPersonne());
 		personneDTO.setBilanCompetence(personne.getBilanCompetence());
 		personneDTO.setCompetences(competenceRepo.findCompetenceByIdPersonne(personne.getId()));
-		personneDTO.setSkeelzs(skeelzRepo.findSkeelzByIdPersonne(personne.getId()));
 		
 		return personneDTO;
 	}
@@ -129,7 +128,7 @@ public class PersonneController {
 	}
 
 	@GetMapping("/{id}/skeelzs")
-	@JsonView(Views.ViewPersonne.class)
+	@JsonView(Views.ViewPersonneSkeelzs.class)
 	public List<Skeelz> findSkeelz(@PathVariable Long id) {
 		List<Skeelz> skeelzs = skeelzRepo.findSkeelzByIdPersonne(id);
 
@@ -155,15 +154,29 @@ public class PersonneController {
 	}
 
 	@PutMapping("/{id}")
-	@JsonView(Views.ViewPersonne.class)
 	public Personne update(@RequestBody Personne personne, @PathVariable Long id) {
 
 		return personneRepo.save(personne);
 	}
 
 	@DeleteMapping("/{id}")
-	@JsonView(Views.ViewPersonne.class)
 	public void delete(@PathVariable Long id) {
 		personneRepo.deleteById(id);
 	}
+	
+	@GetMapping("/skeelzs/{id}")
+	@JsonView(Views.ViewPersonneAllSkeelzs.class)
+	public List<Skeelz> findAllSkeelz(@PathVariable Long id) {
+		List<Skeelz> skeelzs = skeelzRepo.findSkeelzByIdPersonne(id);
+
+		return skeelzs;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 }
