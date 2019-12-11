@@ -164,6 +164,20 @@ public class PersonneController {
 		personneRepo.deleteById(id);
 	}
 	
+	@GetMapping("/skeelzs/{id}")
+	@JsonView(Views.ViewPersonneAllSkeelzs.class)
+	public List<Skeelz> findAllSkeelzByPersonne(@PathVariable Long id) {
+		List<Skeelz> skeelzs = skeelzRepo.findSkeelzByIdPersonne(id);
+
+		return skeelzs;
+	}
+	@GetMapping("/competences/{id}")
+	@JsonView(Views.ViewPersonneAllCompetences.class)
+	public List<Competence> findAllCompetenceByIdPersonne(@PathVariable Long id) {
+		List<Competence> competences = competenceRepo.findCompetenceByIdPersonne(id);
+
+		return competences;
+	}
 	
 	
 	

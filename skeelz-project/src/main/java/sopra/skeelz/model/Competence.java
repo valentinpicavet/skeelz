@@ -34,6 +34,7 @@ public class Competence {
 	private Ponderation ponderation;
 	@JsonView(Views.ViewCommon.class)
 	private String description;
+	@JsonView(Views.ViewPersonneAllCompetences.class)
 	@OneToMany(mappedBy = "competence")
 	private List<CompetenceSkeelz> competenceSkeelz = new ArrayList<CompetenceSkeelz>();
 	

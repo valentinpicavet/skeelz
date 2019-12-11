@@ -37,6 +37,9 @@ public class Views {
 
 	public static class ViewCoursModules extends ViewCours {
 	}
+	
+	public static class ViewCoursCoursCompetence extends ViewCours {
+	}
 
 	public static class ViewCoursModulesChapitres extends ViewCours {
 	}
@@ -127,5 +130,8 @@ public class Views {
 	public static class ViewCompetencePersonneSkeelz extends ViewCommon {
 	}
 	
-
+	public static class ViewPersonneAllSkeelzs extends ViewCommon {
+	}
+	public static class ViewPersonneAllCompetences extends ViewCommon {
+	}
 }
