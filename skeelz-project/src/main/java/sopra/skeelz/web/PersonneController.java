@@ -18,11 +18,13 @@ import sopra.skeelz.model.Cours;
 import sopra.skeelz.model.EtatCours;
 import sopra.skeelz.model.Personne;
 import sopra.skeelz.model.Skeelz;
+import sopra.skeelz.model.Utilisateur;
 import sopra.skeelz.model.Views;
 import sopra.skeelz.repository.ICompetenceRepository;
 import sopra.skeelz.repository.ICoursRepository;
 import sopra.skeelz.repository.IPersonneRepository;
 import sopra.skeelz.repository.ISkeelzRepository;
+import sopra.skeelz.repository.IUtilisateurRepository;
 import sopra.skeelz.web.dto.PersonneDTO;
 
 @RestController
@@ -40,6 +42,7 @@ public class PersonneController {
 
 	@Autowired
 	private ISkeelzRepository skeelzRepo;
+	
 
 	@GetMapping("")
 	@JsonView(Views.ViewPersonne.class)
