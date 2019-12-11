@@ -52,7 +52,7 @@ public class Cours {
 	@JsonView(Views.ViewCoursDetail.class)
 	private List<Module> modules = new ArrayList<Module>();
 	@OneToMany(mappedBy = "cours")
-	@JsonView(Views.ViewCoursDetail.class)
+	@JsonView({Views.ViewCoursDetail.class,  Views.ViewPersonneCourss.class})
 	private List<CoursPersonne> coursPersonnes = new ArrayList<CoursPersonne>();
 	@ManyToOne
 	@JoinColumn(name = "entreprise_id")

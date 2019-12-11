@@ -36,11 +36,14 @@ public class Personne {
 	private int noteGlobal;
 
 	@OneToOne
+	
 	@JoinColumn(name = "utilisateur_id") // , nullable = false)
 	private Utilisateur utilisateur;
 	@OneToMany(mappedBy = "personne")
 	private List<CoursPersonne> coursPersonne = new ArrayList<CoursPersonne>();
 	@OneToMany(mappedBy = "personne")
+
+	
 	private List<QCMPersonne> qcmPersonne = new ArrayList<QCMPersonne>();
 	@OneToMany(mappedBy = "personne")
 	@JsonView(Views.ViewPersonneCompetences.class)
