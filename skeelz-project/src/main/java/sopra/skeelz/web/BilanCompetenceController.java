@@ -72,7 +72,9 @@ public class BilanCompetenceController {
 		System.out.println("J'entre dans la méthode updateBilanCompetence");
 		
 		CoursPersonne coursPersonne = coursPersonneRepo.findById(idCoursPersonne).get();
-		coursPersonne.setEtatCours(EtatCours.VALIDE);
+		if(coursPersonne.getEtatCours() == EtatCours.SUIVI) {
+			coursPersonne.setEtatCours(EtatCours.VALIDE);
+		}
 		coursPersonne = coursPersonneRepo.save(coursPersonne);
 		
 		Personne personne = personneRepo.findById(coursPersonne.getPersonne().getId()).get();
@@ -89,10 +91,10 @@ public class BilanCompetenceController {
 		
 		System.out.println("Nombre de BC d'une personne et id du premier élément");
 		System.out.println(bilanCompetence.size());
-		System.out.println(bilanCompetence.get(0).getId());
+//		System.out.println(bilanCompetence.get(0).getId());
 		
 		for(CompetenceSkeelz cs : competenceSkeelz) {
-			if(!bilanCompetence.stream()
+			if(bilanCompetence.size() == 0 || !bilanCompetence.stream()
 					  .filter(bc -> cs.getId().equals(bc.getCompetenceSkeelz().getId())).findAny().isPresent()) {
 				
 				System.out.println("On entre dans le if");

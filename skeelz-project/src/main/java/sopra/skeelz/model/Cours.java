@@ -43,7 +43,7 @@ public class Cours {
 	private Difficulte difficulte;
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = false)
-	@JsonView(Views.ViewCoursDetail.class)
+	@JsonView(Views.ViewCommon.class)
 	private Etat etat;
 	@OneToMany(mappedBy = "cours")
 	@JsonView(Views.ViewCoursDetail.class)

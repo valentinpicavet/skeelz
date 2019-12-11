@@ -36,7 +36,7 @@ public class Personne {
 	private int noteGlobal;
 
 	@OneToOne
-	
+	@JsonView(Views.ViewPersonne.class) 
 	@JoinColumn(name = "utilisateur_id") // , nullable = false)
 	private Utilisateur utilisateur;
 	@OneToMany(mappedBy = "personne")
