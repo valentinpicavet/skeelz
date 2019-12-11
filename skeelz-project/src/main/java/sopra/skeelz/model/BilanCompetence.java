@@ -24,11 +24,11 @@ public class BilanCompetence {
 	private int version;
 	@ManyToOne
 	@JoinColumn(name = "competenceSkeelz_id") // , nullable = false)
-	@JsonView(Views.ViewPersonneCompetences.class)
+	@JsonView({Views.ViewPersonneCompetences.class, Views.ViewBilanCompetence.class})
 	private CompetenceSkeelz competenceSkeelz;
 	@ManyToOne
 	@JoinColumn(name = "personne_id") // , nullable = false)
-	@JsonView(Views.ViewCompetencePersonne.class)
+	@JsonView({Views.ViewCompetencePersonne.class, Views.ViewBilanCompetence.class})
 	private Personne personne;
 
 	public Long getId() {
