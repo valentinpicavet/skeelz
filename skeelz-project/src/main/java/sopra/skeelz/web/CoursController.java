@@ -17,11 +17,13 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 import sopra.skeelz.model.Chapitre;
 import sopra.skeelz.model.Cours;
+import sopra.skeelz.model.CoursCompetence;
 import sopra.skeelz.model.Difficulte;
 import sopra.skeelz.model.Etat;
 import sopra.skeelz.model.Module;
 import sopra.skeelz.model.Views;
 import sopra.skeelz.repository.IChapitreRepository;
+import sopra.skeelz.repository.ICoursCompetenceRepository;
 import sopra.skeelz.repository.ICoursRepository;
 import sopra.skeelz.repository.IModuleRepository;
 
@@ -38,6 +40,9 @@ public class CoursController {
 
 	@Autowired
 	private IChapitreRepository chapitreRepo;
+	
+	@Autowired
+	private ICoursCompetenceRepository coursCompetenceRepo;
 	
 //	@Autowired
 //	private Cours cours;
@@ -83,6 +88,14 @@ public class CoursController {
 		List<Module> modules = moduleRepo.findModule(id);
 
 		return modules;
+	}
+	
+	@GetMapping("/{id}/coursCompetences")
+	@JsonView(Views.ViewCompetenceCoursAndRelation.class)
+	public List<CoursCompetence> findCoursCompetence(@PathVariable Long id) {
+		List<CoursCompetence> coursCompetences = coursCompetenceRepo.findCoursCompetence(id);
+
+		return coursCompetences;
 	}
 
 	@GetMapping("/{id}/modules/chapitres")
