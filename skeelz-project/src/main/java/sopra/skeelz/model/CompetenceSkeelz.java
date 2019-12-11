@@ -27,7 +27,7 @@ public class CompetenceSkeelz {
 	private int version;
 	@ManyToOne
 	@JoinColumn(name = "skeelz_id") // , nullable = false)
-	@JsonView({Views.ViewCommon.class, Views.ViewCompetenceSkeelz.class})
+	@JsonView(Views.ViewCompetenceSkeelz.class)
 	private Skeelz skeelz;
 	@ManyToOne
 	@JsonView(Views.ViewCompetenceSkeelz.class)
