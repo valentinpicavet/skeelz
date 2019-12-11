@@ -37,6 +37,9 @@ public class Views {
 
 	public static class ViewCoursModules extends ViewCours {
 	}
+	
+	public static class ViewCoursCoursCompetence extends ViewCours {
+	}
 
 	public static class ViewCoursModulesChapitres extends ViewCours {
 	}
