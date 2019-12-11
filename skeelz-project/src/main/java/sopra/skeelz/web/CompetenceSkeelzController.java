@@ -61,6 +61,7 @@ public class CompetenceSkeelzController {
 	}
 
 	@PostMapping("")
+	@JsonView(Views.ViewCompetenceSkeelz.class)
 	public CompetenceSkeelz create(@RequestBody CompetenceSkeelz competenceSkeelz) {
 		return competenceSkeelzRepo.save(competenceSkeelz);
 	}

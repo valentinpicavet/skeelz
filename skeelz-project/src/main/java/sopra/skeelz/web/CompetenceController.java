@@ -70,6 +70,7 @@ public class CompetenceController {
 	}
 
 	@PostMapping("")
+	@JsonView(Views.ViewCompetence.class)
 	public Competence create(@RequestBody Competence competence) {
 		return competenceRepo.save(competence);
 	}
