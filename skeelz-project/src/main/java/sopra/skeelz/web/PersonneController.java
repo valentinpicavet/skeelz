@@ -139,6 +139,7 @@ public class PersonneController {
 	}
 
 	@PostMapping("")
+	@JsonView(Views.ViewCommon.class)
 	public Personne create(@RequestBody PersonneDTO personneDTO) {
 		Personne personne = new Personne();
 
